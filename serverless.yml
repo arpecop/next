@@ -1,0 +1,11 @@
+klounApp:
+  component: '@sls-next/serverless-component@3.7.0'
+  inputs:
+    name:
+      defaultLambda: klounda
+      apiLambda: klounda-api
+      imageLambda: klounda-image
+    bucketName: klounda-s3
+    memory: 1024
+  plugins:
+    - serverless-prune-plugin

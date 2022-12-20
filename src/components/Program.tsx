@@ -1,0 +1,114 @@
+import axios from "axios";
+import { spread } from "lodash";
+import React, { useEffect } from "react";
+
+export interface Item {
+	id: number;
+	promoted: number;
+	userId: number;
+	up: number;
+	down: number;
+	created: number;
+	image: string;
+	thumb: string;
+	fullsize: string;
+	width: number;
+	height: number;
+	audio: boolean;
+	source: string;
+	flags: number;
+	user: string;
+	mark: number;
+	gift: number;
+}
+
+export interface RootObject {
+	atEnd: boolean;
+	atStart: boolean;
+
+	items: Item[];
+	ts: number;
+	cache: string;
+	rt: number;
+	qc: number;
+}
+
+const Program = ({
+	limit,
+	className,
+}: {
+	limit?: number;
+	className: string;
+}) => {
+	const [items, setItems] = React.useState<Item[]>([]);
+	const [img, setImg] = React.useState<string | null>(null);
+	async function fetchMyAPI(older?: number) {
+		const response = await axios.get<RootObject>(
+			`https://api.codetabs.com/v1/proxy?quest=https://pr0gramm.com/api/items/get?flags=1&promoted=1${
+				older ? `&older=${older}` : ""
+			}`,
+		);
+		if (older) {
+			setItems((itemz) => itemz.concat(response.data.items));
+			// setItem(response.data.items[response.data.items.length - 1].promoted);
+		} else {
+			setItems(response.data.items);
+			//  setItem(response.data.items[response.data.items.length - 1].promoted);
+		}
+	}
+
+	useEffect(() => {
+		// initial fetch
+		fetchMyAPI();
+	}, []);
+
+	if (!items) {
+		return <div>Loading...</div>;
+	}
+
+	return (
+		<div className={className}>
+			{items.slice(0, limit || items.length).map(
+				({
+					thumb,
+					id,
+				}: {
+					thumb: string;
+					fullsize?: string;
+					image?: string;
+					id: number;
+					promoted: number;
+				}) => (
+					<label
+						key={id}
+						className='m-2 flex cursor-pointer items-center justify-center hover:animate-pulse'
+						htmlFor='my-modal'
+						onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
+						{...spread}
+					>
+						<div className='flex snap-start rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400'>
+							<img
+								className='rounded-lg'
+								alt='pr0gramm'
+								width={128}
+								height={128}
+								loading='lazy'
+								src={`https://thumb.pr0gramm.com/${thumb}`}
+							/>
+						</div>
+					</label>
+				),
+			)}
+
+			<input type='checkbox' id='my-modal' className='modal-toggle' />
+			<label htmlFor='my-modal' className='modal cursor-pointer'>
+				<label className='modal-box relative' htmlFor=''>
+					<p className='py-4'>
+						<img src={img || ""} alt='' />
+					</p>
+				</label>
+			</label>
+		</div>
+	);
+};
+export { Program };

@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "No pre-build steps required"
+    build:
+      commands:
+        - echo "Skipping build step because .next directory is already built "
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+      - public/**/*
+  cache:
+    paths:
+      - node_modules/**/*
