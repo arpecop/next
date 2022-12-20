@@ -91,12 +91,16 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 					alt='powered white z-10'
 					className='dark:invert'
 				/>
-
 			</div>
 		</footer>
 	) : (
-		<div className='relative'>
+		<div className='relative   py-12'>
+
 			<Ornament className='w-full absolute z-10 bottom-0' />
+			<div className="flex justify-center items-center text-xs text-gray-600 z-10   absolute w-full bottom-2 drop-shadow-md dark:text-white">
+
+				Copyright  2023 kloUn™ | All Rights Reserved ®
+			</div>
 		</div>
 	);
 }
