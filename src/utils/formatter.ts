@@ -116,27 +116,3 @@ export const deslugify = (slug: string): string => {
   return item ? item.cat : "";
 };
 // SEO keywords
-
-export function summarizeKeywords(title: string): string[] {
-  // Create an array to store the tags
-  let tags: string[] = [];
-
-  // Use a regular expression to remove non-Cyrillic alphabet characters and special symbols
-  const regex = /[^\u0400-\u04FF]/g;
-  const processedTitle = title.replace(regex, " ");
-
-  // Split the processed title into words
-  const words = processedTitle.split(" ");
-
-  // Remove the stop words using the filter function
-  const filteredWords = words.filter((word) => {
-    // Lowercase the word and check if it is a stop word
-    return !stopwordsBg.includes(word.toLowerCase()) && word.length >= 6;
-  });
-
-  // Map the filtered words to the tags array
-  tags = filteredWords.map((word) => word);
-
-  // Return the array of tags
-  return tags;
-}
