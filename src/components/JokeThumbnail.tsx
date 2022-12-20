@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import type { FC, MouseEvent, ReactElement } from "react";
+import { FC, MouseEvent, ReactElement, useState } from "react";
 
 import { FormatJoke } from "@/components/JokeText";
 
@@ -26,7 +26,10 @@ export const JokeThumbnail: FC<Props> = ({
 }): ReactElement => {
 	const { joke, cat } = item;
 	const jlen = joke.length <= 150;
-
+	const [formattedJoke, setFormattedJoke] = useState<JSX.Element | null>(null)
+	const formatJoke = (joke: string) => {
+		setFormattedJoke(<FormatJoke joke={joke} />)
+	}
 	return (
 		<article className='joke relative'>
 			{showcats && item.cat !== "Разни" && (
@@ -47,6 +50,7 @@ export const JokeThumbnail: FC<Props> = ({
 					<label
 						htmlFor={item.id}
 						className='absolute right-2 -mt-12 flex h-12 w-12 cursor-pointer  items-center justify-center rounded-br-lg border  border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white'
+						onClick={() => formatJoke(joke)}
 					>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
@@ -77,7 +81,7 @@ export const JokeThumbnail: FC<Props> = ({
 				<div className='modal-box dark:bg-white'>
 
 
-					<FormatJoke joke={joke} />
+					{formattedJoke}
 
 					<div className='modal-action btn-group'>
 						<a href={`https://kloun.lol/joke/${item.id}`} className='btn'>
