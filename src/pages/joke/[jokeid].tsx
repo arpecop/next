@@ -2,7 +2,6 @@
 // import { useRouter } from 'next/router';
 import { chunk, shuffle } from "lodash";
 import type { GetServerSideProps } from "next";
-import dynamic from "next/dynamic";
 
 import { FormatJoke } from "@/components/JokeText";
 import { JokeThumbnail } from "@/components/JokeThumbnail";
@@ -15,9 +14,7 @@ import { catsdata } from "@/utils/formatter";
 
 import { doMQuery, gql } from "../../data/client";
 
-const FacebookShare = dynamic(() => import("@/components/FacebookShare"), {
-	ssr: false,
-});
+import FacebookShare from "@/components/FacebookShare";
 
 const SingleJoke = (props: {
 	joke: Doc;

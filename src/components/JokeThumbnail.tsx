@@ -1,13 +1,11 @@
-import dynamic from "next/dynamic";
 import { FC, MouseEvent, ReactElement, useState } from "react";
 
 import { FormatJoke } from "@/components/JokeText";
 
 import type { Doc } from "../data/structure";
+import FacebookShare from './FacebookShare';
 
-const FacebookShare = dynamic(() => import("@/components/FacebookShare"), {
-	ssr: false,
-});
+
 
 interface Props {
 	item: Doc;
