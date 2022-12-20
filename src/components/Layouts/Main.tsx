@@ -29,14 +29,7 @@ const Main = (props: IMainProps) => {
 		<main className='container mx-auto flex grow flex-col justify-center   z-30'>
 			{props.children}
 		</main>
-		<div className='z-20 rounded-r-lg overflow-hidden flex justify-center items-center'>
-			<ins className="adsbygoogle"
-				style={{ display: 'block', textAlign: 'center' }}
-				data-ad-layout="in-article"
-				data-ad-format="fluid"
-				data-ad-client="ca-pub-5476404733919333"
-				data-ad-slot="1374619867"></ins>
-		</div>
+
 		<Footer hideFooter={props.hideFooter} />
 	</div>);
 };

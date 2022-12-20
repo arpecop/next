@@ -62,9 +62,9 @@ const MenuNavBar = ({
 				</li>
 
 				<li>
-					<a className='text-shadow font-bold' href="">
+					<Link className='text-shadow font-bold' href="#">
 						Вицове
-					</a>
+					</Link>
 					<ul className='rounded bg-base-100 p-2'>
 						{catsdata.slice(0, 10).map((item) => (
 							<li key={item.cat}>
