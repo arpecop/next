@@ -62,7 +62,7 @@ export async function getPaging(slug: string, page: number) {
 const Pagination: FC<Props> = ({ pagenum, cat, nextToken }): ReactElement => {
 	const prev = pagenum - 1 === 1 ? "" : pagenum - 1;
 	return (
-		<div className='fixed bottom-0 left-0 z-20 flex w-full justify-center bg-black/30 p-4 backdrop-blur-sm'>
+		<div className='fixed bottom-0 left-0 z-20 flex w-full justify-center bg-black/30 p-4 backdrop-blur-sm rounded-t-xl'>
 			<div className='btn-group grid grid-cols-2'>
 				{pagenum !== 1 && (
 					<a

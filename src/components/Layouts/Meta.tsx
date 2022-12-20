@@ -1,8 +1,7 @@
+import { AppConfig } from "@/utils/AppConfig";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { NextSeo } from "next-seo";
-import React from "react";
-import { AppConfig } from "@/utils/AppConfig";
 
 type IMetaProps = {
 	title: string;
@@ -53,6 +52,7 @@ const Meta = (props: IMetaProps) => {
 					type='font/woff2'
 					crossOrigin='anonymous'
 				/>
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			</Head>
 			<NextSeo
 				title={title}

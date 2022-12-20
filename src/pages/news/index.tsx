@@ -1,9 +1,8 @@
-import React from "react";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, {
 	getPaging,
-	refreshToken,
+	refreshToken
 } from "@/components/NewPagination";
 import NewsThumbnail from "@/components/NewsThumbnail";
 import { doQuery, gql } from "@/data/client";
@@ -42,9 +41,9 @@ const Index = ({ newsbg, pagenum, nextToken }: RootNewsProps): JSX.Element => {
 					{newsbg.map(({ uid, title, image }) => (
 						<NewsThumbnail uid={uid} title={title} image={image} key={uid} />
 					))}
-					<div className='fixed bottom-0 left-0 z-10 flex w-full justify-center bg-black/30 p-4 backdrop-blur-sm'>
-						<Pagination pagenum={pagenum} cat='/news/' nextToken={nextToken} />
-					</div>
+
+					<Pagination pagenum={pagenum} cat='/news/' nextToken={nextToken} />
+
 				</div>
 			</div>
 		</Main>
