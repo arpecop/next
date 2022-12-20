@@ -44,9 +44,8 @@ const Program = ({
 	const [img, setImg] = React.useState<string | null>(null);
 	async function fetchMyAPI(older?: number) {
 		const response = await axios.get<RootObject>(
-			`https://api.codetabs.com/v1/proxy?quest=https://pr0gramm.com/api/items/get?flags=1&promoted=1${
-				older ? `&older=${older}` : ""
-			}`,
+			`https://api.codetabs.com/v1/proxy?quest=https://pr0gramm.com/api/items/get?flags=1&promoted=1${older ? `&older=${older}` : ""
+			}`
 		);
 		if (older) {
 			setItems((itemz) => itemz.concat(response.data.items));
@@ -68,37 +67,37 @@ const Program = ({
 
 	return (
 		<div className={className}>
-			{items.slice(0, limit || items.length).map(
-				({
-					thumb,
-					id,
-				}: {
-					thumb: string;
-					fullsize?: string;
-					image?: string;
-					id: number;
-					promoted: number;
-				}) => (
-					<label
-						key={id}
-						className='m-2 flex cursor-pointer items-center justify-center hover:animate-pulse'
-						htmlFor='my-modal'
-						onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
-						{...spread}
-					>
-						<div className='flex snap-start rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400'>
-							<img
-								className='rounded-lg'
-								alt='pr0gramm'
-								width={128}
-								height={128}
-								loading='lazy'
-								src={`https://thumb.pr0gramm.com/${thumb}`}
-							/>
-						</div>
-					</label>
-				),
-			)}
+			{items
+				.slice(0, limit || items.length)
+				.map(
+					({
+						thumb,
+						id,
+					}: {
+						thumb: string;
+						fullsize?: string;
+						image?: string;
+						id: number;
+						promoted: number;
+					}) => (
+						<label
+							key={id}
+							className='hover:animate-pulse'
+							htmlFor='my-modal'
+							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
+							{...spread}
+						>
+							<div className='rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400'>
+								<img
+									className='rounded-lg w-full'
+									alt='pr0gramm'
+									loading='lazy'
+									src={`https://thumb.pr0gramm.com/${thumb}`}
+								/>
+							</div>
+						</label>
+					)
+				)}
 
 			<input type='checkbox' id='my-modal' className='modal-toggle' />
 			<label htmlFor='my-modal' className='modal cursor-pointer'>

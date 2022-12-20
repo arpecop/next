@@ -1,11 +1,11 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import Main from '@/components/Layouts/Main';
-import Meta from '@/components/Layouts/Meta';
-import Nav from '@/components/Nav';
-import { Program } from '@/components/Program';
-import { catsdata } from '@/utils/formatter';
+import Main from "@/components/Layouts/Main";
+import Meta from "@/components/Layouts/Meta";
+import Nav from "@/components/Nav";
+import { Program } from "@/components/Program";
+import { catsdata } from "@/utils/formatter";
 
 const MoreButton = ({
   text,
@@ -15,7 +15,7 @@ const MoreButton = ({
   type: string;
 }): JSX.Element => (
   <Link
-    href={{ pathname: '/', query: { type } }}
+    href={{ pathname: "/", query: { type } }}
     passHref={true}
     className='btn-primary btn-active btn dark:btn-ghost'
   >
@@ -38,19 +38,19 @@ const Index = () => {
         />
       }
     >
-      {type === 'Jokes' && <Nav cats={cats} prefix='cat' />}
-      {type === 'Program' && (
+      {type === "Jokes" && <Nav cats={cats} prefix='cat' />}
+      {type === "Program" && (
         <Program className='container flex flex-wrap items-center justify-center sm:mx-auto' />
       )}
       {!type && (
         <>
           <Nav cats={cats} limit={9} prefix='cat' />
-          <div className='flex flex-wrap justify-end'>
+          <div className='flex flex-wrap justify-end mb-2'>
             <MoreButton text='всички категории' type='Jokes' />
           </div>
           <Program
             limit={12}
-            className='mb-2 flex snap-x scroll-pr-6 scroll-pl-6 overflow-y-auto'
+            className='mb-2 grid crid-cols-3 xs:grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2'
           />
           <div className='flex flex-wrap justify-end'>
             <MoreButton text='Oще Memeта' type='Program' />
@@ -64,7 +64,7 @@ const Index = () => {
 export async function getStaticProps() {
   return {
     props: {}, // will be passed to the page component as props
-  }
+  };
 }
 
 export default Index;

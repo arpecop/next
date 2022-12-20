@@ -2,6 +2,7 @@ import { AppConfig } from "@/utils/AppConfig";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 type IMetaProps = {
 	title: string;
@@ -25,11 +26,10 @@ const Meta = (props: IMetaProps) => {
 		<>
 			<Head>
 				<meta charSet='UTF-8' key='charset' />
-
-				<script
+				<Script
 					async
 					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-				></script>
+				/>
 			</Head>
 			<NextSeo
 				title={title}
