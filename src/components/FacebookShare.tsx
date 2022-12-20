@@ -1,7 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 
-import Link from 'next/link';
-
 const FacebookShare = ({
 	id,
 	noText,
@@ -19,7 +17,7 @@ const FacebookShare = ({
 
 	return (
 
-		<Link
+		<a
 			className={
 				!noWrapper
 					? "inline-flex items-center space-x-2 rounded bg-blue-500 px-4 py-2 font-semibold text-white"
@@ -27,6 +25,7 @@ const FacebookShare = ({
 			}
 			href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(encodedShareUrl)}`}
 			target="_blank"
+			rel='nofollow'
 		>
 			<svg
 				className='h-5 w-5 fill-current'
@@ -38,7 +37,7 @@ const FacebookShare = ({
 			</svg>
 
 			<span>{noText ? "" : "Сподели във Facebook"}</span>
-		</Link>
+		</a>
 
 	);
 };
