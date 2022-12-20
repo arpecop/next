@@ -10,28 +10,29 @@ type IMainProps = {
 	title?: string;
 };
 
-
 const Main = (props: IMainProps) => {
 	useEffect(() => {
 		let adsbygoogle: any;
-		var ads = document.getElementsByClassName("adsbygoogle").length as number
+		var ads = document.getElementsByClassName("adsbygoogle").length as number;
 		for (var i = 0; i < ads; i++) {
 			try {
 				(adsbygoogle = (window as any).adsbygoogle || []).push({});
 			} catch (e) {
-				console.log(e)
+				console.log(e);
 			}
 		}
 	}, []);
-	return (<div className='flex min-h-screen flex-col'>
-		{props.meta}
-		<Header title={props.title} />
-		<main className='container mx-auto flex grow flex-col justify-center   z-30'>
-			{props.children}
-		</main>
+	return (
+		<div className='flex min-h-screen flex-col'>
+			{props.meta}
+			<Header title={props.title} />
+			<main className='container mx-auto flex grow flex-col justify-center   z-30'>
+				{props.children}
+			</main>
 
-		<Footer hideFooter={props.hideFooter} />
-	</div>);
+			<Footer hideFooter={props.hideFooter} />
+		</div>
+	);
 };
 // dasd
 export default Main;

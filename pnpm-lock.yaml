@@ -5,6 +5,7 @@ specifiers:
   '@commitlint/cli': ^16.3.0
   '@commitlint/config-conventional': ^16.2.4
   '@heroicons/react': ^1.0.6
+  '@next/font': ^13.0.7
   '@svgr/webpack': ^6.5.1
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.8
@@ -68,6 +69,7 @@ specifiers:
 dependencies:
   '@apollo/client': 3.7.2_gdcq4dv6opitr3wbfwyjmanyra
   '@heroicons/react': 1.0.6_react@18.2.0
+  '@next/font': 13.0.7
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@vercel/og': 0.0.21
   axios: 0.27.2
@@ -2118,6 +2120,10 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/font/13.0.7:
+    resolution: {integrity: sha512-39SzuoMI6jbrIzPs3KtXdKX03OrVp6Y7kRHcoVmOg69spiBzruPJ5x5DQSfN+OXqznbvVBNZBXnmdnSqs3qXiA==}
+    dev: false
 
   /@next/swc-android-arm-eabi/13.0.6:
     resolution: {integrity: sha512-FGFSj3v2Bluw8fD/X+1eXIEB0PhoJE0zfutsAauRhmNpjjZshLDgoXMWm1jTRL/04K/o9gwwO2+A8+sPVCH1uw==}
