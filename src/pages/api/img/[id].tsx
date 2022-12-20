@@ -4,7 +4,7 @@ import { remappedJokeFunction } from "../../../components/JokeText";
 import { profanityFilter } from "../../../utils/formatter";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 export default async function handler(req: NextRequest) {
@@ -21,7 +21,6 @@ export default async function handler(req: NextRequest) {
       (
         <div
           style={{
-            backgroundSize: "150px 150px",
             height: "100%",
             width: "100%",
             display: "flex",
@@ -29,9 +28,9 @@ export default async function handler(req: NextRequest) {
             alignItems: "flex-start",
             justifyContent: "center",
             flexDirection: "column",
-            zoom: 2,
           }}
         >
+          {JSON.stringify(req)}
           {remappedJokeFunction(joke).map(
             ({
               oddness,
@@ -44,32 +43,41 @@ export default async function handler(req: NextRequest) {
             }) =>
               oddness ? (
                 <div
-                  className={`text-5xl ${oddness === "even" ? "flex-row-reverse" : ""
-                    }`}
                   key={key}
                   style={{
                     display: "flex",
-                    flexWrap: "wrap",
                   }}
                 >
                   <div
-                    className={`  relative whitespace-pre-wrap rounded-lg p-2   shadow-2xl ${oddness === "even"
-                        ? "bg-violet-900 text-right  "
-                        : "bg-indigo-700 text-left "
-                      }`}
                     style={{
                       display: "flex",
                     }}
                   >
                     {oddness === "odd" ? (
-                      <div className=' '>{line}</div>
+                      <div
+                        className='font-5xl'
+                        style={{
+                          display: "flex",
+                        }}
+                      >
+                        od {line}
+                      </div>
                     ) : (
-                      <div>{line}</div>
+                      <div
+                        style={{
+                          display: "flex",
+                          color: "red",
+                          fontSize: 40,
+                        }}
+                        className='pl-2'
+                      >
+                        oven {line}
+                      </div>
                     )}
                   </div>
                 </div>
               ) : (
-                <div key={key} className='block pb-4 text-lg flex'>
+                <div key={key} className='block pb-4 text-lg flex font-5xl'>
                   {line}
                 </div>
               )
