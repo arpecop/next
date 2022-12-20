@@ -1,8 +1,5 @@
 import Link from "next/link";
 
-
-
-
 function Footer({ hideFooter }: { hideFooter?: boolean }) {
 
 	return !hideFooter ? (
@@ -59,7 +56,23 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 				</Link>
 			</div>
 
+			<div className='absolute absolute w-full -bottom-4'>
+				<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='w-full  z-0 hidden dark:block'>
+					<path
+						fill="#00b894"
+						d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
+					/>
+				</svg>
 
+				<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='w-full  z-0 dark:hidden block'>
+					<path
+						fill="#2d3748"
+						d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
+					/>
+				</svg>
+
+
+			</div>
 
 			<div className='z-10'>
 
@@ -67,25 +80,14 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 				<Link href={"/other/privacy/"} passHref>
 					Privacy policy
 				</Link>
-			</div>	<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='absolute w-full -bottom-4 z-0 hidden dark:block'>
-				<path
-					fill="#09f"
-					d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
-				/>
-			</svg>
-			<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='absolute w-full bottom-0 z-0 block dark:hidden -bottom-4'>
-				<path
-					fill="#2d3748"
-					d="m0 256 60 5.3c60 5.7 180 15.7 300 21.4C480 288 600 288 720 272s240-48 360-48 240 32 300 48l60 16v32H0Z"
-				/>
-			</svg>
+			</div>
 			<div className='mb-2 absolute  right-2 -bottom-4'>
-
 
 
 				<img
 					src='/powered-white.png'
 					alt='powered white z-10'
+					className='dark:invert'
 				/>
 
 			</div>
