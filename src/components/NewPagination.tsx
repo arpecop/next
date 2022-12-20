@@ -1,4 +1,3 @@
-import React from "react";
 import type { FC, ReactElement } from "react";
 import { ulid } from "ulidx";
 

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 function Logo({ title }: { title?: string }) {
 	return (
 		<header className="bg-[url('/images/upwave.svg')] bg-cover dark:bg-[url('/images/upwave-white.svg')]">

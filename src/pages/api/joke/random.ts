@@ -1,8 +1,8 @@
+import { doQuery } from '@/data/client';
 import { gql } from '@apollo/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { doQuery } from '@/data/client';
 
- 
+
 
 const TOTAL = gql`
   query MyQuery {
@@ -28,14 +28,14 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
- 
-  const   data  = await doQuery(  DATA_QUERY,
-     {
+
+  const data = await doQuery(DATA_QUERY,
+    {
       offset: Math.floor(
         Math.random() * 111
       ),
     },
-   );
+  );
 
   res.status(200).json(data);
 }
