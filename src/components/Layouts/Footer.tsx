@@ -1,4 +1,22 @@
 import Link from "next/link";
+const Ornament = ({ className }: { className: string }) => (<div className={className}>
+	<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='w-full  z-0 hidden dark:block'>
+		<path
+			fill="#00b894"
+			d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
+		/>
+	</svg>
+
+	<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='w-full  z-0 dark:hidden block'>
+		<path
+			fill="#2d3748"
+			d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
+		/>
+	</svg>
+
+
+</div>)
+
 
 function Footer({ hideFooter }: { hideFooter?: boolean }) {
 
@@ -56,23 +74,7 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 				</Link>
 			</div>
 
-			<div className='absolute absolute w-full -bottom-4'>
-				<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='w-full  z-0 hidden dark:block'>
-					<path
-						fill="#00b894"
-						d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
-					/>
-				</svg>
 
-				<svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" className='w-full  z-0 dark:hidden block'>
-					<path
-						fill="#2d3748"
-						d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
-					/>
-				</svg>
-
-
-			</div>
 
 			<div className='z-10'>
 
@@ -81,9 +83,9 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 					Privacy policy
 				</Link>
 			</div>
+
+			<Ornament className='absolute absolute w-full -bottom-4' />
 			<div className='mb-2 absolute  right-2 -bottom-4'>
-
-
 				<img
 					src='/powered-white.png'
 					alt='powered white z-10'
@@ -91,12 +93,11 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 				/>
 
 			</div>
-
 		</footer>
 	) : (
-		<div className='py-4 opacity-50 sm:py-6 md:py-8 lg:py-12 xl:py-20' />
-
-
+		<div className='relative'>
+			<Ornament className='w-full absolute z-10 bottom-0' />
+		</div>
 	);
 }
 

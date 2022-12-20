@@ -9,10 +9,11 @@ type IMainProps = {
 	hideFooter?: boolean;
 	title?: string;
 };
-declare let adsbygoogle: any;
+
 
 const Main = (props: IMainProps) => {
 	useEffect(() => {
+		let adsbygoogle: any;
 		var ads = document.getElementsByClassName("adsbygoogle").length as number
 		for (var i = 0; i < ads; i++) {
 			try {
@@ -22,28 +23,22 @@ const Main = (props: IMainProps) => {
 			}
 		}
 	}, []);
-	return (
-		<>
-
-			{props.meta}
-
-
-			<div className='flex min-h-screen flex-col'>
-				<Header title={props.title} />
-				<main className='container mx-auto flex grow flex-col justify-center px-2 pb-20 sm:px-4 md:px-8 z-30 -my-10'>
-					{props.children}
-				</main>
-
-				<ins className="adsbygoogle"
-					style={{ display: 'block', textAlign: 'center' }}
-					data-ad-layout="in-article"
-					data-ad-format="fluid"
-					data-ad-client="ca-pub-5476404733919333"
-					data-ad-slot="1374619867"></ins>
-				<Footer hideFooter={props.hideFooter} />
-			</div>
-		</>
-	);
+	return (<div className='flex min-h-screen flex-col'>
+		{props.meta}
+		<Header title={props.title} />
+		<main className='container mx-auto flex grow flex-col justify-center   z-30'>
+			{props.children}
+		</main>
+		<div className='z-20 rounded-r-lg overflow-hidden flex justify-center items-center'>
+			<ins className="adsbygoogle"
+				style={{ display: 'block', textAlign: 'center' }}
+				data-ad-layout="in-article"
+				data-ad-format="fluid"
+				data-ad-client="ca-pub-5476404733919333"
+				data-ad-slot="1374619867"></ins>
+		</div>
+		<Footer hideFooter={props.hideFooter} />
+	</div>);
 };
 // dasd
 export default Main;

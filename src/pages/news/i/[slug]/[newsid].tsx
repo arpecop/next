@@ -9,7 +9,7 @@ import Main from '@/components/Layouts/Main';
 import Meta from '@/components/Layouts/Meta';
 import { doQuery } from '@/data/client';
 
-import type { News } from '../..';
+import type { News } from '@/pages/news/';
 
 const NewsItem = ({
   newsbg,
@@ -34,7 +34,7 @@ const NewsItem = ({
         />
       }
     >
-      <article className='my-10 flex w-full flex-col'>
+      <article className='pt-8 flex w-full flex-col'>
         <div className='container mx-auto'>
           <div className='mb-6 flex items-center justify-center'>
             {image && (

@@ -56,6 +56,14 @@ const CatPage = ({
 			/>
 
 			<div className='flex flex-wrap'>
+				<article className='joke'>
+					<ins className="adsbygoogle jokewrap"
+						style={{ display: 'block', textAlign: 'center' }}
+						data-ad-layout="in-article"
+						data-ad-format="fluid"
+						data-ad-client="ca-pub-5476404733919333"
+						data-ad-slot="1374619867" />
+				</article>
 				{jokes.map((item) => (
 					<JokeThumbnail
 						item={item}
@@ -64,6 +72,14 @@ const CatPage = ({
 						short={true}
 					/>
 				))}
+				<article className='joke'>
+					<ins className="adsbygoogle jokewrap"
+						style={{ display: 'block', textAlign: 'center' }}
+						data-ad-layout="in-article"
+						data-ad-format="fluid"
+						data-ad-client="ca-pub-5476404733919333"
+						data-ad-slot="1374619867" />
+				</article>
 			</div>
 		</Main>
 	);
