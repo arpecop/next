@@ -1,6 +1,9 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 import { profanityFilter } from "../../../utils/formatter";
+export const config = {
+  runtime: "experimental-edge",
+};
 
 export default async function handler(req: NextRequest) {
   try {
