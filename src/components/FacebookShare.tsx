@@ -12,12 +12,19 @@ const FacebookShare = ({
 	// hashtag={'#виц'}
 	/// <FacebookShareButton url={`https://kloun.lol/joke/${id}`}>
 	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
+	async function wait() {
+		return new Promise((resolve) => setTimeout(resolve, 2000));
+	}
 
 	const onClick = async () => {
-		await fetch(`/api/refetch/?url=` + url);
-
+		await fetch(`https://kloun.lol/api/refetch/?url=` + url);
+		//await refetch.json();
 		window.open(
-			`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+			`https://www.facebook.com/dialog/share?
+			app_id=456304742501728
+			&display=popup
+			&href=${encodeURIComponent(url)}
+			&redirect_uri=${encodeURIComponent(url)}`,
 			"_blank"
 		);
 	};
