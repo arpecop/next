@@ -22,49 +22,47 @@ const Meta = (props: IMetaProps) => {
 		.slice(0, 60);
 
 	return (
-		<>
-			<Head>
-				<meta charSet='UTF-8' key='charset' />
-				<script
-					async
-					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-				></script>
+		<Head>
+			<meta charSet='UTF-8' key='charset' />
+			<script
+				async
+				src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+			></script>
 
-				<NextSeo
-					title={title}
-					description={props.description}
-					canonical={canonicalURL}
-					facebook={{
-						appId: "281985576166744",
-					}}
-					openGraph={{
-						url: canonicalURL,
-						title: title,
-						description: "Open Graph Description",
-						images: props.image
-							? [
-								{
-									url: props.image,
-									width: 1200,
-									height: 630,
-									alt: title,
-									type: "image/png",
-								},
-							]
-							: [
-								{
-									url: "https://kloun.lol/images/og.jpg",
-									width: 800,
-									height: 600,
-									alt: "Og Image Alt",
-									type: "image/jpeg",
-								},
-							],
-						siteName: "SiteName",
-					}}
-				/>
-			</Head>
-		</>
+			<NextSeo
+				title={title}
+				description={props.description}
+				canonical={canonicalURL}
+				facebook={{
+					appId: "281985576166744",
+				}}
+				openGraph={{
+					url: canonicalURL,
+					title: title,
+					description: "Open Graph Description",
+					images: props.image
+						? [
+							{
+								url: props.image,
+								width: 1200,
+								height: 630,
+								alt: title,
+								type: "image/png",
+							},
+						]
+						: [
+							{
+								url: "https://kloun.lol/images/og.jpg",
+								width: 800,
+								height: 600,
+								alt: "Og Image Alt",
+								type: "image/jpeg",
+							},
+						],
+					siteName: "SiteName",
+				}}
+			/>
+		</Head>
 	);
 };
 

@@ -2,31 +2,30 @@
 
 const FacebookShare = ({
 	id,
-	noText,
 	noWrapper,
 }: {
 	id?: string;
-	noText?: boolean;
 	noWrapper?: boolean;
 }) => {
 	// url={`https://kloun.lol/joke/${id}`}
 	// quote={'next-share is a social share buttons for your next React apps.'}
 	// hashtag={'#виц'}
 	/// <FacebookShareButton url={`https://kloun.lol/joke/${id}`}>
-	const encodedShareUrl = id?.includes("https")
-		? id
-		: `https://kloun.lol/joke/${id}`;
+	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
+
+	const onClick = async () => {
+		await fetch(`/api/refetch/?url=` + url);
+
+		window.open(
+			`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+			"_blank"
+		);
+	};
 
 	return (
-		<div className='flex items-center justify-center'>
+		<div className='flex items-center justify-center cursor-pointer'>
 			<div className={`font-bold text-white`}>
-				<a
-					href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-						encodedShareUrl
-					)}`}
-					target='_blank'
-					rel='nofollow'
-				>
+				<a onClick={onClick} target='_blank' rel='nofollow'>
 					{!noWrapper ? (
 						<div className='flex justify-center items-center bg-blue-600 	rounded rounded-md'>
 							<svg
@@ -43,7 +42,7 @@ const FacebookShare = ({
 						</div>
 					) : (
 						<svg
-							className='h-6 w-6 fill-white dark:fill-blue-600'
+							className='h-6 w-6 fill-white dark:fill-blue-600 '
 							role='img'
 							xmlns='http://w3.org/2000/svg'
 							viewBox='0 0 24 24'

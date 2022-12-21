@@ -65,11 +65,7 @@ export const JokeThumbnail: FC<Props> = ({
 					</label>
 				) : (
 					<div className=' absolute right-5 -mt-8'>
-						<FacebookShare
-							id={`https://kloun.lol/joke/${item.id}`}
-							noText
-							noWrapper
-						/>
+						<FacebookShare id={`https://kloun.lol/joke/${item.id}`} noWrapper />
 					</div>
 				))}
 			<input type='checkbox' id={item.id} className='modal-toggle' />
