@@ -5,6 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { useEffect, useState } from "react";
+import { getCookie, updateCookie } from "../../utils/cookies";
 
 export type FbApp = {
 	count: number;
@@ -32,12 +33,13 @@ const Facebook = ({
 			const res2 = await fetch(`/facebook/${selectedapp?.slug}/items.json`);
 			const data = await res2.json();
 			const index = Math.floor(Math.random() * data.length);
-
-			//const item = items[index];
-
-			console.log({ itwaskey: index });
+			updateCookie(selectedapp!.slug, index);
+			const cok = getCookie(selectedapp!.slug);
+			console.log(cok);
 		};
-		chooseRandomJustIncase();
+		if (selectedapp) {
+			chooseRandomJustIncase();
+		}
 	}, []);
 
 	return (
