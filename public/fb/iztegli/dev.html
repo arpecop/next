@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title></title> 
+
+
+
+	<style type="text/css">
+ 
+ 
+	 div, span {
+ 
+font-weight: 400;
+font-family: 'Open Sans',Arial;
+	}
+	body {
+   
+    margin: 0px;
+		font-family: 'Open Sans',Arial;
+		color: #FFF;
+    width: 600px;
+    height: 315px;
+    overflow: hidden;
+     background: linear-gradient(top, #4293d6 0%,#001e96 100%);
+	}
+
+	.letter {font-size: 70px;  height: 350px;    
+	  text-shadow: 0px 0px 11px rgba(150, 150, 150, 1); 
+	  text-transform: uppercase;
+	  		font-family: 'Open Sans',Arial;
+	  font-weight: 700; height: 20px;
+	  font-weight: bold;
+	  float: left;
+    
+	  height: 60px;
+      text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+	    }
+	#name {display: none;}
+	#name1 {margin-left: auto; margin-right: auto;}
+ 	.word {
+    color: #34495e;
+ text-shadow: none !important;
+    font-weight: 400; font-size: 20px;   text-transform: uppercase; max-width:5px;   -webkit-transform: rotate(-55deg);
+    
+position: fixed;
+ top: 150px;
+ margin-left: 7px;
+ 
+
+
+}
+  #cont { 
+     
+    height: 115px;
+  
+    overflow: hidden;
+  
+    padding-top: 165px; 
+ margin-right: auto;
+ margin-left: auto;
+  }
+ 
+
+
+
+  .bubble {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    padding: 0px;
+    background: #a8b5a8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+  .bubble:after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 48%;
+    border-style: solid;
+    border-width: 14px 15px 0;
+    border-color: #a8b5a8 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+
+}
+
+ 
+	</style>
+	<script src="jq.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript"> 
+(function(e){e.fn.textfill=function(q){function m(){a.debug&&"undefined"!=typeof console&&"undefined"!=typeof console.debug&&console.debug.apply(console,arguments)}function r(){"undefined"!=typeof console&&"undefined"!=typeof console.warn&&console.warn.apply(console,arguments)}function n(a,b,d,h,f,k){function c(a,b){var c=" / ";a>b?c=" > ":a==b&&(c=" = ");return c}m(a+"font: "+b.css("font-size")+", H: "+b.height()+c(b.height(),d)+d+", W: "+b.width()+c(b.width(),h)+h+", minFontPixels: "+f+", maxFontPixels: "+
+k)}function p(a,b,d,h,f,k,c,l){for(n(a+": ",b,f,k,c,l);c<l-1;){var e=Math.floor((c+l)/2);b.css("font-size",e);if(d.call(b)<=h){if(c=e,d.call(b)==h)break}else l=e;n(a+": ",b,f,k,c,l)}b.css("font-size",l);d.call(b)<=h&&(c=l,n(a+"* ",b,f,k,c,l));return c}var a=e.extend({debug:!1,maxFontPixels:40,minFontPixels:4,innerTag:"span",widthOnly:!1,success:null,callback:null,fail:null,complete:null,explicitWidth:null,explicitHeight:null},q);this.each(function(){var g=e(a.innerTag+":visible:first",this),b=a.explicitHeight||
+e(this).height(),d=a.explicitWidth||e(this).width(),h=g.css("font-size");m("Opts: ",a);m("Vars: maxHeight: "+b+", maxWidth: "+d);var f=a.minFontPixels,k=0>=a.maxFontPixels?b:a.maxFontPixels,c=void 0;a.widthOnly||(c=p("H",g,e.fn.height,b,b,d,f,k));f=p("W",g,e.fn.width,d,b,d,f,k);a.widthOnly?g.css({"font-size":f,"white-space":"nowrap"}):g.css("font-size",Math.min(c,f));m("Final: "+g.css("font-size"));g.width()>d||g.height()>b&&!a.widthOnly?(g.css("font-size",h),a.fail&&a.fail(this)):a.success?a.success(this):
+a.callback&&(r("callback is deprecated, use success, instead"),a.callback(this))});a.complete&&a.complete(this);return this}})(window.jQuery);
+</script>
+<style type="text/css">
+#img {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+</style>
+</head>
+<body> 
+ 
+  <br><div class="bubble"> 
+  <span>(:result:)</span>
+ </div>
+ <div style="text-align:center"><img src="" id="img"></div>
+ 
+
+
+
+ <script type="text/javascript">
+ var preres = "(:preres:)";
+ if (preres) {
+  var data = preres.split('-emp-');
+
+
+  var img = data[0];
+  var name = data[1];
+  $('#img').attr('src',img);
+ };
+
+
+ $('.bubble').textfill({
+ maxFontPixels: 36 
+});
+window.callPhantom('takeShot');
+ </script>
+  
+</body>
+</html>

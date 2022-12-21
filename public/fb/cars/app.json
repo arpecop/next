@@ -1,0 +1,8 @@
+{
+   "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/cars/cover.jpg",
+   "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/cars/cover.jpg\">",
+   "title": "Какъв автомобил ти подхожда",
+   "contentx": "<div class=\"input-group\"> <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Напиши името си\" maxlength=\"17\"><span class=\"input-group-btn\"> <button class=\"btn btn-default\" type=\"button\" id=\"go\">Коя кола е за мен?</button></span> </div>",
+   "showshare": "true",
+   "lang": "BG"
+}

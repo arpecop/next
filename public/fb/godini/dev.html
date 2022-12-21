@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script type="text/javascript" src="../assbg_BG/jq.js"></script>
+<META http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title></title> 
+
+	<style type="text/css">
+ 
+ 
+ 
+	body {margin: 0px;
+		font-family: 'Open Sans',Arial;
+ 
+	  font-weight: lighter;
+   
+ 
+    background-repeat: no-repeat;
+	}
+#cover { width: 600px; position: absolute; height: 315px;}
+#userimg {
+	position: absolute; 
+	top:130px; 
+	left: 34px;
+
+-webkit-filter: opacity(.5);
+  filter: opacity(.5);
+    -webkit-filter: contrast(2);
+}
+	 #balloon {font-size: 24px;  
+line-height:24px;
+
+      position: absolute; z-index: 100;    width: 190px; left:240px; top: 35px;   text-align: center;}
+	</style>
+</head>
+
+ 
+<body>
+
+	<img src="" id="userimg" width="100" height="154">
+	<div id="balloon"><span id="obrashtenie"></span> (:result:),  изглеждаш на <span id="test"></span></div>
+
+	<div id="cover"><img src="front.png"></div>
+ <script type="text/javascript">
+function randomFromTo(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+
+ var data = "(:preres:)".split('/');
+ var years = data[3];
+if (years) { 
+                var currentTime = new Date();
+                var currentYear = currentTime.getFullYear();
+                var real_godini = currentYear - years;
+                var rand;
+                if (real_godini <= 18) {
+                    rand = 5;
+                } else if (real_godini >= 19 && real_godini <= 35) {
+                    rand = -6;
+
+                } else if (real_godini >= 35) {
+                    rand = -14;
+                }
+                var randomnumber = Math.floor(Math.random() * rand);
+                var quote_id = real_godini + randomnumber;
+             
+          
+
+            } else {
+                var quote_id = randomFromTo(18, 33);
+               
+            }
+
+             var randobrasht = ['','Супер си ','Браво ', 'тц тц тц ','Евала '];
+              var robr = randomFromTo(1, 4);
+               $('#obrashtenie').text(randobrasht[robr]);
+
+        var arr = ['c','edna' ,'две','три','четири','пет','шест','седем',
+        'осем','девет','десет','единадесет','дванадесет','тринадесет','четиринадесет','петнадесет',
+        'шестнадесет','седемнадесет','осемнадесет','деветнадесет','двадесет','двадесет и една','двадесет и две','двадесет и три','двадесет и четири','двадесет и пет','двадесет и шест','двадесет и седем','двадесет и осем','двадесет и девет','тридесет','тридесет и една','тридесет и две', 'тридесет и три','тридесет и четири', 'тридесет и пет','тридесет и шест','тридесет и седем','тридесет и осем','тридесет и девет','четиридесет','четиридесет и една','четиридесет и две','четиридесет и три', 'четиридесет и четири', 'четиридесет и пет','четиридесет и шест', 'четиридесет и седем','четиридесет и осем','четиридесет и девет','петдесет','петдесет и една','петдесет и две','петдесет и три','петдесет и четири','петдесет и пет','петдесет и шест','петдесет и седем','петдесет и осем','петдесет и девет','шестдесет','шестдесет и една','шестдесет и две','шестдесет и три','шестдесет и четири']
+            $('#test').text(arr[quote_id]);
+
+
+var prevdata = (:stringified:);
+ prevdata.description  = '(:result:) -  '+arr[quote_id];
+  $.post( "http://arpecop.com/db", prevdata );
+ 
+ 
+	$('#userimg').attr('src',"http://0.0.0.0:3000/userimg/"+data[0]+".jpg");
+ 
+ 
+ </script>
+
+
+</body>
+
+	</html>

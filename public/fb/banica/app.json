@@ -1,0 +1,8 @@
+{
+   "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/banica/cover111x.jpg",
+   "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/banica/cover111x.jpg\">",
+   "title": "Късмет за 2015",
+   "contentx": "<div class=\"form-group\" style=\"text-align:center;\">  <button type=\"button\" class=\"btn btn-primary btn-lg\" onclick=\"banica(); return false;\">Какво ме очаква през 2015? ...</button></div>",
+   "showshare": "true",
+   "geo": "BG"
+}

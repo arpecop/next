@@ -1,0 +1,7 @@
+{
+	"title": " Изтегли си",
+	"contentx": "<div class=\"input-group\"> <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Напиши името си и натисни Enter\" maxlength=\"17\"><span class=\"input-group-btn\"> <button class=\"btn btn-default\" type=\"button\" id=\"go\">Провери!</button></span> </div>",
+	"showshare": "true",
+	"geo": "BG"
+
+}

@@ -1,0 +1,8 @@
+{
+   "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/iaponsko/cover.jpg",
+   "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/iaponsko/cover.jpg\">",
+   "title": "What would be your Japanese name?",
+   "contentx": "<div class=\"input-group\"> <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Type your first name\" maxlength=\"17\"><span class=\"input-group-btn\"> <button class=\"btn btn-default\" type=\"button\" id=\"go\">Check!</button></span> </div>",
+   "showshare": "true",
+   "lang": "US"
+}

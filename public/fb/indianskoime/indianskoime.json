@@ -1,0 +1,200 @@
+{
+  "appid" : "333747356705341",
+  "appname" : "Какъв сте били в предишния си живот?!!",
+  "button" : "Провери",
+  "image" : "images/clock.gif",
+  "infotext" : "Резултат {*actor*} ",
+  "items" : [
+    {
+      "info" : "Хлопащата Дъска",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929645363831"
+    },
+    {
+      "info" : "Голямата Скука",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929698697159"
+    },
+    {
+      "info" : "Пролетната буря",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929718697157"
+    },
+    {
+      "info" : "Тичащ за сладолед",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929708697158"
+    },
+    {
+      "info" : "Дивотията ме зове",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929825363813"
+    },
+    {
+      "info" : "Кроткия нерволаз",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929822030480"
+    },
+    {
+      "info" : "Унищожителя на горящата вода",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929868697142"
+    },
+    {
+      "info" : "Голяма уста",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929932030469"
+    },
+    {
+      "info" : "Свирепия Поглед",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929948697134"
+    },
+    {
+      "info" : "Тиха вода",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579929962030466"
+    },
+    {
+      "info" : "Джиброва мушица",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930008697128"
+    },
+    {
+      "info" : "Ненаситният търбух",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930048697124"
+    },
+    {
+      "info" : "Поразяващият ум",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930122030450"
+    },
+    {
+      "info" : "Пеещата млековарка",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930092030453"
+    },
+    {
+      "info" : "Скайпващата крава",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930168697112"
+    },
+    {
+      "info" : "Мързящо дихание",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930175363778"
+    },
+    {
+      "info" : "Дългия Език",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930218697107"
+    },
+    {
+      "info" : "Гладната кобра",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930258697103"
+    },
+    {
+      "info" : "Черната перла",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930278697101"
+    },
+    {
+      "info" : "Огнен дракон",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930312030431"
+    },
+    {
+      "info" : "Зеленоокият бухал",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930355363760"
+    },
+    {
+      "info" : "Падащият Нагоре",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930448697084"
+    },
+    {
+      "info" : "Дивата коса",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930435363752"
+    },
+    {
+      "info" : "Летящата  метла",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930475363748"
+    },
+    {
+      "info" : "Бучащият Сутрин",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930512030411"
+    },
+    {
+      "info" : "Отговоро Търсещият",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930565363739"
+    },
+    {
+      "info" : "Седящият бик",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930625363733"
+    },
+    {
+      "info" : "Гръмотевичния облак",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930622030400"
+    },
+    {
+      "info" : "Дългата ръка",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930668697062"
+    },
+    {
+      "info" : "Пиещият вода",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930688697060"
+    },
+    {
+      "info" : "Орловият поглед",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930805363715"
+    },
+    {
+      "info" : "Дивият кон",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930762030386"
+    },
+    {
+      "info" : "Предпазливата пума",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930748697054"
+    },
+    {
+      "info" : "Бялата бреза",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930842030378"
+    },
+    {
+      "info" : "Клякащият Нощем",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930902030372"
+    },
+    {
+      "info" : "лунна светлина",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930872030375"
+    },
+    {
+      "info" : "отворени обятия",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930935363702"
+    },
+    {
+      "info" : "мъглив прозорец",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579930978697031"
+    },
+    {
+      "info" : "мъглива река",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931035363692"
+    },
+    {
+      "info" : "лъч светлина",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931048697024"
+    },
+    {
+      "info" : "цветен нектар",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931075363688"
+    },
+    {
+      "info" : "имащият отговор",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931082030354"
+    },
+    {
+      "info" : "Поразяваща Страст",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931165363679"
+    },
+    {
+      "info" : "Страстен Лъч",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931185363677"
+    },
+    {
+      "info" : "Говорещият ДъбСтеп",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931148697014"
+    },
+    {
+      "info" : "Асам Бок",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931228697006"
+    },
+    {
+      "info" : "пълзящо цвете",
+      "newurl" : "https://www.facebook.com/photo.php?fbid=579931255363670"
+    }
+  ],
+  "scope" : "publish_stream,read_stream",
+  "slug" : "predishen",
+  "url" : "https://www.facebook.com/photo.php?fbid=333747630038647"
+}

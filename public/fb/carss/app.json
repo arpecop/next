@@ -1,0 +1,9 @@
+{
+   "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/cars/cover.png",
+   "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/cars/cover.jpg\">",
+   "title": "What Car Is Right For Me?",
+   "contentx": "<div class=\"input-group\"> <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Type your name\" maxlength=\"17\"><span class=\"input-group-btn\"> <button class=\"btn btn-default\" type=\"button\" id=\"go\">Which is my car?</button></span> </div>",
+   "showshare": "true",
+   "lang": "US",
+   "geo": "US"
+}

@@ -1,6 +1,5 @@
-import Link from "next/link";
-import React from "react";
 import type { Cat } from "@/utils/formatter";
+import Link from "next/link";
 
 export interface NavProps {
 	cats: Cat[];
@@ -12,7 +11,7 @@ export interface NavProps {
 const Nav = ({ cats, limit, prefix, formatlength }: NavProps) => {
 	const newcats = cats.slice(0, limit || cats.length);
 	const formatcount = (count: number) => {
-		if (count > 1000) {
+		if (count > 3000) {
 			return `${Math.floor(count / 1000)}k`;
 		}
 		return count;
@@ -36,11 +35,11 @@ const Nav = ({ cats, limit, prefix, formatlength }: NavProps) => {
 						passHref={true}
 					>
 						<div className='flex h-full items-center rounded border border-gray-800 bg-gray-800   p-4 dark:border-gray-500 dark:bg-slate-100'>
-							<div className='flex-1  justify-center align-middle font-medium text-white dark:text-gray-800'>
+							<div className='flex-1  justify-center align-middle text-white dark:text-gray-800'>
 								{formatlength ? (
 									<span className='text-shadow text-xs'>{d.cat}</span>
 								) : (
-									<span className='text-shadow'>{d.cat}</span>
+									<span className='text-shadow font-black'>{d.cat}</span>
 								)}
 							</div>
 							{d.count !== 0 && (
@@ -53,7 +52,7 @@ const Nav = ({ cats, limit, prefix, formatlength }: NavProps) => {
 							)}
 						</div>
 					</Link>
-				),
+				)
 			)}
 		</div>
 	);

@@ -1,0 +1,7 @@
+{
+	"title": "Какво е японското ти име",
+	"contentx": "<div class=\"input-group\"> <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Напиши името си\" maxlength=\"17\"><span class=\"input-group-btn\"> <button class=\"btn btn-default\" type=\"button\" id=\"go\">Кажи ми сенсей!</button></span> </div>",
+	"showshare": "true",
+	"lang": "BG"
+
+}

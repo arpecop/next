@@ -1,0 +1,188 @@
+<html>
+<head>
+	<title></title>
+	 <meta charset="UTF-8"> 
+	<script type="text/javascript" src="../assbg_BG/jq.js"></script>
+ 
+</head>
+<body>
+
+<div id="userimg"></div>
+<script type="text/javascript">
+var female = [
+"female-adele-300.jpg", "female-alicia-keys300.jpg", "female-ali-larter1_300.jpg",
+"female-amanda-bynes300.jpg", "female-amanda-seyfried-300.jpg",
+"female-america-ferrera300.jpg", "female-amy-adams300.jpg",
+"female-anna-nicole300.jpg", "female-anne-hathaway300.jpg",
+"female-ashlee-simpson300.jpg", "female-ashley-greene-300.jpg",
+"female-ashley-olsen300.jpg", "female-ashley-tisdale300.jpg",
+"female-audrina-patridge300.jpg", "female-avril-lavigne300.jpg",
+"female-beyonce-knowles.jpg", "female-brooke-shields300.jpg",
+"female-cameron-diaz.jpg", "female-carmen_electra.jpg", "female-cate-blanchett.jpg",
+"female-catherine-jones.jpg", "female-celine-dion.jpg", "female-charlize-theron.jpg",
+"female-cheryl-burke.jpg", "female-christina-aguilera.jpg",
+"female-christina-applegate300.jpg", "female-claire-danes300a.jpg",
+"female-courtney-cox300.jpg", "female-demi-lovato300.jpg", "female-demi-moore.jpg",
+"female-denise-richards.jpg", "female-drew-barrymore.jpg",
+"female-ed-westwick300.jpg", "female-elin-nordegren-300.jpg",
+"female-elisebeth-hasselback300.jpg", "female-emily-blunt300.jpg",
+"female-emma-stone-300.jpg", "female-emma-watson-300.jpg", "female-eva-longoria.jpg",
+"female-eva-mendes.jpg", "female-evangeline-lilly300.jpg",
+"female-evan-rachelwood300.jpg", "female-gisele-bundchen300.jpg",
+"female-gwen-stefani.jpg", "female-heidi-montag.jpg", "female-hilary-duff.jpg",
+"female-january-jones-300.jpg", "female-jennifer-aniston.jpg",
+"female-jennifer-lawrence-300.jpg", "female-jennifer-lopez.jpg",
+"female-jessica-alba.jpg", "female-jessica-biel.jpg", "female-jessica-simpson.jpg",
+"female-jessica-szohr-300.jpg", "female-julianne-hough.jpg",
+"female-julia-roberts.jpg", "female-kate-beckinsale.jpg", "female-kate-hudson.jpg",
+"female-kate-moss.jpg", "female-Katharine-McPhee.jpg", "female-katherine-heig.jpg",
+"female-katie-holmes-300.jpg", "female-keira-knightley.jpg",
+"female-kevin-federline300.jpg", "female-kim-kardashian300b.jpg",
+"female-kristen-stewart300.jpg", "female-kristin-cavallari.jpg",
+"female-lauren-conrad300.jpg", "female-leighton-meester300.jpg",
+"female-lindsay-lohan.jpg", "female-mandy-moore.jpg", "female-megan-fox.jpg",
+"female-mila-kunis-300.jpg", "female-mischa-barton.jpg",
+"female-natalie-portman300.jpg", "female-penelope-cruz300.jpg", "female-pink300.jpg",
+"female-rachel-bilson300.jpg", "female-salma-hayek.jpg", "female-sandra-bullock.jpg",
+"female-scarett-johansson.jpg", "female-selena-gomez.jpg", "female-shakira.jpg",
+"female-shania-twain300.jpg", "female-sheryl-crow300.jpg", "female-sienna-miller.jpg",
+"female-taylor-momsen300.jpg"];
+
+ var male = ["male-adam-levine-300.jpg",
+"male-alexander-skarsgard-300.jpg", "male-andrew-garfield-300.jpg",
+"male-ashton-kutcher300.jpg", "male-ben-affleck-300.jpg", "male-bradley-cooper.jpg",
+"male-brad-pitt.jpg", "male-brody-jenner300.jpg", "male-bruce-willis300.jpg",
+"male-chace-crawford300.jpg", "male-channing-tatum.jpg", "male-charlie-sheen-300.jpg",
+"male-chris-hemsworth.jpg", "male-chris-pine-300.jpg", "male-christian-bale-300.jpg",
+"male-clay-aiken.jpg", "male-colin-farrell300.jpg", "male-cory-monteith.jpg",
+"male-daniel-radcliffe300.jpg", "male-david-archuleta.jpg", "male-david-beckham.jpg",
+"male-david-cook.jpg", "male-ed-westwick300.jpg", "male-george-clooney.jpg",
+"male-gerard-butler300.jpg", "male-heath-ledger.jpg", "male-hugh-jackman.jpg",
+"male-jake-gyllenhaal.jpg", "male-james-franco300.jpg", "male-john-krasinski300.jpg",
+"male-john-mayer300.jpg", "male-johnny-depp.jpg", "male-jon-hamm-300.jpg",
+"male-josh-duhamel.jpg", "male-jude-law300.jpg", "male-justin-timberlake.jpg",
+"male-keanu-reeves300.jpg", "male-keith-urban.jpg", "male-kellan-lutz-300.jpg",
+"male-kelly-clarkson.jpg", "male-kenny-chesney300.jpg", "male-kris-allen-300.jpg",
+"male-leo-dicaprio.jpg", "male-liam-hemsworth-300.jpg", "male-mario-lopez-300.jpg",
+"male-mark-ballas300.jpg", "male-mark-wahlberg-300.jpg", "male-matt-damon300.jpg",
+"male-matthew-mcconaughey.jpg", "male-milo-ventimiglia300.jpg",
+"male-nick-lachey300.jpg", "male-orlando-bloom300.jpg", "male-patrick-dempsey.jpg",
+"male-penn-badgley300.jpg", "male-prince-harry300.jpg", "male-prince-william300.jpg",
+"male-robert-pattinson300.jpg", "male-ryan-gosling-300.jpg",
+"male-ryan-phillippe300.jpg", "male-ryan-reynoldsa300.jpg",
+"male-shia-labeouf300.jpg", "male-taylor-hicks.jpg", "male-taylor-lautner300.jpg",
+"male-tim-mcgraw.jpg", "male-tom-brady300.jpg", "male-tom-cruise.jpg"];
+</script>
+
+<style type="text/css">
+#second {position:  absolute; top:260px; width: 225px;   text-align: right;}
+ 
+
+body {
+	margin:0px;
+	font-family: "Open Sans";
+	font-size: 30px;
+	font-weight: lighter;
+	background-color: #fff;
+	background-image: url('back.jpg');
+}
+#img {max-height: 315px;}
+#name span {font-weight: 600;}
+ #userimg {position:  absolute;
+  width: 600px;
+  text-align: center;
+  top: 75px;
+  left: 345px;
+ }
+
+        #userimg div  {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+
+    width: 162px;
+    height: 162px;
+}
+</style>
+<div id="test"></div>
+<div style="position:absolute;  color:#FFF; width:230px; margin-top:5px; text-shadow: 1px 1px 0px rgba(0, 0, 0, 1); text-align:left; padding-left:4px;" id="name"></div>
+<img src="" id="img">
+
+ 
+<script type="text/javascript"> 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var malesl = male.length;
+var femalesl = female.length;
+ 
+
+var malerand = male[getRandomInt(0,malesl)];
+var femalerand = female[getRandomInt(0,femalesl)];
+
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+ 
+function fix_name (name) {
+	var test = name.replace('300','').replace('.jpg','').replace('female-','').replace('male-','').replace('_','').replace('1','').split('-');
+	if (test[1]) {
+		return({'name':'<span>'+test[0].capitalize()+'</span> <div id="second">'+test[1].capitalize()+'</div>',file:name});	
+	} else {
+	return({'name':test[0].capitalize() , file:name});	
+	}
+
+	
+}
+
+function fix_nameplain (name) {
+	var test = name.replace('300','').replace('.jpg','').replace('female-','').replace('male-','').replace('_','').replace('1','').split('-');
+	if (test[1]) {
+		return({'name':' '+test[0].capitalize()+' '+test[1].capitalize()+' ',file:name});	
+	} else {
+	return({'name':test[0].capitalize() , file:name});	
+	}
+
+	
+}
+
+ var data = "(:preres:)".split('/');
+ 
+ $('#userimg').html("<div style = \"background-image: url(http://0.0.0.0:3000/userimg/"+data[0]+".jpg);\"></div>");
+
+
+
+var prevdata = (:stringified:);
+ 
+
+ if (data[1] == "male") {
+$('#img').attr('src','http://0.0.0.0:3000/static/celeb/images/'+fix_name(malerand).file)
+ $('#name').html(fix_name(malerand).name);
+
+  prevdata.description = "(:result:) има прилика с: "+fix_nameplain(malerand).name;
+ $.post( "http://0.0.0.0:3000/db", prevdata );
+
+ } else {
+ 
+ $('#img').attr('src','http://0.0.0.0:3000/static/celeb/images/'+fix_name(femalerand).file)
+ $('#name').html(fix_name(femalerand).name);
+
+ prevdata.description = "(:result:) има прилика с: "+fix_nameplain(femalerand).name;
+ $.post( "http://0.0.0.0:3000/db", prevdata );
+ 
+ }
+
+
+ 
+  
+
+ 
+ 
+ 
+
+
+</script>
+</body>
+</html>
