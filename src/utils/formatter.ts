@@ -85,7 +85,7 @@ export function profanityFilter(title: string): string {
 
   const filteredWords = words.map((word) => {
     // Lowercase the word and check if it is a stop word
-    return badwords.includes(word.toLowerCase()) ? word.charAt(0) + "🤬" : word;
+    return badwords.includes(word.toLowerCase()) ? "🤬🤬🤬🤬" : word;
   });
 
   // Map the filtered words to the tags array
