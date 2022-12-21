@@ -2,7 +2,6 @@ import { AppConfig } from "@/utils/AppConfig";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Script from "next/script";
 
 type IMetaProps = {
 	title: string;
@@ -26,44 +25,45 @@ const Meta = (props: IMetaProps) => {
 		<>
 			<Head>
 				<meta charSet='UTF-8' key='charset' />
-				<Script
+				<script
 					async
 					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+				></script>
+
+				<NextSeo
+					title={title}
+					description={props.description}
+					canonical={canonicalURL}
+					facebook={{
+						appId: "281985576166744",
+					}}
+					openGraph={{
+						url: canonicalURL,
+						title: title,
+						description: "Open Graph Description",
+						images: props.image
+							? [
+								{
+									url: props.image,
+									width: 1200,
+									height: 630,
+									alt: title,
+									type: "image/png",
+								},
+							]
+							: [
+								{
+									url: "https://kloun.lol/images/og.jpg",
+									width: 800,
+									height: 600,
+									alt: "Og Image Alt",
+									type: "image/jpeg",
+								},
+							],
+						siteName: "SiteName",
+					}}
 				/>
 			</Head>
-			<NextSeo
-				title={title}
-				description={props.description}
-				canonical={canonicalURL}
-				facebook={{
-					appId: "281985576166744",
-				}}
-				openGraph={{
-					url: canonicalURL,
-					title: title,
-					description: "Open Graph Description",
-					images: props.image
-						? [
-							{
-								url: props.image,
-								width: 1200,
-								height: 630,
-								alt: title,
-								type: "image/png",
-							},
-						]
-						: [
-							{
-								url: "https://kloun.lol/images/og.jpg",
-								width: 800,
-								height: 600,
-								alt: "Og Image Alt",
-								type: "image/jpeg",
-							},
-						],
-					siteName: "SiteName",
-				}}
-			/>
 		</>
 	);
 };
