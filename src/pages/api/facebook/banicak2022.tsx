@@ -8,9 +8,9 @@ export const config = {
 	runtime: "experimental-edge",
 };
 
-const font = fetch(
-	new URL("../../../../public/font/Nunito-Bold.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
+const font = fetch(new URL("~/font/Nunito-Bold.ttf", import.meta.url)).then(
+	(res) => res.arrayBuffer()
+);
 
 export default async function handler(req: NextRequest) {
 	try {

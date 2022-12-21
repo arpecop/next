@@ -1,10 +1,10 @@
 import type { GetServerSideProps } from "next";
 
+import FacebookShare from "@/components/FacebookShare";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { useEffect, useState } from "react";
-import FacebookShare from "../../components/FacebookShare";
 
 export type FbApp = {
 	count: number;
@@ -27,7 +27,16 @@ const Facebook = ({
 	const [rditem, setRditem] = useState<number | null>();
 
 	useEffect(() => {
-		const chooseRandomJustIncase = async () => { };
+		const selectedapp = app;
+		const chooseRandomJustIncase = async () => {
+			const res2 = await fetch(`/facebook/${selectedapp?.slug}/items.json`);
+			const data = await res2.json();
+			const index = Math.floor(Math.random() * data.length);
+
+			//const item = items[index];
+
+			console.log({ itwaskey: index });
+		};
 		chooseRandomJustIncase();
 	}, []);
 
