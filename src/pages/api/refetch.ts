@@ -13,5 +13,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	);
 	const data = await res2.json();
 
-	res.status(200).json(data);
+	res.status(200).json({ ...data, test: process.env.FB_KEY });
 };
