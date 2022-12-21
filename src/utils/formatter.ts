@@ -75,37 +75,35 @@ export const businessdata: Cat[] = business.map((item) => {
 });
 
 export function profanityFilter(title: string): string {
-  // Create an array to store the tags
   let tags: string[] = [];
-
-  // const regex = /[^\u0400-\u04FF]/g;
-  // const processedTitle = title.replace(regex, ' ');
 
   const words = title.split(" ");
 
   const filteredWords = words.map((word) => {
-    // Lowercase the word and check if it is a stop word
     return badwords.includes(word.toLowerCase()) ? "🤬🤬🤬🤬" : word;
   });
 
-  // Map the filtered words to the tags array
   tags = filteredWords.map((word) => word);
 
-  // Return the array of tags
   return tags.join(" ");
 }
 
 export const formattedjoke = (joke: string): string => {
   const formatted = joke
-    .replace(/[ ]+/g, " ")
+
+    .replace(/([.!?])[:]/g, "$1\n\n")
+
     .replace(/—/g, "\n-")
     .replace(/— ([А-Я])/g, "\n- $1")
     .replace(/-([А-Я])/g, "\n- $1")
+
     .replace(/[ ]+- ([А-Я])/g, "\n- $1")
     .replace(/\?/g, "?\n")
     .replace(/\n+/g, "\n")
+
     .split("\n")
     .filter((x) => x.length > 2)
+    .map((x) => x.trim())
     .join("\n");
 
   return formatted;

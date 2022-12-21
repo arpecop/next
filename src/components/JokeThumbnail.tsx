@@ -3,9 +3,7 @@ import { FC, MouseEvent, ReactElement, useState } from "react";
 import { FormatJoke } from "@/components/JokeText";
 
 import type { Doc } from "../data/structure";
-import FacebookShare from './FacebookShare';
-
-
+import FacebookShare from "./FacebookShare";
 
 interface Props {
 	item: Doc;
@@ -24,10 +22,10 @@ export const JokeThumbnail: FC<Props> = ({
 }): ReactElement => {
 	const { joke, cat } = item;
 	const jlen = joke.length <= 150;
-	const [formattedJoke, setFormattedJoke] = useState<JSX.Element | null>(null)
+	const [formattedJoke, setFormattedJoke] = useState<JSX.Element | null>(null);
 	const formatJoke = (joke: string) => {
-		setFormattedJoke(<FormatJoke joke={joke} />)
-	}
+		setFormattedJoke(<FormatJoke joke={joke} />);
+	};
 	return (
 		<article className='joke relative'>
 			{showcats && item.cat !== "Разни" && (
@@ -77,12 +75,10 @@ export const JokeThumbnail: FC<Props> = ({
 			<input type='checkbox' id={item.id} className='modal-toggle' />
 			<div className='modal '>
 				<div className='modal-box dark:bg-white'>
-
-
 					{formattedJoke}
 
 					<div className='modal-action btn-group'>
-						<a href={`https://kloun.lol/joke/${item.id}`} className='btn'>
+						<a href={`/joke/${item.id}`} className='btn'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'
@@ -100,7 +96,7 @@ export const JokeThumbnail: FC<Props> = ({
 							Url
 						</a>
 						<label htmlFor={item.id} className='btn'>
-							ХаХа!{" "}
+							Затвори{" "}
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'

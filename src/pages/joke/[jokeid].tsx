@@ -29,7 +29,7 @@ const SingleJoke = (props: {
 					title={props.joke?.joke || ""}
 					description={props.joke?.joke || ""}
 					cat={props.joke?.cat || ""}
-					image={`https://kloun.lol/api/img/x/?idx=${props.joke?.id}`}
+					image={`https://kloun.lol/api/joke/og/?idx=${props.joke?.id}`}
 				/>
 			}
 		>

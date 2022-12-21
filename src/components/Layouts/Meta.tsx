@@ -42,15 +42,25 @@ const Meta = (props: IMetaProps) => {
 					url: canonicalURL,
 					title: title,
 					description: "Open Graph Description",
-					images: [
-						{
-							url: "https://www.example.ie/og-image-01.jpg",
-							width: 800,
-							height: 600,
-							alt: "Og Image Alt",
-							type: "image/jpeg",
-						},
-					],
+					images: props.image
+						? [
+							{
+								url: props.image,
+								width: 1200,
+								height: 630,
+								alt: title,
+								type: "image/png",
+							},
+						]
+						: [
+							{
+								url: "https://kloun.lol/images/og.jpg",
+								width: 800,
+								height: 600,
+								alt: "Og Image Alt",
+								type: "image/jpeg",
+							},
+						],
 					siteName: "SiteName",
 				}}
 			/>
