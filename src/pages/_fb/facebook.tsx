@@ -27,12 +27,12 @@ const Index = ({
 		<Main
 			meta={
 				<Meta
-					title={result?.title || "Фейсбук приложения"}
+					title={result?.title || app?.cat || "Фейсбук приложения"}
 					description={result?.description || "Фейсбук приложения"}
 				/>
 			}
 		>
-			<div className='bg-black flex  justify-center items-center  rounded-md px-2 mx-auto w-full'>
+			<div className='flex  justify-center items-center  rounded-md px-2 mx-auto w-full'>
 				{app && (
 					<div>
 						{!app.button ? (
@@ -94,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	return {
 		props: {
 			cats: cats.filter((cat) => cat.slug !== appid),
-			app: cats.find((x) => x.slug === appid),
+			app: cats.find((x) => x.slug === appid) || null,
 		},
 	};
 };

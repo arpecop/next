@@ -62,7 +62,7 @@ const MenuNavBar = ({
 				</li>
 
 				<li>
-					<Link className='text-shadow font-bold' href="#">
+					<Link className='text-shadow font-bold' href='#'>
 						Вицове
 					</Link>
 					<ul className='rounded bg-base-100 p-2'>
@@ -80,11 +80,11 @@ const MenuNavBar = ({
 				</li>
 				<li>
 					<Link
-						href={"/news/"}
+						href={"/fb/"}
 						passHref={hrefPass}
 						className='text-shadow font-bold'
 					>
-						Новини
+						Късметчета
 					</Link>
 				</li>
 			</ul>
