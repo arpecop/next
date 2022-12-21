@@ -5,9 +5,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-  env: {
-    FB_KEY: process.env.FB_KEY,
-  },
   async rewrites() {
     return [
       {

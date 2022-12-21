@@ -28,6 +28,7 @@ specifiers:
   cross-env: ^7.0.3
   cssnano: ^5.1.14
   daisyui: ^2.43.1
+  dotenv: ^16.0.3
   eslint: ^8.29.0
   eslint-config-airbnb-base: ^15.0.0
   eslint-config-airbnb-typescript: ^17.0.0
@@ -74,6 +75,7 @@ dependencies:
   '@vercel/og': 0.0.21
   axios: 0.27.2
   daisyui: 2.43.1_r4gnkvssmvyxmi2wmat5xbx36a
+  dotenv: 16.0.3
   graphql: 16.6.0
   jimp: 0.16.2
   lodash: 4.17.21
@@ -3861,6 +3863,11 @@ packages:
     dependencies:
       is-obj: 2.0.0
     dev: true
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
