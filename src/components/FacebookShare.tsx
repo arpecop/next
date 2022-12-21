@@ -7,14 +7,7 @@ const FacebookShare = ({
 	id?: string;
 	noWrapper?: boolean;
 }) => {
-	// url={`https://kloun.lol/joke/${id}`}
-	// quote={'next-share is a social share buttons for your next React apps.'}
-	// hashtag={'#виц'}
-	/// <FacebookShareButton url={`https://kloun.lol/joke/${id}`}>
 	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
-	async function wait() {
-		return new Promise((resolve) => setTimeout(resolve, 2000));
-	}
 
 	const onClick = async () => {
 		await fetch(`https://kloun.lol/api/refetch/?url=` + url);

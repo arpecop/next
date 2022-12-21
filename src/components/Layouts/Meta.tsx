@@ -22,13 +22,14 @@ const Meta = (props: IMetaProps) => {
 		.slice(0, 60);
 
 	return (
-		<Head>
-			<meta charSet='UTF-8' key='charset' />
-			<script
-				async
-				src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-			></script>
-
+		<>
+			<Head>
+				<meta charSet='UTF-8' key='charset' />
+				<script
+					async
+					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+				></script>
+			</Head>
 			<NextSeo
 				title={title}
 				description={props.description}
@@ -39,7 +40,7 @@ const Meta = (props: IMetaProps) => {
 				openGraph={{
 					url: canonicalURL,
 					title: title,
-					description: "Open Graph Description",
+					description: props.description,
 					images: props.image
 						? [
 							{
@@ -59,10 +60,10 @@ const Meta = (props: IMetaProps) => {
 								type: "image/jpeg",
 							},
 						],
-					siteName: "SiteName",
+					siteName: "kloun.lol",
 				}}
 			/>
-		</Head>
+		</>
 	);
 };
 
