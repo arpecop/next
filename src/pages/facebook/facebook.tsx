@@ -5,6 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { useEffect, useState } from "react";
+import Cookies from "../../components/Cookies";
 import { getCookie, setCookie } from "../../utils/cookies";
 
 export type FbApp = {
@@ -28,17 +29,16 @@ const Facebook = ({
 	const [rditem, setRditem] = useState<number | null>();
 
 	useEffect(() => {
-		const selectedapp = app;
-		const coki = getCookie(selectedapp!.slug);
+		const coki = getCookie(app?.slug || "main");
 		const chooseRandomJustIncase = async () => {
-			const res2 = await fetch(`/facebook/${selectedapp?.slug}/items.json`);
+			const res2 = await fetch(`/facebook/${app?.slug}/items.json`);
 			const data = await res2.json();
 			const index = Math.floor(Math.random() * data.length);
-			setCookie(selectedapp!.slug, index);
+			setCookie(app!.slug, index);
 			setRditem(index);
 		};
 
-		if (selectedapp?.cat && !coki) {
+		if (app?.cat && !coki) {
 			chooseRandomJustIncase();
 		}
 		if (coki) {
@@ -74,6 +74,8 @@ const Facebook = ({
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />
 			</div>
+
+			<Cookies />
 		</Main>
 	);
 };

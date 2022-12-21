@@ -1,0 +1,17 @@
+.my-transition-enter {
+  transform: translateX(100%);
+}
+
+.my-transition-enter-active {
+  transform: translateY(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.my-transition-exit {
+  transform: translateX(0);
+}
+
+.my-transition-exit-active {
+  transform: translateY(100%);
+  transition: transform 300ms ease-in-out;
+}

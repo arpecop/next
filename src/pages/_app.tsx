@@ -1,7 +1,7 @@
-import "../styles/global.css";
-
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
+import "../styles/global.css";
+import "../styles/other.css";
 
 import { Nunito } from "@next/font/google";
 

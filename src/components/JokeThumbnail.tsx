@@ -45,7 +45,7 @@ export const JokeThumbnail: FC<Props> = ({
 				(!jlen ? (
 					<label
 						htmlFor={item.id}
-						className='absolute right-2 -mt-12 flex h-12 w-12 cursor-pointer  items-center justify-center rounded-br-lg border  border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white'
+						className='btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none'
 						onClick={() => formatJoke(joke)}
 					>
 						<svg
@@ -64,7 +64,7 @@ export const JokeThumbnail: FC<Props> = ({
 						</svg>
 					</label>
 				) : (
-					<div className=' absolute right-5 -mt-8'>
+					<div className='absolute right-2 -mt-12'>
 						<FacebookShare id={`https://kloun.lol/joke/${item.id}`} noWrapper />
 					</div>
 				))}
@@ -73,8 +73,12 @@ export const JokeThumbnail: FC<Props> = ({
 				<div className='modal-box dark:bg-white'>
 					{formattedJoke}
 
-					<div className='modal-action btn-group'>
-						<a href={`/joke/${item.id}`} className='btn'>
+					<div className='btn-group'>
+						<FacebookShare
+							id={`https://kloun.lol/joke/${item.id}`}
+							text='Сподели'
+						/>
+						<a href={`/joke/${item.id}`} className='btn m-0'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'

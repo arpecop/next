@@ -40,7 +40,9 @@ const SingleJoke = (props: {
 				<article className='mx-auto mb-6 px-10 text-xl leading-relaxed xs:px-2 sm:px-4 lg:w-2/3'>
 					<FormatJoke joke={props.joke?.joke} />
 				</article>
-				<FacebookShare id={`https://kloun.lol/joke/${props.joke?.id}`} />
+				<div className=' flex justify-end items-center'>
+					<FacebookShare id={`https://kloun.lol/joke/${props.joke?.id}`} />
+				</div>
 			</div>
 
 			{props.items?.[0] && (
