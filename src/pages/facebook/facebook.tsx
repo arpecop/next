@@ -5,7 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { useEffect, useState } from "react";
-import { getCookie, updateCookie } from "../../utils/cookies";
+import { getCookie, setCookie } from "../../utils/cookies";
 
 export type FbApp = {
 	count: number;
@@ -29,16 +29,20 @@ const Facebook = ({
 
 	useEffect(() => {
 		const selectedapp = app;
+		const coki = getCookie(selectedapp!.slug);
 		const chooseRandomJustIncase = async () => {
 			const res2 = await fetch(`/facebook/${selectedapp?.slug}/items.json`);
 			const data = await res2.json();
 			const index = Math.floor(Math.random() * data.length);
-			updateCookie(selectedapp!.slug, index);
-			const cok = getCookie(selectedapp!.slug);
-			console.log(cok);
+			setCookie(selectedapp!.slug, index);
+			setRditem(index);
 		};
-		if (selectedapp) {
+
+		if (selectedapp?.cat && !coki) {
 			chooseRandomJustIncase();
+		}
+		if (coki) {
+			setRditem(Number(coki));
 		}
 	}, []);
 
@@ -61,6 +65,7 @@ const Facebook = ({
 						) : (
 							<h1 className='text-5xl font-thin text-center'>{app.cat}</h1>
 						)}
+						{rditem}
 						<FacebookShare text={app?.button} />
 					</div>
 				)}
