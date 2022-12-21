@@ -24,8 +24,8 @@ const nextConfig = {
         destination: "/_fb/facebook?appid=:appid",
       },
       {
-        source: "/fb/r/:id",
-        destination: "/_fb/facebook?id=:id",
+        source: "/fb/:appid/:id",
+        destination: "/_fb/facebook?id=:id&appid=:appid",
       },
 
       {

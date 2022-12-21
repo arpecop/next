@@ -3,6 +3,7 @@ import type { GetServerSideProps } from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
+import { useEffect, useState } from "react";
 import FacebookShare from "../../components/FacebookShare";
 
 export type FbApp = {
@@ -14,7 +15,7 @@ export type FbApp = {
 	isLoginRequired?: boolean;
 };
 
-const Index = ({
+const Facebook = ({
 	cats,
 	result,
 	app,
@@ -23,6 +24,12 @@ const Index = ({
 	result?: { appid: string; id: string; title: string; description: string };
 	app?: FbApp;
 }): JSX.Element => {
+	const [rditem, setRditem] = useState<number | null>();
+
+	useEffect(() => {
+		//const chooseRandomJustIncase = async
+	}, []);
+
 	return (
 		<Main
 			meta={
@@ -37,10 +44,10 @@ const Index = ({
 					<div>
 						{!app.button ? (
 							<div>
-								<h1 className='text-4xl font-black text-center'>{app.cat}</h1>
+								<h1 className='text-5xl font-thin text-center'>{app.cat}</h1>
 							</div>
 						) : (
-							<h1 className='text-4xl font-black text-center'>{app.cat}</h1>
+							<h1 className='text-5xl font-thin text-center'>{app.cat}</h1>
 						)}
 						<FacebookShare text={app?.button} />
 					</div>
@@ -98,5 +105,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		},
 	};
 };
-export default Index;
-//v 1.0
+export default Facebook;
