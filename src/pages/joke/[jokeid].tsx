@@ -29,8 +29,7 @@ const SingleJoke = (props: {
 					title={props.joke?.joke || ""}
 					description={props.joke?.joke || ""}
 					cat={props.joke?.cat || ""}
-					image={`http://cdn.kloun.lol/api/img/${props.joke?.id}.png`}
-					url={`https://kloun.lol/joke/${props.joke?.id}/`}
+					image={`https://kloun.lol/api/img/x/?idx=${props.joke?.id}`}
 				/>
 			}
 		>
@@ -48,12 +47,14 @@ const SingleJoke = (props: {
 				<>
 					<div className='-m-2 flex flex-wrap'>
 						<article className='joke'>
-							<ins className="adsbygoogle jokewrap"
-								style={{ display: 'block', textAlign: 'center' }}
-								data-ad-layout="in-article"
-								data-ad-format="fluid"
-								data-ad-client="ca-pub-5476404733919333"
-								data-ad-slot="1374619867" />
+							<ins
+								className='adsbygoogle jokewrap'
+								style={{ display: "block", textAlign: "center" }}
+								data-ad-layout='in-article'
+								data-ad-format='fluid'
+								data-ad-client='ca-pub-5476404733919333'
+								data-ad-slot='1374619867'
+							/>
 						</article>
 						{props.items?.[0].map((item): JSX.Element => {
 							return (
@@ -66,21 +67,25 @@ const SingleJoke = (props: {
 							);
 						})}
 					</div>
-					<ins className="adsbygoogle"
-						style={{ display: 'block', textAlign: 'center' }}
-						data-ad-layout="in-article"
-						data-ad-format="fluid"
-						data-ad-client="ca-pub-5476404733919333"
-						data-ad-slot="1374619867"></ins>
+					<ins
+						className='adsbygoogle'
+						style={{ display: "block", textAlign: "center" }}
+						data-ad-layout='in-article'
+						data-ad-format='fluid'
+						data-ad-client='ca-pub-5476404733919333'
+						data-ad-slot='1374619867'
+					></ins>
 					<Nav cats={props.cats[1]} prefix='cat' />
 					<div className='-m-2 flex flex-wrap'>
 						<article className='joke'>
-							<ins className="adsbygoogle jokewrap"
-								style={{ display: 'block', textAlign: 'center' }}
-								data-ad-layout="in-article"
-								data-ad-format="fluid"
-								data-ad-client="ca-pub-5476404733919333"
-								data-ad-slot="1374619867" />
+							<ins
+								className='adsbygoogle jokewrap'
+								style={{ display: "block", textAlign: "center" }}
+								data-ad-layout='in-article'
+								data-ad-format='fluid'
+								data-ad-client='ca-pub-5476404733919333'
+								data-ad-slot='1374619867'
+							/>
 						</article>
 						{props.items?.[1].map((item): JSX.Element => {
 							return (
@@ -96,12 +101,14 @@ const SingleJoke = (props: {
 					<Nav cats={props.cats[0]} prefix='cat' />
 					<div className='-m-2 flex flex-wrap'>
 						<article className='joke'>
-							<ins className="adsbygoogle jokewrap"
-								style={{ display: 'block', textAlign: 'center' }}
-								data-ad-layout="in-article"
-								data-ad-format="fluid"
-								data-ad-client="ca-pub-5476404733919333"
-								data-ad-slot="1374619867" />
+							<ins
+								className='adsbygoogle jokewrap'
+								style={{ display: "block", textAlign: "center" }}
+								data-ad-layout='in-article'
+								data-ad-format='fluid'
+								data-ad-client='ca-pub-5476404733919333'
+								data-ad-slot='1374619867'
+							/>
 						</article>
 						{props.items?.[2].map((item): JSX.Element => {
 							return (
@@ -151,9 +158,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     `,
 		{
 			id: jokeid as string,
-		},
+		}
 	);
-
 
 	const jokes = data.multi.items;
 	return {
