@@ -27,7 +27,8 @@ const Facebook = ({
 	const [rditem, setRditem] = useState<number | null>();
 
 	useEffect(() => {
-		//const chooseRandomJustIncase = async
+		const chooseRandomJustIncase = async () => { };
+		chooseRandomJustIncase();
 	}, []);
 
 	return (
