@@ -36,7 +36,7 @@ export default async function handler(req: NextRequest) {
 			}
 		);
 
-		const { info, name, username } = JSON.parse(data.data);
+		const { info, name, username, userpicture } = JSON.parse(data.data);
 		const bg =
 			"https://eziktokfriendly114941-staging.s3.eu-west-1.amazonaws.com/public/banica1.jpg";
 		return new ImageResponse(

@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
-import { setCookie } from "../utils/cookies";
 
 const Cookies = () => {
 	const elementRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const element = elementRef.current;
-		setCookie("seen", "ok");
+
 		if (element) {
 			element.style.transition = "transform 1300ms ease-in-out";
 			const timer = setTimeout(() => {

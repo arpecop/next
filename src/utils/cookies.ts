@@ -1,4 +1,4 @@
-export function setCookie(name: string, value: string | number) {
+export function setCookie(name: string, value: string) {
 	const existingCookie = getCookie(name);
 	if (existingCookie) {
 		console.log(

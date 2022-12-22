@@ -1,7 +1,7 @@
 import { FbApp } from "@/pages/facebook/facebook";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { doMutation, gql } from "../../data/client";
+import { doMutation, doQuery, gql } from "../../data/client";
 import { getCookie, setCookie } from "../../utils/cookies";
 export type FBResult = {
 	[key: string]: string | undefined;
@@ -9,47 +9,75 @@ export type FBResult = {
 
 export function useFacebookRandom(app?: FbApp) {
 	const [selectedapp, setSelectedApp] = useState<FbApp | undefined>();
-
-	const [item, setItem] = useState<FBResult>({
-		id: nanoid(5),
-		type: "facebook",
-		name: app?.cat,
-		desccription: "",
-	});
+	const [item, setItem] = useState<FBResult>({});
 
 	useEffect(() => {
 		setSelectedApp(app);
 	}, []);
 	useEffect(() => {
 		const rdcoki = getCookie(app?.slug || "main");
-		const chooseRandomJustIncase = async () => {
-			const res2 = await fetch(`/api/facebook/items/${app?.slug}/`);
-			const data = await res2.json();
-			const newdata = { ...selectedapp, ...item, ...data };
-			const insert = await doMutation(
+		const retrieveOld = async (id: string) => {
+			const get = await doQuery(
 				gql`
-          mutation MyMutation($id: String, $data: AWSJSON) {
-            createDdb(
-              input: { subcat: $id, data: $data, nid: "A", deepness: 1 }
-            ) {
-              id
+          query MyQuery($id: String!) {
+            queryDdbsByBySubcat(subcat: $id, first: 1) {
+              nextToken
+              items {
+                id
+                data
+              }
             }
           }
         `,
 				{
-					id: newdata.id,
-					data: JSON.stringify(newdata),
+					id,
 				}
 			);
-			console.log(insert);
-			setCookie(app!.slug, JSON.stringify({ ...newdata, dbid: insert.id }));
-			setItem({ ...newdata, dbid: insert.id });
+			console.log(get);
+			setItem(JSON.parse(get.items[0].data as string));
+		};
+
+		const chooseRandomJustIncase = async () => {
+			const id = nanoid(5);
+			const res2 = await fetch(`/api/facebook/items/${app?.slug}/`);
+			const data = await res2.json();
+			const newdata = { ...selectedapp, ...item, ...data };
+			newdata.description = "";
+			setCookie(app?.slug || "", id);
+			try {
+				await doMutation(
+					gql`
+            mutation MyMutation($id: String!, $data: AWSJSON) {
+              createDdb(
+                input: {
+                  id: $id
+                  subcat: $id
+                  data: $data
+                  nid: "A"
+                  deepness: 1
+                }
+              ) {
+                id
+              }
+            }
+          `,
+					{
+						id,
+						data: JSON.stringify(newdata),
+					}
+				);
+			} catch (e) {
+				console.log("xcxxxx", e);
+			}
+			setItem({ ...newdata, id });
 		};
 
 		if (selectedapp && !rdcoki) {
 			chooseRandomJustIncase();
-		} else {
-			setItem({ ...selectedapp, ...item, ...JSON.parse(rdcoki || "{}") });
+		}
+
+		if (rdcoki) {
+			retrieveOld(rdcoki);
 		}
 	}, [selectedapp]);
 
