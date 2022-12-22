@@ -1,17 +1,22 @@
 import { useEffect, useRef } from "react";
+import { setCookie } from "../utils/cookies";
 
-const Cookies = ({ seen }: { seen: boolean }) => {
+const Cookies = () => {
 	const elementRef = useRef<HTMLDivElement>(null);
+
 	useEffect(() => {
 		const element = elementRef.current;
+		setCookie("seen", "ok");
 		if (element) {
 			element.style.transition = "transform 1300ms ease-in-out";
-			setTimeout(() => {
+			const timer = setTimeout(() => {
 				element.style.transform = "translateY(200%)";
 			}, 5000);
+			return () => clearTimeout(timer);
 		}
 	}, []);
-	!seen ? (
+
+	return (
 		<div className='alert shadow-lg fixed container bottom-10' ref={elementRef}>
 			<div>
 				<svg
@@ -36,8 +41,6 @@ const Cookies = ({ seen }: { seen: boolean }) => {
 				<button className='btn btn-sm btn-primary'>Accept</button>
 			</div>
 		</div>
-	) : (
-		<></>
 	);
 };
 

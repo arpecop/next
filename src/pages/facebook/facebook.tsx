@@ -6,6 +6,7 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { useEffect, useState } from "react";
 
+import Cookies from "../../components/Cookies";
 import { getCookie, setCookie } from "../../utils/cookies";
 
 export type FbApp = {
@@ -27,9 +28,12 @@ const Facebook = ({
 	app?: FbApp;
 }): JSX.Element => {
 	const [rditem, setRditem] = useState<number | null>();
-
+	const [seen, setSeen] = useState<boolean>(true);
 	useEffect(() => {
-		const coki = getCookie(app?.slug || "main");
+		const rdcoki = getCookie(app?.slug || "main");
+		const seen = getCookie("seen");
+		setSeen(seen ? true : false);
+		setRditem(Number(rdcoki));
 		const chooseRandomJustIncase = async () => {
 			const res2 = await fetch(`/facebook/${app?.slug}/items.json`);
 			const data = await res2.json();
@@ -38,11 +42,8 @@ const Facebook = ({
 			setRditem(index);
 		};
 
-		if (app?.cat && !coki) {
+		if (app?.cat && !rdcoki) {
 			chooseRandomJustIncase();
-		}
-		if (coki) {
-			setRditem(Number(coki));
 		}
 	}, []);
 
@@ -74,6 +75,7 @@ const Facebook = ({
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />
 			</div>
+			{seen === false && <Cookies />}
 		</Main>
 	);
 };
