@@ -8,7 +8,7 @@ const Ad = () => (
 		style={{ display: "inline-block", width: 300, height: 130 }}
 		data-ad-client='ca-pub-5476404733919333'
 		data-ad-slot='6617253971'
-	></ins>
+	/>
 );
 
 export const remappedJokeFunction = (joke: string) => {
@@ -18,9 +18,9 @@ export const remappedJokeFunction = (joke: string) => {
 		.map((line, i) => {
 			const num =
 				line.startsWith("-") ||
-					line.startsWith(" -") ||
-					line.startsWith("–") ||
-					line.startsWith("  -")
+				line.startsWith(" -") ||
+				line.startsWith("–") ||
+				line.startsWith("  -")
 					? (i1 += 1) % 2 === 0
 						? "even"
 						: "odd"
@@ -48,7 +48,7 @@ export const FormatJoke = ({
 		const substr = joke.slice(0, 150);
 		const jlen = joke.length <= 150;
 		const lines = formattedjoke(
-			jlen ? joke.replace(/\.../g, "") : `${substr} ...`
+			jlen ? joke.replace(/\.../g, "") : `${substr} ...`,
 		)
 			.split("\n")
 			.slice(0, 3);
@@ -89,15 +89,17 @@ export const FormatJoke = ({
 				}) =>
 					oddness ? (
 						<div
-							className={`flex flex-wrap pb-4 ${oddness === "even" ? "flex-row-reverse" : ""
-								}`}
+							className={`flex flex-wrap pb-4 ${
+								oddness === "even" ? "flex-row-reverse" : ""
+							}`}
 							key={key}
 						>
 							<div
-								className={`relative whitespace-pre-wrap rounded-lg p-2 font-sans font-medium shadow-2xl ${oddness === "even"
+								className={`relative whitespace-pre-wrap rounded-lg p-2 font-sans font-medium shadow-2xl ${
+									oddness === "even"
 										? "bg-violet-900 text-right dark:bg-slate-200"
 										: "bg-indigo-700 text-left dark:bg-slate-400"
-									}`}
+								}`}
 							>
 								{oddness === "odd" ? (
 									<div className='absolute -left-4 top-3 inline-block w-4 overflow-hidden'>
@@ -115,7 +117,7 @@ export const FormatJoke = ({
 						<div key={key} className='block pb-4 text-lg'>
 							{line}
 						</div>
-					)
+					),
 			)}
 		</>
 	);

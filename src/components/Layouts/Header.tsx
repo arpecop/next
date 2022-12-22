@@ -1,25 +1,31 @@
-import MenuNavBar from '../MenuNavBar';
+import MenuNavBar from "../MenuNavBar";
 
 function Header({ title }: { title?: string }) {
 	return (
 		<header className="">
 			<div className='absolute w-full z-10 top-0'>
-				<svg viewBox="0 0 1440 320" xmlns="http://w3.org/2000/svg" className='w-full block dark:hidden z-0'>
+				<svg
+					viewBox="0 0 1440 320"
+					xmlns="http://w3.org/2000/svg"
+					className='w-full block dark:hidden z-0'
+				>
 					<path
 						d="M0 128h48c48 0 144 0 240-16s192-48 288-42.7c96 5.7 192 47.7 288 48 96-.3 192-42.3 288-42.6 96 .3 192 42.3 240 64l48 21.3V0H0z"
 						fill="#2d3748"
 					/>
 				</svg>
-				<svg viewBox="0 0 1440 320" xmlns="http://w3.org/2000/svg" className='w-full dark:block hidden z-0'>
+				<svg
+					viewBox="0 0 1440 320"
+					xmlns="http://w3.org/2000/svg"
+					className='w-full dark:block hidden z-0'
+				>
 					<path
 						d="M0 128h48c48 0 144 0 240-16s192-48 288-42.7c96 5.7 192 47.7 288 48 96-.3 192-42.3 288-42.6 96 .3 192 42.3 240 64l48 21.3V0H0z"
 						fill="#09f"
 					/>
 				</svg>
-
 			</div>
 			<div className='z-20 flex w-full items-center justify-center relative'>
-
 				<img
 					src='/images/logodark.png'
 					alt=''

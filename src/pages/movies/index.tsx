@@ -6,9 +6,11 @@ import Link from "next/link";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import Pagination, { getPaging, refreshToken } from '../../components/NewPagination';
-import { doQuery } from '../../data/client';
-
+import Pagination, {
+	getPaging,
+	refreshToken,
+} from "../../components/NewPagination";
+import { doQuery } from "../../data/client";
 
 export type Movie = {
 	title: string;
@@ -21,11 +23,11 @@ export type Movie = {
 const Index = ({
 	movies,
 	pagenum,
-	nextToken
+	nextToken,
 }: {
 	movies: Movie[];
 	pagenum: number;
-	nextToken?: string
+	nextToken?: string;
 }): JSX.Element => {
 	return (
 		<Main
@@ -34,15 +36,15 @@ const Index = ({
 			}
 		>
 			<div className='mb-10 flex flex-wrap justify-center'>
-				<article
-					className='mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5'
-				>
-					<ins className="adsbygoogle rounded-md jokewrap p-0"
-						style={{ display: 'block', textAlign: 'center' }}
+				<article className='mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5'>
+					<ins
+						className="adsbygoogle rounded-md jokewrap p-0"
+						style={{ display: "block", textAlign: "center" }}
 						data-ad-layout="in-article"
 						data-ad-format="fluid"
 						data-ad-client="ca-pub-5476404733919333"
-						data-ad-slot="1374619867" />
+						data-ad-slot="1374619867"
+					/>
 				</article>
 				{movies.map(({ slug, title, description, id }) => (
 					<article
@@ -52,8 +54,14 @@ const Index = ({
 						<div className='m-2 flex h-full rounded-lg bg-base-100 dark:bg-white'>
 							<figure className='relative flex w-1/2  overflow-hidden rounded-l-lg'>
 								<div className='absolute inset-0  h-full'>
-									<Link href={`/movies/${id.replace('-mov', '')}`}>
-										<img src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace('-mov', '')}.jpg`} alt={title} />
+									<Link href={`/movies/${id.replace("-mov", "")}`}>
+										<img
+											src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
+												"-mov",
+												"",
+											)}.jpg`}
+											alt={title}
+										/>
 									</Link>
 								</div>
 							</figure>
@@ -62,7 +70,7 @@ const Index = ({
 								<h2 className='my-4 text-2xl font-bold'>{title}</h2>
 
 								<p className='mb-8'>
-									{id.replace('-mov', '')}.jpg
+									{id.replace("-mov", "")}.jpg
 									{description.length > 200 ? (
 										<>{description.slice(0, 200)} ...</>
 									) : (
@@ -72,18 +80,21 @@ const Index = ({
 							</div>
 						</div>
 						<div className='card-actions -mt-14 mr-2 justify-end'>
-							<Link href={`/movies/m/${id}`} passHref className='btn-primary btn rounded-l-none rounded-t-none dark:btn-ghost'>
+							<Link
+								href={`/movies/m/${id}`}
+								passHref
+								className='btn-primary btn rounded-l-none rounded-t-none dark:btn-ghost'
+							>
 								още
 							</Link>
 						</div>
 					</article>
 				))}
 			</div>
-			<Pagination pagenum={pagenum} cat={`/movies/p/`} nextToken={nextToken} />
+			<Pagination pagenum={pagenum} cat={"/movies/p/"} nextToken={nextToken} />
 		</Main>
 	);
 };
-
 
 const MOVIES = gql`
 query QueryDdbsByByAppCat($start: String)  {
@@ -99,24 +110,21 @@ query QueryDdbsByByAppCat($start: String)  {
 }
 `;
 
-export const getServerSideProps: GetServerSideProps = async ({
-	query,
-}) => {
-
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { page }: { page?: string } = query;
-	const pagenum = page ? Number(page) : 1
+	const pagenum = page ? Number(page) : 1;
 
-	const nextTokenCurrent = await getPaging('/movies/p/', pagenum);
-	console.log(nextTokenCurrent, pagenum)
+	const nextTokenCurrent = await getPaging("/movies/p/", pagenum);
+	console.log(nextTokenCurrent, pagenum);
 
-	const data = await doQuery(MOVIES, { start: nextTokenCurrent })
-	await refreshToken('/movies/p/', pagenum, data.nextToken);
-	console.log(data)
+	const data = await doQuery(MOVIES, { start: nextTokenCurrent });
+	await refreshToken("/movies/p/", pagenum, data.nextToken);
+	console.log(data);
 	return {
 		props: {
 			movies: data.items,
 			pagenum,
-			nextToken: data.nextToken
+			nextToken: data.nextToken,
 		},
 	};
 };

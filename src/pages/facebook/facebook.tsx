@@ -1,13 +1,14 @@
+import { nanoid } from "nanoid";
 import type { GetServerSideProps } from "next";
 
 import FacebookShare from "@/components/FacebookShare";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import Cookies from "../../components/Cookies";
-import { getCookie, setCookie } from "../../utils/cookies";
+import { useFacebookRandom } from "../../components/hooks/facebook";
 
 export type FbApp = {
 	count: number;
@@ -26,26 +27,22 @@ const Facebook = ({
 	cats: FbApp[];
 	result?: { appid: string; id: string; title: string; description: string };
 	app?: FbApp;
-}): JSX.Element => {
-	const [rditem, setRditem] = useState<number | null>();
-	const [seen, setSeen] = useState<boolean>(true);
-	useEffect(() => {
-		const rdcoki = getCookie(app?.slug || "main");
-		const seen = getCookie("seen");
-		setSeen(seen ? true : false);
-		setRditem(Number(rdcoki));
-		const chooseRandomJustIncase = async () => {
-			const res2 = await fetch(`/facebook/${app?.slug}/items.json`);
-			const data = await res2.json();
-			const index = Math.floor(Math.random() * data.length);
-			setCookie(app!.slug, index);
-			setRditem(index);
-		};
+}) => {
+	const rditem = useFacebookRandom(app);
 
-		if (app?.cat && !rdcoki) {
-			chooseRandomJustIncase();
+	useEffect(() => {
+		const shid = nanoid(5);
+		if (rditem.rditem >= 0) {
+			const result = {
+				id: shid,
+				...app,
+				result: rditem.rditem,
+				type: "facebook",
+				cat: app?.slug,
+			};
+			console.log(result);
 		}
-	}, []);
+	}, [rditem]);
 
 	return (
 		<Main
@@ -66,7 +63,7 @@ const Facebook = ({
 						) : (
 							<h1 className='text-5xl font-thin text-center'>{app.cat}</h1>
 						)}
-						{rditem}
+
 						<FacebookShare text={app?.button} />
 					</div>
 				)}
@@ -75,7 +72,7 @@ const Facebook = ({
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />
 			</div>
-			{seen === false && <Cookies />}
+			{rditem.seen === false && <Cookies />}
 		</Main>
 	);
 };
@@ -102,7 +99,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		},
 		{
 			cat: "Добър или лош си днес",
-			slug: "goodvsbad",
+			slug: "goodbad",
 			isLoginRequired: true,
 		},
 		{
@@ -112,6 +109,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		{
 			cat: "Изтегли си късметче",
 			slug: "iztegli",
+		},
+		{
+			cat: "Индиянското ти име",
+			slug: "indianskoime",
+		},
+		{
+			cat: "Виж коя известна личност ти подхожда",
+			slug: "podhojda",
 		},
 		{ cat: "Какво е японското ти име", slug: "iaponskoime" },
 		{ cat: "Провери какъв си бил в предишен живот", slug: "predishenjivot" },

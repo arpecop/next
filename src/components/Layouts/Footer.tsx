@@ -27,7 +27,7 @@ const Ornament = ({ className }: { className: string }) => (
 
 function Footer({ hideFooter }: { hideFooter?: boolean }) {
 	return !hideFooter ? (
-		<footer className='footer gap-y-2 px-10 font-bold text-neutral-content dark:text-gray-800  md:gap-y-6 relative z-10 mb-4 relative'>
+		<footer className='footer gap-y-2 px-10 font-bold text-neutral-content dark:text-gray-800  md:gap-y-6   z-10 mb-4 relative'>
 			<div className='z-10'>
 				<span className='footer-title'>Services</span>
 
@@ -77,7 +77,7 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 				</Link>
 			</div>
 
-			<Ornament className='absolute absolute w-full -bottom-4' />
+			<Ornament className='absolute  w-full -bottom-4' />
 			<div className='mb-2 absolute  right-2 -bottom-4'>
 				<img
 					src='/powered-white.png'

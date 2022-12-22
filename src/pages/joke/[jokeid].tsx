@@ -76,7 +76,7 @@ const SingleJoke = (props: {
 						data-ad-format='fluid'
 						data-ad-client='ca-pub-5476404733919333'
 						data-ad-slot='1374619867'
-					></ins>
+					/>
 					<Nav cats={props.cats[1]} prefix='cat' />
 					<div className='-m-2 flex flex-wrap'>
 						<article className='joke'>
@@ -160,7 +160,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     `,
 		{
 			id: jokeid as string,
-		}
+		},
 	);
 
 	const jokes = data.multi.items;

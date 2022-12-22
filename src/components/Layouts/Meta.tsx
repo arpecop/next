@@ -28,7 +28,7 @@ const Meta = (props: IMetaProps) => {
 				<script
 					async
 					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-				></script>
+				/>
 			</Head>
 			<NextSeo
 				title={title}
@@ -43,23 +43,23 @@ const Meta = (props: IMetaProps) => {
 					description: props.description,
 					images: props.image
 						? [
-							{
-								url: props.image,
-								width: 1200,
-								height: 630,
-								alt: title,
-								type: "image/png",
-							},
-						]
+								{
+									url: props.image,
+									width: 1200,
+									height: 630,
+									alt: title,
+									type: "image/png",
+								},
+						  ]
 						: [
-							{
-								url: "https://kloun.lol/images/og.jpg",
-								width: 800,
-								height: 600,
-								alt: "Og Image Alt",
-								type: "image/jpeg",
-							},
-						],
+								{
+									url: "https://kloun.lol/images/og.jpg",
+									width: 800,
+									height: 600,
+									alt: "Og Image Alt",
+									type: "image/jpeg",
+								},
+						  ],
 					siteName: "kloun.lol",
 				}}
 				twitter={{
