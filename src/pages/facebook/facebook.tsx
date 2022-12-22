@@ -7,7 +7,7 @@ import Nav from "@/components/Nav";
 import { useFacebookRandom } from "@/components/hooks/facebook";
 import { useState } from "react";
 import FacebookShare from "../../components/FacebookShare";
-import LoadingResult from "../../components/LoadingResult";
+import LoadingResult, { ResultWrapper } from "../../components/LoadingResult";
 
 export type FbApp = {
 	count: number;
@@ -61,13 +61,13 @@ const Facebook = ({
 				<LoadingResult name={pre.error || app?.cat} />
 			)}
 			{pre.id && !pre.error && (
-				<div>
+				<ResultWrapper>
 					<img
 						src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
 						alt=''
 						onLoad={() => setImageLoaded(true)}
 					/>
-				</div>
+				</ResultWrapper>
 			)}
 			<div className='flex justify-center items-center my-3'>
 				<FacebookShare
