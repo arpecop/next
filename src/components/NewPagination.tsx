@@ -3,6 +3,7 @@ import type { FC, ReactElement } from "react";
 import { ulid } from "ulidx";
 
 import { doMutation, doQuery, gql } from "../data/client";
+const prefix = "11x";
 
 interface Props {
 	pagenum: number;
@@ -34,7 +35,7 @@ export async function refreshToken(
     `,
 		{
 			joke: nextToken,
-			id: `${cat}${pagenum + 1}`,
+			id: `${prefix}${cat}${pagenum + 1}`,
 			nid: ulid(new Date(2222, 0, 1).getTime() - Date.now()),
 		}
 	);
@@ -54,7 +55,7 @@ export async function getPaging(slug: string, page: number) {
         }
       }
     `,
-		{ id: `${slug}${page}` }
+		{ id: `${prefix}${slug}${page}` }
 	);
 
 	return check.items?.[0]?.joke;

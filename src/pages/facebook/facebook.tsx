@@ -1,12 +1,12 @@
 import type { GetServerSideProps } from "next";
 
-import FacebookShare from "@/components/FacebookShare";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import Cookies from "@/components/Cookies";
 import { useFacebookRandom } from "@/components/hooks/facebook";
+import FacebookShare from "../../components/FacebookShare";
 
 export type FbApp = {
 	count: number;
@@ -15,6 +15,91 @@ export type FbApp = {
 	button?: string;
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
+};
+
+const Facebook = ({
+	cats,
+	result,
+	appid,
+	shareid,
+}: {
+	cats: FbApp[];
+	result?: {
+		appid: string;
+		id: string;
+		title: string;
+		description: string;
+		image: string;
+	};
+	appid?: string;
+	shareid?: string;
+}) => {
+	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
+	const pre = useFacebookRandom(app);
+
+	return (
+		<Main
+			meta={
+				<Meta
+					title={result?.title || app?.cat || "Фейсбук приложения"}
+					description={result?.description || "Фейсбук приложения"}
+					image={result?.image}
+					noIndex={shareid}
+				/>
+			}
+		>
+			{pre.slug && !pre.error ? (
+				<div>
+					<div className='container  relative overflow-hidden flex justify-center items-center border rounded-xl border-4 border-fuchsia-800'>
+						<div className='absolute'>
+							<p className='text-4xl md:text-5xl font-thin text-center'>
+								{pre.name}
+							</p>
+						</div>
+						<span className='flex h-full w-full absolute hidden'>
+							<span className='animate-ping absolute inline-flex h-full w-full rounded-full   opacity-75 bg-fuchsia-800' />
+						</span>
+
+						<svg
+							className='w-full h-full   mb-4'
+							width='1200'
+							height='630'
+							viewBox='0 0 1200 630'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						/>
+					</div>
+					{JSON.stringify(pre)}
+					<FacebookShare
+						text={app?.button}
+						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+					/>
+				</div>
+			) : (
+				<h1 className='text-4xl md:text-5xl font-thin text-center'>
+					{pre.error}
+				</h1>
+			)}
+			<Nav cats={cats} prefix='fb' />
+			<div className='my-10 flex w-full flex-col'>
+				<div className='flex flex-wrap' />
+			</div>
+			{!pre.seen && <Cookies />}
+		</Main>
+	);
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { appid, id } = context.query;
+	console.log(context.query);
+
+	return {
+		props: {
+			cats: apps.filter((cat) => cat.slug !== appid),
+			appid: appid || null,
+			shareid: id || null,
+		},
+	};
 };
 
 const apps = [
@@ -60,81 +145,4 @@ const apps = [
 	{ cat: "Провери какъв си бил в предишен живот", slug: "predishenjivot" },
 ];
 
-const Facebook = ({
-	cats,
-	result,
-	appid,
-	shareid,
-}: {
-	cats: FbApp[];
-	result?: {
-		appid: string;
-		id: string;
-		title: string;
-		description: string;
-		image: string;
-	};
-	appid?: string;
-	shareid?: string;
-}) => {
-	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
-	const pre = useFacebookRandom(app);
-
-	return (
-		<Main
-			meta={
-				<Meta
-					title={result?.title || app?.cat || "Фейсбук приложения"}
-					description={result?.description || "Фейсбук приложения"}
-					image={result?.image}
-					noIndex={shareid}
-				/>
-			}
-		>
-			{pre.slug && !pre.error ? (
-				<div className='container mx-auto flex  justify-center items-center flex-col'>
-					<div className='absolute container'>
-						<h1 className='text-4xl md:text-5xl font-thin text-center'>
-							{JSON.stringify(pre)}
-						</h1>
-					</div>
-					<svg
-						className='w-full h-full'
-						width='1200'
-						height='630'
-						viewBox='0 0 1200 630'
-						fill='none'
-						xmlns='http://www.w3.org/2000/svg'
-					/>
-					<FacebookShare
-						text={app?.button}
-						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
-					/>
-				</div>
-			) : (
-				<h1 className='text-4xl md:text-5xl font-thin text-center'>
-					{pre.error}
-				</h1>
-			)}
-			<Nav cats={cats} prefix='fb' />
-			<div className='my-10 flex w-full flex-col'>
-				<div className='flex flex-wrap' />
-			</div>
-			{!pre.seen && <Cookies />}
-		</Main>
-	);
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { appid, id } = context.query;
-	console.log(context.query);
-
-	return {
-		props: {
-			cats: apps.filter((cat) => cat.slug !== appid),
-			appid: appid || null,
-			shareid: id || null,
-		},
-	};
-};
 export default Facebook;
