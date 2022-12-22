@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { doMutation, gql } from "../../data/client";
 import { getCookie, setCookie } from "../../utils/cookies";
 export type FBResult = {
-	[key: string]: string | undefined | boolean;
+	[key: string]: string | undefined;
 };
 
 export function useFacebookRandom(app?: FbApp) {

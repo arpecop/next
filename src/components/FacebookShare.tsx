@@ -5,10 +5,12 @@ const FacebookShare = ({
 	id,
 	noWrapper,
 	text,
+	disabled,
 }: {
 	id?: string;
 	noWrapper?: boolean;
 	text?: string;
+	disabled?: boolean;
 }) => {
 	const router = useRouter();
 	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
@@ -25,8 +27,8 @@ const FacebookShare = ({
 	return (
 		<button
 			onClick={onClick}
-			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit ${noWrapper && " rounded-l-none rounded-t-none"
-				}`}
+			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit transition duration-300 ${noWrapper && " rounded-l-none rounded-t-none"
+				} ${disabled && "btn-disabled blur-sm grayscale"}`}
 		>
 			{!noWrapper ? (
 				<>

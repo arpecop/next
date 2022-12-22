@@ -12,6 +12,7 @@ export type FbApp = {
 	count: number;
 	slug: string;
 	cat: string;
+	description?: string;
 	button?: string;
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
@@ -36,13 +37,15 @@ const Facebook = ({
 }) => {
 	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
 	const pre = useFacebookRandom(app);
-
+	//<LoadingResult name={pre?.name} />
 	return (
 		<Main
 			meta={
 				<Meta
 					title={result?.title || app?.cat || "Фейсбук приложения"}
-					description={result?.description || "Фейсбук приложения"}
+					description={
+						result?.description || app?.description || "Фейсбук приложения"
+					}
 					image={result?.image}
 					noIndex={shareid}
 				/>
@@ -50,29 +53,22 @@ const Facebook = ({
 		>
 			{pre.slug && !pre.error ? (
 				<div>
-					<div className='container  relative overflow-hidden flex justify-center items-center border rounded-xl border-4 border-fuchsia-800'>
-						<div className='absolute'>
-							<p className='text-4xl md:text-5xl font-thin text-center'>
-								{pre.name}
-							</p>
-						</div>
-						<span className='flex h-full w-full absolute hidden'>
-							<span className='animate-ping absolute inline-flex h-full w-full rounded-full   opacity-75 bg-fuchsia-800' />
-						</span>
-
-						<svg
-							className='w-full h-full   mb-4'
-							width='1200'
-							height='630'
-							viewBox='0 0 1200 630'
-							fill='none'
-							xmlns='http://www.w3.org/2000/svg'
+					Loading
+					<div className='flex justify-center items-center my-3'>
+						<FacebookShare
+							disabled={true}
+							text={app?.button}
+							id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
 						/>
 					</div>
-					{JSON.stringify(pre)}
-					<FacebookShare
-						text={app?.button}
-						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+					<p>{pre.description}</p>
+					<ins
+						className='adsbygoogle jokewrap'
+						style={{ display: "block", textAlign: "center" }}
+						data-ad-layout='in-article'
+						data-ad-format='fluid'
+						data-ad-client='ca-pub-5476404733919333'
+						data-ad-slot='1374619867'
 					/>
 				</div>
 			) : (
@@ -105,11 +101,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const apps = [
 	{
 		cat: "Баница с късмети за коледа 2022",
-		slug: "banicak2022",
+		slug: "banicak",
 		count: 2022,
+		covertheme: "/images/cmass2022.jpg",
 		controls: ["preresult"],
+		description:
+			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
 	},
-	{ cat: "Новогодишна Баница 2023", slug: "banica2023", count: 2023 },
+	{
+		cat: "Новогодишна Баница 2023",
+		slug: "banican",
+		count: 2023,
+		covertheme: "/images/2023.jpg",
+	},
 	{
 		cat: "На колко години изглеждаш",
 		slug: "godini",
