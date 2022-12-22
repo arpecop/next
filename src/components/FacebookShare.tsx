@@ -10,26 +10,24 @@ const FacebookShare = ({
 	text?: string;
 }) => {
 	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
-
 	const onClick = async () => {
-		await fetch(`https://kloun.lol/api/refetch/?url=${url}`);
-		//await refetch.json();
+		await fetch(`/api/refetch/?url=${url}`);
+
 		window.open(
 			`https://www.facebook.com/dialog/share?
 			app_id=456304742501728
 			&display=popup
 			&href=${encodeURIComponent(url)}
 			&redirect_uri=${encodeURIComponent(url)}`,
-			"_blank",
+			"_self"
 		);
 	};
 
 	return (
 		<button
 			onClick={onClick}
-			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit ${
-				noWrapper && " rounded-l-none rounded-t-none"
-			}`}
+			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit ${noWrapper && " rounded-l-none rounded-t-none"
+				}`}
 		>
 			{!noWrapper ? (
 				<>

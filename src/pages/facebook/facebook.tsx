@@ -76,7 +76,7 @@ const Facebook = ({
 	appid?: string;
 }) => {
 	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
-	const preresult = useFacebookRandom(app);
+	const pre = useFacebookRandom(app);
 
 	return (
 		<Main
@@ -88,14 +88,13 @@ const Facebook = ({
 				/>
 			}
 		>
-			{preresult.index && (
+			{pre.index && (
 				<div className='container mx-auto flex  justify-center items-center flex-col'>
 					<div className='absolute container'>
 						<h1 className='text-4xl md:text-5xl font-thin text-center'>
-							{JSON.stringify(preresult.index)}
+							{JSON.stringify(pre.index)}
 						</h1>
 					</div>
-
 					<svg
 						className='w-full h-full'
 						width='1200'
@@ -104,14 +103,17 @@ const Facebook = ({
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'
 					/>
-					<FacebookShare text={app?.button} />
+					<FacebookShare
+						text={app?.button}
+						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+					/>
 				</div>
 			)}
 			<Nav cats={cats} prefix='fb' />
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />
 			</div>
-			{!preresult.seen && <Cookies />}
+			{!pre.seen && <Cookies />}
 		</Main>
 	);
 };

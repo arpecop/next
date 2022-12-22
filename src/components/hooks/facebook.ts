@@ -27,13 +27,13 @@ export function useFacebookRandom(app?: FbApp) {
 			const data = await res2.json();
 			const index = Math.floor(Math.random() * data.length);
 			setCookie(app!.slug, JSON.stringify({ index, ...data[index] }));
-			setItem({ ...item, index, ...data[index], seen });
+			setItem({ ...selectedapp, ...item, index, ...data[index], seen });
 		};
 
 		if (selectedapp && !rdcoki) {
 			chooseRandomJustIncase();
 		} else {
-			setItem({ ...item, ...JSON.parse(rdcoki || "{}") });
+			setItem({ ...selectedapp, ...item, ...JSON.parse(rdcoki || "{}") });
 			console.log("already have refreshing");
 		}
 	}, [selectedapp]);
