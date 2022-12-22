@@ -12,10 +12,6 @@ const nextConfig = {
         destination: "/news/?page=:page",
       },
       {
-        source: "/",
-        destination: "/",
-      },
-      {
         source: "/fb/",
         destination: "/facebook/facebook",
       },
@@ -23,19 +19,11 @@ const nextConfig = {
         source: "/fb/:appid",
         destination: "/facebook/facebook?appid=:appid",
       },
-      {
-        source: "/fb/:appid/",
-        destination: "/facebook/facebook?appid=:appid",
-      },
+
       {
         source: "/fb/:appid/:id",
         destination: "/facebook/facebook?id=:id&appid=:appid",
       },
-      {
-        source: "/fb/:appid/:id/",
-        destination: "/facebook/facebook?id=:id&appid=:appid",
-      },
-
       {
         source: "/tw/",
         destination: "/twitter/twitter",
