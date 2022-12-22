@@ -53,9 +53,14 @@ const Facebook = ({
 			{pre.slug && !pre.error ? (
 				<div>
 					Loading
+					{JSON.stringify(pre)}
+					<img
+						src={"/api/facebook/img/" + pre.slug + "/" + pre.id + ".png"}
+						alt=''
+					/>
 					<div className='flex justify-center items-center my-3'>
 						<FacebookShare
-							disabled={true}
+							disabled={pre.id ? false : true}
 							text={app?.button}
 							id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
 						/>

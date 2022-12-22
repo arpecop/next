@@ -12,6 +12,10 @@ const nextConfig = {
         destination: "/news/?page=:page",
       },
       {
+        source: "/api/facebook/img/:appid/:id.png",
+        destination: "/api/facebook/img/:appid/?id=:id",
+      },
+      {
         source: "/fb/",
         destination: "/facebook/facebook",
       },
