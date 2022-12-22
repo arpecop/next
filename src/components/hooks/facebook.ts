@@ -14,6 +14,7 @@ export function useFacebookRandom(app?: FbApp) {
 		id: nanoid(5),
 		type: "facebook",
 		name: app?.cat,
+		desccription: "",
 	});
 
 	useEffect(() => {
@@ -40,6 +41,7 @@ export function useFacebookRandom(app?: FbApp) {
 					data: JSON.stringify(newdata),
 				}
 			);
+			console.log(insert);
 			setCookie(app!.slug, JSON.stringify({ ...newdata, dbid: insert.id }));
 			setItem({ ...newdata, dbid: insert.id });
 		};
