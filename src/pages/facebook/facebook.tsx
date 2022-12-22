@@ -64,6 +64,7 @@ const Facebook = ({
 	cats,
 	result,
 	appid,
+	shareid,
 }: {
 	cats: FbApp[];
 	result?: {
@@ -74,6 +75,7 @@ const Facebook = ({
 		image: string;
 	};
 	appid?: string;
+	shareid?: string;
 }) => {
 	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
 	const pre = useFacebookRandom(app);
@@ -85,6 +87,7 @@ const Facebook = ({
 					title={result?.title || app?.cat || "Фейсбук приложения"}
 					description={result?.description || "Фейсбук приложения"}
 					image={result?.image}
+					noIndex={shareid}
 				/>
 			}
 		>
@@ -119,12 +122,14 @@ const Facebook = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { appid } = context.query;
+	const { appid, id } = context.query;
+	console.log(context.query);
 
 	return {
 		props: {
 			cats: apps.filter((cat) => cat.slug !== appid),
 			appid: appid || null,
+			shareid: id || null,
 		},
 	};
 };

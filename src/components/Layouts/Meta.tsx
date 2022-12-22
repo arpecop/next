@@ -2,7 +2,6 @@ import { AppConfig } from "@/utils/AppConfig";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { useRouter } from "next/router";
-
 type IMetaProps = {
 	title: string;
 	description: string;
@@ -12,6 +11,7 @@ type IMetaProps = {
 	cat?: string;
 	imgtype?: string;
 	keywords?: string;
+	noIndex?: string;
 };
 
 const Meta = (props: IMetaProps) => {
@@ -24,7 +24,6 @@ const Meta = (props: IMetaProps) => {
 	return (
 		<>
 			<Head>
-				<meta charSet='UTF-8' key='charset' />
 				<script
 					async
 					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
@@ -34,6 +33,8 @@ const Meta = (props: IMetaProps) => {
 				title={title}
 				description={props.description}
 				canonical={canonicalURL}
+				noindex={props.noIndex ? true : false}
+				nofollow={props.noIndex ? true : false}
 				facebook={{
 					appId: "281985576166744",
 				}}
@@ -43,23 +44,23 @@ const Meta = (props: IMetaProps) => {
 					description: props.description,
 					images: props.image
 						? [
-								{
-									url: props.image,
-									width: 1200,
-									height: 630,
-									alt: title,
-									type: "image/png",
-								},
-						  ]
+							{
+								url: props.image,
+								width: 1200,
+								height: 630,
+								alt: title,
+								type: "image/png",
+							},
+						]
 						: [
-								{
-									url: "https://kloun.lol/images/og.jpg",
-									width: 800,
-									height: 600,
-									alt: "Og Image Alt",
-									type: "image/jpeg",
-								},
-						  ],
+							{
+								url: "https://kloun.lol/images/og.jpg",
+								width: 800,
+								height: 600,
+								alt: "Og Image Alt",
+								type: "image/jpeg",
+							},
+						],
 					siteName: "kloun.lol",
 				}}
 				twitter={{
