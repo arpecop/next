@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+import { useRouter } from "next/router";
 
 const FacebookShare = ({
 	id,
@@ -9,18 +10,16 @@ const FacebookShare = ({
 	noWrapper?: boolean;
 	text?: string;
 }) => {
+	const router = useRouter();
 	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
 	const onClick = async () => {
 		await fetch(`/api/refetch/?url=${url}`);
 
-		window.open(
-			`https://www.facebook.com/dialog/share?
+		router.push(`https://www.facebook.com/dialog/share?
 			app_id=456304742501728
 			&display=popup
 			&href=${encodeURIComponent(url)}
-			&redirect_uri=${encodeURIComponent(url)}`,
-			"_self"
-		);
+			&redirect_uri=${encodeURIComponent(url)}`);
 	};
 
 	return (
