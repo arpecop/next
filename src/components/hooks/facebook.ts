@@ -25,9 +25,9 @@ export function useFacebookRandom(app?: FbApp) {
 		const chooseRandomJustIncase = async () => {
 			const res2 = await fetch(`/api/facebook/${app?.slug}/`);
 			const data = await res2.json();
-			const index = Math.floor(Math.random() * data.length);
-			setCookie(app!.slug, JSON.stringify({ index, ...data[index] }));
-			setItem({ ...selectedapp, ...item, index, ...data[index], seen });
+
+			setCookie(app!.slug, JSON.stringify(data));
+			setItem({ ...selectedapp, ...item, ...data, seen });
 		};
 
 		if (selectedapp && !rdcoki) {

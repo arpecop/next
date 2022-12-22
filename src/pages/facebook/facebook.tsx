@@ -91,11 +91,11 @@ const Facebook = ({
 				/>
 			}
 		>
-			{pre.index && (
+			{pre.slug && !pre.error ? (
 				<div className='container mx-auto flex  justify-center items-center flex-col'>
 					<div className='absolute container'>
 						<h1 className='text-4xl md:text-5xl font-thin text-center'>
-							{JSON.stringify(pre.index)}
+							{JSON.stringify(pre)}
 						</h1>
 					</div>
 					<svg
@@ -111,6 +111,10 @@ const Facebook = ({
 						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
 					/>
 				</div>
+			) : (
+				<h1 className='text-4xl md:text-5xl font-thin text-center'>
+					{pre.error}
+				</h1>
 			)}
 			<Nav cats={cats} prefix='fb' />
 			<div className='my-10 flex w-full flex-col'>

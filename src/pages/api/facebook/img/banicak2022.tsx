@@ -1,9 +1,9 @@
+import { remappedJokeFunction } from "@/components/JokeText";
 import { doQuery } from "@/data/client";
 import { profanityFilter } from "@/utils/formatter";
 import { gql } from "@apollo/client";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-import { remappedJokeFunction } from "../../../components/JokeText";
 export const config = {
 	runtime: "experimental-edge",
 };

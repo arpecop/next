@@ -1,5 +1,5 @@
-import type { NextApiRequest } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-	res.status(200).json([{ error: "Under Construction" }]);
+	res.status(200).json({ error: "Under Construction" });
 };
