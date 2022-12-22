@@ -17,7 +17,10 @@ const Cookies = () => {
 	}, []);
 
 	return (
-		<div className='alert shadow-lg fixed container bottom-10' ref={elementRef}>
+		<div
+			className='alert shadow-lg fixed container bottom-10 dark:text-white'
+			ref={elementRef}
+		>
 			<div>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'

@@ -1,6 +1,6 @@
+import { FbApp } from "@/pages/facebook/facebook";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { FbApp } from "../../pages/facebook/facebook";
 import { getCookie, setCookie } from "../../utils/cookies";
 export type FBResult = {
 	[key: string]: string | undefined | boolean;
@@ -23,7 +23,7 @@ export function useFacebookRandom(app?: FbApp) {
 
 		//setRditem(JSON.parse(rdcoki || "{}"));
 		const chooseRandomJustIncase = async () => {
-			const res2 = await fetch(`/facebook/${app?.slug}/items.json`);
+			const res2 = await fetch(`/api/facebook/${app?.slug}/`);
 			const data = await res2.json();
 			const index = Math.floor(Math.random() * data.length);
 			setCookie(app!.slug, JSON.stringify({ index, ...data[index] }));

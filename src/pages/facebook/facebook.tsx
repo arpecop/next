@@ -5,8 +5,8 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import Cookies from "../../components/Cookies";
-import { useFacebookRandom } from "../../components/hooks/facebook";
+import Cookies from "@/components/Cookies";
+import { useFacebookRandom } from "@/components/hooks/facebook";
 
 export type FbApp = {
 	count: number;
