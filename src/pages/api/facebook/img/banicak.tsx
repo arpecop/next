@@ -79,7 +79,6 @@ export default async function handler(req: NextRequest, res: NextResponse) {
 					"Cache-Control": "s-maxage=86400",
 					"last-modified": "Thu, 22 Dec 2022 22:44:46 GMT",
 					date: "Thu, 22 Dec 2022 22:44:46 GMT",
-					"Transfer-Encoding": "identity",
 				},
 				width: 1200,
 				height: 630,

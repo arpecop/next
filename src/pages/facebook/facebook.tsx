@@ -5,7 +5,9 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import { useFacebookRandom } from "@/components/hooks/facebook";
+import { useState } from "react";
 import FacebookShare from "../../components/FacebookShare";
+import LoadingResult from "../../components/LoadingResult";
 
 export type FbApp = {
 	count: number;
@@ -35,6 +37,7 @@ const Facebook = ({
 	shareid?: string;
 }) => {
 	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
+	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const pre = useFacebookRandom(app);
 	//<LoadingResult name={pre?.name} />
 	return (
@@ -45,41 +48,43 @@ const Facebook = ({
 					description={
 						result?.description || app?.description || "Фейсбук приложения"
 					}
-					image={result?.image}
+					image={
+						shareid
+							? `https://kloun.lol/api/facebook/img/${appid}/${shareid}.png`
+							: "https://kloun.lol/images/og.jpg"
+					}
 					noIndex={shareid}
 				/>
 			}
 		>
-			{pre.slug && !pre.error ? (
+			{!imageLoaded && app?.cat && (
+				<LoadingResult name={pre.error || app?.cat} />
+			)}
+			{pre.id && !pre.error && (
 				<div>
-					Loading
-					{JSON.stringify(pre)}
 					<img
-						src={"/api/facebook/img/" + pre.slug + "/" + pre.id + ".png"}
+						src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
 						alt=''
-					/>
-					<div className='flex justify-center items-center my-3'>
-						<FacebookShare
-							disabled={pre.id ? false : true}
-							text={app?.button}
-							id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
-						/>
-					</div>
-					<p>{pre.description}</p>
-					<ins
-						className='adsbygoogle jokewrap'
-						style={{ display: "block", textAlign: "center" }}
-						data-ad-layout='in-article'
-						data-ad-format='fluid'
-						data-ad-client='ca-pub-5476404733919333'
-						data-ad-slot='1374619867'
+						onLoad={() => setImageLoaded(true)}
 					/>
 				</div>
-			) : (
-				<h1 className='text-4xl md:text-5xl font-thin text-center'>
-					{pre.error}
-				</h1>
 			)}
+			<div className='flex justify-center items-center my-3'>
+				<FacebookShare
+					disabled={pre.id && !pre.error ? false : true}
+					text={app?.button}
+					id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+				/>
+			</div>
+			<p>{pre.description}</p>
+			<ins
+				className='adsbygoogle jokewrap'
+				style={{ display: "block", textAlign: "center" }}
+				data-ad-layout='in-article'
+				data-ad-format='fluid'
+				data-ad-client='ca-pub-5476404733919333'
+				data-ad-slot='1374619867'
+			/>
 			<Nav cats={cats} prefix='fb' />
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />

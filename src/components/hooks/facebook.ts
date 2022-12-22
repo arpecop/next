@@ -46,7 +46,6 @@ export function useFacebookRandom(app?: FbApp) {
 			);
 
 			const raw = get.items[0];
-			await loadImage(`/api/facebook/img/${appid}/${raw.id}.png`);
 
 			setItem({
 				...JSON.parse(raw.data as string),
@@ -83,7 +82,7 @@ export function useFacebookRandom(app?: FbApp) {
 					data: JSON.stringify(newdata),
 				}
 			);
-			await loadImage(`/api/facebook/img/${newdata.slug}/${insert.id}.png`);
+
 			setItem({ ...newdata, id: insert.id });
 		};
 
