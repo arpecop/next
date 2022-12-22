@@ -6,14 +6,14 @@ export function setCookie(name: string, value: string | number) {
 		);
 	} else {
 		const expirationDate = new Date();
-		expirationDate.setDate(expirationDate.getDate() + 1);
+		expirationDate.setDate(expirationDate.getDate() + 30);
 		document.cookie = `${name}=${value}; expires=${expirationDate.toUTCString()}`;
 	}
 }
 
 export function updateCookie(name: string, value: string | number) {
 	const expirationDate = new Date();
-	expirationDate.setDate(expirationDate.getDate() + 1);
+	expirationDate.setDate(expirationDate.getDate() + 30);
 	document.cookie = `${name}=${value}; expires=${expirationDate.toUTCString()}`;
 }
 

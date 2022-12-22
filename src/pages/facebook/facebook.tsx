@@ -5,7 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { useEffect, useState } from "react";
-import Cookies from "../../components/Cookies";
+
 import { getCookie, setCookie } from "../../utils/cookies";
 
 export type FbApp = {
@@ -74,8 +74,6 @@ const Facebook = ({
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />
 			</div>
-
-			<Cookies />
 		</Main>
 	);
 };

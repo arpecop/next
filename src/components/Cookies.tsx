@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Cookies = () => {
+const Cookies = ({ seen }: { seen: boolean }) => {
 	const elementRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
 		const element = elementRef.current;
@@ -11,8 +11,7 @@ const Cookies = () => {
 			}, 5000);
 		}
 	}, []);
-
-	return (
+	!seen ? (
 		<div className='alert shadow-lg fixed container bottom-10' ref={elementRef}>
 			<div>
 				<svg
@@ -37,6 +36,8 @@ const Cookies = () => {
 				<button className='btn btn-sm btn-primary'>Accept</button>
 			</div>
 		</div>
+	) : (
+		<></>
 	);
 };
 
