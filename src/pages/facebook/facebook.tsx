@@ -4,7 +4,6 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import Cookies from "@/components/Cookies";
 import { useFacebookRandom } from "@/components/hooks/facebook";
 import FacebookShare from "../../components/FacebookShare";
 
@@ -80,7 +79,6 @@ const Facebook = ({
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap' />
 			</div>
-			{!pre.seen && <Cookies />}
 		</Main>
 	);
 };
