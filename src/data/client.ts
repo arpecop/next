@@ -5,7 +5,7 @@ import {
   gql,
   InMemoryCache
 } from "@apollo/client";
-import "isomorphic-fetch";
+
 const defaultOptions: DefaultOptions = {
   watchQuery: {
     fetchPolicy: "no-cache",
@@ -23,7 +23,6 @@ const client = new ApolloClient({
     "x-api-key": "da2-wlist6dauraxblhc2texeqaf7m",
   },
   cache: new InMemoryCache(),
-
   defaultOptions: defaultOptions,
 });
 

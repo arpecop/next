@@ -148,8 +148,8 @@ export default async function handler(req: NextRequest) {
         </div>
       ),
       {
-        width: w || 1200,
-        height: h || 630,
+        width: w > 1200 ? 1200 : w || 1200,
+        height: h > 1200 ? 1200 : h || 630,
         emoji: "fluentFlat",
         fonts: [
           {
