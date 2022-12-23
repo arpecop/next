@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: curl URL
-        run: curl http://kloun.lol/api/joke/cron/
+        run: curl https://kloun.lol/api/joke/cron/
