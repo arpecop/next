@@ -78,7 +78,7 @@ const Facebook = ({
 			</div>
 			<p>{pre.description}</p>
 			<ins
-				className='adsbygoogle jokewrap'
+				className='adsbygoogle'
 				style={{ display: "block", textAlign: "center" }}
 				data-ad-layout='in-article'
 				data-ad-format='fluid'

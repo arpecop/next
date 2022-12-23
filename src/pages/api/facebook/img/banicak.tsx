@@ -53,21 +53,22 @@ export default async function handler(req: NextRequest, res: NextResponse) {
 						backgroundSize: "auto",
 					}}
 				>
-					<div tw='bg-gray-50  flex mx-6 rounded-lg   justify-center items-center absolute opacity-70 px-6'>
-						<h2 tw='flex flex-col text-4xl  font-bold tracking-tight text-gray-900 text-left opacity-0'>
-							{username && <span>{username}</span>}
-							<span tw='text-indigo-600'>{info}</span>
-						</h2>
-					</div>
-					<div tw='flex mx-6 rounded-lg   justify-center items-center'>
-						<h2 tw='flex flex-col text-4xl font-bold tracking-tight text-gray-900 text-left'>
+					<div
+						tw='flex px-6 py-0 rounded-2xl justify-center items-center bg-white border-8 border-indigo-800'
+						style={{
+							maxWidth: 630,
+							fontSize: "50px",
+							transform: "rotate(-4deg)",
+							backgroundColor: "rgba(255, 255, 255, 0.8)",
+							perspective: "500px",
+						}}
+					>
+						<h2 tw='flex flex-col   font-bold tracking-tight text-gray-900 text-left'>
 							{username && <span>{username}</span>}
 							<span tw='text-indigo-800'>{info}</span>
 						</h2>
 					</div>
-					<div tw='absolute top-4 left-4 bg-gray-50 text-xl px-4 rounded-full'>
-						{name}
-					</div>
+					<div tw='absolute top-4 left-4 text-xl px-4 rounded-full'>{name}</div>
 					<div tw='absolute bottom-4 right-4 bg-gray-50 text-xl px-4 rounded-full flex'>
 						www.kloun.lol
 					</div>
