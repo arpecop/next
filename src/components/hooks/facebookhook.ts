@@ -8,7 +8,6 @@ export type FBResult = {
 };
 
 export async function loadImage(imageUrl: string): Promise<void> {
-	console.log("image" + imageUrl);
 	return new Promise((resolve, reject) => {
 		const image = new Image();
 		image.onload = () => resolve();
@@ -27,7 +26,7 @@ export function useFacebookRandom(app?: FbApp) {
 
 	useEffect(() => {
 		const rdcoki = getCookie(app?.slug || "main");
-		const retrieveOld = async (appid: string, id: string) => {
+		const retrieveOld = async (id: string) => {
 			const get = await doQuery(
 				gql`
           query MyQuery($id: String!) {
@@ -92,7 +91,7 @@ export function useFacebookRandom(app?: FbApp) {
 		}
 
 		if (rdcoki) {
-			retrieveOld(app!.slug, rdcoki);
+			retrieveOld(rdcoki);
 		}
 	}, [selectedapp]);
 
