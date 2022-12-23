@@ -7,19 +7,19 @@ export type FBResult = {
 	[key: string]: string | undefined;
 };
 
+export async function loadImage(imageUrl: string): Promise<void> {
+	console.log("image" + imageUrl);
+	return new Promise((resolve, reject) => {
+		const image = new Image();
+		image.onload = () => resolve();
+		image.onerror = reject;
+		image.src = imageUrl;
+	});
+}
+
 export function useFacebookRandom(app?: FbApp) {
 	const [selectedapp, setSelectedApp] = useState<FbApp | undefined>();
 	const [item, setItem] = useState<FBResult>({});
-
-	async function loadImage(imageUrl: string): Promise<void> {
-		console.log("image" + imageUrl);
-		return new Promise((resolve, reject) => {
-			const image = new Image();
-			image.onload = () => resolve();
-			image.onerror = reject;
-			image.src = imageUrl;
-		});
-	}
 
 	useEffect(() => {
 		setSelectedApp(app);
@@ -45,12 +45,13 @@ export function useFacebookRandom(app?: FbApp) {
 				}
 			);
 
-			const raw = get.items[0];
-
-			setItem({
-				...JSON.parse(raw.data as string),
-				id: raw.id,
-			});
+			if (get.items[0]) {
+				const raw = get.items[0];
+				setItem({
+					...JSON.parse(raw.data as string),
+					id: raw.id,
+				});
+			}
 		};
 
 		const chooseRandomJustIncase = async () => {

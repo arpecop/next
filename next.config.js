@@ -17,16 +17,16 @@ const nextConfig = {
       },
       {
         source: "/fb/",
-        destination: "/facebook/facebook",
+        destination: "/facebook/Facebook",
       },
       {
         source: "/fb/:appid",
-        destination: "/facebook/facebook?appid=:appid",
+        destination: "/facebook/Facebook?appid=:appid",
       },
 
       {
         source: "/fb/:appid/:id",
-        destination: "/facebook/facebook?id=:id&appid=:appid",
+        destination: "/facebook/Facebook?id=:id&appid=:appid",
       },
       {
         source: "/tw/",

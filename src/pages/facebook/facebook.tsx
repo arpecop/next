@@ -69,13 +69,16 @@ const Facebook = ({
 					/>
 				</ResultWrapper>
 			)}
-			<div className='flex justify-center items-center my-3'>
-				<FacebookShare
-					disabled={pre.id && !pre.error ? false : true}
-					text={app?.button}
-					id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
-				/>
-			</div>
+			{app?.cat && (
+				<div className='flex justify-center items-center my-3'>
+					<FacebookShare
+						disabled={pre.id && !pre.error ? false : true}
+						text={app?.button}
+						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+					/>
+				</div>
+			)}
+
 			<p>{pre.description}</p>
 			<ins
 				className='adsbygoogle'
