@@ -75,7 +75,7 @@ type Attachments = {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const data = await prepare();
-  const emojis = ["🤣", "🤪", "🤓", "🤨", "😳"];
+  const emojis = ["🤣", "🤪", "😁", "🤭", "😂"];
 
   const child_attachments = data.map((item, i) => ({
     link: `https://kloun.lol/joke/${item.id}`,
@@ -99,8 +99,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        message: "Ⓦ🅦🅆.㎘ou𝑛.l🅞l",
         link: "https://kloun.lol/cat/razni/",
-        child_attachments,
+        multi_share_end_card: false,
       }),
     }
   );
