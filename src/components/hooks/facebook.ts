@@ -1,4 +1,4 @@
-import { FbApp } from "@/pages/facebook/facebook";
+import { FbApp } from "@/pages/facebook/Facebook";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import { doMutation, doQuery, gql } from "../../data/client";
