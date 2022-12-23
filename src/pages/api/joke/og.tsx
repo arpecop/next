@@ -2,7 +2,6 @@ import { doQuery } from "@/data/client";
 import { profanityFilter } from "@/utils/formatter";
 import { gql } from "@apollo/client";
 import { ImageResponse } from "@vercel/og";
-import { shuffle } from "lodash";
 import { NextRequest } from "next/server";
 import { remappedJokeFunction } from "../../../components/JokeText";
 export const config = {
@@ -56,7 +55,14 @@ export default async function handler(req: NextRequest) {
 		"#10ac84",
 		"#ee5253",
 	];
-	const shuffled = shuffle(colors);
+
+	function getRandomInt(max: number) {
+		return Math.floor(Math.random() * max);
+	}
+	const rid = getRandomInt(colors.length - 1);
+
+	const color1 = colors[rid];
+	const color2 = colors[rid + 1];
 
 	return new ImageResponse(
 		(
@@ -137,8 +143,7 @@ export default async function handler(req: NextRequest) {
 															: "25px 25px 25px 25px",
 													paddingLeft: "10px",
 													paddingRight: "10px",
-													background:
-														x.oddness === "odd" ? shuffled[0] : shuffled[1],
+													background: x.oddness === "odd" ? color1 : color2,
 												}}
 											>
 												{x.line}
