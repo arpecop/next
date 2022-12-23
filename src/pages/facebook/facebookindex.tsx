@@ -4,7 +4,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import { useFacebookRandom } from "@/components/hooks/facebook";
+import { useFacebookRandom } from "@/components/hooks/facebookhook";
 import { useState } from "react";
 import FacebookShare from "../../components/FacebookShare";
 import LoadingResult, { ResultWrapper } from "../../components/LoadingResult";
