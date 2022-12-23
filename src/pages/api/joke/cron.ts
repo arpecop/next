@@ -102,6 +102,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         message: "Ⓦ🅦🅆.㎘ou𝑛.l🅞l",
         link: "https://kloun.lol/cat/razni/",
         multi_share_end_card: false,
+        child_attachments,
       }),
     }
   );
