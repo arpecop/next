@@ -27,7 +27,13 @@ export async function refreshToken(
         $nid: String = ""
       ) {
         createDdb(
-          input: { joke: $joke, type: $id, cat: "pagination", nid: $nid }
+          input: {
+            joke: $joke
+            type: $id
+            cat: "pagination"
+            nid: $nid
+            price: 0
+          }
         ) {
           id
         }

@@ -58,7 +58,7 @@ const Facebook = ({
 				/>
 			}
 		>
-			{!imageLoaded && <LoadingResult name={pre.error || app?.cat} />}
+			{!imageLoaded && app && <LoadingResult name={pre.error || app?.cat} />}
 			{pre.id && !pre.error && (
 				<img
 					className={
@@ -73,17 +73,19 @@ const Facebook = ({
 			)}
 			{app?.personalisations && <div> </div>}
 
-			{app?.cat && (
-				<div className='flex justify-center items-center my-3'>
-					<FacebookShare
-						disabled={imageLoaded ? false : true}
-						text={app?.button}
-						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
-					/>
+			{app && (
+				<div>
+					<div className='flex justify-center items-center my-3'>
+						<FacebookShare
+							disabled={imageLoaded ? false : true}
+							text={app?.button}
+							id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+						/>
+					</div>
+					<p>{app?.description}</p>
 				</div>
 			)}
 
-			<p>{app?.description}</p>
 			<ins
 				className='adsbygoogle'
 				style={{ display: "block", textAlign: "center" }}
