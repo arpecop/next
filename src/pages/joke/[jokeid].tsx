@@ -139,7 +139,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	);
 
 	const jokes = data.multi.items;
-	console.log(chunk(jokes, Math.round(jokes.length / 3)));
+
 	return {
 		props: {
 			joke: data.single,
