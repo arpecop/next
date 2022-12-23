@@ -8,7 +8,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, {
 	getPaging,
-	refreshToken,
+	refreshToken
 } from "../../components/NewPagination";
 import { doQuery } from "../../data/client";
 
@@ -38,12 +38,12 @@ const Index = ({
 			<div className='mb-10 flex flex-wrap justify-center'>
 				<article className='mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5'>
 					<ins
-						className="adsbygoogle rounded-md jokewrap p-0"
+						className='adsbygoogle rounded-md jokewrap p-0'
 						style={{ display: "block", textAlign: "center" }}
-						data-ad-layout="in-article"
-						data-ad-format="fluid"
-						data-ad-client="ca-pub-5476404733919333"
-						data-ad-slot="1374619867"
+						data-ad-layout='in-article'
+						data-ad-format='fluid'
+						data-ad-client='ca-pub-5476404733919333'
+						data-ad-slot='1374619867'
 					/>
 				</article>
 				{movies.map(({ slug, title, description, id }) => (
@@ -58,7 +58,7 @@ const Index = ({
 										<img
 											src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
 												"-mov",
-												"",
+												""
 											)}.jpg`}
 											alt={title}
 										/>
@@ -97,17 +97,17 @@ const Index = ({
 };
 
 const MOVIES = gql`
-query QueryDdbsByByAppCat($start: String)  {
-	queryDdbsByByAppCat(type: "MoviesBG1", first:15,after: $start ) {
-		items {
-			id
-			description
-			image
-			title
-		}
-		nextToken
-	}
-}
+  query QueryDdbsByByAppCat($start: String) {
+    queryDdbsByByAppCat(type: "MoviesBG1", first: 15, after: $start) {
+      items {
+        id
+        description
+        image
+        title
+      }
+      nextToken
+    }
+  }
 `;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -119,7 +119,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 	const data = await doQuery(MOVIES, { start: nextTokenCurrent });
 	await refreshToken("/movies/p/", pagenum, data.nextToken);
-	console.log(data);
+
 	return {
 		props: {
 			movies: data.items,

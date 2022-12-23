@@ -104,7 +104,6 @@ const Facebook = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { appid, id } = context.query;
-	console.log(context.query);
 
 	return {
 		props: {

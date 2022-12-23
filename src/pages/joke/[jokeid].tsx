@@ -12,7 +12,7 @@ import type { Doc } from "@/data/structure";
 import type { Cat } from "@/utils/formatter";
 import { catsdata } from "@/utils/formatter";
 
-import { doMQuery, gql } from "../../data/client";
+import { doMQuery, doQuery, gql } from "../../data/client";
 
 import FacebookShare from "@/components/FacebookShare";
 
@@ -89,39 +89,6 @@ const SingleJoke = (props: {
 								data-ad-slot='1374619867'
 							/>
 						</article>
-						{props.items?.[1].map((item): JSX.Element => {
-							return (
-								<JokeThumbnail
-									item={item}
-									key={item.id}
-									showcats={true}
-									short={true}
-								/>
-							);
-						})}
-					</div>
-					<Nav cats={props.cats[0]} prefix='cat' />
-					<div className='-m-2 flex flex-wrap'>
-						<article className='joke'>
-							<ins
-								className='adsbygoogle jokewrap'
-								style={{ display: "block", textAlign: "center" }}
-								data-ad-layout='in-article'
-								data-ad-format='fluid'
-								data-ad-client='ca-pub-5476404733919333'
-								data-ad-slot='1374619867'
-							/>
-						</article>
-						{props.items?.[2].map((item): JSX.Element => {
-							return (
-								<JokeThumbnail
-									item={item}
-									key={item.id}
-									showcats={true}
-									short={true}
-								/>
-							);
-						})}
 					</div>
 				</>
 			)}
@@ -132,10 +99,23 @@ const SingleJoke = (props: {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { jokeid } = query;
 	const cats = chunk(shuffle(catsdata), 7);
-
+	const datatoken = await doQuery(
+		gql`
+      query MyQuery($id: String = "") {
+        queryDdbsByByAppCat(type: $id, first: 10) {
+          items {
+            id
+            joke
+          }
+        }
+      }
+    `,
+		{ id: "cronnerjokesx11" }
+	);
+	const nextToken = datatoken.items?.[0]?.joke;
 	const data = await doMQuery(
 		gql`
-      query MyQuery($id: String!) {
+      query MyQuery($id: String!, $nextToken: String = "") {
         single: getDdb(id: $id) {
           id
           joke: title
@@ -143,31 +123,27 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
           nid
           type
         }
-        multi: listDdbs(
-          filter: { id: { gt: $id }, cat: { eq: "JOKРазни" } }
-          limit: 1230
-        ) {
-          nextToken
+        multi: queryDdbsByByCat(cat: "JOKРазни", first: 25, after: $nextToken) {
           items {
-            nid
+            id
             joke: title
             cat
-            id
-            type
           }
         }
       }
     `,
 		{
 			id: jokeid as string,
-		},
+			nextToken,
+		}
 	);
 
 	const jokes = data.multi.items;
+	console.log(chunk(jokes, Math.round(jokes.length / 3)));
 	return {
 		props: {
 			joke: data.single,
-			// items: [data],
+
 			items: chunk(jokes, Math.round(jokes.length / 3)),
 			cats,
 		},

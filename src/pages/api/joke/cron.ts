@@ -30,7 +30,7 @@ async function prepare() {
     `,
     { id }
   );
-  console.log(data1.items[0]);
+
   const tok = data1.items?.[0]?.joke;
 
   const data = await doQuery(LIST_JOKES, {

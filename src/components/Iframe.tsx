@@ -16,9 +16,8 @@ const MyWrapper = ({ children }: { children: ReactNode }) => {
 			//const viewportWidth = window.innerWidth;
 
 			const z = widthContainer / 1560;
-			const h = 630 * z;
+			//const h = 630 * z;
 
-			console.log({ z, h: Math.round(h) });
 			setZoom(z);
 		};
 		handleResize();
