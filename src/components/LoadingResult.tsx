@@ -1,5 +1,5 @@
 export const ResultWrapper = ({ children }: { children: any }) => (
-	<div className='container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 '>
+	<div className='container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 h-fit'>
 		<div className='flex justify-center items-center  m-1 rounded-lg relative overflow-hidden   bg-black/80'>
 			{children}
 		</div>

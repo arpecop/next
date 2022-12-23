@@ -7,7 +7,7 @@ import Nav from "@/components/Nav";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
 import { useState } from "react";
 import FacebookShare from "../../components/FacebookShare";
-import LoadingResult, { ResultWrapper } from "../../components/LoadingResult";
+import LoadingResult from "../../components/LoadingResult";
 
 export type FbApp = {
 	count: number;
@@ -17,6 +17,7 @@ export type FbApp = {
 	button?: string;
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
+	personalisations?: string[];
 };
 
 const Facebook = ({
@@ -57,29 +58,32 @@ const Facebook = ({
 				/>
 			}
 		>
-			{!imageLoaded && app?.cat && (
-				<LoadingResult name={pre.error || app?.cat} />
-			)}
+			{!imageLoaded && <LoadingResult name={pre.error || app?.cat} />}
 			{pre.id && !pre.error && (
-				<ResultWrapper>
-					<img
-						src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
-						alt=''
-						onLoad={() => setImageLoaded(true)}
-					/>
-				</ResultWrapper>
+				<img
+					className={
+						imageLoaded
+							? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
+							: "hidden"
+					}
+					src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
+					alt=''
+					onLoad={() => setImageLoaded(true)}
+				/>
 			)}
+			{app?.personalisations && <div> </div>}
+
 			{app?.cat && (
 				<div className='flex justify-center items-center my-3'>
 					<FacebookShare
-						disabled={pre.id && !pre.error ? false : true}
+						disabled={imageLoaded ? false : true}
 						text={app?.button}
 						id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
 					/>
 				</div>
 			)}
 
-			<p>{pre.description}</p>
+			<p>{app?.description}</p>
 			<ins
 				className='adsbygoogle'
 				style={{ display: "block", textAlign: "center" }}
@@ -115,7 +119,7 @@ const apps = [
 		slug: "banicak",
 		count: 2022,
 		covertheme: "/images/cmass2022.jpg",
-		controls: ["preresult"],
+		personalisations: ["name"],
 		description:
 			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
 	},
