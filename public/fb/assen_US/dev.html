@@ -1,0 +1,222 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf8">
+  <title></title> 
+
+
+
+  <style type="text/css">
+ 
+ 
+   div, span {
+ 
+font-weight: 400;
+font-family: 'Open Sans',Arial;
+  }
+  body {
+    background-image: url(back.jpg);
+    margin: 0px;
+    font-family: 'Open Sans',Arial;
+    color: #FFF;
+  }
+
+  .letter {font-size: 70px;  height: 350px;    
+    text-shadow: 0px 0px 11px rgba(150, 150, 150, 1); 
+    text-transform: uppercase;
+        font-family: 'Open Sans',Arial;
+    font-weight: 700; height: 20px;
+    font-weight: bold;
+    float: left;
+    
+    height: 60px;
+      text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+      }
+  #name {display: none;}
+  #name1 {margin-left: auto; margin-right: auto;}
+  .word {
+    color: #34495e;
+ text-shadow: none !important;
+    font-weight: 400; font-size: 20px;   text-transform: uppercase; max-width:5px;   -webkit-transform: rotate(-55deg);
+    
+position: fixed;
+ top: 150px;
+ margin-left: 7px;
+}
+  #cont { 
+     
+    height: 115px;
+  
+    overflow: hidden;
+  
+    padding-top: 165px; 
+ margin-right: auto;
+ margin-left: auto;
+  }
+  </style>
+  <script src="jq.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body> 
+  <div id="cont">
+<div id="name">(:result:)</div>
+<div id="name1"> </div>
+<div id="name2"> </div>
+</div>
+<script type="text/javascript">
+
+  function getproperty (bukva) {
+    // body...
+   if ( bukva == "a") {
+        return "awesome";
+    } else if (bukva == "b") {
+        return "blessed";
+           } else if (bukva == "c") {
+        return "classy";    } 
+         else if (bukva == "d") {
+        return "dynamic";
+
+    } else if (  bukva == "v") {
+        return "vivid";
+    } else if ( bukva == "g") {
+        return "gifted";
+    }else if (  bukva == "e") {
+        return " effective ";
+    } else if (  bukva == "j") {
+        return "joyful";
+    } else if (  bukva == "z") {
+        return "zealous";
+    } else if (  bukva == "i") {
+        return "Intelligent";
+    } 
+ 
+    else if ( bukva == "k") {
+        return "kind";
+    } else if (  bukva == "l") {
+        return "lucky";
+    } else if (  bukva == "m") {
+        return "Magnificent";
+    } else if ( bukva == "n") {
+        return "nice";
+    } else if (bukva == "о" || bukva == "o") {
+        return "open&nbsp;minded";
+    } else if (  bukva == "p") {
+        return "productive";
+    } else if ( bukva == "q") {
+        return "quiet";
+    }  else if (  bukva == "r") {
+        return "real";
+    } else if ( bukva == "s") {
+        return "smart";
+    } else if (bukva == "t") {
+        return "talented";
+    } else if (bukva == "u") {
+        return "unique";
+    } else if (bukva == "f") {
+        return "fantastic";
+    }   else if ( bukva == "h") {
+        return "honest";
+    } 
+
+else if (bukva == "w") {
+        return "wise";
+    }
+
+    else if (bukva == "y") {
+        return "Youthful";
+    }
+
+ 
+else if (bukva == "x") {
+        return "Xtra";
+    }
+  else {
+        return " ";
+    }
+
+ }
+
+//a - artistichen
+//b blagoroden
+//v - veren
+// grijoven
+//dobar
+// elegenten
+//jiznen
+//instinski
+//#c0392b female
+//#8e44ad male
+//
+
+var name = $('#name').text().toLowerCase();
+var arr = $(name.split(''))
+ 
+$.each(arr,function  (index,val) {
+  var ass = getproperty(val);
+   $('#name1').append('<div class="'+val+' letter '+index+'" id="'+val+'"><span class="word word'+val+'" >'+ass+'</span>'+val+'</div>')
+});
+
+ var arrlngth = arr.length - 1;
+  
+
+
+var pos = $('.'+arrlngth).position().left;
+var end = Math.round(80 + pos );
+$('#cont').css( { width : end+"px" } );
+ 
+
+ 
+
+  $.each($('#name1 .letter'),function  (index,val) {
+ 
+    var wdth = $(this).width();
+    var id = $(this).attr('id');
+    if (index == arrlngth) {
+    var position = $(this).position().left + wdth;  
+
+   
+  //
+    };
+    
+    console.log(id+'-'+wdth );
+
+  var newwd = wdth / 2 - 2;
+  console.log(newwd)
+  
+ $('.word'+id).css( { marginLeft : newwd+"px" } );
+ 
+  
+
+  })
+
+ 
+ 
+window.callPhantom('takeShot');
+</script>
+
+
+ <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Open+Sans::latin,cyrillic' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+</body>
+</html>

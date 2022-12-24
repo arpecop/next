@@ -1,0 +1,25 @@
+{
+  "apexskier.eslint.config.eslintConfigPath" : ".eslintrc.js",
+  "apexskier.eslint.config.eslintPath" : "\/usr\/local\/bin\/eslint",
+  "apexskier.eslint.config.fixOnSave" : "Enable",
+  "apexskier.typescript.config.formatDocumentOnSave" : "true",
+  "apexskier.typescript.config.isEnabledForJavascript" : "Disable",
+  "apexskier.typescript.config.organizeImportsOnSave" : "true",
+  "apexskier.typescript.config.userPreferences.allowRenameOfImportPath" : true,
+  "apexskier.typescript.config.userPreferences.importModuleSpecifierPreference" : "project-relative",
+  "apexskier.typescript.config.userPreferences.includeAutomaticOptionalChainCompletions" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsForImportStatements" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsForModuleExports" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsWithInsertText" : true,
+  "apexskier.typescript.config.userPreferences.includeCompletionsWithSnippetText" : true,
+  "apexskier.typescript.config.userPreferences.includePackageJsonAutoImports" : "on",
+  "apexskier.typescript.config.userPreferences.quotePreference" : "single",
+  "index.ignored_file_patterns" : [
+    "public",
+    ".next"
+  ],
+  "workspace.art_style" : 1,
+  "workspace.color" : 14,
+  "workspace.preview_type" : "custom",
+  "workspace.preview_url" : "http:\/\/localhost:3000"
+}

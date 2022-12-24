@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>jQuery Knob demo</title>
+        <script src="jq.js"></script>
+        <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+     
+       
+        <style type="text/css">
+        body {
+          margin: 0px;
+   
+          background-repeat: no-repeat;
+
+        }
+
+        div, input {
+  font-family: "Open Sans";
+          font-weight: lighter;
+
+        }
+        .demo {  width: 600px; text-align: center; margin-top: 50px; z-index: 1;}
+        .knob {font-size: 1px;}
+ #userimg {position:  absolute;
+  width: 600px;
+  text-align: center;
+  top: 84px;
+  left: 234px;
+ }
+
+        #userimg div  {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+
+    width: 132px;
+    height: 132px;
+}
+#date {
+  position: absolute;
+  width: 600px;
+  text-align: center;
+  text-shadow: 1px 1px 0px rgba(150, 150, 150, 1);
+  top:10px;
+  font-weight: 100;
+  font-style: lighter;
+  font-family: "Open Sans";
+  font-size: 20px;
+}
+        </style>
+    </head>
+
+    <body>
+    
+ <div id="date"> </div>
+     <div id="userimg"></div>
+        <div class="demo">
+         
+        </div>
+    
+     
+      <script type="text/javascript">
+
+      var date = new Date();
+var year    = date.getFullYear();
+var month   = date.getMonth();
+var day     = date.getDate();
+var hour    = date.getHours();
+var minute  = date.getMinutes();
+var seconds = date.getSeconds();  
+
+var months = ["Ян","Фев","Март","Апр","Май","Юни","Юли","Авг","Септ","Окт","Но","Дек"]
+
+
+      function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+ var data = "(:preres:)".split('/');
+ var years = data[3];
+ console.log(data)
+
+      var ws = ['ангелче','дяволче'];
+      var rd =  getRandomInt(0, 1)
+      var winning_side = ws[rd];
+ 
+
+      var percents = getRandomInt(51, 110);
+      if (percents > 100) {
+        percents = 100;
+      };
+var color;
+if (rd == 0) {
+color = '#3498db';
+} else {
+color = '#e74c3c';
+}
+
+//$('#date').html('(:result:) '+day+' '+months[month]+'. '+year+' -  '+percents+'% '+winning_side)
+
+
+var prevdata = (:stringified:);
+ prevdata.description  = '(:result:) '+day+' '+months[month]+'. '+year+' -  '+percents+'% '+winning_side;
+  $.post( "http://arpecop.com/db", prevdata );
+
+$('.demo').html('<input class="knob" data-angleOffset=90 data-linecap=round value="'+percents+'" data-fgColor="'+color+'"  data-angleOffset="130">');
+ 
+$.getJSON('https://graph.facebook.com/v2.0/'+data[0]+'/picture?redirect=0&height=200&type=normal&width=200',function  (data) {
+  
+  $('#userimg').html("<div style = 'background-image: url("+data.data.url+");'></div>")
+})
+
+
+      </script>
+ 
+      
+ 
+      
+    </body>
+</html>

@@ -1,0 +1,11 @@
+[
+  {
+    "Update": {
+      "IndexName": "MyGlobalSecondaryIndex",
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 5,
+        "WriteCapacityUnits": 5
+      }
+    }
+  }
+]

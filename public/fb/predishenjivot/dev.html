@@ -1,0 +1,203 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf8">
+    <script type="text/javascript" src="../assbg_BG/jq.js"></script>
+    <title></title>
+
+    <style type="text/css">
+        div,
+        span {
+
+            font-weight: 400;
+            font-family: 'Droid Sans', Arial;
+        }
+
+        body {
+            margin: 0px;
+            font-family: 'Droid Sans', Arial;
+            background-color: #e74c3c;
+            color: #FFF;
+
+            background-image: url(http://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/predishenjivot/back1.jpg);
+            background-repeat: no-repeat;
+        }
+
+        .letter {
+            font-size: 60px;
+            text-align: center;
+            margin-top: 90px;
+
+
+            text-transform: uppercase;
+            font-family: 'Arial Black', Arial;
+            height: 20px;
+            text-shadow: 0 1px 0 #ccc,
+                0 2px 0 #c9c9c9,
+                0 3px 0 #bbb,
+                0 4px 0 #b9b9b9,
+                0 5px 0 #aaa,
+                0 6px 1px rgba(0, 0, 0, .1),
+                0 0 5px rgba(0, 0, 0, .1),
+                0 1px 3px rgba(0, 0, 0, .3),
+                0 3px 5px rgba(0, 0, 0, .2),
+                0 5px 10px rgba(0, 0, 0, .25),
+                0 10px 10px rgba(0, 0, 0, .2),
+                0 20px 20px rgba(0, 0, 0, .15);
+
+
+
+            width: 600px;
+            height: 315px;
+        }
+
+        #result {
+            font-size: 40px;
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letter">(:result:) <div id="result"></div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        var data = {
+            "appid": "333747356705341",
+            "appname": "Какъв сте били в предишния си живот?!!",
+            "button": "Провери",
+            "image": "images/clock.gif",
+            "infotext": "Резултат {*actor*} ",
+            "items": [
+                {
+                    "info": "странстващ танцьор",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=0"
+                },
+                {
+                    "info": "певец",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=1"
+                },
+                {
+                    "info": "блестящ интелектуалец",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=2"
+                },
+                {
+                    "info": "известен бунтовник",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=3"
+                },
+                {
+                    "info": "авантюрист с нежно сърце",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=4"
+                },
+                {
+                    "info": "голям оратор",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=5"
+                },
+                {
+                    "info": "образован мъдрец",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=6"
+                },
+                {
+                    "info": "завоевател и покорител",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=7"
+                },
+                {
+                    "info": "любимец на крале и управляващи",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=8"
+                },
+                {
+                    "info": "господар на империя",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=9"
+                },
+                {
+                    "info": "добронравен разбойник",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=10"
+                },
+                {
+                    "info": "изявен защитник на правдата",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=11"
+                },
+                {
+                    "info": "странстващ артист",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=12"
+                },
+                {
+                    "info": "гуру с широко сърце",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=13"
+                },
+                {
+                    "info": "строител на църкви, храмове, катедрали",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=14"
+                },
+                {
+                    "info": "строител на пътища, мостове, пристанища",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=15"
+                },
+                {
+                    "info": "химик, алхимик, майстор на отрови",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=16"
+                },
+                {
+                    "info": "медик, хирург, лекар-знахар",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=17"
+                },
+                {
+                    "info": "философ, мислител",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=18"
+                },
+                {
+                    "info": "бижутер, часовникар",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=19"
+                },
+                {
+                    "info": "майстор-занаятчия",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=20"
+                },
+                {
+                    "info": "инжинер",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=21"
+                },
+                {
+                    "info": "вожд (лидер)",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=22"
+                },
+                {
+                    "info": "военен - майор/капитан",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=23"
+                },
+                {
+                    "info": "коняр",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=24"
+                },
+                {
+                    "info": "обущар",
+                    "newurl": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=25"
+                }
+            ],
+            "scope": "publish_stream,read_stream",
+            "slug": "predishen",
+            "url": "https://php2-cube.rhcloud.com/predishen/?name=${first_name}%26result=333747630038647"
+        }
+        var randomnumber = Math.floor(Math.random() * 25)
+        var result = data.items[randomnumber].info;
+
+        document.getElementById('result').innerHTML = result;
+
+
+        var prevdata = (: stringified:);
+        prevdata.description = "(:result:) - " + result;
+
+
+
+        $.post("http://arpecop.com/db", prevdata);
+        window.callPhantom('takeShot');
+
+    </script>
+</body>
+
+</html>
