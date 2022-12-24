@@ -32,7 +32,6 @@ export default function Home() {
         </div>
       </div>
       <div className='container2'>
-        <img className='bottomwave' src='/bottom.png' alt='' />
         <div className='content'>
           <div className='flex justify-start items-center'>
             <img src='/about.png' alt='' className='w-16 mr-2 dark:grayscale' />
