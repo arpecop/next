@@ -1,3 +1,4 @@
+name: Deploy kloun.lol
 on: push
 jobs:
   build:
