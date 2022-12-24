@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import FormInput, { onSubmit } from "@/components/forms/inputs/AllForms";
 
-import { API, graphqlOperation, mutations } from "@/components/db";
 import loadStaticFile from "@/components/helpers/loadStaticFile";
 import Err from "@/components/forms/Err";
 
@@ -107,12 +106,8 @@ function CreatefreeAd({ data }: { data: AdsDataSubcat }) {
                 description: submitteddata.description?.value,
               };
               console.log(input);
-              const insert = await API.graphql(
-                graphqlOperation(mutations.createAd, {
-                  input,
-                })
-              );
-              router.push(`/ads/ad/${insert.data.createAd.id}`);
+              // insert
+              router.push(`/ads/ad/`);
             } catch (e: any) {
               console.log(e);
               setError(e.message ? e : e.errors[0]);

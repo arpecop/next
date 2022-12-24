@@ -11,7 +11,6 @@ import SubForm from "@/components/forms/SubForm";
 import useLocalStorage from "@/components/hooks/storage";
 
 import Input from "@/components/forms/inputs/Input";
-import { API, graphqlOperation, mutations } from "@/components/db";
 
 interface State {
   action?:
@@ -97,21 +96,6 @@ const AuthPage = ({ refer }: { refer: string }) => {
     const data = await Auth.currentAuthenticatedUser();
     console.log(data);
     try {
-      await API.graphql(
-        graphqlOperation(mutations.createAd, {
-          input: {
-            id: data.attributes.sub,
-            sortID: "users",
-            condition: "USER",
-            title: data.username,
-            type: "user",
-            description:
-              data.attributes.email ||
-              data.signInUserSession.idToken.payload.email ||
-              "",
-          },
-        })
-      );
       Router.push(refer);
       setUser({
         username: data.username,

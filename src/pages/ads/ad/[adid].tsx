@@ -1,6 +1,6 @@
 import { NextApiRequest } from "next";
 import { Ad } from "src/API";
-import { queries } from "@/components/db";
+
 import Layout from "@/components/Main";
 
 import { SideBarContainer } from "../";

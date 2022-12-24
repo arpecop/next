@@ -1,15 +1,15 @@
-import { Field } from '/pages/ads/';
-import Checkbox from '@/components/forms/inputs/Checkbox';
-import Radio from '@/components/forms/inputs/Radio';
-import Select from '@/components/forms/inputs/Select';
+import Checkbox from "@/components/forms/inputs/Checkbox";
+import Radio from "@/components/forms/inputs/Radio";
+import Select from "@/components/forms/inputs/Select";
 
-import Input from '@/components/forms/inputs/Input';
-import dynamic from 'next/dynamic';
-const Upload = dynamic(() => import('@/components/forms/inputs/Upload'), {
+import Input from "@/components/forms/inputs/Input";
+import dynamic from "next/dynamic";
+const Upload = dynamic(() => import("@/components/forms/inputs/Upload"), {
   suspense: true,
 });
 
-import { groupBy, keyBy } from 'lodash';
+import { groupBy, keyBy } from "lodash";
+import { Field } from "@/pages/ads";
 type Input = {
   type: string;
   name?: string;
@@ -24,10 +24,10 @@ export const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   const submission: { [key: string]: any } = Object.values(e.target)
     .filter(
       (c) =>
-        typeof c.tagName === 'string' &&
-        (c.tagName.toLowerCase() === 'input' ||
-          c.tagName.toLowerCase() === 'textarea' ||
-          c.tagName.toLowerCase() === 'select'),
+        typeof c.tagName === "string" &&
+        (c.tagName.toLowerCase() === "input" ||
+          c.tagName.toLowerCase() === "textarea" ||
+          c.tagName.toLowerCase() === "select")
     )
     .map((x) => {
       return {
@@ -42,21 +42,21 @@ export const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   const chekerInputs = groupBy(
     submission.filter((x: Input) => x.checked),
-    (item) => item.name || item.placeholder,
+    (item) => item.name || item.placeholder
   );
 
   const formInputs = keyBy(
     submission.filter((item: Input) => {
       return (
-        item.type === 'text' ||
-        item.type === 'password' ||
-        item.type === 'hidden' ||
-        item.type === 'number' ||
-        item.type === 'textarea' ||
-        item.type === 'select'
+        item.type === "text" ||
+        item.type === "password" ||
+        item.type === "hidden" ||
+        item.type === "number" ||
+        item.type === "textarea" ||
+        item.type === "select"
       );
     }),
-    (item) => item.name,
+    (item) => item.name
   );
   return { ...chekerInputs, ...formInputs };
 };
@@ -69,20 +69,20 @@ const FormInput = ({
   submitted: boolean;
 }) => {
   switch (inputschema.type) {
-    case 'upload':
+    case "upload":
       return <Upload />;
 
-    case 'region':
+    case "region":
       return (
         <Select
           name='region'
           placeholder='Регион'
           required={true}
           submitted={submitted}
-          options={['1']}
+          options={["1"]}
         />
       );
-    case 'number':
+    case "number":
       return (
         <Input
           type='number'
@@ -93,7 +93,7 @@ const FormInput = ({
           submitted={submitted}
         />
       );
-    case 'textarea':
+    case "textarea":
       return (
         <Input
           type='textarea'
@@ -103,7 +103,7 @@ const FormInput = ({
           submitted={submitted}
         />
       );
-    case 'textarea':
+    case "textarea":
       return (
         <Input
           type='textarea'
@@ -113,7 +113,7 @@ const FormInput = ({
           submitted={submitted}
         />
       );
-    case 'select':
+    case "select":
       return (
         <Select
           name={inputschema.name}
@@ -123,7 +123,7 @@ const FormInput = ({
           options={inputschema.options}
         />
       );
-    case 'hidden':
+    case "hidden":
       return (
         <Input
           type='hidden'
@@ -133,17 +133,17 @@ const FormInput = ({
           value={inputschema.value}
         />
       );
-    case 'checkbox':
+    case "checkbox":
       return (
         <Checkbox
           name={inputschema.name}
           placeholder={inputschema.placeholder}
           required={inputschema.required}
-          options={inputschema.options || ['']}
+          options={inputschema.options || [""]}
           submitted={submitted}
         />
       );
-    case 'radio':
+    case "radio":
       return (
         <Radio
           name={inputschema.name}

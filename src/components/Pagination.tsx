@@ -1,6 +1,4 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { queries, mutations } from "./db";
 
 export function generateHash() {
   const possibleSymbols =
