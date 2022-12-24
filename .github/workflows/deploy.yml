@@ -1,3 +1,4 @@
+name: Deploy eziktok.com
 on: push
 jobs:
   build:
