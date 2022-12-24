@@ -1,13 +1,12 @@
 import AdItem from "@/components/ads/AdItem";
 import CatButton from "@/components/ads/CatButton";
-import { API, DataStore } from "@/components/db";
+
 import Layout from "@/components/Main";
 
 import { GetServerSideProps } from "next";
 import { ReactNode } from "react";
 
 import loadStaticFile from "@/components/helpers/loadStaticFile";
-import { Item } from "/src/models";
 
 export type Field = {
   name: string;
@@ -50,7 +49,7 @@ export default function AdsHome({
     color: string;
     slug: string;
   }[];
-  items: [Item];
+  items: any;
 }) {
   return (
     <Layout disableContainer={true}>
@@ -60,7 +59,7 @@ export default function AdsHome({
         ))}
       </SideBarContainer>
       <AdsContainer>
-        {items.map((item) => (
+        {items?.map((item: any) => (
           <AdItem key={item.id} {...item} />
         ))}
       </AdsContainer>
@@ -86,23 +85,7 @@ export const AdsContainer = ({ children }: { children: ReactNode }) => (
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const adsData = await loadStaticFile("adsData");
-  const newItem = {
-    createItemCat: {
-      item: {
-        id: "1111",
-      },
-      cat: {
-        id: "1111",
-        title: "this is cat item",
-      },
-    },
-  };
 
-  const items = await DataStore.query(Item, (c) => c.titl.eq("test"), {
-    page: 0,
-    limit: 30,
-  });
-  console.log(items);
   return {
     props: {
       cats: adsData.map((x) => ({
@@ -111,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         color: x.color,
         icon: x.icon,
       })),
-      items: items,
+      items: [],
     },
   };
 };

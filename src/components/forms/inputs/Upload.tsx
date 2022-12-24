@@ -1,38 +1,40 @@
-import { Amplify, Storage } from 'aws-amplify';
-import { useState } from 'react';
+import Amplify from "@aws-amplify/core";
 
-import Checkbox from './Checkbox';
+import { Storage } from "@aws-amplify/storage";
+import { useState } from "react";
+
+import Checkbox from "./Checkbox";
 
 Amplify.configure({
-  aws_project_region: 'eu-west-1',
+  aws_project_region: "eu-west-1",
   aws_cognito_identity_pool_id:
-    'eu-west-1:2f394adb-6fe3-42e6-9cfb-e552b456a0a8',
-  aws_cognito_region: 'eu-west-1',
-  aws_user_pools_id: 'eu-west-1_R2tLVDqB0',
-  aws_user_pools_web_client_id: '5k2d69fvijvdmpcml3a510eeqd',
-  aws_user_files_s3_bucket: 'eziktokfriendly114941-staging',
-  aws_user_files_s3_bucket_region: 'eu-west-1',
+    "eu-west-1:2f394adb-6fe3-42e6-9cfb-e552b456a0a8",
+  aws_cognito_region: "eu-west-1",
+  aws_user_pools_id: "eu-west-1_R2tLVDqB0",
+  aws_user_pools_web_client_id: "5k2d69fvijvdmpcml3a510eeqd",
+  aws_user_files_s3_bucket: "eziktokfriendly114941-staging",
+  aws_user_files_s3_bucket_region: "eu-west-1",
 });
 
 const Upload = (): JSX.Element => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   const prefix =
-    'https://eziktokfriendly114941-staging.s3.eu-west-1.amazonaws.com/public/';
+    "https://eziktokfriendly114941-staging.s3.eu-west-1.amazonaws.com/public/";
 
   function resizeImage(
     image: HTMLImageElement,
     name: string,
     w: number,
-    h: number,
+    h: number
   ) {
     // Create a temporary canvas element
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     canvas.width = 300;
     canvas.height = 300;
-    const ctx = canvas.getContext('2d') as any;
+    const ctx = canvas.getContext("2d") as any;
     const aspectRatio: number = w / h;
     const imageWidth =
       aspectRatio > 1 ? canvas.width : canvas.height * aspectRatio;
@@ -44,7 +46,7 @@ const Upload = (): JSX.Element => {
     ctx.drawImage(image, 0, 0, w, h, x, y, imageWidth, imageHeight);
     canvas.toBlob(async function (blob) {
       const result = await Storage.put(name, blob, {
-        contentType: 'image/jpg',
+        contentType: "image/jpg",
       });
 
       return `${prefix}${result.key}`;
@@ -56,7 +58,7 @@ const Upload = (): JSX.Element => {
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     const file = target.files![0] as File;
-    const fileName = `${Date.now()}.${file.name.split('.').pop()}`;
+    const fileName = `${Date.now()}.${file.name.split(".").pop()}`;
     const result = await Storage.put(fileName, file);
 
     const liveimg = `${prefix}${result.key}`;
@@ -64,20 +66,20 @@ const Upload = (): JSX.Element => {
     console.log(liveimg);
     setImages([liveimg, ...images]);
     const image = new Image();
-    image.crossOrigin = 'anonymous';
+    image.crossOrigin = "anonymous";
     image.src = liveimg;
     image.onload = () => {
       const resizedImageData = resizeImage(
         image,
         `t_${fileName}`,
         image.width,
-        image.height,
+        image.height
       );
       console.log(resizedImageData);
     };
 
     setLoading(false);
-    setInputValue('');
+    setInputValue("");
   };
 
   const handleDelete = (index: number) => {
@@ -128,7 +130,7 @@ const Upload = (): JSX.Element => {
                   src={url}
                   alt=''
                   width={220}
-                  height={'auto'}
+                  height={"auto"}
                   className='rounded-md'
                 />
               </div>

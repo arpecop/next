@@ -1,16 +1,14 @@
-import CatButton from '@/components/ads/CatButton';
-import { queries } from '@/components/db';
+import CatButton from "@/components/ads/CatButton";
 
-import { AdsDataSchema, SideBarContainer } from '/pages/ads';
+import { AdsDataSchema, SideBarContainer } from "@/pages/ads";
 
-import { API, graphqlOperation } from 'aws-amplify';
-import { GetServerSideProps } from 'next';
-import Link from 'next/link';
+import { GetServerSideProps } from "next";
+import Link from "next/link";
 
-import AdItem from '@/components/ads/AdItem';
-import Layout from '@/components/Main';
-import loadStaticFile from '@/components/helpers/loadStaticFile';
-import { Ad } from 'src/API';
+import AdItem from "@/components/ads/AdItem";
+import Layout from "@/components/Main";
+import loadStaticFile from "@/components/helpers/loadStaticFile";
+import { Ad } from "src/API";
 
 const CatId = ({
   data,
@@ -58,20 +56,12 @@ const CatId = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { catid } = query;
-  const adsData = await loadStaticFile('adsData');
+  const adsData = await loadStaticFile("adsData");
   const data = adsData.find((x) => x.slug === catid) as AdsDataSchema;
-  const items = await API.graphql(
-    graphqlOperation(queries.byCat, {
-      sortDirection: 'ASC',
-      bycat:
-        process.env.NODE_ENV === 'development' ? `${catid}ad1` : `${catid}ads`,
-
-      limit: 30,
-    }),
-  );
+  const items = [] as any;
 
   return {
-    props: { data, items: items.data.adsBySortID.items, catid },
+    props: { data, items, catid },
   };
 };
 

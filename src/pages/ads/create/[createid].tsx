@@ -1,9 +1,9 @@
-import CatButton from '@/components/ads/CatButton';
-import Layout from '@/components/Main';
-import { AdsDataSchema } from '/pages/ads';
+import CatButton from "@/components/ads/CatButton";
+import Layout from "@/components/Main";
 
-import { Ad } from 'src/API';
-import loadStaticFile from '@/components/helpers/loadStaticFile';
+import { Ad } from "src/API";
+import loadStaticFile from "@/components/helpers/loadStaticFile";
+import { AdsDataSchema } from "..";
 
 const CatId = ({ data }: { data: AdsDataSchema; items: [Ad] }) => {
   return (
@@ -34,7 +34,7 @@ export const getServerSideProps = async ({
   query: { createid: string };
 }) => {
   const { createid } = query;
-  const adsData = await loadStaticFile('adsData');
+  const adsData = await loadStaticFile("adsData");
   const data = adsData.find((x) => x.slug === createid) as AdsDataSchema;
 
   return {

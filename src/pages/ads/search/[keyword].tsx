@@ -1,13 +1,13 @@
-import AdItem from '@/components/ads/AdItem';
-import { queries } from '@/components/db';
-import { createSlug } from '@/components/helpers/slug';
-import Layout from '@/components/Main';
-import { API, graphqlOperation } from 'aws-amplify';
-import { NextApiRequest } from 'next';
-import { Ad } from 'src/API';
+import AdItem from "@/components/ads/AdItem";
 
-import loadStaticFile from '@/components/helpers/loadStaticFile';
-import { AdsContainer, AdsDataSchema, Field } from '..';
+import { createSlug } from "@/components/helpers/slug";
+import Layout from "@/components/Main";
+
+import { NextApiRequest } from "next";
+import { Ad } from "src/API";
+
+import loadStaticFile from "@/components/helpers/loadStaticFile";
+import { AdsContainer, AdsDataSchema, Field } from "..";
 
 const CatId = ({
   current,
@@ -24,7 +24,7 @@ const CatId = ({
     <Layout
       disableContainer={false}
       title={current}
-      description={keywords.join(' ')}
+      description={keywords.join(" ")}
     >
       <AdsContainer>
         <div className='fullgridcontaineritem'>
@@ -40,8 +40,8 @@ const CatId = ({
 
 export const getServerSideProps = async (req: NextApiRequest) => {
   const reqs = req.query.keyword as string;
-  const subcatid = reqs.split('_');
-  const adsData = (await loadStaticFile('adsData')) as {
+  const subcatid = reqs.split("_");
+  const adsData = (await loadStaticFile("adsData")) as {
     items: { name: string; slug: string; fields: Field[] }[];
   }[];
 
@@ -53,8 +53,8 @@ export const getServerSideProps = async (req: NextApiRequest) => {
           slug: z.slug,
           fields: z.fields.filter(
             (x) =>
-              (x.name === 'type' && x.options) ||
-              (x.name === 'brand' && x.options),
+              (x.name === "type" && x.options) ||
+              (x.name === "brand" && x.options)
           ),
         };
       });
@@ -63,28 +63,17 @@ export const getServerSideProps = async (req: NextApiRequest) => {
 
   const keywords = data?.fields.flatMap((x: Field) => x.options) as string[];
   const current = keywords.filter((word) => {
-    return createSlug(word || '') === subcatid[2];
+    return createSlug(word || "") === subcatid[2];
   })[0];
 
   //const subcat = data.find((x) => x.slug === req.query.subcatid);
-  const filter = current.split(' ').map((k) => ({
-    query: { contains: k.toLowerCase() },
-  }));
+
   //console.log(filter);
 
-  const items = await API.graphql(
-    graphqlOperation(queries.adsBySortID, {
-      sortID: process.env.NODE_ENV === 'development' ? 'ad1' : 'ads',
-      filter: {
-        query: { contains: filter },
-      },
-      limit: 30,
-      sortDirection: 'DESC',
-    }),
-  );
+  const items = [] as any;
 
   return {
-    props: { current, keywords, items: items.data.adsByDate.items },
+    props: { current, keywords, items },
   };
 };
 

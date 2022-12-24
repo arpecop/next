@@ -9,7 +9,7 @@ function toSofiaTimeZone(date: Date): Date {
 
 const convertToTimeago = (past: Date | string): string => {
   if (!(past instanceof Date)) {
-    return '';
+    return "";
   }
   const timeDiff =
     toSofiaTimeZone(new Date()).getTime() - toSofiaTimeZone(past).getTime();

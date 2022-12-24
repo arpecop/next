@@ -1,15 +1,13 @@
-import AdItem from '@/components/ads/AdItem';
-import { queries } from '@/components/db';
-import { convertToTimeago } from '@/components/helpers/date';
-import { createSlug } from '@/components/helpers/slug';
-import Layout from '@/components/Main';
-import { AdsDataSchema, AdsDataSubcat, SideBarContainer } from '/pages/ads';
+import AdItem from "@/components/ads/AdItem";
 
-import { API, graphqlOperation } from 'aws-amplify';
-import { NextApiRequest } from 'next';
-import Link from 'next/link';
-import { Item } from 'src/API';
-import loadStaticFile from '@/components/helpers/loadStaticFile';
+import { createSlug } from "@/components/helpers/slug";
+import Layout from "@/components/Main";
+import { AdsDataSchema, AdsDataSubcat, SideBarContainer } from "@/pages/ads";
+
+import { NextApiRequest } from "next";
+import Link from "next/link";
+
+import loadStaticFile from "@/components/helpers/loadStaticFile";
 
 const CatId = ({
   keywords,
@@ -21,7 +19,7 @@ const CatId = ({
   ut: Date;
   maincat: { name: string; slug: string };
   data: AdsDataSubcat;
-  items: [Item];
+  items: any;
 }) => {
   return (
     <Layout disableContainer={true}>
@@ -32,7 +30,7 @@ const CatId = ({
               passHref
               className='text-xs bg-slate-800 mx-0.5 text-white rounded-xl px-2 m-1'
               href={`/ads/search/${createSlug(
-                `${data.name}-${maincat.name}`,
+                `${data.name}-${maincat.name}`
               )}_${data.slug}_${createSlug(x)}`}
               key={x}
             >
@@ -57,7 +55,7 @@ const CatId = ({
           </Link>
         </div>
       </div>
-      {items.map((item) => (
+      {items?.map((item: any) => (
         <AdItem key={item.id} {...item} />
       ))}
     </Layout>
@@ -65,43 +63,31 @@ const CatId = ({
 };
 
 export const getServerSideProps = async (req: NextApiRequest) => {
-  const adsData = await loadStaticFile('adsData');
+  const adsData = await loadStaticFile("adsData");
   const data = adsData.find(
-    (x) => x.slug === req.query.catid?.[0],
+    (x) => x.slug === req.query.catid?.[0]
   ) as AdsDataSchema;
   const subcat = data.items.find((x) => x.slug === req.query.catid?.[1]);
   const fiveMinutesAgo = new Date();
   fiveMinutesAgo.setMinutes(fiveMinutesAgo.getMinutes() - 5);
   const thirtyDaysAgo = new Date();
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-  const items = await API.graphql(
-    graphqlOperation(queries.adsBySortID, {
-      sortID: process.env.NODE_ENV === 'development' ? 'ad1' : 'ads',
-      filter: {
-        cat: { eq: req.query.catid?.[1] },
-      },
-      limit: 30,
-      // sortDirection: 'DESC',
-    }),
-  );
+
   const keywords = subcat?.fields
     .filter(
       (field) =>
-        (field.name === 'type' && field.options) ||
-        (field.name === 'brand' && field.options),
+        (field.name === "type" && field.options) ||
+        (field.name === "brand" && field.options)
     )
     .flatMap((x) => x.options)
-    .filter((x) => !x?.includes('Друг'));
+    .filter((x) => !x?.includes("Друг"));
 
   //insert();
   return {
     props: {
       keywords,
       data: subcat,
-      items: items.data.adsBySortID.items?.map((item: Item) => ({
-        ...item,
-        createdAt: convertToTimeago(new Date(item.createdAt)),
-      })),
+      items: [] as any,
       maincat: { name: data.name, slug: data.slug },
     },
   };

@@ -1,7 +1,7 @@
-import { Auth } from 'aws-amplify';
-import { useTheme } from 'next-themes';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { Auth } from "@aws-amplify/auth";
+import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 //import useLocalStorage from './hooks/storage';
 
@@ -26,7 +26,7 @@ const TopNav = ({ className }: { className: string }) => {
   const [user, setUser] = useState<{ username: string } | undefined>();
   const { theme, setTheme } = useTheme();
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
 
     if (user) {
       setUser(JSON.parse(user));
@@ -35,13 +35,13 @@ const TopNav = ({ className }: { className: string }) => {
 
   const switchTheme = () => {
     if (!theme) {
-      setTheme('light');
+      setTheme("light");
     }
-    if (theme === 'light') {
-      setTheme('dark');
+    if (theme === "light") {
+      setTheme("dark");
     }
-    if (theme === 'dark') {
-      setTheme('light');
+    if (theme === "dark") {
+      setTheme("light");
     }
   };
 
@@ -55,7 +55,7 @@ const TopNav = ({ className }: { className: string }) => {
           <div
             className='navlink'
             onClick={() => {
-              localStorage.removeItem('user');
+              localStorage.removeItem("user");
               setUser(undefined);
               Auth.signOut();
             }}
@@ -78,7 +78,7 @@ const TopNav = ({ className }: { className: string }) => {
         <label className='rotateswap swap'>
           <input
             type='checkbox'
-            defaultChecked={theme === 'dark'}
+            defaultChecked={theme === "dark"}
             onClick={() => switchTheme()}
           />
           <svg

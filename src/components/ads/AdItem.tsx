@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import type { Ad } from '../../src/API';
-import { convertToTimeago } from '../helpers/date';
+import Link from "next/link";
+import type { Ad } from "@/API";
+import { convertToTimeago } from "../helpers/date";
 
 const AdItem = ({
   id,
@@ -16,13 +16,13 @@ const AdItem = ({
     <Link
       href={`/ads/ad/${id}`}
       className={
-        'w-full rounded-xl bg-gradient-to-r from-[#D8B4FE] to-[#818CF8] p-0.5 transition-all hover:scale-[1.01] '
+        "w-full rounded-xl bg-gradient-to-r from-[#D8B4FE] to-[#818CF8] p-0.5 transition-all hover:scale-[1.01] "
       }
     >
       <div className='relative flex h-full w-full flex-col justify-between rounded-lg bg-gray-900  first-letter: dark:bg-white'>
         <>
           <div className='flex h-40 w-full overflow-hidden  items-center justify-center relative'>
-            {condition === 'NEW' && (
+            {condition === "NEW" && (
               <span className='absolute top-2 left-2 p-0.5 bg-red-800   px-2 rounded-md  text-xs text-slate-300'>
                 НОВ
               </span>
@@ -34,15 +34,15 @@ const AdItem = ({
             )}
 
             <div className='text-xs absolute left-2 bottom-2'>
-              {convertToTimeago(new Date(createdAt))}
+              {convertToTimeago(new Date())}
             </div>
           </div>
           {price && price > 0 && (
             <div className='absolute top-2 right-2  p-0.5 bg-red-800 px-2 rounded-md   text-2xl font-light text-slate-300'>
               {JSON.stringify(price)}
-              <span className='absolute ml-1 text-sm'>{currency || 'лв.'}</span>
+              <span className='absolute ml-1 text-sm'>{currency || "лв."}</span>
               <span className='ml-1 text-red-800 text-sm'>
-                {currency || 'лв.'}
+                {currency || "лв."}
               </span>
             </div>
           )}
