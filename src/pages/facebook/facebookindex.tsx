@@ -57,46 +57,53 @@ const Facebook = ({
 					noIndex={shareid}
 				/>
 			}
+			noContainer
 		>
-			{!imageLoaded && app && <LoadingResult name={pre.error || app?.cat} />}
-			{pre.id && !pre.error && (
-				<img
-					className={
-						imageLoaded
-							? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
-							: "hidden"
-					}
-					src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
-					alt=''
-					onLoad={() => setImageLoaded(true)}
-				/>
-			)}
+			<div className='flex justify-center items-center'>
+				{!imageLoaded && app && <LoadingResult name={pre.error || app?.cat} />}
+				{pre.id && !pre.error && (
+					<img
+						className={
+							imageLoaded
+								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
+								: "hidden"
+						}
+						src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
+						width='640'
+						height='336'
+						style={{ maxWidth: 640 }}
+						alt=''
+						onLoad={() => setImageLoaded(true)}
+					/>
+				)}
+			</div>
 			{app?.personalisations && <div> </div>}
 
-			{app && (
-				<div>
-					<div className='flex justify-center items-center my-3'>
-						<FacebookShare
-							disabled={imageLoaded ? false : true}
-							text={app?.button}
-							id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
-						/>
+			<div className='container mx-auto'>
+				{app && (
+					<div>
+						<div className='flex justify-center items-center my-3'>
+							<FacebookShare
+								disabled={imageLoaded ? false : true}
+								text={app?.button}
+								id={"https://kloun.lol/fb/" + pre.slug + "/" + pre.id}
+							/>
+						</div>
+						<p>{app?.description}</p>
 					</div>
-					<p>{app?.description}</p>
+				)}
+				<ins
+					className='adsbygoogle'
+					style={{ display: "block", textAlign: "center" }}
+					data-ad-layout='in-article'
+					data-ad-format='fluid'
+					data-ad-client='ca-pub-5476404733919333'
+					data-ad-slot='1374619867'
+				/>
+				<Nav cats={cats} prefix='fb' />
+				<div className='my-10 flex w-full flex-col'>
+					<div className='flex flex-wrap' />
 				</div>
-			)}
-
-			<ins
-				className='adsbygoogle'
-				style={{ display: "block", textAlign: "center" }}
-				data-ad-layout='in-article'
-				data-ad-format='fluid'
-				data-ad-client='ca-pub-5476404733919333'
-				data-ad-slot='1374619867'
-			/>
-			<Nav cats={cats} prefix='fb' />
-			<div className='my-10 flex w-full flex-col'>
-				<div className='flex flex-wrap' />
 			</div>
 		</Main>
 	);

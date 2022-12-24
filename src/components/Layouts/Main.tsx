@@ -8,6 +8,7 @@ type IMainProps = {
 	children: ReactNode;
 	hideFooter?: boolean;
 	title?: string;
+	noContainer?: boolean;
 };
 
 const Main = (props: IMainProps) => {
@@ -28,9 +29,13 @@ const Main = (props: IMainProps) => {
 		<div className='flex min-h-screen flex-col'>
 			{props.meta}
 			<Header title={props.title} />
-			<main className='container mx-auto flex grow flex-col justify-center   z-30'>
-				{props.children}
-			</main>
+			{props.noContainer ? (
+				<main className='flex grow flex-col z-30'>{props.children}</main>
+			) : (
+				<main className='container mx-auto flex grow flex-col justify-center z-30'>
+					{props.children}
+				</main>
+			)}
 
 			<Footer hideFooter={props.hideFooter} />
 		</div>

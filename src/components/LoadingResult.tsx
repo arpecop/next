@@ -1,5 +1,8 @@
 export const ResultWrapper = ({ children }: { children: any }) => (
-	<div className='container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 h-fit'>
+	<div
+		className='container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 h-fit'
+		style={{ maxWidth: 640 }}
+	>
 		<div className='flex justify-center items-center  m-1 rounded-lg relative overflow-hidden   bg-black/80'>
 			{children}
 		</div>
@@ -39,9 +42,9 @@ const LoadingResult = ({ name }: { name?: string }) => (
 
 		<svg
 			className='w-full h-full  '
-			width='1200'
-			height='630'
-			viewBox='0 0 1200 630'
+			width='640'
+			height='336'
+			viewBox='0 0 640 336'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		/>
