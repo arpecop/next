@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>jQuery Knob demo</title>
+        <script src="jq.js"></script>
+
+        <style type="text/css">
+        body {
+          margin: 0px;
+          padding: 0px
+          font-family: "Open Sans";
+          font-weight: lighter;
+
+
+        }
+
+        div, input {
+  font-family: "Open Sans";
+          font-weight: lighter;
+
+        }
+
+       .demo {width: 600px;
+       	height: 315px;
+       	 position: fixed;
+       	 top: 0px;
+       	 }
+       	 #quote {width: 200px; height: 200px;   top:138px; left:90px;   	 position: absolute; width: 446px; height: 100px;
+   -webkit-transform: rotate(-2deg); text-align: center; font-size:22px; /* Chrome, Safari, Opera */
+   z-index: 2;
+   line-height: 22px;
+color:#34495e;
+
+
+   -webkit-font-smoothing: antialiased;
+       	 }
+        #userimg {margin-top: 52px; width: 80px; height: 80px; margin-left: 262px;}
+        </style>
+    </head>
+
+    <body>
+
+
+      <img id="userimg" src=""></img>
+        <div class="demo">
+
+
+        <div id="quote"><span></span> </div>
+        <img src="back.png">
+        </div>
+
+      <script type="text/javascript">
+      (function($) {
+        $.fn.textfill = function(maxFontSize) {
+          maxFontSize = parseInt(maxFontSize, 10);
+          return this.each(function(){
+            var ourText = $("span", this),
+            parent = ourText.parent(),
+            maxHeight = parent.height(),
+            maxWidth = parent.width(),
+            fontSize = parseInt(ourText.css("fontSize"), 10),
+            multiplier = maxWidth/ourText.width(),
+            newSize = (fontSize*(multiplier-0.1));
+            ourText.css(
+              "fontSize",
+              (maxFontSize > 0 && newSize > maxFontSize) ?
+              maxFontSize :
+              newSize
+            );
+          });
+        };
+      })(jQuery);
+
+     var json =    {
+    "appid": "333747356705341",
+    "appname": "Коледна баница с късмети",
+    "button": "Виж какво ти се пада",
+    "image": "images/clock.gif",
+    "infotext": "Резултат {*actor*} ",
+    "items": [{  "info": "Едно нестихващо веселие ще бъде твоето ежедневие"
+    }, { "info": "Едно нестихващо веселие ще бъде твоето ежедневие"
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/2.jpg",
+      "info": "Богата нова година, ама яка гърбина"
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/3.jpg",
+      "info": "Любов необяснима през цялата нова година!"
+    }, {
+
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/4.jpg",
+      "info": "Увенчани с успех дела - за награда - нова кола!"
+    }, {
+
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/5.jpg",
+      "info": "Джакпот изтегли днес - ще караш Мерцедес "
+    }, {
+
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/6.jpg",
+      "info": "Любов сърцето ти ще грее, когато зима преспи вее"
+    }, {
+
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/7.jpg",
+      "info": "Ще заживееш в новата си къща. А тъщата?"
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/8.jpg",
+      "info": "Кристална капка. Дали е жива вода или сълзица?"
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/9.jpg",
+      "info": "Усмивка, смях. Не ги пази! Раздавай! За да усетиш"
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/10.jpg",
+      "info": "Купони предстоят ти щури с отлежало уиски и хавански пури. "
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/11.jpg",
+      "info": "Предстои за теб велик и жадуван звезден миг. "
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/12.jpg",
+      "info": "Надеждата в живота ти навлиза с билет самолетен и виза. "
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/13.jpg",
+      "info": "Новата година нов късмет ти праща - работа намираш подходяща. "
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/14.jpg",
+      "info": "Мечтите ти крила ти дават и от сън реалност стават. "
+    }, {
+
+      "newurl": "https://arpecop.net/angel/tab/data/kolednaimg/15.jpg",
+      "info": " В бизнеса постигаш завидни резултати. "
+    }, {
+
+      "info": "Приятели ще имаш верни, щури, диви и модерни. "
+    }, {
+
+
+      "info": "С Новата година късмет избра си нов ще намериш свойта истинска любов."
+    }, {
+
+
+
+      "info": "В игра джакпота ще уцелиш и крупна сума ще спечелиш. "
+    }, {
+
+
+      "info": "Ще имаш приятели нови, за тебе на всичко готови. "
+    }, {
+
+
+      "info": "Тоз късмет за теб утеха - вървиш нагоре към успеха."
+    }, {
+
+
+      "info": "Голям късмет избра си, браво, ще се радваш на отлично здраве. "
+    }, {
+
+
+      "info": "И тази година добър късмет улучи - пада ти се здраве и благополучие. "
+    }, {
+
+
+      "info": "Ще те стигне на Славито славата, щом се трудиш усърдно и здравата. "
+    }, {
+
+
+      "info": "Майка ти ще се зарадва, че ще вдигнеш бурна сватба. "
+    }, {
+
+
+      "info": "Забравил всякакъв комплекс, ще мислиш ти само за секс "
+    }, {
+
+
+      "info": "Смело пристъпвяй напред, късметът ще е с теб навред. "
+    }, {
+
+
+      "info": "Ще се сбъдне твоята мания - да си душа на цялата компания. "
+    }, {
+
+
+      "info": "Очаква те радост голяма - супер екскурзия за двама. "
+    }, {
+
+
+      "info": "Мързелът ти куфара си стяга, от теб далече ще избяга. "
+    }, {
+
+      "info": "Честити и успешни ще са дните, славата те следва по петите. "
+    }
+    , { "info": "Пада ти се днес парата – няма вече до заплата ,да се чудиш и се маеш , как да свържеш двата края.."}
+    , { "info": "Бяла спретната къщурка с две коли отпред ,и мадама за притурка – туй е твоят нов късмет!"}
+    , { "info": "На тебе Мързелът се пада – да мързелуваш ти приляга! Съвсем ще му отпуснеш края, но късмета ще намериш, зная!"}
+    , { "info": "А за теб ще е Веселие, това ще е нормално ежедневие. Ще се редят купон подир купон, от теб се чака да им даваш тон."}
+    , { "info": "На теб Учение се пада, май това ти най-приляга. Не измисляй как да кръшкаш, имаш още изпити да тръшкаш!"}
+    , { "info": "Пада ти се ненадейно много щастие семейно!"}
+    , { "info": "Година те чака красива, съдбовна, ще бъдеш в плен на магия любовна!"}
+    , { "info": "Голям късмет избра си, браво – ще се радваш на отлично здраве!"}
+    , { "info": "Тази Коледа реши теб с награда да дари – получаваш безвъзмездно нещо ново и модерно! Ще ни возиш ли, кажи, в колата нова с две врати?"},
+    {
+
+      "info": "Честити и успешни ще са дните, славата те следва по петите. "
+    }
+    ],
+    "scope": "publish_stream,read_stream",
+    "slug": "predishen",
+    "url": "https://www.facebook.com/photo.php?fbid=333747630038647"
+  }
+
+
+
+      function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var rid = getRandomInt(0, json.items.length - 1)
+var randomquote = json.items[rid].info;
+$('#quote').text(randomquote);
+
+ var data = "(:preres:)".split('/');
+
+$('#quote span').text(randomquote);
+$("#quote").textfill();
+
+
+var prevdata = (:stringified:);
+ prevdata.description  = '(:result:) '+randomquote;
+  $.post( "http://arpecop.com/db", prevdata );
+
+
+
+
+
+  $('#userimg').attr("src","http://arpecop.com/userimg/"+data[0]+".jpg");
+
+
+
+      </script>
+
+
+
+
+    </body>
+</html>

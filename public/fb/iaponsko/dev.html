@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title></title> 
+
+
+
+	<style type="text/css">
+ 
+ 
+	 div, span {
+ 
+
+font-family: 'Open Sans',Arial;
+	}
+	body {
+    background-image: url(bacl.jpg);
+    margin: 0px;
+		font-family: 'Open Sans',Arial;
+		color: #FFF;
+	}
+
+	.letter {font-size: 35px;  height: 350px;    
+	  text-shadow: 0px 0px 11px rgba(150, 150, 150, 1); 
+	  text-transform: uppercase;
+	  		font-family: 'Open Sans',Arial;
+	    height: 20px;
+ 
+	  float: left;
+    
+	  height: 60px;
+      
+	    }
+	#name {display: none;}
+	#name1 {margin-left: auto; margin-right: auto;}
+ 	.word {
+    color: #34495e;
+    font-weight: 400;
+text-shadow: 2px 1px 0px rgba(0, 0, 0, 1);
+    font-weight: 400; font-size: 20px;   text-transform: uppercase; max-width:5px;  
+
+    color: #FFF;
+
+position: fixed;
+ top: 150px;
+ margin-left: 7px;
+}
+  #cont { 
+     
+    height: 115px;
+  
+    overflow: hidden;
+  
+    padding-top: 165px; 
+ margin-right: auto;
+ margin-left: auto;
+  }
+  
+	</style>
+	<script src="jq.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body> 
+	<div id="cont">
+<div id="name">(:result:)</div>
+<div id="name1"> </div>
+<div id="name2"> </div>
+</div>
+<script type="text/javascript">
+
+//
+var males = function (bukva) {
+    // body...
+ 
+    if (bukva == "a" || bukva == "а") {
+        return "ка";
+    } else if (bukva == "б" || bukva == "b") {
+        return "зу";
+    } else if (bukva == "в" || bukva == "v") {
+        return "ру ";
+    } else if (bukva == "г" || bukva == "g") {
+        return "жи";
+    } else if (bukva == "д" || bukva == "d") {
+        return "те ";
+    } else if (bukva == "е" || bukva == "e") {
+        return "ку";
+    } else if (bukva == "ж" || bukva == "j") {
+        return "су";
+    } else if (bukva == "з" || bukva == "z") {
+        return "з";
+    } else if (bukva == "и" || bukva == "i") {
+        return "ки";
+    } 
+else if (bukva == "й"  ) {
+        return "ки";
+    }
+    else if (bukva == "к" || bukva == "k") {
+        return "ме";
+    } else if (bukva == "л" || bukva == "l") {
+        return "та";
+    } else if (bukva == "м" || bukva == "m") {
+        return "рин";
+    } else if (bukva == "н" || bukva == "n") {
+        return "то";
+    } else if (bukva == "о" || bukva == "o") {
+        return "мо";
+    } else if (bukva == "п" || bukva == "p") {
+        return "но";
+    } else if (bukva == "р" || bukva == "r") {
+        return "ши ";
+    } else if (bukva == "с" || bukva == "s") {
+        return "ари";
+    } else if (bukva == "т" || bukva == "t") {
+        return "чи";
+    } else if (bukva == "у" || bukva == "u") {
+        return "до";  
+    } else if (bukva == "ф" || bukva == "f") {
+        return "лу";
+    }  else if (bukva == "х" || bukva == "h") {
+        return "ри";
+    } 
+    else if (bukva == "ч") {
+        return "ке";
+    }
+    else if (bukva == "щ") {
+        return "хи";
+    }
+
+    else if (bukva == "ш") {
+        return "хи";
+    }
+
+      else if (bukva == "ю") {
+        return "мей";
+    }
+   else if (bukva == "я") {
+        return "фу";
+    }
+    else if (bukva == "ц" || bukva == "c") {
+        return "ми";
+    } else {
+        return " ";
+    }
+
+ }
+//
+
+  
+
+//a - artistichen
+//b blagoroden
+//v - veren
+// grijoven
+//dobar
+// elegenten
+//jiznen
+//instinski
+//#c0392b female
+//#8e44ad male
+//
+Array.prototype.chunk = function(chunkSize) {
+    var array=this;
+    return [].concat.apply([],
+        array.map(function(elem,i) {
+            return i%chunkSize ? [] : [array.slice(i,i+chunkSize)];
+        })
+    );
+}
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+
+var name = $('#name').text().toLowerCase();
+var arr = $(name.split(''));
+var last_char1 = arr.length - 1;
+var lc = arr[last_char1];
+ 
+ 
+var getproperty = males;
+ 
+
+ var x = [];
+$.each(arr,function  (index,val) {
+	var ass = getproperty(val);
+    x.push(ass);
+	 $('#name1').append('<div class="'+val+' letter '+index+'" id="'+val+'"><div class="white" style="height:2px; width:90%; margin-left:auto; margin-right:auto; background-color:#FFF;"></div><span class="word word'+val+'" style="margin-top:-20px;">'+val+'</span>'+ass+'</div>')
+});
+
+
+var chunkz = Math.round(arr.length / 2);
+var chunky  = x.chunk(chunkz)
+
+var prevdata = (:stringified:);
+var fname = chunky[0].join('').capitalize().replace(' ','');
+var sname = chunky[1].join('').capitalize().replace(' ','');
+ prevdata.description  = '(:result:) -  '+fname+ ' '+sname;
+ console.log(prevdata)
+  $.post( "http://arpecop.com/db", prevdata );
+
+ var arrlngth = arr.length - 1;
+  
+
+
+var pos = $('.'+arrlngth).position().left;
+var end = Math.round(80 + pos );
+$('#cont').css( { width : end+"px" } );
+ 
+
+ 
+
+  $.each($('#name1 .letter'),function  (index,val) {
+ 
+  	var wdth = $(this).width();
+  	var id = $(this).attr('id');
+  	if (index == arrlngth) {
+  	var position = $(this).position().left + wdth;	
+
+   
+  //
+  	};
+  	
+ 
+
+ 	var newwd = wdth / 2 - 2;
+ 
+  
+ $('.word'+id).css( { marginLeft : newwd+"px" } );
+ 
+  
+
+  })
+
+ 
+ 
+window.callPhantom('takeShot');
+</script>
+
+
+ <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Open+Sans::latin,cyrillic' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+</body>
+</html>

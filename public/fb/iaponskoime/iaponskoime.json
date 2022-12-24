@@ -1,0 +1,961 @@
+{
+  "appid" : "132139833633587",
+  "appname" : "Японското ти Име",
+  "button" : "Провери",
+  "callfunction" : true,
+  "image" : "images/age.jpg",
+  "infotext" : "<h1>Харесай</h1>Подкрепете приложението натискайки бутона &quot;Харесва Ми&quot; , така също ще отключите скрити екстри и допълнителни приложения",
+  "items" : [
+  {
+    "id" : "index-0",
+    "info" : "АКИ (1 - 秋, 2 - 明, 3 - 晶):  : 1) \"есент\" 2) \"ярък\" 3) \"блясък\".  ",
+    "key" : "index-0",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390133841890"
+  },
+  {
+    "id" : "index-1",
+    "info" : "Акихико (明彦):    \"принц.\"",
+    "key" : "index-1",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394210508149"
+  },
+  {
+    "id" : "index-10",
+    "info" : "Дайсуке (大 辅): \"Голям помощник\"   ",
+    "key" : "index-10",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391167175120"
+  },
+  {
+    "id" : "index-100",
+    "info" : "Сатоши (聡): \". Ясно мислене; бърз ум; мъдър\"   ",
+    "key" : "index-100",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390237175213"
+  },
+  {
+    "id" : "index-101",
+    "info" : "Сеичи (精一):    \"рафинирано първо .\"",
+    "key" : "index-101",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390263841877"
+  },
+  {
+    "id" : "index-102",
+    "info" : "Сейджи (精 二): \". Рафинирано втори \"   ",
+    "key" : "index-102",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390283841875"
+  },
+  {
+    "id" : "index-103",
+    "info" : "Шичиро (七郎):    \"седмият син.\"",
+    "key" : "index-103",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390327175204"
+  },
+  {
+    "id" : "index-104",
+    "info" : "Шигео (重 夫): \". Буен човек\"   ",
+    "key" : "index-104",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390383841865"
+  },
+  {
+    "id" : "index-105",
+    "info" : "Шигеру (茂):    \"разцвет; буен.\"",
+    "key" : "index-105",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390420508528"
+  },
+  {
+    "id" : "index-106",
+    "info" : "Шин (1 - 晋, 2 - 信, 3 - 绅, 4 - 心, 5 - 慎, 6 - 新, 7 - 进, 8 - 真):  1) \"напредък\", 2) \"вяра\" 3) \"джентълмен\", 4) \"сърце\" 5) \"смирен\", 6) \"ново\", 7) \"прогресивна\", и 8) \"е истина.\" Сравни с друга форма на Shin.",
+    "key" : "index-106",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390467175190"
+  },
+  {
+    "id" : "index-108",
+    "info" : "Шинджи (真 二): \". Вярно втори \"   ",
+    "key" : "index-108",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391133841790"
+  },
+  {
+    "id" : "index-109",
+    "info" : "Широ (四郎):    \"четвърти син.\"",
+    "key" : "index-109",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391197175117"
+  },
+  {
+    "id" : "index-11",
+    "info" : "Ейджи (1 - 永 次, 2 - 英 治, 3 - 英 二, 4 - 栄 治):  1) \"вечността\", 2) \"велик, мир\", 3) \"велик ,\" или 4) \"просперитет, мир.\" ",
+    "key" : "index-11",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391770508393"
+  },
+  {
+    "id" : "index-110",
+    "info" : "Шо (翔):    \"да лети, да се издигне\" или \"духов инструмент.\"",
+    "key" : "index-110",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391250508445"
+  },
+  {
+    "id" : "index-111",
+    "info" : "Шоичи (翔 一): \". Покачващите първи \"  ",
+    "key" : "index-111",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391333841770"
+  },
+  {
+    "id" : "index-112",
+    "info" : "Шоджи (翔 二): \". Покачващите втори \"   ",
+    "key" : "index-112",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391357175101"
+  },
+  {
+    "id" : "index-113",
+    "info" : "Шуичи (修 一): \". Капитан   \"   ",
+    "key" : "index-113",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391430508427"
+  },
+  {
+    "id" : "index-114",
+    "info" : "Шуджи (修 二): \". Капитан  \"  ",
+    "key" : "index-114",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391473841756"
+  },
+  {
+    "id" : "index-115",
+    "info" : "Сора (空):    \"небе\".",
+    "key" : "index-115",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391517175085"
+  },
+  {
+    "id" : "index-116",
+    "info" : "Сузуму (进):    \"напредва\".",
+    "key" : "index-116",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391607175076"
+  },
+  {
+    "id" : "index-117",
+    "info" : "Тадао (忠 夫): \". Лоялен човек\"   ",
+    "key" : "index-117",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391653841738"
+  },
+  {
+    "id" : "index-118",
+    "info" : "Тадаши (1 - 忠, 2 - 正):  1) \"лоялен\" или 2) \"е истина.\"",
+    "key" : "index-118",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391727175064"
+  },
+  {
+    "id" : "index-119",
+    "info" : "Такахиро (贵 浩): \". Благородна-просперираща\"   ",
+    "key" : "index-119",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391817175055"
+  },
+  {
+    "id" : "index-12",
+    "info" : "Горо (五郎): Variant правописа на  Gorou, което  \"пети син.\"",
+    "key" : "index-12",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392657174971"
+  },
+  {
+    "id" : "index-120",
+    "info" : "Такао (孝 雄): \". Уважително герой / мъжки\"   ",
+    "key" : "index-120",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391847175052"
+  },
+  {
+    "id" : "index-121",
+    "info" : "Такаши (隆):    \"повишен; похвално.\"",
+    "key" : "index-121",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163391957175041"
+  },
+  {
+    "id" : "index-122",
+    "info" : "Такаюки (隆 行): \". Движи на височина\"  ",
+    "key" : "index-122",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392000508370"
+  },
+  {
+    "id" : "index-123",
+    "info" : "Takehiko (1 - 雄 彦, 2 - 岳 彦):  1) \"герой принц\", или 2) \"планински принц.\"",
+    "key" : "index-123",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392093841694"
+  },
+  {
+    "id" : "index-124",
+    "info" : "Такео (1 - 刚 雄, 2 - 武雄):  1) храбри мъже, \"или\" насилствени / мъжки воин \".",
+    "key" : "index-124",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392200508350"
+  },
+  {
+    "id" : "index-125",
+    "info" : "Такеши (武):    \"свирепи, насилие,\" следователно \"воин\".",
+    "key" : "index-125",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392260508344"
+  },
+  {
+    "id" : "index-126",
+    "info" : "Takumi (1 - 巧, 2 - 匠, 3 - 工):  1) \"умело\", 2) \"специалист\", или 3) \"умен��я.",
+    "key" : "index-126",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392397174997"
+  },
+  {
+    "id" : "index-127",
+    "info" : "Tamotsu (保):  \". Защитник, покровител\"",
+    "key" : "index-127",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392493841654"
+  },
+  {
+    "id" : "index-128",
+    "info" : "Таро (太郎):    \"велик син\" или \"най-големият син.\" Тя обикновено се дава на първороден син.",
+    "key" : "index-128",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392593841644"
+  },
+  {
+    "id" : "index-129",
+    "info" : "Тацуо (1 - 竜 夫, 2 - 达夫, 3 - 龙 雄):  1) \"дракон човек\", 2) \"мащабен човек\", или 3) \". Имперски човек\"",
+    "key" : "index-129",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392693841634"
+  },
+  {
+    "id" : "index-13",
+    "info" : "Хачиро (八郎):    \"осмия син.\"",
+    "key" : "index-13",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393190508251"
+  },
+  {
+    "id" : "index-130",
+    "info" : "Тацуя (竜 也): \". Дракон  \"   ",
+    "key" : "index-130",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392723841631"
+  },
+  {
+    "id" : "index-131",
+    "info" : "Tеруо (辉男):    \"блестящ мъж.\"",
+    "key" : "index-131",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392790508291"
+  },
+  {
+    "id" : "index-132",
+    "info" : "Тецуо (1 - 哲雄, 2 - 哲夫):  1) \"мъдър герой\" или \"мъдър човек.\"",
+    "key" : "index-132",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392887174948"
+  },
+  {
+    "id" : "index-133",
+    "info" : "Тецуя (哲 哉):    \"мъдрец-(? Страдание)\"",
+    "key" : "index-133",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392913841612"
+  },
+  {
+    "id" : "index-134",
+    "info" : "Томио (富):    \"ценен човек\".",
+    "key" : "index-134",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163392963841607"
+  },
+  {
+    "id" : "index-135",
+    "info" : "Тоши (慧):    \"сигнал, светъл, интелигентен.\"",
+    "key" : "index-135",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393033841600"
+  },
+  {
+    "id" : "index-136",
+    "info" : "Тошияки (1 - 利明, 2 - 敏明, 3 - 寿 明): \". Светъл и щастлив\"   ",
+    "key" : "index-136",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393087174928"
+  },
+  {
+    "id" : "index-137",
+    "info" : "Тошио (俊 夫): \"Брилянтен човек\"   ",
+    "key" : "index-137",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393120508258"
+  },
+  {
+    "id" : "index-138",
+    "info" : "Тошиюко (敏 幸): \". Умен и щастлив\"   ",
+    "key" : "index-138",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393160508254"
+  },
+  {
+    "id" : "index-139",
+    "info" : "Цунео (恒 雄, 恒 夫): \". Вечния човек\"  1) \"вечен герой\" или 2)",
+    "key" : "index-139",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393213841582"
+  },
+  {
+    "id" : "index-14",
+    "info" : "Хажиме (肇, 元):  \". Начало\"",
+    "key" : "index-14",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393593841544"
+  },
+  {
+    "id" : "index-140",
+    "info" : "Цутому (努): \"работник\".",
+    "key" : "index-140",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393267174910"
+  },
+  {
+    "id" : "index-141",
+    "info" : "Цуоши (刚):    \"смел, храбър\".",
+    "key" : "index-141",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393310508239"
+  },
+  {
+    "id" : "index-142",
+    "info" : "Ясухиро (1 - 泰 裕, 2 - 泰 弘, 3 - 恭 弘, 4 - 泰博):  1) \"спокойна и спокойно\", 2) \"най-спокойна\", 3) \"най-уважително, и 4)\" изобилие спокойствие. \"",
+    "key" : "index-142",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393340508236"
+  },
+  {
+    "id" : "index-143",
+    "info" : "Ясуо (康夫):    \"здрав човек.\"",
+    "key" : "index-143",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393373841566"
+  },
+  {
+    "id" : "index-144",
+    "info" : "Ясуши (靖):    \"спокоен, тих.\"",
+    "key" : "index-144",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393407174896"
+  },
+  {
+    "id" : "index-145",
+    "info" : "Юичи (1 - 妖 一, 2 - 阳 一, 3 - 洋 一, 4 - 与 一):    \"омайна / съблазнителна   ,\" 2) \"прозрачен / нд / гордост   ,\" 3) \"чуждестранен / океана първи ,\" и 4) \"участваща  .\"",
+    "key" : "index-145",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393433841560"
+  },
+  {
+    "id" : "index-146",
+    "info" : "Йошиаки (义 明): \". Ясно / очевидно правилно\"  ",
+    "key" : "index-146",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393473841556"
+  },
+  {
+    "id" : "index-147",
+    "info" : "Йошихиро (义 博, 义 弘, 义 博): \". Голяма / богат / широко коректност\"   ",
+    "key" : "index-147",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393507174886"
+  },
+  {
+    "id" : "index-148",
+    "info" : "Yoshikazu (1 - 义 量, 2 - 良 和): \". Добро допълнение\"  1) \"Правилното количество / обем\", и 2)",
+    "key" : "index-148",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393553841548"
+  },
+  {
+    "id" : "index-149",
+    "info" : "Йошинори (义 则): \". Правилното правило / закон\"   ",
+    "key" : "index-149",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393637174873"
+  },
+  {
+    "id" : "index-15",
+    "info" : "Хару (1 - 晴, 2 - 春, 3 - 阳): 1) \"ясно\", 2) \"пролет\", или 3) \"слънце, слънчева светлина.\"",
+    "key" : "index-15",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394030508167"
+  },
+  {
+    "id" : "index-150",
+    "info" : "Йошио (1 - 誉 士夫, 2 - 良 夫):  1) \"възхитителна / славен войник мъж\" и 2) \"добър човек.\"",
+    "key" : "index-150",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393667174870"
+  },
+  {
+    "id" : "index-151",
+    "info" : "Йоширо (1 - 义 郎, 2 - 良 郎, 3 - 义 博): \". Много правилно\"  1) \"правилното момче / мъж,\" 2) \"добро момче / мъж\" и 3)",
+    "key" : "index-151",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393703841533"
+  },
+  {
+    "id" : "index-152",
+    "info" : "Йошито (1 - 义 人, 2 - 美人, 3 - 由 人):  1) \"правилния човек\", 2) \"добър човек\", и 3) \". Оригинален човек\"",
+    "key" : "index-152",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393747174862"
+  },
+  {
+    "id" : "index-153",
+    "info" : "Йошиуки (1 - 义 行, 2 - 吉 行, 3 - 由 悠 季):  1) \"правилно ще / начин\", 2) \"щастлив ще / начин\", и 3) \"оригинал-далеч-трайно.\"",
+    "key" : "index-153",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393803841523"
+  },
+  {
+    "id" : "index-154",
+    "info" : "Юичи (1 - 裕 一, 2 - 雄 一):. Японски    1) \"изобилие / богат    ,\" и 2) смела първа  \"",
+    "key" : "index-154",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393837174853"
+  },
+  {
+    "id" : "index-155",
+    "info" : "Юджи (雄 二): \". Смел\"   ",
+    "key" : "index-155",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393870508183"
+  },
+  {
+    "id" : "index-156",
+    "info" : "Юки (1 - 幸, 2 - 雪):  \"щастие; щастието\" и 2) \"сняг\".",
+    "key" : "index-156",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393913841512"
+  },
+  {
+    "id" : "index-157",
+    "info" : "Юкио (1 - 幸雄, 2 - 行 雄):   1) \"щастлив герой\" ",
+    "key" : "index-157",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163393963841507"
+  },
+  {
+    "id" : "index-158",
+    "info" : "Ютака (裕):    \"проспериращ, богат.\"",
+    "key" : "index-158",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394003841503"
+  },
+  {
+    "id" : "index-159",
+    "info" : "Юдай (雄 大):    \"голям / голям / голям герой.",
+    "key" : "index-159",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394070508163"
+  },
+  {
+    "id" : "index-16",
+    "info" : "Харуо (春 男): \"Пролет\"   ",
+    "key" : "index-16",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394110508159"
+  },
+  {
+    "id" : "index-17",
+    "info" : "Хидеаки (秀 明):    \"блестящи постижения; прекрасна яркост.\"",
+    "key" : "index-17",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394153841488"
+  },
+  {
+    "id" : "index-18",
+    "info" : "Хидеки (秀 树):    \". Прекрасна възможност\"",
+    "key" : "index-18",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394180508152"
+  },
+  {
+    "id" : "index-19",
+    "info" : "Хидео (英 夫): \". Прекрасен човек\"   ",
+    "key" : "index-19",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394240508146"
+  },
+  {
+    "id" : "index-2",
+    "info" : "Акихиро (大 畠):  \"голяма слава.\"",
+    "key" : "index-2",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394603841443"
+  },
+  {
+    "id" : "index-20",
+    "info" : "Хикару (辉):    \"сияние.\"",
+    "key" : "index-20",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394277174809"
+  },
+  {
+    "id" : "index-21",
+    "info" : "Хиро (1 - 裕, 2 - 寛, 3 - 浩):    1) \"изобилие\", 2) \"щедър, толерантен\", или 3) \"проспериращ\".",
+    "key" : "index-21",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394297174807"
+  },
+  {
+    "id" : "index-22",
+    "info" : "Хироаки (広 朗): \". Широко яркост\"   ",
+    "key" : "index-22",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394327174804"
+  },
+  {
+    "id" : "index-23",
+    "info" : "Хироки (弘 树):    \"изобилие радост / сила.\"",
+    "key" : "index-23",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394367174800"
+  },
+  {
+    "id" : "index-24",
+    "info" : "Хироши (1 - 寛, 2 - 浩):  1) \"щедър, толерантен\", или 2) \"просперираща\".",
+    "key" : "index-24",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394403841463"
+  },
+  {
+    "id" : "index-25",
+    "info" : "Хироюки (博 之):    \"широко щастие.\"",
+    "key" : "index-25",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394427174794"
+  },
+  {
+    "id" : "index-26",
+    "info" : "Хисао (寿 夫): \"Дълъг живот\"   ",
+    "key" : "index-26",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394463841457"
+  },
+  {
+    "id" : "index-27",
+    "info" : "Хисаши (久 志): \"Дълголетен\"   ",
+    "key" : "index-27",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394513841452"
+  },
+  {
+    "id" : "index-28",
+    "info" : "Хисока (密):  унисекс име  \"запазени\".",
+    "key" : "index-28",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394560508114"
+  },
+  {
+    "id" : "index-29",
+    "info" : "Хитоши (等):    \"уравновесен ниво.\"",
+    "key" : "index-29",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394713841432"
+  },
+  {
+    "id" : "index-3",
+    "info" : "Акио (1 - 昭雄, 2 - 昭夫):  1) \"славен герой\" или 2) \". Славен човек\"",
+    "key" : "index-3",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395110508059"
+  },
+  {
+    "id" : "index-30",
+    "info" : "Хотака (穂 高):   вероятно  \"стъпка по стъпка\", произлиза от  на най-високия връх в това, което е из��естно като японската Алпите.",
+    "key" : "index-30",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394753841428"
+  },
+  {
+    "id" : "index-31",
+    "info" : "Ичиро: Variant правописа на  Ichirou, което  \"първи син.\"",
+    "key" : "index-31",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394767174760"
+  },
+  {
+    "id" : "index-32",
+    "info" : "Ичуро (一郎):    \"първи син.\"",
+    "key" : "index-32",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394800508090"
+  },
+  {
+    "id" : "index-33",
+    "info" : "Исаму (勇):    \"кураж\".",
+    "key" : "index-33",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394823841421"
+  },
+  {
+    "id" : "index-34",
+    "info" : "Иса (功):    \"чест; заслуги.\"",
+    "key" : "index-34",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394873841416"
+  },
+  {
+    "id" : "index-35",
+    "info" : "Жиро: Variant правописа на  Jirou, което  \"втори син.\"",
+    "key" : "index-35",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394917174745"
+  },
+  {
+    "id" : "index-36",
+    "info" : "Джуничи (顺 一): \"Покорна\"   ",
+    "key" : "index-36",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163394977174739"
+  },
+  {
+    "id" : "index-37",
+    "info" : "Журо: Variant правописа на  Jurou, което  \"десетият син.\"",
+    "key" : "index-37",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395010508069"
+  },
+  {
+    "id" : "index-38",
+    "info" : "Каеде (枫):   значение \"клен.\"",
+    "key" : "index-38",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395050508065"
+  },
+  {
+    "id" : "index-39",
+    "info" : "Каташи (坚):    \"решителност\".",
+    "key" : "index-39",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395153841388"
+  },
+  {
+    "id" : "index-4",
+    "info" : "Акира (1 - 明, 2 - 亮):  1) \"светъл\" или 2) \"ясно.\"",
+    "key" : "index-4",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395630508007"
+  },
+  {
+    "id" : "index-40",
+    "info" : "Кацу (胜):    \"победа\".",
+    "key" : "index-40",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395210508049"
+  },
+  {
+    "id" : "index-41",
+    "info" : "Кацуми (克己):    \"самоконтрол.\"",
+    "key" : "index-41",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395247174712"
+  },
+  {
+    "id" : "index-42",
+    "info" : "Кацуо (胜雄):    \"победител дете.\"",
+    "key" : "index-42",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395303841373"
+  },
+  {
+    "id" : "index-43",
+    "info" : "Кацуро (胜 郎): \". Победител\"   ",
+    "key" : "index-43",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395333841370"
+  },
+  {
+    "id" : "index-44",
+    "info" : "Казухико (和 彦): \". Хармоничното принц\"   ",
+    "key" : "index-44",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395387174698"
+  },
+  {
+    "id" : "index-45",
+    "info" : "Казухиро (一 浩): \". Ползотворна\"   ",
+    "key" : "index-45",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395443841359"
+  },
+  {
+    "id" : "index-46",
+    "info" : "Казуки (1 - 和 希, 2 - 一 辉):  1) \"хармония надежда\"  ",
+    "key" : "index-46",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395490508021"
+  },
+  {
+    "id" : "index-47",
+    "info" : "Казуо (1 - 和 夫, 2 - 一 男):   1) \"хармоничен човек\"  ",
+    "key" : "index-47",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395543841349"
+  },
+  {
+    "id" : "index-48",
+    "info" : "Кеи (1 - 恵, 2 - 佳, 3 - 敬, 4 - 圭, 5 - 慧):  1) \"Блажен, късмет,\" 2) \"отлично\", 3) \"уважение\", 4) \" бижу \", или 5)\" мъдър \".",
+    "key" : "index-48",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395577174679"
+  },
+  {
+    "id" : "index-49",
+    "info" : "Кеичи (圭一):    \"  бижу \"",
+    "key" : "index-49",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395663841337"
+  },
+  {
+    "id" : "index-5",
+    "info" : "Аои (1 - 碧, 2 - 葵):  \"синя\" или 2) \"ружа.\"",
+    "key" : "index-5",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410583839845"
+  },
+  {
+    "id" : "index-50",
+    "info" : "Кейджи (敬 二): \". Уважение \"   ",
+    "key" : "index-50",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395680508002"
+  },
+  {
+    "id" : "index-51",
+    "info" : "Кен (1 - 健, 2 - 谦, 3 - 研):  1) \"здрави, силни\" или 2) \"скромни\"",
+    "key" : "index-51",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163395707174666"
+  },
+  {
+    "id" : "index-53",
+    "info" : "Кенджи (1 - 健 二, 2 - 研 二):. Японски   \"здрав  \" или 2) учен  \"",
+    "key" : "index-53",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410403839863"
+  },
+  {
+    "id" : "index-54",
+    "info" : "Кеншин (谦信):    \"скромност, истина.\"",
+    "key" : "index-54",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410437173193"
+  },
+  {
+    "id" : "index-55",
+    "info" : "Кехта (健 太): \". Здрав / силен и голям / як\"   ",
+    "key" : "index-55",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410463839857"
+  },
+  {
+    "id" : "index-56",
+    "info" : "Кин (钦):     \"злато\".",
+    "key" : "index-56",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410487173188"
+  },
+  {
+    "id" : "index-57",
+    "info" : "Киоши (淳):    \"чист\".",
+    "key" : "index-57",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410523839851"
+  },
+  {
+    "id" : "index-58",
+    "info" : "Кохаку (琥珀):    \"кехлибар\".",
+    "key" : "index-58",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410553839848"
+  },
+  {
+    "id" : "index-59",
+    "info" : "Коичи (光 一): \". Светлина / блестящ първи\"",
+    "key" : "index-59",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410627173174"
+  },
+  {
+    "id" : "index-6",
+    "info" : "Ацуши (敦):    \"трудолюбив\".",
+    "key" : "index-6",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410977173139"
+  },
+  {
+    "id" : "index-60",
+    "info" : "Коджи (光 司): \". Светлина / блестящ втори\"",
+    "key" : "index-60",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410673839836"
+  },
+  {
+    "id" : "index-61",
+    "info" : "Макото (诚):     \"искрено, вярно.\"",
+    "key" : "index-61",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410697173167"
+  },
+  {
+    "id" : "index-62",
+    "info" : "Мамору (守):    \"защитник\".",
+    "key" : "index-62",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410717173165"
+  },
+  {
+    "id" : "index-63",
+    "info" : "Манабу (学):    \"научи.\"",
+    "key" : "index-63",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410757173161"
+  },
+  {
+    "id" : "index-64",
+    "info" : "Масааки (真 明): \". Вярно яркостта\"   ",
+    "key" : "index-64",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410803839823"
+  },
+  {
+    "id" : "index-65",
+    "info" : "Масахико (正彦):    \"просто принц.\"",
+    "key" : "index-65",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410833839820"
+  },
+  {
+    "id" : "index-66",
+    "info" : "Масахиро (正 洋): \". Правосъдие просперира\"   ",
+    "key" : "index-66",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410860506484"
+  },
+  {
+    "id" : "index-67",
+    "info" : "Масаки (昌 树):    \"процъфтяващ дърво.\"",
+    "key" : "index-67",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410887173148"
+  },
+  {
+    "id" : "index-68",
+    "info" : "Masanori (正 则): \". Модел на правосъдие\" ",
+    "key" : "index-68",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163410943839809"
+  },
+  {
+    "id" : "index-69",
+    "info" : "Масао (正 男): \". Правилния човек\"   ",
+    "key" : "index-69",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411050506465"
+  },
+  {
+    "id" : "index-7",
+    "info" : "Даи (大):    \"огромна.\"  ",
+    "key" : "index-7",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411480506422"
+  },
+  {
+    "id" : "index-70",
+    "info" : "Масару (胜):    \"победител\".",
+    "key" : "index-70",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411080506462"
+  },
+  {
+    "id" : "index-71",
+    "info" : "Масаши (雅):    \"елегантен, великолепен.\"",
+    "key" : "index-71",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411150506455"
+  },
+  {
+    "id" : "index-72",
+    "info" : "Масато (正人):    \"правилния човек.\"",
+    "key" : "index-72",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411183839785"
+  },
+  {
+    "id" : "index-73",
+    "info" : "Мацуката (昌 良): \". Процъфтяващ доброта\"   ",
+    "key" : "index-73",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411230506447"
+  },
+  {
+    "id" : "index-74",
+    "info" : "Масаюки (正 幸): \". Правилното щастие\"   ",
+    "key" : "index-74",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411277173109"
+  },
+  {
+    "id" : "index-75",
+    "info" : "Masumi (真澄):    \"истинска прозрачност.\"",
+    "key" : "index-75",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411327173104"
+  },
+  {
+    "id" : "index-76",
+    "info" : "Мичи (道):  унисекс име  \"път\".",
+    "key" : "index-76",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411370506433"
+  },
+  {
+    "id" : "index-77",
+    "info" : "Мичио (道夫):    \"човек на (правилно) път.\"",
+    "key" : "index-77",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411423839761"
+  },
+  {
+    "id" : "index-78",
+    "info" : "Микио (美 树 夫): \". Ствола на дървото човек\"   ",
+    "key" : "index-78",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411443839759"
+  },
+  {
+    "id" : "index-79",
+    "info" : "Минори (里):    \"истина\".",
+    "key" : "index-79",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411510506419"
+  },
+  {
+    "id" : "index-8",
+    "info" : "Даичи (1 - 大地, 2 - 大智):  1) \"велика страна\" или 2) \"голяма мъдрост.\"",
+    "key" : "index-8",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411937173043"
+  },
+  {
+    "id" : "index-80",
+    "info" : "Минору (里):    \"истина\".",
+    "key" : "index-80",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411530506417"
+  },
+  {
+    "id" : "index-81",
+    "info" : "Mitsuo (光子):    \"блестящ мъж.\"",
+    "key" : "index-81",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411567173080"
+  },
+  {
+    "id" : "index-82",
+    "info" : "Mitsuru (満):  унисекс име  \"пълен\" или \"се разраства.\"",
+    "key" : "index-82",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411607173076"
+  },
+  {
+    "id" : "index-83",
+    "info" : "СП (1 - 直, 2 - 尚):    1) \"послушен\" или 2) \"уважаваната\".",
+    "key" : "index-83",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411640506406"
+  },
+  {
+    "id" : "index-84",
+    "info" : "Наоки (直树):    \"хрисим дърво.\"",
+    "key" : "index-84",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411693839734"
+  },
+  {
+    "id" : "index-85",
+    "info" : "Нобору (翔):    \"издига; изкачване.\"",
+    "key" : "index-85",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411737173063"
+  },
+  {
+    "id" : "index-86",
+    "info" : "NOBU (1 - 信, 2 - 延):  1) \"вяра\" или 2) \"да се разшири, удължи (особено думите).\"",
+    "key" : "index-86",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411800506390"
+  },
+  {
+    "id" : "index-87",
+    "info" : "Нобуо (信 夫): \". Верен човек\"   ",
+    "key" : "index-87",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411877173049"
+  },
+  {
+    "id" : "index-88",
+    "info" : "Нобуюки (信 行): \". Верен щастие\"   ",
+    "key" : "index-88",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411913839712"
+  },
+  {
+    "id" : "index-89",
+    "info" : "Нори (1 - 仪, 2 - 典, 3 - 则, 4 - 法):   1) \"церемония, скъпи дрехи\", 2) \"код, прецедент,\" 3) \"модел, правило, стандарт,\" 4 ) \"закон, правило.\"",
+    "key" : "index-89",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163411963839707"
+  },
+  {
+    "id" : "index-9",
+    "info" : "Дайки (1 - 大 辉, 2 - 大 贵, 3 - 大树):  1) \"голяма слава\", 2) \"голяма благородна\" или 3) \"голямо дърво.\"",
+    "key" : "index-9",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390170508553"
+  },
+  {
+    "id" : "index-90",
+    "info" : "Норио (法 男): \". Човек на закона\" ",
+    "key" : "index-90",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412000506370"
+  },
+  {
+    "id" : "index-91",
+    "info" : "Orochi (大蛇):    \"голяма змия.\" В митологията, това е  на осем раздвоена змия, които поискаха девствени жертви. Той е бил убит от бога-герой Susanoo.",
+    "key" : "index-91",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412037173033"
+  },
+  {
+    "id" : "index-92",
+    "info" : "Осаму (1 - 纪, 2 - 修, 3 - 理, 4 - 收, 5 - 治, 6 - 统):  1) \"хроникьор\", 2) \"дисциплинирани\", 3) \"логично\", 4) \"obtainer,\" 5) \", за да царува,\" 6) \"владетел\".",
+    "key" : "index-92",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412073839696"
+  },
+  {
+    "id" : "index-93",
+    "info" : "Райден (雷电):  мит  на бога на гръмотевиците, което  \"гръм и мълнии.\"",
+    "key" : "index-93",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412113839692"
+  },
+  {
+    "id" : "index-94",
+    "info" : "Рукори (六 朗): \". Шестия син\"   ",
+    "key" : "index-94",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412147173022"
+  },
+  {
+    "id" : "index-95",
+    "info" : "Rиота (亮 太):    \"здрав, силен.\"",
+    "key" : "index-95",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412173839686"
+  },
+  {
+    "id" : "index-96",
+    "info" : "Риу (竜):    \"дракон дух.\"",
+    "key" : "index-96",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412213839682"
+  },
+  {
+    "id" : "index-97",
+    "info" : "Saburo (三郎):    \"трети син.\"",
+    "key" : "index-97",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412247173012"
+  },
+  {
+    "id" : "index-98",
+    "info" : "SADAO (贞 雄): \". Решаващо човек\"   ",
+    "key" : "index-98",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163412283839675"
+  },
+  {
+    "id" : "index-99",
+    "info" : "Сатору (1 - 暁, 2 - 悟, 3 - 聡, 4 - 知, 5 - 覚, 6 - 谕, 7 - 了, 8 - 智):  1) \"разсъмване\", 2) \"просветен\" 3) \"учи бързо\", 4) \"информирани\" 5) \"възприемчив\", 6) \"убедителен\", 7) \"разбиране\", или 8) \"мъдър\".",
+    "key" : "index-99",
+    "newurl" : "https://www.facebook.com/photo.php?fbid=163390197175217"
+  }
+],
+  "scope" : "publish_stream,read_stream",
+  "slug" : "japan",
+  "url" : "http://fb.com/132139833633587/app_128280664728"
+}

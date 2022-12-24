@@ -1,0 +1,289 @@
+{
+  "appid" : "246560865463407",
+  "appname" : "На колко години изглеждаш",
+  "button" : "Провери",
+  "callfunction" : true,
+  "image" : "images/age.jpg",
+  "infotext" : "<h1>Харесай</h1>Подкрепете приложението натискайки бутона &quot;Харесва Ми&quot; , така също ще отключите скрити екстри и допълнителни приложения",
+  "items" : [
+  {
+    "info" : "нула",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote="
+  },
+  {
+    "info" : "една",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=1"
+  },
+  {
+    "info" : "две",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=2"
+  },
+  {
+    "info" : "три",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=3"
+  },
+  {
+    "info" : "четири",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=4"
+  },
+  {
+    "info" : "пет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=5"
+  },
+  {
+    "info" : "шест",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=6"
+  },
+  {
+    "info" : "седем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=7"
+  },
+  {
+    "info" : "осем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=8"
+  },
+  {
+    "info" : "девет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=9"
+  },
+  {
+    "info" : "десет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=10"
+  },
+  {
+    "info" : "единадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=11"
+  },
+  {
+    "info" : "дванадасет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=12"
+  },
+  {
+    "info" : "тринадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=13"
+  },
+  {
+    "info" : "четиринадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=14"
+  },
+  {
+    "info" : "петнадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=15"
+  },
+  {
+    "info" : "шестнадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=16"
+  },
+  {
+    "info" : "седемнадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=17"
+  },
+  {
+    "info" : "осемнадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=18"
+  },
+  {
+    "info" : "деветнадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=19"
+  },
+  {
+    "info" : "двадесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=20"
+  },
+  {
+    "info" : "двадесет и една",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=21"
+  },
+  {
+    "info" : "двадесет и две",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=22"
+  },
+  {
+    "info" : "двадесет и три",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=23"
+  },
+  {
+    "info" : "двадесет и четири",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=24"
+  },
+  {
+    "info" : "двадесет и пет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=25"
+  },
+  {
+    "info" : "двадесет и шест",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=26"
+  },
+  {
+    "info" : "двадесет и седем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=27"
+  },
+  {
+    "info" : "двадесет и осем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=28"
+  },
+  {
+    "info" : "двадесет и девет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=29"
+  },
+  {
+    "info" : "тридесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=30"
+  },
+  {
+    "info" : "тридесет и една",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=31"
+  },
+  {
+    "info" : "тридесет и две",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=32"
+  },
+  {
+    "info" : "тридесет и три",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=33"
+  },
+  {
+    "info" : "тридесет и четири",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=34"
+  },
+  {
+    "info" : "тридесет и пет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=35"
+  },
+  {
+    "info" : "тридесет и шест",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=36"
+  },
+  {
+    "info" : "тридесет и седем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=37"
+  },
+  {
+    "info" : "тридесет и осем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=38"
+  },
+  {
+    "info" : "тридесет и девет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=39"
+  },
+  {
+    "info" : "четирдесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=40"
+  },
+  {
+    "info" : "четирдесет и една",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=41"
+  },
+  {
+    "info" : "четирдесет и две",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=42"
+  },
+  {
+    "info" : "четирдесет и три",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=43"
+  },
+  {
+    "info" : "четирдесет и четири",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=44"
+  },
+  {
+    "info" : "четирдесет и пет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=45"
+  },
+  {
+    "info" : "четирдесет и шест",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=46"
+  },
+  {
+    "info" : "четирдесет и седем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=47"
+  },
+  {
+    "info" : "четирдесет и осем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=48"
+  },
+  {
+    "info" : "четирдесет и девет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=49"
+  },
+  {
+    "info" : "петдесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=50"
+  },
+  {
+    "info" : "петдесет и една",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=51"
+  },
+  {
+    "info" : "петдесет и две",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=52"
+  },
+  {
+    "info" : "петдесет и три",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=53"
+  },
+  {
+    "info" : "петдесет и четири",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=54"
+  },
+  {
+    "info" : "петдесет и пет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=55"
+  },
+  {
+    "info" : "петдесет и шест",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=56"
+  },
+  {
+    "info" : "петдесет и седем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=57"
+  },
+  {
+    "info" : "петдесет и осем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=58"
+  },
+  {
+    "info" : "петдесет и девет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=59"
+  },
+  {
+    "info" : "шестдесет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=60"
+  },
+  {
+    "info" : "шестдесет и една",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=61"
+  },
+  {
+    "info" : "шестдесет и две",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=62"
+  },
+  {
+    "info" : "шестдесет и три",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=63"
+  },
+  {
+    "info" : "шестдесет и четири",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=64"
+  },
+  {
+    "info" : "шестдесет и пет",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=65"
+  },
+  {
+    "info" : "шестдесет и шест",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=66"
+  },
+  {
+    "info" : "шестдесет и седем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=67"
+  },
+  {
+    "info" : "шестдесет и осем",
+    "newurl" : "http://php2-cube.rhcloud.com/howoldbg/?name=${first_name}%26quote=68"
+  }
+],
+  "scope" : "publish_stream,user_birthday,read_stream",
+  "slug" : "godini",
+  "url" : "246588828793944"
+}
