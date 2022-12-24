@@ -1,56 +1,27 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: "standalone",
+  output: 'standalone',
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
   async rewrites() {
     return [
       {
-        source: "/news/:page",
-        destination: "/news/?page=:page",
+        source: '/ads/p/:page',
+        destination: '/ads/?page=:page',
       },
       {
-        source: "/api/facebook/img/:appid/:id.png",
-        destination: "/api/facebook/img/:appid/?id=:id",
+        source: '/ads/cat/:cat/p/:page',
+        destination: '/ads/cat/:cat?page=:page',
       },
       {
-        source: "/fb/",
-        destination: "/facebook/facebookindex",
-      },
-      {
-        source: "/fb/:appid",
-        destination: "/facebook/facebookindex?appid=:appid",
-      },
-
-      {
-        source: "/fb/:appid/:id",
-        destination: "/facebook/facebookindex?id=:id&appid=:appid",
-      },
-      {
-        source: "/tw/",
-        destination: "/twitter/twitter",
-      },
-      {
-        source: "/tw/:page",
-        destination: "/twitter/twitter?page=:page",
-      },
-      {
-        source: "/tw/:page/:letter",
-        destination: "/twitter/?page=:page&letter=:letter",
-      },
-      {
-        source: "/cat/:cat/:page",
-        destination: "/cat/:cat/?page=:page",
-      },
-      {
-        source: "/movies/p/:page",
-        destination: "/movies/?page=:page",
+        source: '/ads/cat/:cat/:subcat/p/:page',
+        destination: '/ads/cat/:cat/:subcat/?page=:page',
       },
     ];
   },
 };
 
 module.exports = nextConfig;
-// v 2
+// v 1
