@@ -27,13 +27,13 @@ const FacebookShare = ({
 	return (
 		<button
 			onClick={onClick}
-			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit transition duration-300 ${noWrapper && " rounded-l-none rounded-t-none"
+			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit transition duration-300 ${noWrapper && " rounded-l-none rounded-t-none bg-transparent"
 				} ${disabled && "btn-disabled blur-sm grayscale"}`}
 		>
 			{!noWrapper ? (
 				<>
 					<svg
-						className='h-6 w-6 fill-current'
+						className='h-6 w-6 fill-white'
 						role='img'
 						xmlns='http://w3.org/2000/svg'
 						viewBox='0 0 24 24'

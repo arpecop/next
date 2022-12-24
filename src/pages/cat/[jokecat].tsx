@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 import { JokeThumbnail } from "@/components/JokeThumbnail";
@@ -57,12 +56,16 @@ const CatPage = ({
 
 			<div className='flex flex-wrap'>
 				<div className='joke'>
-					<ins className="adsbygoogle rounded-md jokewrap p-0"
-						style={{ display: 'block', textAlign: 'center' }}
-						data-ad-layout="in-article"
-						data-ad-format="fluid"
-						data-ad-client="ca-pub-5476404733919333"
-						data-ad-slot="1374619867" />
+					<div className='rounded-md jokewrap p-0'>
+						<ins
+							className='adsbygoogle'
+							style={{ display: "block", textAlign: "center" }}
+							data-ad-layout='in-article'
+							data-ad-format='fluid'
+							data-ad-client='ca-pub-5476404733919333'
+							data-ad-slot='1374619867'
+						/>
+					</div>
 				</div>
 				{jokes.map((item) => (
 					<JokeThumbnail
@@ -73,12 +76,16 @@ const CatPage = ({
 					/>
 				))}
 				<div className='joke'>
-					<ins className="adsbygoogle rounded-md jokewrap p-0"
-						style={{ display: 'block', textAlign: 'center' }}
-						data-ad-layout="in-article"
-						data-ad-format="fluid"
-						data-ad-client="ca-pub-5476404733919333"
-						data-ad-slot="1374619867" />
+					<div className='rounded-md jokewrap p-0'>
+						<ins
+							className='adsbygoogle'
+							style={{ display: "block", textAlign: "center" }}
+							data-ad-layout='in-article'
+							data-ad-format='fluid'
+							data-ad-client='ca-pub-5476404733919333'
+							data-ad-slot='1374619867'
+						/>
+					</div>
 				</div>
 			</div>
 		</Main>
