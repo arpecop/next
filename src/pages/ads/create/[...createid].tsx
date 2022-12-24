@@ -1,16 +1,16 @@
 import { ulid } from 'ulidx';
-import useLocalStorage from '/components/hooks/storage';
-import Layout from '/components/Main';
-import { UserType } from '/components/TopNav';
-import { verifytoken } from '/components/utils/awsConfig';
+import useLocalStorage from '@/components/hooks/storage';
+import Layout from '@/components/Main';
+import { UserType } from '@/components/TopNav';
+import { verifytoken } from '@/components/utils/awsConfig';
 import { AdsDataSchema, AdsDataSubcat, Field } from '/pages/ads';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import FormInput, { onSubmit } from '/components/forms/inputs/AllForms';
+import FormInput, { onSubmit } from '@/components/forms/inputs/AllForms';
 
-import { API, graphqlOperation, mutations } from '/components/db';
-import loadStaticFile from '/components/helpers/loadStaticFile';
-import Err from '/components/forms/Err';
+import { API, graphqlOperation, mutations } from '@/components/db';
+import loadStaticFile from '@/components/helpers/loadStaticFile';
+import Err from '@/components/forms/Err';
 
 import { OptionalField } from '../ad/[adid]';
 

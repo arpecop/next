@@ -1,13 +1,13 @@
-import AdItem from '/components/ads/AdItem';
-import CatButton from '/components/ads/CatButton';
-import { API, DataStore } from '/components/db';
-import Layout from '/components/Main';
+import AdItem from "@/components/ads/AdItem";
+import CatButton from "@/components/ads/CatButton";
+import { API, DataStore } from "@/components/db";
+import Layout from "@/components/Main";
 
-import { GetServerSideProps } from 'next';
-import { ReactNode } from 'react';
+import { GetServerSideProps } from "next";
+import { ReactNode } from "react";
 
-import loadStaticFile from '/components/helpers/loadStaticFile';
-import { Item } from '/src/models';
+import loadStaticFile from "@/components/helpers/loadStaticFile";
+import { Item } from "/src/models";
 
 export type Field = {
   name: string;
@@ -85,20 +85,20 @@ export const AdsContainer = ({ children }: { children: ReactNode }) => (
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const adsData = await loadStaticFile('adsData');
+  const adsData = await loadStaticFile("adsData");
   const newItem = {
     createItemCat: {
       item: {
-        id: '1111',
+        id: "1111",
       },
       cat: {
-        id: '1111',
-        title: 'this is cat item',
+        id: "1111",
+        title: "this is cat item",
       },
     },
   };
 
-  const items = await DataStore.query(Item, (c) => c.titl.eq('test'), {
+  const items = await DataStore.query(Item, (c) => c.titl.eq("test"), {
     page: 0,
     limit: 30,
   });

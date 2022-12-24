@@ -1,5 +1,5 @@
-import BlogPost from '/components/BlogPost';
-import Layout from '/components/Main';
+import BlogPost from '@/components/BlogPost';
+import Layout from '@/components/Main';
 import React from 'react';
 
 const Post: React.FC = () => {

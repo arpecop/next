@@ -6,12 +6,12 @@ import Amplify, { Auth } from '@aws-amplify/auth';
 
 import Router, { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Err from '/components/forms/Err';
-import SubForm from '/components/forms/SubForm';
-import useLocalStorage from '/components/hooks/storage';
+import Err from '@/components/forms/Err';
+import SubForm from '@/components/forms/SubForm';
+import useLocalStorage from '@/components/hooks/storage';
 
-import Input from '/components/forms/inputs/Input';
-import { API, graphqlOperation, mutations } from '/components/db';
+import Input from '@/components/forms/inputs/Input';
+import { API, graphqlOperation, mutations } from '@/components/db';
 
 interface State {
   action?:

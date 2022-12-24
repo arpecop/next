@@ -1,5 +1,5 @@
-import CatButton from '/components/ads/CatButton';
-import { queries } from '/components/db';
+import CatButton from '@/components/ads/CatButton';
+import { queries } from '@/components/db';
 
 import { AdsDataSchema, SideBarContainer } from '/pages/ads';
 
@@ -7,9 +7,9 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
-import AdItem from '/components/ads/AdItem';
-import Layout from '/components/Main';
-import loadStaticFile from '/components/helpers/loadStaticFile';
+import AdItem from '@/components/ads/AdItem';
+import Layout from '@/components/Main';
+import loadStaticFile from '@/components/helpers/loadStaticFile';
 import { Ad } from 'src/API';
 
 const CatId = ({

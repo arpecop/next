@@ -1,35 +1,35 @@
-import Search from '/components/ads/Search';
-import Layout from '/components/Main';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import Search from "@/components/ads/Search";
+import Layout from "@/components/Main";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-import AnimIndexProducts from '../components/elements/AnimIndexProducts';
-import Link from 'next/link';
+import AnimIndexProducts from "../components/elements/AnimIndexProducts";
+import Link from "next/link";
 
 const NotificationPermission = dynamic(
-  () => import('/components/Notifications'),
+  () => import("@/components/Notifications"),
   {
     ssr: false,
-  },
+  }
 );
 
 export default function Home() {
   const cats = [
     {
-      slug: 'AM',
-      title: 'Авто Мото',
-      descr: 'Всичко свързано с автомобилите',
+      slug: "AM",
+      title: "Авто Мото",
+      descr: "Всичко свързано с автомобилите",
       className:
-        'bg-gradient-to-tr from-blue-400 via-cyan-700 to-orange-700 p-1 rounded-md',
-      href: '/cars',
+        "bg-gradient-to-tr from-blue-400 via-cyan-700 to-orange-700 p-1 rounded-md",
+      href: "/cars",
     },
     {
-      slug: 'AD',
-      title: 'Обяви',
+      slug: "AD",
+      title: "Обяви",
       className:
-        'bg-gradient-to-l from-pink-300 via-sky-500 to-orange-500 p-1 rounded-md',
-      descr: 'Купувам / продавам / Наеми / Услуги',
-      href: '/ads',
+        "bg-gradient-to-l from-pink-300 via-sky-500 to-orange-500 p-1 rounded-md",
+      descr: "Купувам / продавам / Наеми / Услуги",
+      href: "/ads",
     },
   ];
   return (
@@ -39,9 +39,9 @@ export default function Home() {
         <Search />
         <div className='flex flex-col items-center text-center'>
           <h2 className='font-bold text-2xl max-w-md md:text-3xl lg:text-5xl lg:max-w-2xl pb-4'>
-            пусни за продажба практически всичко за{' '}
+            пусни за продажба практически всичко за{" "}
             <span className='underline decoration-dashed decoration-yellow-500 decoration-3 underline-offset-2'>
-              {' '}
+              {" "}
               което се сетиш.
             </span>
           </h2>

@@ -1,12 +1,12 @@
-import AdItem from '/components/ads/AdItem';
-import { queries } from '/components/db';
-import { createSlug } from '/components/helpers/slug';
-import Layout from '/components/Main';
+import AdItem from '@/components/ads/AdItem';
+import { queries } from '@/components/db';
+import { createSlug } from '@/components/helpers/slug';
+import Layout from '@/components/Main';
 import { API, graphqlOperation } from 'aws-amplify';
 import { NextApiRequest } from 'next';
 import { Ad } from 'src/API';
 
-import loadStaticFile from '/components/helpers/loadStaticFile';
+import loadStaticFile from '@/components/helpers/loadStaticFile';
 import { AdsContainer, AdsDataSchema, Field } from '..';
 
 const CatId = ({

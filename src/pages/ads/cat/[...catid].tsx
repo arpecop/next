@@ -1,15 +1,15 @@
-import AdItem from '/components/ads/AdItem';
-import { queries } from '/components/db';
-import { convertToTimeago } from '/components/helpers/date';
-import { createSlug } from '/components/helpers/slug';
-import Layout from '/components/Main';
+import AdItem from '@/components/ads/AdItem';
+import { queries } from '@/components/db';
+import { convertToTimeago } from '@/components/helpers/date';
+import { createSlug } from '@/components/helpers/slug';
+import Layout from '@/components/Main';
 import { AdsDataSchema, AdsDataSubcat, SideBarContainer } from '/pages/ads';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { NextApiRequest } from 'next';
 import Link from 'next/link';
 import { Item } from 'src/API';
-import loadStaticFile from '/components/helpers/loadStaticFile';
+import loadStaticFile from '@/components/helpers/loadStaticFile';
 
 const CatId = ({
   keywords,

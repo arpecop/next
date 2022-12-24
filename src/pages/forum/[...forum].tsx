@@ -1,7 +1,7 @@
 import { forEach } from 'lodash';
 import React from 'react';
-import { API, graphqlOperation, mutations, queries } from '/components/db';
-import loadStaticFile from '/components/helpers/loadStaticFile';
+import { API, graphqlOperation, mutations, queries } from '@/components/db';
+import loadStaticFile from '@/components/helpers/loadStaticFile';
 
 type Props = {
   topics: Array<{

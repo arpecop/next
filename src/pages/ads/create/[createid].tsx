@@ -1,9 +1,9 @@
-import CatButton from '/components/ads/CatButton';
-import Layout from '/components/Main';
+import CatButton from '@/components/ads/CatButton';
+import Layout from '@/components/Main';
 import { AdsDataSchema } from '/pages/ads';
 
 import { Ad } from 'src/API';
-import loadStaticFile from '/components/helpers/loadStaticFile';
+import loadStaticFile from '@/components/helpers/loadStaticFile';
 
 const CatId = ({ data }: { data: AdsDataSchema; items: [Ad] }) => {
   return (

@@ -1,11 +1,11 @@
 import { Field } from '/pages/ads/';
-import Checkbox from '/components/forms/inputs/Checkbox';
-import Radio from '/components/forms/inputs/Radio';
-import Select from '/components/forms/inputs/Select';
+import Checkbox from '@/components/forms/inputs/Checkbox';
+import Radio from '@/components/forms/inputs/Radio';
+import Select from '@/components/forms/inputs/Select';
 
-import Input from '/components/forms/inputs/Input';
+import Input from '@/components/forms/inputs/Input';
 import dynamic from 'next/dynamic';
-const Upload = dynamic(() => import('/components/forms/inputs/Upload'), {
+const Upload = dynamic(() => import('@/components/forms/inputs/Upload'), {
   suspense: true,
 });
 
