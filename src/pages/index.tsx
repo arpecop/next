@@ -7,8 +7,8 @@ export default function Home() {
     <Layout hideFooter>
       <div className='container pt-5'>
         <div className='flex justify-end items-center relative'>
-          <div className='absolute left-0   w-1/2 sm:w-1/3'>
-            <div className='text-3xl md:text-5xl heading'>
+          <div className='absolute left-0   w-1/2 sm:w-1/3 z-20'>
+            <div className='text-3xl md:text-5xl heading '>
               <span>
                 {/* Style will be inherited from the parent element */}
                 <Typewriter
@@ -28,7 +28,7 @@ export default function Home() {
             </div>
           </div>
 
-          <img src='/bubble.png' alt='' className='w-3/4 dark:grayscale' />
+          <img src='/bubble.png' alt='' className='w-3/4 dark:grayscale z-10' />
         </div>
       </div>
       <div className='container2'>
