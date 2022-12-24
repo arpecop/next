@@ -8,12 +8,11 @@ jobs:
       - uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
-
       - name: Create new branch
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
-          git checkout --orphan build
+          git checkout --orphan userznetbuild
           npm install
           npm run build
           rm -rf .vscode .env .env.local pages src components *.ts *.yml amplify .eslintignore .eslintrc.json .graphqlconfig.yml .env .prettierrc
@@ -24,9 +23,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: build
+          branch: userznetbuild
           force: true
-      - name: trigger
-        run: |
-          sleep 10
-          ${{ secrets.CURL }}
