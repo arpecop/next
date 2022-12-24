@@ -1,8 +1,8 @@
-import '../components/styles/global.css';
+import "@/components/styles/eziktok.css";
 
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from "next-themes";
 
-import type { AppProps } from 'next/app';
+import type { AppProps } from "next/app";
 //import { RecoilRoot } from 'recoil';
 
 export default function App({ Component, pageProps }: AppProps) {

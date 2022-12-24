@@ -1,0 +1,1 @@
+{"name":"Други бизнес имоти","hideprice":true,"fields":[{"name":"sqm","placeholder":"Квадратура","type":"number","required":true,"after":"кв.м. (1 декар = 1000 кв.м)"},{"name":"sellertype","placeholder":"Тип на подателя","type":"radio","options":["Агенция за имоти","Собственик","Друг"]}],"slug":"tgyW","parrent":"XioA"}

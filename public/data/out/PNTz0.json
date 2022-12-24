@@ -1,0 +1,1 @@
+{"physical":true,"name":"Велосипеди","parrent":"PNTz","slug":"PNTz0","fields":[{"name":"type","placeholder":"Категория","type":"radio","options":["Детски велосипед","Планински велосипед с твърда рамка","Планински велосипед с мека рамка"],"required":true}]}

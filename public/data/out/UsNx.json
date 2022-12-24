@@ -1,0 +1,1 @@
+{"name":"Компютърни компоненти, резервни части","fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Процесор","Дънна платка","RAM памет","Твърд диск","Видеокарта"],"required":true}],"slug":"UsNx","parrent":"TapE"}

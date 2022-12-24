@@ -1,0 +1,1 @@
+{"name":"Телевизори, декодери","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Телевизор с плосък екран","Телевизор с кинескоп (CRT)","Черно-бял телевизор","Декодер за цифрова телевизия"],"required":true},{"name":"brand","type":"text","placeholder":"Марка","required":true}],"slug":"Ao2c","parrent":"H9q2"}

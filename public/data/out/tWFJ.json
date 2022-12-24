@@ -1,0 +1,1 @@
+{"physical":true,"name":"Бебешки и детски колички","fields":[{"name":"brand","placeholder":"Марка","type":"text","required":true},{"name":"optional","placeholder":"Опции","type":"checkbox","options":["за близнаци","триколка","няколко коша","със столче за кола"]}],"slug":"tWFJ","parrent":"ri8w"}

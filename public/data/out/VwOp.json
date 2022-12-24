@@ -1,0 +1,1 @@
+{"name":"Металотърсачи/Металдетектори","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Металотърсачи","Металдетектори","Друг"],"required":true}],"slug":"VwOp","parrent":"H9q2"}

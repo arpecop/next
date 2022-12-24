@@ -1,0 +1,1 @@
+{"name":"Мрежово оборудване","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Router","Switch","Мрежов адаптер","Мрежов кабел, Конектор","Друго мрежово оборудване"],"required":true},{"name":"model","placeholder":"Модел","type":"text"}],"slug":"1Ov5","parrent":"TapE"}

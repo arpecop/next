@@ -1,0 +1,1 @@
+{"name":"Парфюмерия и козметични продукти","fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Парфюм","Козметика за лице","Козметика за тяло","Козметика за коса","Комплект","Друг"],"required":true},{"name":"sex","placeholder":"за мъже/жени","type":"radio","options":["Мъжки","Женски","Унисекс"],"required":true}],"slug":"JQ7q","parrent":"KbPU"}

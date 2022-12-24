@@ -1,0 +1,1 @@
+{"name":"Работа в чужбина","hideprice":true,"hidelocation":true,"fields":[{"name":"worldlocations","type":"component","placeholder":"component","required":true},{"name":"dlujnost","placeholder":"Длъжност","type":"text","required":true},{"name":"nomer","placeholder":"№ на удостоверение за регистрация в Агенцията по заетостта","type":"text"}],"slug":"SWVt","parrent":"13if"}

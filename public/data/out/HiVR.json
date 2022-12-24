@@ -1,0 +1,1 @@
+{"physical":true,"name":"Матраци, Рамки, Пружини","fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Матрак","Подматрачна рамка","Дюшек","Дунапрен","Пружина","Друго за матрак"],"required":true}],"slug":"HiVR","parrent":"Vw2x"}

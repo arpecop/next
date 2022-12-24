@@ -1,0 +1,1 @@
+{"name":"Кафемашини, мелачки","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Кафемашина","Кафеварка","Кафемелачка","Друг"],"required":true}],"slug":"WzCk","parrent":"tFel"}

@@ -1,0 +1,1 @@
+{"name":"Монитори","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["CRT","LCD","LED","OLED"],"required":true},{"name":"brand","type":"text","placeholder":"Марка","required":true},{"name":"screen","type":"number","placeholder":"Размер","required":true,"after":"инча"}],"slug":"qulZ","parrent":"TapE"}

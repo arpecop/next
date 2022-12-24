@@ -1,0 +1,1 @@
+{"name":"Фотоапарати, Камери","physical":true,"fields":[{"name":"brand","type":"text","placeholder":"Марка","required":true},{"name":"mpx","type":"number","placeholder":"Резолюция","after":"MPX"},{"name":"zoom","type":"number","placeholder":"Zoom (оптичен)","after":"x"}],"slug":"jhLz","parrent":"H9q2"}

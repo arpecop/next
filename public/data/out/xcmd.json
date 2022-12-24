@@ -1,0 +1,1 @@
+{"name":"Градинска техника","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Верижен трион","Водоструйка","Градинска помпа","Клонотрошачка","Косачка","Ножица за жив плет","Тример, храсторез","Друг"],"required":true},{"name":"brand","type":"text","placeholder":"Марка","required":true}],"slug":"xcmd","parrent":"CVGQ"}

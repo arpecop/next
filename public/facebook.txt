@@ -1,0 +1,100 @@
+
+const SignInWithFacebook = () => {
+  const fbAsyncInit = () => {
+    // init the fb sdk client
+    const fb = window.FB;
+    fb.init({
+      appId: '391915659696340',
+      cookie: true,
+      xfbml: true,
+      version: 'v2.11',
+    });
+  };
+
+  const initFB = () => {
+    const fb = window.FB;
+    console.log(`FB SDK initialized${fb}`);
+  };
+  const createScript = () => {
+    // load the sdk
+    window.fbAsyncInit = fbAsyncInit;
+    const script = document.createElement('script');
+    script.src = 'https://connect.facebook.net/en_US/sdk.js';
+    script.async = true;
+    script.onload = initFB;
+    document.body.appendChild(script);
+  };
+  useEffect(() => {
+    if (!window.FB) createScript();
+  }, []);
+
+  const signIn = () => {
+    const fb = window.FB;
+    fb.getLoginStatus((response) => {
+      const getAWSCredentials = (res: fb.AuthResponse) => {
+        const { accessToken, expiresIn } = res;
+        const date = new Date();
+        const expires_at = expiresIn * 1000 + date.getTime();
+        if (!accessToken) {
+          return;
+        }
+
+        window.FB.api(
+          '/me',
+          { fields: 'name,email' },
+          (resp: { name: string; email: string }) => {
+            const user = {
+              name: resp.name,
+              email: resp.email,
+            };
+
+            Auth.federatedSignIn(
+              'facebook',
+              { token: accessToken, expires_at },
+              user
+            ).then((credentials) => {
+              console.log(credentials);
+            });
+          }
+        );
+      };
+      if (response.status === 'connected') {
+        getAWSCredentials(response.authResponse);
+      } else {
+        fb.login(
+          (r) => {
+            if (!r || !r.authResponse) {
+              return;
+            }
+            getAWSCredentials(r.authResponse);
+          },
+          {
+            // the authorized scopes
+            scope: 'public_profile,email',
+          }
+        );
+      }
+    });
+  };
+
+  return (
+    <div className='form-control mt-1'>
+      <a
+        onClick={signIn}
+        className='btn btn-ghost bg-white text-gray-900 hover:bg-white'
+      >
+        <svg
+          className='mr-1 fill-blue-700'
+          width={24}
+          height={24}
+          role='img'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+        >
+          <path d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' />
+        </svg>
+        Facebook
+      </a>
+    </div>
+  );
+};

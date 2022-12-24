@@ -1,0 +1,1 @@
+{"name":"Билети","fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Самолет","Влак","Кораб","Автобус"],"required":true},{"name":"location","placeholder":"Име на агенция","type":"text","required":true}],"slug":"9cfl","parrent":"9lfc"}

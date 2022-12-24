@@ -1,8 +1,0 @@
-{
-  "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/assbg_BG/cover.png",
-  "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/assbg_BG/cover.png\">",
-  "title": "The meaning behind your name",
-  "contentx": "<div class=\"form-group\">  <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Type your first name and press Enter\"></div>",
-  "showshare": "true",
-  "geo": "US"
-}

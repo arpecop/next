@@ -1,0 +1,1 @@
+{"name":"Круизи","fields":[{"name":"location","placeholder":"Дестинация","type":"text","required":true},{"name":"days","placeholder":"Продължителност","type":"number","required":true,"after":"дни"}],"slug":"MQ7r","parrent":"9lfc"}

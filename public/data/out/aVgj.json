@@ -1,0 +1,1 @@
+{"name":"Салони за красота","hideprice":true,"fields":[{"name":"brand","placeholder":"Име на салона","type":"text","required":true},{"name":"optional","placeholder":"Тип","type":"checkbox","options":["Маникюр","Педикюр","Ноктопластика","Фризьор","Грим","Козметика","Масаж","Удължаване на мигли","Солариум"]}],"slug":"aVgj","parrent":"KbPU"}

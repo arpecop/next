@@ -1,0 +1,1 @@
+{"name":"Гуми, Джанти","physical":true,"fields":[{"name":"quantity","placeholder":"Количество","type":"number","required":true,"after":"бр."},{"name":"brand","placeholder":"Марка","type":"text"},{"name":"zol","placeholder":"Размер","type":"number","required":true,"after":"цола."}],"slug":"14Yw","parrent":"kHUm"}

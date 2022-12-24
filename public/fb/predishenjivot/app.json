@@ -1,8 +1,0 @@
-{
-   "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/predishenjivot/cover.jpg",
-   "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/predishenjivot/cover.jpg\">",
-   "title": "Провери какъв си бил в предишен живот",
-   "contentx": "<div class=\"input-group\"> <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Напиши името си\" maxlength=\"17\"><span class=\"input-group-btn\"> <button class=\"btn btn-default\" type=\"button\" id=\"go\">Провери!</button></span> </div>",
-   "showshare": "true",
-   "geo": "BG"
-}

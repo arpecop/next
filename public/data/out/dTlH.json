@@ -1,0 +1,1 @@
+{"physical":true,"name":"Аксесоари","fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Колани","Куфари, пътни чанти","Портфейли, Несесери","Раници","Слънчеви очила","Чанти","Шапки, шалове, ръкавици","Друг"],"required":true},{"name":"brand","placeholder":"Марка","type":"text"}],"slug":"dTlH","parrent":"uBWZ"}

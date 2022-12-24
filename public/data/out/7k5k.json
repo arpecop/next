@@ -1,0 +1,1 @@
+{"name":"Принтери, Скенери, Копири","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Мултифункционално устройство","Принтер","3D принтер","Скенер","Копирна машина","Плотер","Друг"],"required":true},{"name":"brand","type":"text","placeholder":"Марка","required":true}],"slug":"7k5k","parrent":"TapE"}

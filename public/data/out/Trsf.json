@@ -1,0 +1,1 @@
+{"physical":true,"name":"Техника за автомивки","fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Четкова автомивка","Тунелна автомивка","Прахосмукачка","Пароструйка","Водоструйка","Друг"],"required":true}],"slug":"Trsf","parrent":"CVGQ"}

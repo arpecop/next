@@ -1,0 +1,1 @@
+{"name":"Съдомиялни","physical":true,"fields":[{"name":"brand","placeholder":"Марка","type":"text","required":true},{"name":"optional","placeholder":"Особености","type":"checkbox","options":["За вграждане","С електронен дисплей"]}],"slug":"snm8","parrent":"tFel"}

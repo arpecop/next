@@ -1,7 +1,0 @@
-{
-   "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/celeb/cover.jpg\">",
-   "title": " The best celebrity match for you ",
-   "contentx": "<div class=\"form-group\" style=\"text-align:center;\">  <button type=\"button\" class=\"btn btn-primary btn-lg\" onclick=\"celeb(); return false;\">Klick here to get your match</button></div>",
-   "showshare": "true",
-   "geo": "US"
-}

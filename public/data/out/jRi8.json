@@ -1,0 +1,1 @@
+{"name":"Газови/Метанови уредби","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","required":true,"options":["Газова уредба","Метанова уредба"]}],"slug":"jRi8","parrent":"kHUm"}

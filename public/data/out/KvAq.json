@@ -1,0 +1,1 @@
+{"name":"Игри и конзоли","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Конзоли","Аксесоари за конзоли","Игри за конзоли","Игри за PC","Друг"],"required":true}],"slug":"KvAq","parrent":"H9q2"}

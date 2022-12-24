@@ -1,0 +1,1 @@
+{"name":"Клавиатури, мишки","physical":true,"fields":[{"name":"type","placeholder":"Тип","type":"radio","options":["Клавиатура","Мишка","Клавиатура и мишка"],"required":true}],"slug":"qaWV","parrent":"TapE"}

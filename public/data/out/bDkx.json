@@ -1,0 +1,1 @@
+{"name":"Купува","hideprice":true,"fields":[{"name":"pricekupuva","type":"component","placeholder":"component","required":true},{"name":"sellertype","placeholder":"Тип на подателя","type":"radio","options":["Агенция за имоти","Собственик","Друг"]}],"slug":"bDkx","parrent":"TmUc"}
