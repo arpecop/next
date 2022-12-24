@@ -1,5 +1,0 @@
-klounApp:
-  component: '@sls-next/serverless-component@3.7.0'
-  inputs:
-    bucketName: kloun-app-serverless-bucket
-    memory: 1024

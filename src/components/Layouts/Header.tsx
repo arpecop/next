@@ -1,5 +1,3 @@
-import MenuNavBar from "../MenuNavBar";
-
 function Header({ title }: { title?: string }) {
 	return (
 		<header>
@@ -67,19 +65,10 @@ function Header({ title }: { title?: string }) {
 								/>
 							</svg>
 						</label>
-						<div className='bg-blue-300 w-full'>
-							<MenuNavBar
-								className='dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow dark:text-white'
-								hrefPass={true}
-							/>
-						</div>
+						<div className='bg-blue-300 w-full'>Menu</div>
 					</div>
 				</div>
-
-				<MenuNavBar
-					className='hidden sm:flex menu menu-horizontal bg-transparent rounded-box justify-end   w-full'
-					hrefPass={false}
-				/>
+				Menu
 			</div>
 		</header>
 	);
