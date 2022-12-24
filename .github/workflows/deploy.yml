@@ -1,0 +1,29 @@
+name: Deploy eziktok.com
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+
+      - name: Create new branch
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Rudix"
+          git checkout --orphan eziktokbuild
+          npm install
+          npm run build
+          rm -rf .vscode .env .env.local pages src components *.ts *.yml amplify .eslintignore .eslintrc.json .graphqlconfig.yml .env .prettierrc
+          git add --all
+          git add -A .next public -f
+          git commit  --allow-empty -n -m  "Add build directory"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: eziktokbuild
+          force: true

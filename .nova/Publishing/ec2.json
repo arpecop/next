@@ -1,0 +1,10 @@
+{
+  "identifier" : "BFBFD531-1565-4B56-BA07-F7DF9E70F8D0",
+  "ignoredFilePatterns" : [
+    ".next"
+  ],
+  "localPath" : "..",
+  "remotePath" : "\/eziktokfriendly114941-staging\/public\/face",
+  "server" : "s3",
+  "usesPublishing" : false
+}
