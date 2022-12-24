@@ -1,4 +1,3 @@
-
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
@@ -8,7 +7,7 @@ const Index = () => {
 
   return (
     <Main meta={<Meta title='userz.net' description='userz.net' />}>
-      Welcome
+      USERZ.net
     </Main>
   );
 };
