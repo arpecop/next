@@ -86,9 +86,9 @@ const MyComponent = () => {
     <div className='bg-white h-screen'>
       All web 1024
       <Resizer width={1024}>
-        <iframe src='http://localhost:3000' width={1024} height={500} />
         <iframe src='https://kesor.net' width={1024} height={500} />
         <iframe src='https://example.net' width={1024} height={500} />
+        <iframe src='https://rudixlab.com' width={1024} height={500} />
       </Resizer>
     </div>
   );
