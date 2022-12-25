@@ -10,16 +10,7 @@ const ResizerGPT = dynamic(() => import("@/components/Resizergpt"), {
 });
 
 const MyComponent = () => {
-  return (
-    <div className='h-screen bg-black'>
-      <ResizerGPT
-        width={800}
-        customwidth={900}
-        height={400}
-        src='http://localhost:3000'
-      />
-    </div>
-  );
+  return <ResizerGPT width={800} height={400} src='http://localhost:3000' />;
 };
 
 export async function getStaticProps() {
