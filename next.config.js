@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
+  experimental: {
+    runtime: "experimental-edge",
+  },
   async rewrites() {
     return [
       {
@@ -14,6 +17,10 @@ const nextConfig = {
       {
         source: "/api/facebook/img/:appid/:id.png",
         destination: "/api/facebook/img/:appid/?id=:id",
+      },
+      {
+        source: "/fb/result",
+        destination: "/facebook/result",
       },
       {
         source: "/fb/",

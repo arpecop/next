@@ -16,12 +16,15 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.2",
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.10.5",
     "@heroicons/react": "^1.0.6",
     "@next/font": "^13.0.7",
     "@tailwindcss/typography": "^0.5.8",
     "@vercel/og": "^0.0.21",
     "axios": "^0.27.2",
     "daisyui": "^2.43.1",
+    "fs": "0.0.1-security",
     "graphql": "^16.6.0",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
@@ -34,6 +37,7 @@
     "react-responsive": "^9.0.2",
     "react-transition-group": "^4.4.5",
     "stopwords-bg": "^0.3.0",
+    "twin.macro": "^3.1.0",
     "ulidx": "^0.3.0"
   },
   "devDependencies": {

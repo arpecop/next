@@ -5,9 +5,13 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import FacebookShare from "../../components/FacebookShare";
 import LoadingResult from "../../components/LoadingResult";
+const ResizerGPT = dynamic(() => import("@/components/ResizerGPT"), {
+	ssr: false,
+});
 
 export type FbApp = {
 	count: number;
@@ -76,6 +80,9 @@ const Facebook = ({
 						onLoad={() => setImageLoaded(true)}
 					/>
 				)}
+			</div>
+			<div>
+				<ResizerGPT src={`http://example.com/`} width={640} height={336} />
 			</div>
 			{app?.personalisations && <div> </div>}
 
