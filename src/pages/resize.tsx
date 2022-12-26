@@ -20,3 +20,4 @@ export async function getStaticProps() {
 }
 
 export default MyComponent;
+//rudix
