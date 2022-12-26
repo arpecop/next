@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
   return (
-    <Layout hideFooter>
+    <Layout>
       <div className='container pt-5'>
         <div className='flex justify-end items-center relative'>
           <div className='absolute left-0   w-1/2 sm:w-1/3 z-20'>

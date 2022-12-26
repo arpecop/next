@@ -1,5 +1,3 @@
-import Search from "./ads/Search";
-import Footer from "./Footer";
 import Header from "./Header";
 import Meta from "./Meta";
 
@@ -9,8 +7,6 @@ const Layout = ({
   title,
   description,
   noNav,
-  disableContainer,
-  hideFooter,
 }: {
   children: ReactNode;
   title?: string;
@@ -34,17 +30,7 @@ const Layout = ({
 
       <Header noNav={noNav ? true : false} />
 
-      {disableContainer ? (
-        <main className='z-20  my-4 grow'>
-          <div className='stickysearch py-3 -mt-4'>
-            <Search />
-          </div>
-          <div className='px-4 flex flex-col md:flex-row '>{children}</div>
-        </main>
-      ) : (
-        <main className='z-20 container mx-auto my-4 grow'>{children}</main>
-      )}
-      {!hideFooter && <Footer />}
+      <main className='z-20 container mx-auto my-4 grow'>{children}</main>
     </div>
   );
 };
