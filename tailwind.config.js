@@ -4,6 +4,9 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
+  experimental: {
+    runtime: "experimental-edge",
+  },
   theme: {
     screens: {
       xs: "455px",
