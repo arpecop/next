@@ -1,30 +1,24 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
   },
-  "extends": [
+  extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
   ],
-  "rules": {
+  rules: {
     "rome/no-unnecessary-complexity": "off",
     "lint/a11y/useKeyWithClickEvents": "off",
-    "rome/useKeyWithClickEvents": "off"
+    "rome/useKeyWithClickEvents": "off",
   },
-  "overrides": [
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+  overrides: [],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "rome"
-  ],
-
-}
+  plugins: ["react", "@typescript-eslint"],
+};
