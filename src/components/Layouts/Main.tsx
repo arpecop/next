@@ -15,8 +15,8 @@ const Main = (props: IMainProps) => {
 	useEffect(() => {
 		// rome-ignore lint/suspicious/noExplicitAny: <explanation>
 		let adsbygoogle: any;
-		var ads = document.getElementsByClassName("adsbygoogle").length as number;
-		for (var i = 0; i < ads; i++) {
+		const ads = document.getElementsByClassName("adsbygoogle").length as number;
+		for (let i = 0; i < ads; i++) {
 			try {
 				// rome-ignore lint/suspicious/noExplicitAny: <explanation>
 				(adsbygoogle = (window as any).adsbygoogle || []).push({});

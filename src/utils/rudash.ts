@@ -8,7 +8,7 @@ export const shuffle = (array: any[]) => {
 
 export const chunk = (array: any[], size: number) => {
   const chunked = [];
-  for (let element of array) {
+  for (const element of array) {
     const lastChunk = chunked[chunked.length - 1];
     if (!lastChunk || lastChunk.length === size) {
       chunked.push([element]);

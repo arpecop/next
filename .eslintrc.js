@@ -10,9 +10,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
   ],
   rules: {
-    "rome/no-unnecessary-complexity": "off",
     "lint/a11y/useKeyWithClickEvents": "off",
-    "rome/useKeyWithClickEvents": "off",
+    "react/react-in-jsx-scope": "off",
   },
   overrides: [],
   parser: "@typescript-eslint/parser",

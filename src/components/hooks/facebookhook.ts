@@ -59,7 +59,7 @@ export function useFacebookRandom(app?: FbApp) {
 			const data = await res2.json();
 			const newdata = { ...selectedapp, ...item, ...data };
 			newdata.description = "";
-			setCookie(app!.slug, id);
+			setCookie(app?.slug || "", id);
 			const insert = await doMutation(
 				gql`
           mutation MyMutation($id: String!, $data: AWSJSON) {

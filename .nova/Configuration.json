@@ -1,7 +1,7 @@
 {
   "apexskier.eslint.config.eslintConfigPath" : ".eslintrc.js",
   "apexskier.eslint.config.eslintPath" : "\/usr\/local\/bin\/eslint",
-  "apexskier.eslint.config.fixOnSave" : "Enable",
+  "apexskier.eslint.config.fixOnSave" : "Disable",
   "apexskier.typescript.config.formatDocumentOnSave" : "true",
   "apexskier.typescript.config.isEnabledForJavascript" : "Disable",
   "apexskier.typescript.config.organizeImportsOnSave" : "true",

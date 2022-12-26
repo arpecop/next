@@ -17,11 +17,9 @@ function ResizerGPT(props: {
 		const viewportHeight = window.innerHeight;
 		console.log({ aspectRatio });
 		let scale;
-		let resizedWidth;
-		let resizedHeight;
 
-		resizedWidth = w;
-		resizedHeight = props.height;
+		const resizedWidth = w;
+		const resizedHeight = props.height;
 		scale = Math.min(
 			viewportWidth / resizedWidth,
 			viewportHeight / resizedHeight

@@ -38,7 +38,7 @@ async function prepare() {
     nextToken: tok,
   });
 
-  const insert = await doMutation(
+  await doMutation(
     gql`
       mutation MyMutation(
         $joke: String = ""
@@ -61,19 +61,10 @@ async function prepare() {
   return data.items;
 }
 
-type Attachments = {
-  type: string;
-  payload: {
-    template_type: string;
-    elements: {
-      title: string;
-      image_url: string;
-      subtitle: string;
-    }[];
-  };
-};
-
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const data = await prepare();
   const emojis = ["🤣", "🤪", "😁", "🤭", "😂"];
 
@@ -87,8 +78,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     `https://graph.facebook.com/me/accounts?access_token=${fbtoken}`
   );
   const datax = await res2.json();
-  const jokestoken = datax.data.find((x: any) => x.id === "103340854630134")
-    .access_token as string;
+  const jokestoken = datax.data.find(
+    (x: { id: string }) => x.id === "103340854630134"
+  ).access_token as string;
 
   const rawResponse = await fetch(
     `https://graph.facebook.com/103340854630134/feed?access_token=${jokestoken}`,
@@ -110,4 +102,3 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.json({ content, child_attachments });
 };
-// bea60699-8dad-4b7e-bcff-167ae7ef8152 f83769fc-eeb9-40f5-bc4f-aeef42c1ce2b
