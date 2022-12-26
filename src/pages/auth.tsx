@@ -97,7 +97,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
         username: data.username,
         sub: data.attributes.sub,
       });
-    } catch (e) {
+    } catch (e: any) {
       Router.push(refer);
       setUser({
         username: data.username,
@@ -139,7 +139,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
       case "signin": {
         Auth.signIn(username, password)
           .then(async () => initialise())
-          .catch((e) => setErr(e));
+          .catch((e: any) => setErr(e));
         break;
       }
 
@@ -154,7 +154,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
           .then(async () => {
             setSection("confirmsignup");
           })
-          .catch((e) => setErr(e));
+          .catch((e: any) => setErr(e));
 
         break;
       }
@@ -166,7 +166,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
                 initialise()
               )
           )
-          .catch((e) => setErr(e));
+          .catch((e: any) => setErr(e));
 
         break;
       }
@@ -175,7 +175,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
           .then(async () => {
             setSection("forgotchange");
           })
-          .catch((e) => setErr(e));
+          .catch((e: any) => setErr(e));
 
         break;
       }
@@ -184,7 +184,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
           .then(async () => {
             setSection("signin");
           })
-          .catch((e) => setErr(e));
+          .catch((e: any) => setErr(e));
         break;
       }
       default:
