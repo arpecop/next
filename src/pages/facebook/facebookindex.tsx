@@ -7,8 +7,8 @@ import Nav from "@/components/Nav";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import FacebookShare from "../../components/FacebookShare";
-import LoadingResult from "../../components/LoadingResult";
+import FacebookShare from "@/components/FacebookShare";
+import LoadingResult from "@/components/LoadingResult";
 const ResizerGPT = dynamic(() => import("@/components/ResizerGPT"), {
 	ssr: false,
 });
@@ -45,6 +45,7 @@ const Facebook = ({
 	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const pre = useFacebookRandom(app);
 	//<LoadingResult name={pre?.name} />
+	//<ResizerGPT src={`http://example.com/`} width={640} height={336} />
 	return (
 		<Main
 			meta={
@@ -81,9 +82,7 @@ const Facebook = ({
 					/>
 				)}
 			</div>
-			<div>
-				<ResizerGPT src={`http://example.com/`} width={640} height={336} />
-			</div>
+		 
 			{app?.personalisations && <div> </div>}
 
 			<div className='container mx-auto'>
