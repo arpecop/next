@@ -1,1 +1,2 @@
-declare module "@aws-amplify/auth"; // amplify hack :(
+declare module "@aws-amplify/auth";
+declare module "@aws-amplify/storage";
