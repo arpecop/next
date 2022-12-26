@@ -5,9 +5,10 @@ import { fbtoken } from "../refetch";
 
 export const LIST_JOKES = /* GraphQL */ gql`
   query MyQuery($cat: String!, $nextToken: String) {
-    queryDdbsByByCat(cat: $cat, first: 5, after: $nextToken) {
+    queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
       items {
         id
+        joke: title
       }
       nextToken
     }
@@ -68,11 +69,14 @@ export default async (
   const data = await prepare();
   const emojis = ["🤣", "🤪", "😁", "🤭", "😂"];
 
-  const child_attachments = data.map((item, i) => ({
-    link: `https://kloun.lol/joke/${item.id}`,
-    name: emojis[i],
-    picture: `https://kloun.lol/api/joke/og/?idx=${item.id}&w=550&h=550`,
-  }));
+  const child_attachments = data
+    .sort((a, z) => z.joke.length - a.joke.length)
+    .map((item, i) => ({
+      link: `https://kloun.lol/joke/${item.id}`,
+      name: emojis[i],
+      picture: `https://kloun.lol/api/joke/og/?idx=${item.id}&w=550&h=550`,
+    }))
+    .slice(0, 5);
 
   const res2 = await fetch(
     `https://graph.facebook.com/me/accounts?access_token=${fbtoken}`
@@ -98,7 +102,7 @@ export default async (
       }),
     }
   );
-  const content = await rawResponse.json();
+  const resp = await rawResponse.json();
 
-  res.json({ content, child_attachments });
+  res.json({ child_attachments, resp });
 };

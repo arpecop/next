@@ -35,7 +35,7 @@ async function doQuery(
   const d = await client.query({ query, variables: { ...variables } });
 
   return Object.values(d.data)[0] as {
-    items: { [key: string]: string | number }[];
+    items: { [key: string]: string }[];
     nid?: string;
     nextToken?: string;
   } & {
