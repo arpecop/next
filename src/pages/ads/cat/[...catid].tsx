@@ -94,3 +94,6 @@ export const getServerSideProps = async (req: NextApiRequest) => {
 };
 
 export default CatId;
+export const config = {
+  runtime: "experimental-edge",
+};

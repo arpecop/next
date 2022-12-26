@@ -85,3 +85,6 @@ export const getServerSideProps = async (req: NextApiRequest) => {
 };
 
 export default Optional;
+export const config = {
+  runtime: "experimental-edge",
+};

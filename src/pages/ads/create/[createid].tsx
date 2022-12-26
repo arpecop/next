@@ -43,3 +43,6 @@ export const getServerSideProps = async ({
 };
 
 export default CatId;
+export const config = {
+  runtime: "experimental-edge",
+};

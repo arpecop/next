@@ -157,3 +157,6 @@ export const getServerSideProps = async ({
 };
 
 export default CreatefreeAd;
+export const config = {
+  runtime: "experimental-edge",
+};
