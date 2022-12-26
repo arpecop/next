@@ -1,5 +1,5 @@
 function toSofiaTimeZone(date: Date): Date {
-  let sofiaDate = new Date(date);
+  const sofiaDate = new Date(date);
   if (date.getTimezoneOffset() === 120) {
     return date;
   }

@@ -1,7 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
-//import Amplify from '@aws-amplify/auth';
-
 import Amplify, { Auth } from "@aws-amplify/auth";
 
 import Router, { useRouter } from "next/router";

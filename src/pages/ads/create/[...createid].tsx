@@ -100,7 +100,7 @@ function CreatefreeAd({ data }: { data: AdsDataSubcat }) {
                 cat: data.slug,
                 type: data.slug,
                 query: JSON.stringify(submitteddata).replace(
-                  /[{}\[\]:",]/g,
+                  /[{}[\]:",]/g,
                   " "
                 ),
                 description: submitteddata.description?.value,

@@ -103,16 +103,6 @@ const FormInput = ({
           submitted={submitted}
         />
       );
-    case "textarea":
-      return (
-        <Input
-          type='textarea'
-          name={inputschema.name}
-          placeholder={inputschema.placeholder}
-          required={inputschema.required}
-          submitted={submitted}
-        />
-      );
     case "select":
       return (
         <Select
