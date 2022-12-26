@@ -6,9 +6,12 @@ import Link from "next/link";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-import { shuffle } from 'lodash';
-import Pagination, { getPaging, refreshToken } from "../../components/NewPagination";
+import Pagination, {
+	getPaging,
+	refreshToken
+} from "@/components/NewPagination";
 import { doQuery } from "../../data/client";
+import { shuffle } from "../../utils/rudash";
 
 export type User = {
 	id: string;
@@ -25,7 +28,15 @@ const Index = ({
 	return (
 		<Main
 			hideFooter
-			meta={<Meta title={shuffle(twusers).slice(0, 5).map((item: User) => item.id).join(' ')} description='Twitter DB' />}
+			meta={
+				<Meta
+					title={shuffle(twusers)
+						.slice(0, 5)
+						.map((item: User) => item.id)
+						.join(" ")}
+					description='Twitter DB'
+				/>
+			}
 		>
 			<div className='flex '>
 				{"abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
@@ -41,10 +52,12 @@ const Index = ({
 				{twusers.map((user) => (
 					<li key={user.id} className='m-1'>
 						<Link
-							href={`https://twitter.com/${user.id.replace('_tw', "").toLowerCase()}`}
+							href={`https://twitter.com/${user.id
+								.replace("_tw", "")
+								.toLowerCase()}`}
 							className='active flex gap-4 bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900'
 						>
-							{user.id.replace('_tw', "")}
+							{user.id.replace("_tw", "")}
 						</Link>
 					</li>
 				))}
@@ -75,7 +88,7 @@ export const getServerSideProps = async ({
     `,
 		{
 			nextToken: nextTokenCurrent,
-		},
+		}
 	);
 
 	await refreshToken(query.jokecat, pagenum, data.nextToken);

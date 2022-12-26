@@ -1,5 +1,5 @@
 import axios from "axios";
-import { spread } from "lodash";
+
 import React, { useEffect } from "react";
 
 export interface Item {
@@ -85,7 +85,6 @@ const Program = ({
 							className='hover:animate-pulse'
 							htmlFor='my-modal'
 							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
-							{...spread}
 						>
 							<div className='rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400'>
 								<img

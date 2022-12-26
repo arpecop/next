@@ -1,5 +1,5 @@
-import { shuffle } from "lodash";
 import { NextApiRequest, NextApiResponse } from "next";
+import { shuffle } from "../../../../utils/rudash";
 
 const items = [
 	{ good: 0, bad: 100 },
