@@ -180,6 +180,3 @@ const apps = [
 
 export default Facebook;
 //test
-export const config = {
-	runtime: "experimental-edge",
-};
