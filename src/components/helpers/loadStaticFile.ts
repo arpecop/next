@@ -1,14 +1,18 @@
-import path from "path";
-import { promises as fs } from "fs";
+import useSWR from "swr";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const loadStaticFile = async (
   loc: string
 ): Promise<{ [key: string]: string | { [key: string]: any }[] }[]> => {
-  const jsonDirectory = path.join(process.cwd(), "public/data/");
-  const dest = `${jsonDirectory}${loc}.json`;
-  console.log(dest);
-  const data = await fs.readFile(dest, "utf-8");
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/api/data/"
+      : "https://eziktok.com/api/data/";
+  const data = await fetcher(url + "" + loc);
+
   return new Promise((resolve) => {
-    resolve(JSON.parse(data));
+    resolve(data);
   });
 };
 export default loadStaticFile;
