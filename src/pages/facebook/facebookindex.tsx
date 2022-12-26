@@ -177,6 +177,6 @@ const apps = [
 	{ cat: "Какво е японското ти име", slug: "iaponskoime" },
 	{ cat: "Провери какъв си бил в предишен живот", slug: "predishenjivot" },
 ];
-
+export const runtime = "experimental-edge";
 export default Facebook;
 //test

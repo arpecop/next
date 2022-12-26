@@ -61,4 +61,10 @@ const Index = () => {
   );
 };
 
+export async function getStaticProps() {
+  return {
+    props: { lastupdate: new Date().toISOString() },
+  };
+}
+
 export default Index;
