@@ -1,9 +1,9 @@
-import Search from './ads/Search';
-import Footer from './Footer';
-import Header from './Header';
-import Meta from './Meta';
+import Search from "./ads/Search";
+import Footer from "./Footer";
+import Header from "./Header";
+import Meta from "./Meta";
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 const Layout = ({
   children,
   title,
@@ -24,9 +24,9 @@ const Layout = ({
   return (
     <div className='flex min-h-screen flex-col'>
       <Meta
-        title={title || 'езикТок - социалната мрежа'}
+        title={title || "езикТок - социалната мрежа"}
         description={
-          description || title || 'Български сайт за безплатни обяви'
+          description || title || "Български сайт за безплатни обяви"
         }
         image={image}
       />
@@ -53,3 +53,4 @@ const Layout = ({
 };
 
 export default Layout;
+//s
