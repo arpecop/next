@@ -9,7 +9,6 @@ jobs:
       - uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
-
       - name: Create new branch
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
