@@ -5,9 +5,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-  experimental: {
-    runtime: "experimental-edge",
-  },
 };
 
 module.exports = nextConfig;
