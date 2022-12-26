@@ -15,7 +15,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan eziktokbuild
-          npm install
+          rm -rf .next
+          npm install --production
           npm dedupe
           npm run build
           rm -rf .vscode .env .env.local pages src components *.ts *.yml amplify .eslintignore .eslintrc.json .graphqlconfig.yml .env .prettierrc
