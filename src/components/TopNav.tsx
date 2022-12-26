@@ -1,6 +1,5 @@
-import { Auth } from "@aws-amplify/auth";
 import { useTheme } from "next-themes";
-import Link from "next/link";
+
 import { useEffect, useState } from "react";
 
 //import useLocalStorage from './hooks/storage';
@@ -23,15 +22,7 @@ export type UserType = {
   };
 } | null;
 const TopNav = ({ className }: { className: string }) => {
-  const [user, setUser] = useState<{ username: string } | undefined>();
   const { theme, setTheme } = useTheme();
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-
-    if (user) {
-      setUser(JSON.parse(user));
-    }
-  }, []);
 
   const switchTheme = () => {
     if (!theme) {

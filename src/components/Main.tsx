@@ -8,7 +8,6 @@ const Layout = ({
   children,
   title,
   description,
-  image,
   noNav,
   disableContainer,
   hideFooter,
