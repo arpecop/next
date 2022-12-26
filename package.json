@@ -44,6 +44,7 @@
     "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0",
     "stopwords-bg": "^0.3.0",
+    "swr": "^2.0.0",
     "ulidx": "^0.3.0"
   },
   "devDependencies": {
