@@ -34,21 +34,13 @@ const MenuNavBar = ({
 			</li>
 
 			<li>
-				<Link className='text-shadow font-bold' href='#'>
+				<Link
+					className='text-shadow font-bold'
+					href='/?type=Jokes'
+					passHref={hrefPass}
+				>
 					Вицове
 				</Link>
-				<ul className='rounded bg-base-100 p-2'>
-					{catsdata.slice(0, 10).map((item) => (
-						<li key={item.cat}>
-							<a href={`/cat/${item.slug}/`} className='font-bold'>
-								{item.cat}
-							</a>
-						</li>
-					))}
-					<li>
-						<Link href={"/?type=Jokes"}>Всички</Link>
-					</li>
-				</ul>
 			</li>
 			<li>
 				<Link

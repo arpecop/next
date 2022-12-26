@@ -46,6 +46,7 @@ const Facebook = ({
 	const pre = useFacebookRandom(app);
 	//<LoadingResult name={pre?.name} />
 	//<ResizerGPT src={`http://example.com/`} width={640} height={336} />
+	console.log("test");
 	return (
 		<Main
 			meta={
