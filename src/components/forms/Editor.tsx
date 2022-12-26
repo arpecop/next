@@ -1,15 +1,14 @@
-import axios from 'axios';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import Router, { useRouter } from 'next/router';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import TextareaAutosize from 'react-textarea-autosize';
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import Router, { useRouter } from "next/router";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import TextareaAutosize from "react-textarea-autosize";
 
-import useLocalStorage from '../hooks/storage';
-import { UserType } from '../TopNav';
-import Upload from './inputs/Upload';
+import useLocalStorage from "../hooks/storage";
+import { UserType } from "../TopNav";
+import Upload from "./inputs/Upload";
 
-const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 
@@ -25,7 +24,7 @@ const Editor = ({
 }: {
   parrent: [...string[], number | string];
   user?: UserType;
-  type: 'new' | 'reply';
+  type: "new" | "reply";
   items?: { name: string; slug: string }[];
   selected?: string;
   placeholder?: string;
@@ -33,11 +32,11 @@ const Editor = ({
   val?: string;
   addPhoto?: boolean;
 }) => {
-  const [value, setValue] = useState(val || '');
-  const [title, setTitle] = useState('');
+  const [value, setValue] = useState(val || "");
+  const [title, setTitle] = useState("");
   const [focus, setFocus] = useState(!!expanded);
 
-  const [images] = useLocalStorage<string[]>('user', []);
+  const [images] = useLocalStorage<string[]>("user", []);
   const { asPath } = useRouter();
   const onChange = useCallback((valx: string) => {
     setValue(valx);
@@ -46,42 +45,43 @@ const Editor = ({
     return {
       autofocus: false,
       spellChecker: false,
-      placeholder: placeholder || 'Съдържание (не е задължително)',
+      placeholder: placeholder || "Съдържание (не е задължително)",
     };
   }, []);
   useEffect(() => {
     if (focus) {
-      Router.push(`/cars/create/${parrent.join('__')}`);
+      Router.push(`/cars/create/${parrent.join("__")}`);
     }
   }, [focus, parrent]);
 
   const publish = async () => {
-    const d = await axios.post('/api/post', {
-      parrent,
-      value,
-      user,
-      title,
-      images,
-      type,
-    });
+    // post
+    //  {
+    //    parrent,
+    //    value,
+    //    user,
+    //    title,
+    //    images,
+    //    type,
+    //  }
 
     if (parrent[2]) {
-      Router.push(
-        `/cars/post/${parrent[2]}/#${d.data.insert_userposts_one.uid}`,
-      );
-      Router.reload();
+      // Router.push(
+      //   `/cars/post/${parrent[2]}/#${d.data.insert_userposts_one.uid}`
+      // );
+      // Router.reload();
     } else {
-      Router.push(`/cars/${parrent.join('__')}`);
+      Router.push(`/cars/${parrent.join("__")}`);
     }
     //Router.reload();
   };
 
   return user ? (
     <>
-      {focus || asPath.includes('post') ? (
+      {focus || asPath.includes("post") ? (
         <>
-          <div className={type === 'new' ? 'fullscreenx' : ''}>
-            {type === 'new' && (
+          <div className={type === "new" ? "fullscreenx" : ""}>
+            {type === "new" && (
               <>
                 <div className='container mx-auto my-4'>
                   <select
@@ -99,7 +99,7 @@ const Editor = ({
             )}
             <div className='container mx-auto p-2'>
               <div className='relative mb-2 flex'>
-                {type === 'new' && (
+                {type === "new" && (
                   <>
                     <div className='absolute bottom-0 right-0  p-3 text-xs'>
                       {title.length}/300
@@ -108,7 +108,7 @@ const Editor = ({
                       autoFocus={true}
                       value={title}
                       maxLength={300}
-                      placeholder={placeholder || 'Заглавие'}
+                      placeholder={placeholder || "Заглавие"}
                       className='w-full  rounded-md border border-gray-400 bg-white p-2 pr-12 text-black'
                       onChange={(e) => setTitle(e.target.value)}
                     />
@@ -123,7 +123,7 @@ const Editor = ({
               />
               <div className='flex w-full'>
                 <div className='flex-1' />
-                {type === 'new' && (
+                {type === "new" && (
                   <button
                     className='btn btn-secondary btn-sm mr-2'
                     onClick={() => {
@@ -149,7 +149,7 @@ const Editor = ({
         <input
           type='text'
           className='w-full rounded-lg border border-gray-500 bg-white p-2'
-          placeholder={'Нова тема'}
+          placeholder={"Нова тема"}
           onFocus={() => setFocus(true)}
         />
       )}
