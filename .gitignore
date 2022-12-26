@@ -58,6 +58,7 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 .turbo
+pnpm-lock.yaml
 
 #common should be force added
 tailwind.config.js
