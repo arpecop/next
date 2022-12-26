@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import PlaceHolder from './_PlaceHolder';
+import PlaceHolder from "./_PlaceHolder";
 
 const useAutosizeTextArea = (
   textAreaRef: HTMLTextAreaElement | null,
-  value: string,
+  value: string
 ) => {
   useEffect(() => {
     if (textAreaRef) {
-      textAreaRef.style.height = '0px';
+      textAreaRef.style.height = "0px";
       const scrollHeight = textAreaRef.scrollHeight;
       textAreaRef.style.height = `${scrollHeight}px`;
     }
@@ -33,7 +33,7 @@ const Input = ({
   after?: string;
   submitted?: boolean;
 }) => {
-  const [val, setVal] = useState(value || '');
+  const [val, setVal] = useState(value || "");
   const isEmpty = !val && required && submitted;
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -41,20 +41,20 @@ const Input = ({
 
   return (
     <div
-      className={type === 'hidden' ? 'hidden' : 'md:flex md:items-center mb-2'}
+      className={type === "hidden" ? "hidden" : "md:flex md:items-center mb-2"}
     >
       <PlaceHolder
         required={required}
-        placeholder={placeholder || ''}
+        placeholder={placeholder || ""}
         submitted={submitted}
       />
       <div className='w-full flex'>
-        {type === 'textarea' ? (
+        {type === "textarea" ? (
           <textarea
             {...(!required ? {} : { required: true })}
             ref={textAreaRef}
             className={`${
-              isEmpty ? 'textarea-secondary border-2' : 'textarea-accent'
+              isEmpty ? "textarea-secondary border-2" : "textarea-accent"
             } textarea w-full  overflow-hidden border-2  h-14 bgaccent `}
             value={val}
             rows={3}
@@ -65,10 +65,10 @@ const Input = ({
         ) : (
           <input
             {...(!required ? {} : { required: true })}
-            type={type || 'text'}
+            type={type || "text"}
             placeholder={placeholder}
             className={`${
-              isEmpty ? 'inputerror' : 'inputx'
+              isEmpty ? "inputerror" : "inputx"
             } w-full flex-1 border-2`}
             name={name}
             value={val}
@@ -89,6 +89,6 @@ export default Input;
 
 export async function getStaticProps() {
   return {
-    props: {}, // will be passed to the page component as props
+    props: {},
   };
 }
