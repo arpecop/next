@@ -1,4 +1,4 @@
-import Layout from '../../components/Main';
+import Layout from "../../components/Main";
 
 export default function Home() {
   return (
@@ -17,9 +17,4 @@ export default function Home() {
       </div>
     </Layout>
   );
-}
-export async function getStaticProps() {
-  return {
-    props: {}, // will be passed to the page component as props
-  };
 }

@@ -1,5 +1,4 @@
 import BlogPost from "@/components/BlogPost";
-import Layout from "@/components/Main";
 
 const Post = () => {
   const data = {
@@ -25,6 +24,6 @@ export default Post;
 
 export async function getStaticProps() {
   return {
-    props: { slug: "ebay" }, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as props
   };
 }

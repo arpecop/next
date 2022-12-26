@@ -1,5 +1,5 @@
 import BlogPost from "@/components/BlogPost";
-import Layout from "@/components/Main";
+
 import React from "react";
 
 const Post = () => {
@@ -18,9 +18,3 @@ const Post = () => {
   return <BlogPost title={data.title} content={data.content} />;
 };
 export default Post;
-
-export async function getStaticProps() {
-  return {
-    props: { slug: "ebay" }, // will be passed to the page component as props
-  };
-}
