@@ -1,10 +1,10 @@
-import BlogPost from '@/components/BlogPost';
-import Layout from '@/components/Main';
-import React from 'react';
+import BlogPost from "@/components/BlogPost";
+import Layout from "@/components/Main";
+import React from "react";
 
-const Post: React.FC = () => {
+const Post = () => {
   const data = {
-    title: 'Пазаруване в Ebay',
+    title: "Пазаруване в Ebay",
     content: `Пазаруването в уебсайтове като eBay може да бъде удобно и често предлага добри оферти за широка гама от продукти. Съществуват обаче някои потенциални рискове и опасности, които трябва да знаете, когато пазарувате от този тип уебсайтове, особено за артикули втора употреба, които нямат система за обратна връзка.
 
 	  Един от основните рискове при пазаруване от уебсайтове като eBay е, че може да не получите артикула, който сте закупили. Това може да се случи, ако продавачът е нечестен или ако има проблем с процеса на доставка. В някои случаи продавачът може дори да няма артикула, който продава, и може просто да се опитва да ви измами за парите ви.
@@ -15,16 +15,12 @@ const Post: React.FC = () => {
 
 	  За да се защитите, когато пазарувате в eBay, е важно да направите проучване и внимателно да оцените продавача, преди да направите покупка. Потърсете продавачи с добри резултати и положителни отзиви и не забравяйте да прочетете внимателно описанието на артикула, за да сте сигурни, че разбирате състоянието на артикула. Трябва също така да използвате защитен метод на плащане, като PayPal, за да защитите финансовата си информация.`,
   };
-  return (
-    <Layout title={data.title}>
-      <BlogPost title={data.title} content={data.content} />
-    </Layout>
-  );
+  return <BlogPost title={data.title} content={data.content} />;
 };
 export default Post;
 
 export async function getStaticProps() {
   return {
-    props: { slug: 'ebay' }, // will be passed to the page component as props
+    props: { slug: "ebay" }, // will be passed to the page component as props
   };
 }
