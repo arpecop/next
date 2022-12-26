@@ -85,7 +85,7 @@ export const AdsContainer = ({ children }: { children: ReactNode }) => (
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const adsData = await loadStaticFile("adsData");
-  console.log(adsData);
+
   return {
     props: {
       cats: adsData.map((x) => ({

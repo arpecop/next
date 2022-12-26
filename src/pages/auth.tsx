@@ -92,7 +92,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
 
   async function initialise() {
     const data = await Auth.currentAuthenticatedUser();
-    console.log(data);
+
     try {
       Router.push(refer);
       setUser({

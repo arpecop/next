@@ -63,7 +63,7 @@ const Upload = (): JSX.Element => {
 
     const liveimg = `${prefix}${result.key}`;
 
-    console.log(liveimg);
+    //console.log(liveimg);
     setImages([liveimg, ...images]);
     const image = new Image();
     image.crossOrigin = "anonymous";
@@ -75,7 +75,7 @@ const Upload = (): JSX.Element => {
         image.width,
         image.height
       );
-      console.log(resizedImageData);
+      //console.log(resizedImageData);
     };
 
     setLoading(false);

@@ -32,7 +32,7 @@ function CreatefreeAd({ data }: { data: AdsDataSubcat }) {
         message: "Не сте оторизиран, моля влезте с акаунта си",
       });
   }, [user]);
-  console.log(ulid());
+
   const allfields = [
     {
       name: "title",
