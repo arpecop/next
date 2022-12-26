@@ -1,3 +1,5 @@
+//import Amplify from '@aws-amplify/auth';
+
 import Amplify, { Auth } from "@aws-amplify/auth";
 
 import Router, { useRouter } from "next/router";
@@ -97,7 +99,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
         username: data.username,
         sub: data.attributes.sub,
       });
-    } catch (e: any) {
+    } catch (e) {
       Router.push(refer);
       setUser({
         username: data.username,
@@ -337,4 +339,3 @@ export async function getServerSideProps({ req }: any) {
 }
 
 export default AuthPage;
-//dsdfdsada

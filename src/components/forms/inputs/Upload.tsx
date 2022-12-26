@@ -1,4 +1,6 @@
-import Amplify, { Storage } from "@aws-amplify/storage";
+import Amplify from "@aws-amplify/core";
+
+import { Storage } from "@aws-amplify/storage";
 import { useState } from "react";
 
 import Checkbox from "./Checkbox";

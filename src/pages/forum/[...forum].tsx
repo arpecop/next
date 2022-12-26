@@ -23,7 +23,11 @@ const Forum = ({ topics }: Props) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({
+  query,
+}: {
+  query: { forum: string[] };
+}) => {
   return { props: {} };
 };
 

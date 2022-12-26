@@ -1,3 +1,4 @@
+import { NextApiRequest } from "next";
 import { Ad } from "src/API";
 
 import Layout from "@/components/Main";
@@ -72,7 +73,7 @@ export const Optional = ({
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (req: NextApiRequest) => {
   const singlead = [] as any;
 
   return {

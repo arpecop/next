@@ -1,6 +1,7 @@
 import Search from "@/components/ads/Search";
 import Layout from "@/components/Main";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 import AnimIndexProducts from "../components/elements/AnimIndexProducts";
 import Link from "next/link";
