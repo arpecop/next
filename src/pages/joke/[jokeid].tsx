@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import { chunk, shuffle } from "lodash";
+
 import type { GetServerSideProps } from "next";
 
 import { FormatJoke } from "@/components/JokeText";
@@ -15,6 +15,7 @@ import { catsdata } from "@/utils/formatter";
 import { doMQuery, doQuery, gql } from "../../data/client";
 
 import FacebookShare from "@/components/FacebookShare";
+import { chunk, shuffle } from "../../utils/rudash";
 
 const SingleJoke = (props: {
 	joke: Doc;

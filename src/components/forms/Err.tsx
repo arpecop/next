@@ -1,5 +1,3 @@
-import { spread } from "lodash";
-import React from "react";
 import { useState } from "react";
 
 const Err = ({ err }: { err: { message: string } }): JSX.Element => {
@@ -16,7 +14,6 @@ const Err = ({ err }: { err: { message: string } }): JSX.Element => {
 					onClick={() => {
 						setClose(true);
 					}}
-					{...spread}
 				>
 					<path
 						strokeLinecap='round'

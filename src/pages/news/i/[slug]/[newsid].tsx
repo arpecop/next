@@ -1,15 +1,16 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 
-import { gql } from '@apollo/client';
-import { shuffle } from 'lodash';
-import type { GetServerSideProps } from 'next';
+import { gql } from "@apollo/client";
 
-import Main from '@/components/Layouts/Main';
-import Meta from '@/components/Layouts/Meta';
-import { doQuery } from '@/data/client';
+import type { GetServerSideProps } from "next";
 
-import type { News } from '@/pages/news/';
+import Main from "@/components/Layouts/Main";
+import Meta from "@/components/Layouts/Meta";
+import { doQuery } from "@/data/client";
+
+import type { News } from "@/pages/news/";
+import { shuffle } from "../../../../utils/rudash";
 
 const NewsItem = ({
   newsbg,
@@ -79,7 +80,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   query,
 }) => {
-  const { newsid, slug } = query as { newsid: string; slug?: string }
+  const { newsid, slug } = query as { newsid: string; slug?: string };
 
   const data = await doQuery(
     gql`
@@ -101,31 +102,32 @@ export const getServerSideProps: GetServerSideProps = async ({
   // const content = data.content.length > 30 ? JSON.parse(data.content) : {};
 
   const content = JSON.parse(JSON.parse(data?.content)) as {
-    description: null; html: string[]
+    description: null;
+    html: string[];
   };
   const shufflprep = content.html
     ? shuffle(
       content.html
-        .join(' ')
-        .split('.')
-        .map((p: string) => `${shuffle(p.split(' ')).join(' ')}.`)
+        .join(" ")
+        .split(".")
+        .map((p: string) => `${shuffle(p.split(" ")).join(" ")}.`)
     )
     : null;
   const shuffled = shufflprep
     ?.map((p: string) => {
       const rid = Math.floor(Math.random() * 5);
-      return `${p.charAt(0).toUpperCase() + p.slice(1)} ${rid === 0 ? '-=splitter=-' : ''
+      return `${p.charAt(0).toUpperCase() + p.slice(1)} ${rid === 0 ? "-=splitter=-" : ""
         }`;
     })
-    .join(' ')
-    .split('-=splitter=-');
+    .join(" ")
+    .split("-=splitter=-");
 
   const props = {
     newsbg_by_pk: {
       ...data,
       description: content.description || null,
       parsed: {
-        html: JSON.stringify(req.headers).includes('Googlebot')
+        html: JSON.stringify(req.headers).includes("Googlebot")
           ? shuffled
           : content.html,
       },

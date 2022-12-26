@@ -4,7 +4,6 @@ import { FormatJoke } from "@/components/JokeText";
 
 import type { Doc } from "../data/structure";
 import FacebookShare from "./FacebookShare";
-import { spread } from "lodash";
 
 interface Props {
 	item: Doc;
@@ -48,7 +47,6 @@ export const JokeThumbnail: FC<Props> = ({
 						htmlFor={item.id}
 						className='btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none'
 						onClick={() => formatJoke(joke)}
-						{...spread}
 					>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'

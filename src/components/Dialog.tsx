@@ -6,7 +6,6 @@ import type { Doc } from "@/data/structure";
 
 import FacebookShare from "./FacebookShare";
 import { FormatJoke } from "./JokeText";
-import { spread } from "lodash";
 
 const Dialog = ({ id, imgid }: { id?: string; imgid?: string }) => {
 	const [joke, setJoke] = React.useState<string>("");
@@ -34,9 +33,8 @@ const Dialog = ({ id, imgid }: { id?: string; imgid?: string }) => {
 	return (
 		// rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 		<div
-			className={`fixed top-0 left-0 z-20   h-screen  w-screen   overflow-auto bg-black/30 backdrop-blur-sm  ${
-				opened ? "block" : "hidden"
-			}`}
+			className={`fixed top-0 left-0 z-20   h-screen  w-screen   overflow-auto bg-black/30 backdrop-blur-sm  ${opened ? "block" : "hidden"
+				}`}
 			onClick={close}
 		>
 			<div className='flex flex-col items-center'>
@@ -46,7 +44,6 @@ const Dialog = ({ id, imgid }: { id?: string; imgid?: string }) => {
 					version='1.1'
 					viewBox='0 0 744.09 1052.4'
 					onClick={close}
-					{...spread}
 				>
 					<g>
 						<path
