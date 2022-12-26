@@ -1,4 +1,4 @@
-name: Deploy eziktok.com
+name: Deploy rudixlab.com
 on: push
 jobs:
   build:

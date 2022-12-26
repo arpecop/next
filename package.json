@@ -15,6 +15,7 @@
     "amplify-push": "node amplify/scripts/amplify-push.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.3",
     "@heroicons/react": "^1.0.6",
     "@next/font": "^13.0.7",
     "@tailwindcss/typography": "^0.5.8",
