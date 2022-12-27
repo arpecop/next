@@ -4,6 +4,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Checkout
         uses: actions/checkout@v3
       - uses: oNaiPs/secrets-to-env-action@v1
@@ -15,14 +27,14 @@ jobs:
           npm run build
           mv .next out
           cp package.json out
-          cd out
+
       - name: Deploy
         run: |
+          cd out
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan build
           git add --all
-          git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
