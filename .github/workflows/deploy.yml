@@ -21,11 +21,11 @@ jobs:
       - uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
-      - name: Build
+      - name: 😳 Build
         run: |
           npm install
           npm run build
-      - name: Deploy
+      - name: 🚀 Deploy
         run: |
           rm -rf public src node_modules .vscode .nova public
           mv out public
