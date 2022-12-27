@@ -25,11 +25,10 @@ jobs:
         run: |
           npm install
           npm run build
-          mv .next out
       - name: Deploy
         run: |
-          rm -rf public src node_modules .vscode .nova .github
-          mv out/* .
+          rm -rf public src node_modules .vscode .nova public
+          mv out public
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan build
