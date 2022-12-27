@@ -30,7 +30,7 @@ jobs:
       - name: Deploy
         run: |
           mv out /tmp
-          git rm -r . && rm -rf .
+          rm -rf .
           mv /tmp/out/* .
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
