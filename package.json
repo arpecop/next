@@ -7,11 +7,9 @@
     "start": "next start --port 3000",
     "build": "next build",
     "lint": "next lint",
-    "lint:fix": "eslint src --fix && npm run format",
-    "format": "prettier -w .",
-    "format:check": "prettier -c .",
-    "amplify-modelgen": "node amplify/scripts/amplify-modelgen.js",
-    "amplify-push": "node amplify/scripts/amplify-push.js"
+    "clean": "depcheck --dir=src && npm prune",
+    "lint:fixprod": "eslint ./src --fix --env production",
+    "lint:fix": "eslint ./src --fix"
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
@@ -59,6 +57,7 @@
     "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.14",
+    "depcheck": "^1.4.3",
     "eslint": "^8.30.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",

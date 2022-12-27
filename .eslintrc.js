@@ -3,6 +3,16 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    production: {
+      rules: {
+        "no-console": "error",
+        "no-unused-vars": [
+          "error",
+          { vars: "all", args: "after-used", ignoreRestSiblings: true },
+        ],
+        "no-unused-imports": "error",
+      },
+    },
   },
   extends: [
     "eslint:recommended",
