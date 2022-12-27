@@ -9,7 +9,6 @@ jobs:
       - uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
-
       - name: Build
         run: |
           npm install
@@ -18,14 +17,13 @@ jobs:
           cp package.json out
           cd out
       - name: Deploy
-          run: |
+        run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan build
           git add --all
           git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
-
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
