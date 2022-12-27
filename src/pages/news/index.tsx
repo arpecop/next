@@ -2,7 +2,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, {
 	getPaging,
-	refreshToken
+	refreshToken,
 } from "@/components/NewPagination";
 import NewsThumbnail from "@/components/NewsThumbnail";
 import { doQuery, gql } from "@/data/client";
@@ -39,27 +39,30 @@ const Index = ({ newsbg, pagenum, nextToken }: RootNewsProps): JSX.Element => {
 			<div className='my-10 flex w-full flex-col'>
 				<div className='flex flex-wrap'>
 					<div className='w-full joke'>
-						<ins className="adsbygoogle rounded-md jokewrap p-0"
-							style={{ display: 'block', textAlign: 'center' }}
-							data-ad-layout="in-article"
-							data-ad-format="fluid"
-							data-ad-client="ca-pub-5476404733919333"
-							data-ad-slot="1374619867" />
+						<ins
+							className='adsbygoogle rounded-md jokewrap p-0'
+							style={{ display: "block", textAlign: "center" }}
+							data-ad-layout='in-article'
+							data-ad-format='fluid'
+							data-ad-client='ca-pub-5476404733919333'
+							data-ad-slot='1374619867'
+						/>
 					</div>
 					{newsbg.map(({ uid, title, image }) => (
 						<NewsThumbnail uid={uid} title={title} image={image} key={uid} />
 					))}
 					<div className='w-full joke'>
-						<ins className="adsbygoogle rounded-md jokewrap p-0"
-							style={{ display: 'block', textAlign: 'center' }}
-							data-ad-layout="in-article"
-							data-ad-format="fluid"
-							data-ad-client="ca-pub-5476404733919333"
-							data-ad-slot="1374619867" />
+						<ins
+							className='adsbygoogle rounded-md jokewrap p-0'
+							style={{ display: "block", textAlign: "center" }}
+							data-ad-layout='in-article'
+							data-ad-format='fluid'
+							data-ad-client='ca-pub-5476404733919333'
+							data-ad-slot='1374619867'
+						/>
 					</div>
 
 					<Pagination pagenum={pagenum} cat='/news/' nextToken={nextToken} />
-
 				</div>
 			</div>
 		</Main>
@@ -87,7 +90,7 @@ export const getServerSideProps = async (context: {
     `,
 		{
 			nextToken: nextTokenCurrent,
-		},
+		}
 	);
 	await refreshToken("newsbg", pagenum, data.nextToken);
 
@@ -101,3 +104,4 @@ export const getServerSideProps = async (context: {
 };
 
 export default Index;
+export const runtime = "experimental-edge";
