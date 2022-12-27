@@ -23,13 +23,12 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
-          pwd
-          ls
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install eslint -g
           npm install
           npm prune
           npm run build
+          rm -rf .next/cache
       - name: 🚀 Deploy
         run: |
           rm -rf src .vscode .nova .eslitrc.js next.config.js out
