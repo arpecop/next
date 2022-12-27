@@ -13,11 +13,17 @@ module.exports = {
     "lint/a11y/useKeyWithClickEvents": "off",
     "react/react-in-jsx-scope": "off",
     "no-console": "error",
-    "no-unused-vars": [
-      "error",
-      { vars: "all", args: "after-used", ignoreRestSiblings: true },
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        argsIgnorePattern: "^_",
+      },
     ],
-    "no-unused-imports": "error",
   },
   overrides: [],
   parser: "@typescript-eslint/parser",
@@ -25,5 +31,5 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "unused-imports"],
 };

@@ -1,4 +1,3 @@
-import { catsdata } from "@/utils/formatter";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
