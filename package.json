@@ -5,12 +5,11 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "start": "next start --port 3000",
-    "build": "next build && next export",
+    "build": "next build",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && npm run format",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
-    "sitemap": "next-sitemap  --config next-sitemap.config.mjs",
     "amplify-modelgen": "node amplify/scripts/amplify-modelgen.js",
     "amplify-push": "node amplify/scripts/amplify-push.js"
   },
