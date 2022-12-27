@@ -18,6 +18,7 @@ jobs:
           npm install
           npm run build
           rm -rf public
+          cp package.json out
           rm -rf .vscode .env .env.local pages src components *.ts *.yml amplify .eslintignore .eslintrc.json .graphqlconfig.yml .env .prettierrc
           git add --all
           git add -A .next out -f
