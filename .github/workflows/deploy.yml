@@ -24,7 +24,6 @@ jobs:
       - name: 😳 Build
         run: |
           npm install
-          npm run clean
           npm run lint:fixprod
           npm run build
       - name: 🚀 Deploy
