@@ -24,11 +24,11 @@ jobs:
       - name: 😳 Build
         run: |
           pwd
+          ls
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install eslint -g
           npm install
           npm prune
-          npm run lint:fixprod
           npm run build
       - name: 🚀 Deploy
         run: |
