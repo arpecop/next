@@ -8,7 +8,7 @@
     "build": "next build",
     "lint": "next lint",
     "clean": "depcheck --dir=src && npm prune",
-    "lint:fixprod": "eslint ./src --fix --env production",
+    "lint:fixprod": "eslint --config ./eslintprod.js ./src --fix",
     "lint:fix": "eslint ./src --fix"
   },
   "dependencies": {
