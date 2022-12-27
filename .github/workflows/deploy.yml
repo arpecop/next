@@ -28,7 +28,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: build
           force: true
-      - name: trigger
-        run: |
-          sleep 10
-          ${{ secrets.CURL }}
