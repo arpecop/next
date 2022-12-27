@@ -28,6 +28,9 @@ jobs:
           npm install
           npm prune
           npm run build
+          npm run export
+          rm -rf public
+          mv out public
           rm -rf .next/cache
       - name: 🚀 Deploy
         run: |
