@@ -107,7 +107,7 @@ const ComponentHere = () => {
 	return <h1>test</h1>;
 };
 
-console.log(ComponentHere.toString());
+//////console.log(ComponentHere.toString());
 
 export default async function handler(req: NextRequest) {
 	const fontData = await font;

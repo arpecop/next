@@ -15,7 +15,7 @@ function ResizerGPT(props: {
 		const aspectRatio = w / props.height;
 		const viewportWidth = window.innerWidth;
 		const viewportHeight = window.innerHeight;
-		console.log({ aspectRatio });
+
 		let scale;
 
 		const resizedWidth = w;
@@ -41,7 +41,7 @@ function ResizerGPT(props: {
 	}, [props.width, props.height]);
 
 	useEffect(() => {
-		console.table({ marginLeft, marginTop });
+		//////console.table({ marginLeft, marginTop });
 	}, [marginTop, scale]);
 
 	return (

@@ -44,9 +44,9 @@ const Facebook = ({
 	const app = apps.find((app) => app.slug === appid) as FbApp | undefined;
 	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const pre = useFacebookRandom(app);
-	//<LoadingResult name={pre?.name} />
+
 	//<ResizerGPT src={`http://example.com/`} width={640} height={336} />
-	console.log("test");
+
 	return (
 		<Main
 			meta={

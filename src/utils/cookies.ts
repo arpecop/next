@@ -1,10 +1,6 @@
 export function setCookie(name: string, value: string) {
 	const existingCookie = getCookie(name);
-	if (existingCookie) {
-		console.log(
-			`Cookie "${name}" already exists with value: ${existingCookie}`
-		);
-	} else {
+	if (!existingCookie) {
 		const expirationDate = new Date();
 		expirationDate.setDate(expirationDate.getDate() + 30);
 		document.cookie = `${name}=${value}; expires=${expirationDate.toUTCString()}`;

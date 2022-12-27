@@ -115,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const pagenum = page ? Number(page) : 1;
 
 	const nextTokenCurrent = await getPaging("/movies/p/", pagenum);
-	console.log(nextTokenCurrent, pagenum);
+	//////console.log(nextTokenCurrent, pagenum);
 
 	const data = await doQuery(MOVIES, { start: nextTokenCurrent });
 	await refreshToken("/movies/p/", pagenum, data.nextToken);

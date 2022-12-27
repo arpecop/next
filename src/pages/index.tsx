@@ -68,5 +68,3 @@ export async function getStaticProps() {
 }
 
 export default Index;
-
-console.log("test");

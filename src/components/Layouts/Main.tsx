@@ -21,7 +21,7 @@ const Main = (props: IMainProps) => {
 				// rome-ignore lint/suspicious/noExplicitAny: <explanation>
 				(adsbygoogle = (window as any).adsbygoogle || []).push({});
 			} catch (e) {
-				console.log(e);
+				//////console.log(e);
 			}
 		}
 	}, []);

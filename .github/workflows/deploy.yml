@@ -23,6 +23,7 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
+          find ./src -type f -name "*.ts*" -print0 | xargs -0 sed -i '' -e 's/console/\/\/console/g'
           npm install eslint -g
           npm install
           npm prune
