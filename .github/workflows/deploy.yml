@@ -20,9 +20,9 @@ jobs:
           rm -rf public
           mv .next out
           cp package.json out
-          rm -rf .vscode .env .env.local pages src components *.ts *.yml amplify .eslintignore .eslintrc.json .graphqlconfig.yml .env .prettierrc
+          mv .git out && cd out
           git add --all
-          git add -A out -f
+          git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
