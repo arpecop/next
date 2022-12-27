@@ -17,6 +17,8 @@ jobs:
           git checkout --orphan build
           npm install
           npm run build
+          rm -rf public
+          mv out public
           rm -rf .vscode .env .env.local pages src components *.ts *.yml amplify .eslintignore .eslintrc.json .graphqlconfig.yml .env .prettierrc
           git add --all
           git add -A .next public -f
