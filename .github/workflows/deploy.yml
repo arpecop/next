@@ -23,7 +23,9 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
+          npm install eslint -g
           npm install
+          npm prune
           npm run lint:fixprod
           npm run build
       - name: 🚀 Deploy
