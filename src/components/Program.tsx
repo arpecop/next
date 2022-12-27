@@ -86,7 +86,7 @@ const Program = ({
 							htmlFor='my-modal'
 							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
 						>
-							<div className='rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1'>
+							<div className='rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer'>
 								<img
 									className='cursor-pointer'
 									src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
