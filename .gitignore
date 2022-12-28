@@ -59,18 +59,3 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 .turbo
 pnpm-lock.yaml
-
-#common should be force added
-tailwind.config.js
-package.json
-postcss.config.js
-.eslintrc.js
-tsconfig.json
-turbo.json
-src/data/
-src/styles/
-src/utils/
-src/hooks/
-src/pages/api/
-src/components/Layouts/
-src/components/FacebookShare.tsx
