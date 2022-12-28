@@ -80,7 +80,7 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 			<Ornament className='absolute  w-full -bottom-4' />
 			<div className='mb-2 absolute  right-2 -bottom-4'>
 				<img
-					src='/powered-white.png'
+					src='/images/powered.svg'
 					alt='powered white z-10'
 					className='dark:invert'
 				/>

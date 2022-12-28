@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="778px" height="345px" viewBox="0 0 778 345" version="1.1" xmlns="http://w3.org/2000/svg" xmlns:xlink="http://w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#222222" x="0" y="0" width="778" height="345"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#2C2828" x="264.5" y="53.5" width="249" height="238"></rect>
+        <rect id="Rectangle-Copy" stroke="#979797" fill="#FFFFFF" x="0.5" y="53.5" width="249" height="238"></rect>
+        <rect id="Rectangle-Copy-2" stroke="#915858" fill="#522B70" x="528.5" y="53.5" width="249" height="238"></rect>
+        <text id="text-2" font-family="Nunito-Regular, Nunito" font-size="28" font-weight="normal" letter-spacing="0.01757" fill="#FFFFFF">
+            <tspan x="352.469623" y="96">text 2</tspan>
+        </text>
+        <text id="text-3-a-a-a-a-a-a-a" font-family="Nunito-Regular, Nunito" font-size="28" font-weight="normal" letter-spacing="0.01757" fill="#FFFFFF">
+            <tspan x="528.156927" y="96">text 3 a a a a a a a a </tspan>
+        </text>
+        <text id="text-1-a-a-a-a-a-a-a" font-family="Nunito-Regular, Nunito" font-size="28" font-weight="normal" letter-spacing="0.01757" fill="#4B4F60">
+            <tspan x="0.156926777" y="96">text 1 a a a a a a a a </tspan>
+        </text>
+    </g>
+</svg>

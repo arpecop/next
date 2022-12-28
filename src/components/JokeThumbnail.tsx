@@ -49,7 +49,7 @@ export const JokeThumbnail: FC<Props> = ({
 						onClick={() => formatJoke(joke)}
 					>
 						<svg
-							xmlns='http://www.w3.org/2000/svg'
+							xmlns='http://w3.org/2000/svg'
 							fill='none'
 							viewBox='0 0 24 24'
 							strokeWidth={1.5}
@@ -80,7 +80,7 @@ export const JokeThumbnail: FC<Props> = ({
 						/>
 						<a href={`/joke/${item.id}`} className='btn m-0'>
 							<svg
-								xmlns='http://www.w3.org/2000/svg'
+								xmlns='http://w3.org/2000/svg'
 								fill='none'
 								viewBox='0 0 24 24'
 								strokeWidth={1.5}
@@ -98,7 +98,7 @@ export const JokeThumbnail: FC<Props> = ({
 						<label htmlFor={item.id} className='btn'>
 							Затвори{" "}
 							<svg
-								xmlns='http://www.w3.org/2000/svg'
+								xmlns='http://w3.org/2000/svg'
 								fill='none'
 								viewBox='0 0 24 24'
 								strokeWidth={1.5}

@@ -80,7 +80,7 @@ export default async function handler(req: NextRequest) {
 				}}
 			>
 				<svg
-					xmlns='http://www.w3.org/2000/svg'
+					xmlns='http://w3.org/2000/svg'
 					viewBox='0 0 463 463'
 					style={{
 						width: 63,

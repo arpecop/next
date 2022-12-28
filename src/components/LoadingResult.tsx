@@ -19,7 +19,7 @@ const LoadingResult = ({ name }: { name?: string }) => (
 		<div className='flex h-full w-full absolute justify-center items-center'>
 			<svg
 				className='animate-spin   h-12 w-12 text-white'
-				xmlns='http://www.w3.org/2000/svg'
+				xmlns='http://w3.org/2000/svg'
 				fill='none'
 				viewBox='0 0 24 24'
 			>
@@ -46,7 +46,7 @@ const LoadingResult = ({ name }: { name?: string }) => (
 			height='336'
 			viewBox='0 0 640 336'
 			fill='none'
-			xmlns='http://www.w3.org/2000/svg'
+			xmlns='http://w3.org/2000/svg'
 		/>
 	</ResultWrapper>
 );

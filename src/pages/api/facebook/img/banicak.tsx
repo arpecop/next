@@ -90,7 +90,7 @@ const Banicak = ({
 					borderRadius: "9999px",
 				}}
 			>
-				www.kloun.lol
+				kloun.lol
 			</div>
 		</div>
 	);
@@ -102,10 +102,6 @@ export const config = {
 const font = fetch(new URL("~/font/Nunito-Bold.ttf", import.meta.url)).then(
 	(res) => res.arrayBuffer()
 );
-
-const ComponentHere = () => {
-	return <h1>test</h1>;
-};
 
 //////console.log(ComponentHere.toString());
 

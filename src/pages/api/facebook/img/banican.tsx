@@ -113,7 +113,7 @@ export default async function handler(req: NextRequest) {
 						borderRadius: "9999px",
 					}}
 				>
-					www.kloun.lol
+					kloun.lol
 				</div>
 			</div>
 		),

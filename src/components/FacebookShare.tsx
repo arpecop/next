@@ -17,7 +17,7 @@ const FacebookShare = ({
 	const onClick = async () => {
 		await fetch(`/api/refetch/?url=${url}`);
 
-		router.push(`https://www.facebook.com/dialog/share?
+		router.push(`https://facebook.com/dialog/share?
 			app_id=456304742501728
 			&display=popup
 			&href=${encodeURIComponent(url)}
