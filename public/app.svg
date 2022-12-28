@@ -17,8 +17,13 @@
         <text id="text-1" font-family="Nunito-Regular, Nunito" font-size="28" font-weight="normal" line-spacing="32" letter-spacing="0.01757" fill="#4B4F60">
             <tspan x="77.7736235" y="285.907959">text 1 </tspan>
         </text>
-        <text id="text-2" font-family="Nunito-Regular, Nunito" font-size="12" font-weight="normal" letter-spacing="0.00753" fill="#FFFFFF">
-            <tspan x="264" y="60">text 2</tspan>
+        <text id="text-2" font-family="Nunito-Regular, Nunito" font-size="12" font-weight="normal" line-spacing="12" letter-spacing="0.00753" fill="#FFFFFF">
+            <tspan x="264" y="60">Lorem vitae quasi quaerat et </tspan>
+            <tspan x="264" y="72">consecteturquis ea! Eos unde repellendus </tspan>
+            <tspan x="264" y="84">soluta eaqueaccusamus deserunt maiores? </tspan>
+            <tspan x="264" y="96">Facere nihilarchitecto facilis fuga quidem? </tspan>
+            <tspan x="264" y="108">Nostrumanimi consectetur quis atque </tspan>
+            <tspan x="264" y="120">architectototam molestias.</tspan>
         </text>
     </g>
 </svg>
