@@ -18,8 +18,10 @@
   "apexskier.typescript.config.userPreferences.quotePreference" : "single",
   "index.ignored_file_patterns" : [
     ".next",
-    "public"
+    "public",
+    "node_modules"
   ],
+  "index.use_scm_ignored_files" : false,
   "workspace.art_style" : 1,
   "workspace.color" : 14,
   "workspace.preview_type" : "custom",

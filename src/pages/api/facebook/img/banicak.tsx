@@ -99,9 +99,9 @@ const Banicak = ({
 export const config = {
 	runtime: "experimental-edge",
 };
-const font = fetch(new URL("~/font/Nunito-Bold.ttf", import.meta.url)).then(
-	(res) => res.arrayBuffer()
-);
+const font = fetch(
+	new URL("~/images/font/Nunito-Bold.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
 
 //////console.log(ComponentHere.toString());
 
