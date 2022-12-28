@@ -3,7 +3,7 @@ import {
   DefaultOptions,
   DocumentNode,
   gql,
-  InMemoryCache
+  InMemoryCache,
 } from "@apollo/client";
 
 const defaultOptions: DefaultOptions = {
@@ -18,15 +18,10 @@ const defaultOptions: DefaultOptions = {
 };
 
 const client = new ApolloClient({
-  uri: "https://n5hlcijfibe3zacynh4p3mk4w4.appsync-api.eu-west-1.amazonaws.com/graphql",
-  headers: {
-    "x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
-  },
+  uri: "https://kloun.lol/api/graphql",
   cache: new InMemoryCache(),
   defaultOptions: defaultOptions,
 });
-
-// const client = ...
 
 async function doQuery(
   query: DocumentNode,

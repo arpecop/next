@@ -3,10 +3,7 @@ import Link from "next/link";
 import { JokeThumbnail } from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import Pagination, {
-	getPaging,
-	refreshToken,
-} from "@/components/NewPagination";
+import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
 // import { getPaging } from '@/components/NewPagination';
 import { doQuery, gql } from "@/data/client";
 import type { Doc } from "@/data/structure";
@@ -34,7 +31,7 @@ const CatPage = ({
 				/>
 			}
 		>
-			<div className='breadcrumbs text-sm'>
+			<div className="breadcrumbs text-sm">
 				<ul>
 					<li>
 						<Link href={"/?type=Jokes"}>Вицове</Link>
@@ -54,16 +51,16 @@ const CatPage = ({
 				nextToken={nextToken}
 			/>
 
-			<div className='flex flex-wrap'>
-				<div className='joke'>
-					<div className='rounded-md jokewrap p-0'>
+			<div className="flex flex-wrap">
+				<div className="joke">
+					<div className="rounded-md jokewrap p-0">
 						<ins
-							className='adsbygoogle'
+							className="adsbygoogle"
 							style={{ display: "block", textAlign: "center" }}
-							data-ad-layout='in-article'
-							data-ad-format='fluid'
-							data-ad-client='ca-pub-5476404733919333'
-							data-ad-slot='1374619867'
+							data-ad-layout="in-article"
+							data-ad-format="fluid"
+							data-ad-client="ca-pub-5476404733919333"
+							data-ad-slot="1374619867"
 						/>
 					</div>
 				</div>
@@ -75,15 +72,15 @@ const CatPage = ({
 						short={true}
 					/>
 				))}
-				<div className='joke'>
-					<div className='rounded-md jokewrap p-0'>
+				<div className="joke">
+					<div className="rounded-md jokewrap p-0">
 						<ins
-							className='adsbygoogle'
+							className="adsbygoogle"
 							style={{ display: "block", textAlign: "center" }}
-							data-ad-layout='in-article'
-							data-ad-format='fluid'
-							data-ad-client='ca-pub-5476404733919333'
-							data-ad-slot='1374619867'
+							data-ad-layout="in-article"
+							data-ad-format="fluid"
+							data-ad-client="ca-pub-5476404733919333"
+							data-ad-slot="1374619867"
 						/>
 					</div>
 				</div>
@@ -120,6 +117,7 @@ export const getServerSideProps = async ({
 
 		nextToken: nextTokenCurrent,
 	});
+
 	await refreshToken(query.jokecat, pagenum, data.nextToken);
 
 	return {
