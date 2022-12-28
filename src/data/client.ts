@@ -19,6 +19,7 @@ const defaultOptions: DefaultOptions = {
 
 const client = new ApolloClient({
   uri: "https://kloun.lol/api/graphql",
+
   cache: new InMemoryCache(),
   defaultOptions: defaultOptions,
 });
