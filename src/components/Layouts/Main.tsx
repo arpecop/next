@@ -1,5 +1,5 @@
 import Header from "@/components/Layouts/Header";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 import Footer from "./Footer";
 
@@ -43,7 +43,3 @@ const Main = (props: IMainProps) => {
 };
 // dasd
 export default Main;
-
-function useEffect(arg0: () => void, arg1: never[]) {
-	throw new Error("Function not implemented.");
-}
