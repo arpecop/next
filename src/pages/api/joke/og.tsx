@@ -1,5 +1,5 @@
 import { doQuery, gql } from "@/pages/api/graphql";
-import { profanityFilter } from "@/utils/formatter";
+// import { profanityFilter } from "@/utils/formatter";
 
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
@@ -45,7 +45,8 @@ export default async function handler(req: NextRequest) {
 		}
 	);
 
-	const joke = profanityFilter(data.joke);
+	//const joke = profanityFilter(data.joke,"🤬");
+	const joke = data.joke;
 	const colors = [
 		"#00d2d3",
 		"#54a0ff",

@@ -1,6 +1,7 @@
 import { AppConfig } from "@/utils/AppConfig";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
 type IMetaProps = {
@@ -21,10 +22,10 @@ const Meta = (props: IMetaProps) => {
 		.replace(/\n/g, " ")
 		.slice(0, 150);
 
-	title = props.removeProfanity ? profanityRemove(title) : title;
-	description = props.removeProfanity
-		? profanityRemove(description)
-		: description;
+	title = encode(props.removeProfanity ? profanityRemove(title) : title);
+	description = encode(
+		props.removeProfanity ? profanityRemove(description) : description
+	);
 
 	return (
 		<>

@@ -1,5 +1,4 @@
 import { DocumentNode, print } from "graphql";
-import type { NextRequest } from "next/server";
 
 import { gql } from "graphql-tag";
 
