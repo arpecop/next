@@ -23,16 +23,7 @@ export type RootNewsProps = {
 
 const Index = ({ newsbg, pagenum, nextToken }: RootNewsProps): JSX.Element => {
 	return (
-		<Main
-			meta={
-				<Meta
-					title={"Новини"}
-					description="Новини"
-					cat="Новини"
-					url="https://kloun.lol/news/"
-				/>
-			}
-		>
+		<Main meta={<Meta title={"Новини"} description="Новини" />}>
 			<div className="my-10 flex w-full flex-col">
 				<div className="flex flex-wrap">
 					<div className="w-full joke">

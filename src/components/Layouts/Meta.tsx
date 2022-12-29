@@ -9,6 +9,7 @@ type IMetaProps = {
 	description: string;
 	canonical?: string;
 	image?: string;
+	imgtype?: string;
 	noIndex?: string;
 	removeProfanity?: boolean;
 };
@@ -55,7 +56,7 @@ const Meta = (props: IMetaProps) => {
 								width: 1200,
 								height: 630,
 								alt: title,
-								type: "image/png",
+								type: props.imgtype || "image/png",
 							},
 						]
 						: [

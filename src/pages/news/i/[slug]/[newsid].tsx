@@ -26,10 +26,8 @@ const NewsItem = ({
         <Meta
           title={title}
           description={parsed?.description || parsed?.html[0] || title}
-          cat="Новини"
           image={image}
           imgtype="image/jpeg"
-          url={`https://kloun.lol/news/i/${slug}/${uid}`}
         />
       }
     >

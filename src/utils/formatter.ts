@@ -98,10 +98,6 @@ export function profanityRemove(title: string) {
   return filter;
 }
 
-console.log(
-  profanityRemove("тест путка нещ*о не знам ко да кажа и така нататък ебане")
-);
-
 export const formattedjoke = (joke: string): string => {
   const formatted = joke
 

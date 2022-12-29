@@ -21,16 +21,7 @@ export type Company = {
 
 const Index = ({ cats }: { cats: Cat[] }): JSX.Element => {
 	return (
-		<Main
-			meta={
-				<Meta
-					title="Бизнес фирми"
-					description="Бизнес фирми"
-					cat="Business"
-					url="https://kloun.lol/business/"
-				/>
-			}
-		>
+		<Main meta={<Meta title="Бизнес фирми" description="Бизнес фирми" />}>
 			<Nav cats={cats} prefix="business" limit={50} />
 			<div className="my-10 flex w-full flex-col">
 				<div className="flex flex-wrap" />
