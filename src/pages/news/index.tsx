@@ -5,7 +5,7 @@ import Pagination, {
 	refreshToken,
 } from "@/components/NewPagination";
 import NewsThumbnail from "@/components/NewsThumbnail";
-import { doQuery, gql } from "@/data/client";
+import { doQuery, gql } from "@/pages/api/graphql";;
 
 export type News = {
 	title: string;

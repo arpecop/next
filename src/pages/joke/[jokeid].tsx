@@ -8,18 +8,18 @@ import { JokeThumbnail } from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
-import type { Doc } from "@/data/structure";
+
 import type { Cat } from "@/utils/formatter";
 import { catsdata } from "@/utils/formatter";
 
-import { doMQuery, doQuery, gql } from "../../data/client";
+import { doMQuery, doQuery, gql } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "../../utils/rudash";
 
 const SingleJoke = (props: {
-	joke: Doc;
-	items?: [Doc[], Doc[], Doc[]];
+	joke: any;
+	items?: [any[], any[], any[]];
 	cats: [Cat[], Cat[]];
 }): JSX.Element => {
 	return (
@@ -34,30 +34,30 @@ const SingleJoke = (props: {
 				/>
 			}
 		>
-			<h1 className='text-purple-200 dark:text-indigo-900'>
-				<span className='font-medium'>/ Бисери</span>
+			<h1 className="text-purple-200 dark:text-indigo-900">
+				<span className="font-medium">/ Бисери</span>
 			</h1>
-			<div className='my-10 flex w-full flex-col text-center'>
-				<article className='mx-auto mb-6 px-10 text-xl leading-relaxed xs:px-2 sm:px-4 lg:w-2/3'>
+			<div className="my-10 flex w-full flex-col text-center">
+				<article className="mx-auto mb-6 px-10 text-xl leading-relaxed xs:px-2 sm:px-4 lg:w-2/3">
 					<FormatJoke joke={props.joke?.joke} />
 				</article>
-				<div className=' flex justify-end items-center'>
+				<div className=" flex justify-end items-center">
 					<FacebookShare id={`https://kloun.lol/joke/${props.joke?.id}`} />
 				</div>
 			</div>
 
 			{props.items?.[0] && (
 				<>
-					<div className='-m-2 flex flex-wrap'>
-						<article className='joke'>
-							<div className='jokewrap'>
+					<div className="-m-2 flex flex-wrap">
+						<article className="joke">
+							<div className="jokewrap">
 								<ins
-									className='adsbygoogle'
+									className="adsbygoogle"
 									style={{ display: "block", textAlign: "center" }}
-									data-ad-layout='in-article'
-									data-ad-format='fluid'
-									data-ad-client='ca-pub-5476404733919333'
-									data-ad-slot='1374619867'
+									data-ad-layout="in-article"
+									data-ad-format="fluid"
+									data-ad-client="ca-pub-5476404733919333"
+									data-ad-slot="1374619867"
 								/>
 							</div>
 						</article>
@@ -73,24 +73,24 @@ const SingleJoke = (props: {
 						})}
 					</div>
 					<ins
-						className='adsbygoogle'
+						className="adsbygoogle"
 						style={{ display: "block", textAlign: "center" }}
-						data-ad-layout='in-article'
-						data-ad-format='fluid'
-						data-ad-client='ca-pub-5476404733919333'
-						data-ad-slot='1374619867'
+						data-ad-layout="in-article"
+						data-ad-format="fluid"
+						data-ad-client="ca-pub-5476404733919333"
+						data-ad-slot="1374619867"
 					/>
-					<Nav cats={props.cats[1]} prefix='cat' />
-					<div className='-m-2 flex flex-wrap'>
-						<article className='joke'>
-							<div className='jokewrap'>
+					<Nav cats={props.cats[1]} prefix="cat" />
+					<div className="-m-2 flex flex-wrap">
+						<article className="joke">
+							<div className="jokewrap">
 								<ins
-									className='adsbygoogle'
+									className="adsbygoogle"
 									style={{ display: "block", textAlign: "center" }}
-									data-ad-layout='in-article'
-									data-ad-format='fluid'
-									data-ad-client='ca-pub-5476404733919333'
-									data-ad-slot='1374619867'
+									data-ad-layout="in-article"
+									data-ad-format="fluid"
+									data-ad-client="ca-pub-5476404733919333"
+									data-ad-slot="1374619867"
 								/>
 							</div>
 						</article>

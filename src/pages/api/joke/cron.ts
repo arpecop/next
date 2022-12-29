@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ulid } from "ulidx";
-import { doMutation, doQuery, gql } from "../../../data/client";
+import { doMutation, doQuery, gql } from "@/pages/api/graphql";;
 import { fbtoken } from "../refetch";
 
 export const LIST_JOKES = /* GraphQL */ gql`

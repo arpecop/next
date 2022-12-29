@@ -5,8 +5,8 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
 // import { getPaging } from '@/components/NewPagination';
-import { doQuery, gql } from "@/data/client";
-import type { Doc } from "@/data/structure";
+import { doQuery, gql } from "@/pages/api/graphql";
+
 import { deslugify } from "@/utils/formatter";
 
 const CatPage = ({
@@ -16,7 +16,7 @@ const CatPage = ({
 	slug,
 	nextToken,
 }: {
-	jokes: Doc[];
+	jokes: any[];
 	pagenum: number;
 	cat: string;
 	slug: string;

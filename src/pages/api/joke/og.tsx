@@ -1,4 +1,4 @@
-import { doQuery } from "@/data/client";
+import { doQuery } from "@/pages/api/graphql";
 import { profanityFilter } from "@/utils/formatter";
 import { gql } from "@apollo/client";
 import { ImageResponse } from "@vercel/og";

@@ -1,4 +1,4 @@
-import { doQuery } from "@/data/client";
+import { doQuery } from "@/pages/api/graphql";;
 import { gql } from "@apollo/client";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";

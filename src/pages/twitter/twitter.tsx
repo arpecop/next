@@ -6,11 +6,8 @@ import Link from "next/link";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-import Pagination, {
-	getPaging,
-	refreshToken
-} from "@/components/NewPagination";
-import { doQuery } from "../../data/client";
+import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
+import { doQuery } from "@/pages/api/graphql";
 import { shuffle } from "../../utils/rudash";
 
 export type User = {
@@ -34,35 +31,35 @@ const Index = ({
 						.slice(0, 5)
 						.map((item: User) => item.id)
 						.join(" ")}
-					description='Twitter DB'
+					description="Twitter DB"
 				/>
 			}
 		>
-			<div className='flex '>
+			<div className="flex ">
 				{"abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
 					<button
 						key={letter}
-						className='active flex gap-4 bg-slate-900 p-2 font-bold text-white dark:bg-white dark:text-slate-900'
+						className="active flex gap-4 bg-slate-900 p-2 font-bold text-white dark:bg-white dark:text-slate-900"
 					>
 						{letter}
 					</button>
 				))}
 			</div>
-			<ul className='menu menu-compact flex-row flex-wrap justify-center p-0'>
+			<ul className="menu menu-compact flex-row flex-wrap justify-center p-0">
 				{twusers.map((user) => (
-					<li key={user.id} className='m-1'>
+					<li key={user.id} className="m-1">
 						<Link
 							href={`https://twitter.com/${user.id
 								.replace("_tw", "")
 								.toLowerCase()}`}
-							className='active flex gap-4 bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900'
+							className="active flex gap-4 bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900"
 						>
 							{user.id.replace("_tw", "")}
 						</Link>
 					</li>
 				))}
 			</ul>
-			<Pagination pagenum={pagenum} cat='/tw/' nextToken={nextToken} />
+			<Pagination pagenum={pagenum} cat="/tw/" nextToken={nextToken} />
 		</Main>
 	);
 };

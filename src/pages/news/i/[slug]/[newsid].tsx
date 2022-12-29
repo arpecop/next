@@ -7,7 +7,7 @@ import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import { doQuery } from "@/data/client";
+import { doQuery } from "@/pages/api/graphql";;
 
 import type { News } from "@/pages/news/";
 import { shuffle } from "../../../../utils/rudash";

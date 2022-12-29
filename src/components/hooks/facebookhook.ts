@@ -1,7 +1,7 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { doMutation, doQuery, gql } from "../../data/client";
+import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { getCookie, setCookie } from "../../utils/cookies";
 export type FBResult = {
 	[key: string]: string | undefined;
@@ -64,13 +64,7 @@ export function useFacebookRandom(app?: FbApp) {
 				gql`
           mutation MyMutation($id: String!, $data: AWSJSON) {
             createDdb(
-              input: {
-                id: $id
-                subcat: $id
-                data: $data
-                nid: "A"
-                deepness: 1
-              }
+              input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}
             ) {
               id
             }

@@ -10,7 +10,7 @@ import Pagination, {
 	getPaging,
 	refreshToken
 } from "../../components/NewPagination";
-import { doQuery } from "../../data/client";
+import { doQuery } from "@/pages/api/graphql";;
 
 export type Movie = {
 	title: string;
