@@ -1,4 +1,4 @@
-import { doQuery } from "@/pages/api/graphql";;
+import { doQuery } from "@/pages/api/graphql";
 import { gql } from "@apollo/client";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
@@ -6,9 +6,9 @@ import { NextRequest } from "next/server";
 export const config = {
 	runtime: "experimental-edge",
 };
-const font = fetch(new URL("~/images/font/Nunito-Bold.ttf", import.meta.url)).then(
-	(res) => res.arrayBuffer()
-);
+const font = fetch(
+	new URL("~/images/font/Nunito-Bold.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
 
 //////console.log(ComponentHere.toString());
 

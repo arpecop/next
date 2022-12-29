@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ulid } from "ulidx";
-import { doMutation, doQuery, gql } from "@/pages/api/graphql";;
+import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { fbtoken } from "../refetch";
 
 export const LIST_JOKES = /* GraphQL */ gql`
@@ -47,7 +47,7 @@ async function prepare() {
         $nid: String = ""
       ) {
         createDdb(
-          input: { joke: $joke, type: $id, cat: $id, nid: $nid, price: 0 }
+          input: {joke: $joke, type: $id, cat: $id, nid: $nid, price: 0}
         ) {
           id
         }
@@ -70,7 +70,7 @@ export default async (
   const emojis = ["🤣", "🤪", "😁", "🤭", "😂"];
 
   const child_attachments = data
-    .sort((a, z) => z.joke.length - a.joke.length)
+    .sort((a: any, z: any) => z.joke.length - a.joke.length)
     .map((item, i) => ({
       link: `https://kloun.lol/joke/${item.id}`,
       name: emojis[i],

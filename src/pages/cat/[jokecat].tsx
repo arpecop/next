@@ -131,4 +131,4 @@ export const getServerSideProps = async ({
 	};
 };
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";

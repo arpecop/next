@@ -8,9 +8,9 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, {
 	getPaging,
-	refreshToken
+	refreshToken,
 } from "../../components/NewPagination";
-import { doQuery } from "@/pages/api/graphql";;
+import { doQuery } from "@/pages/api/graphql";
 
 export type Movie = {
 	title: string;
@@ -35,25 +35,25 @@ const Index = ({
 				<Meta title={movies[0].title} description={movies[0].description} />
 			}
 		>
-			<div className='mb-10 flex flex-wrap justify-center'>
-				<article className='mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5'>
+			<div className="mb-10 flex flex-wrap justify-center">
+				<article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
 					<ins
-						className='adsbygoogle rounded-md jokewrap p-0'
+						className="adsbygoogle rounded-md jokewrap p-0"
 						style={{ display: "block", textAlign: "center" }}
-						data-ad-layout='in-article'
-						data-ad-format='fluid'
-						data-ad-client='ca-pub-5476404733919333'
-						data-ad-slot='1374619867'
+						data-ad-layout="in-article"
+						data-ad-format="fluid"
+						data-ad-client="ca-pub-5476404733919333"
+						data-ad-slot="1374619867"
 					/>
 				</article>
 				{movies.map(({ slug, title, description, id }) => (
 					<article
 						key={slug}
-						className='mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5'
+						className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5"
 					>
-						<div className='m-2 flex h-full rounded-lg bg-base-100 dark:bg-white'>
-							<figure className='relative flex w-1/2  overflow-hidden rounded-l-lg'>
-								<div className='absolute inset-0  h-full'>
+						<div className="m-2 flex h-full rounded-lg bg-base-100 dark:bg-white">
+							<figure className="relative flex w-1/2  overflow-hidden rounded-l-lg">
+								<div className="absolute inset-0  h-full">
 									<Link href={`/movies/${id.replace("-mov", "")}`}>
 										<img
 											src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
@@ -66,10 +66,10 @@ const Index = ({
 								</div>
 							</figure>
 
-							<div className='w-3/4 px-4'>
-								<h2 className='my-4 text-2xl font-bold'>{title}</h2>
+							<div className="w-3/4 px-4">
+								<h2 className="my-4 text-2xl font-bold">{title}</h2>
 
-								<p className='mb-8'>
+								<p className="mb-8">
 									{id.replace("-mov", "")}.jpg
 									{description.length > 200 ? (
 										<>{description.slice(0, 200)} ...</>
@@ -79,11 +79,11 @@ const Index = ({
 								</p>
 							</div>
 						</div>
-						<div className='card-actions -mt-14 mr-2 justify-end'>
+						<div className="card-actions -mt-14 mr-2 justify-end">
 							<Link
 								href={`/movies/m/${id}`}
 								passHref
-								className='btn-primary btn rounded-l-none rounded-t-none dark:btn-ghost'
+								className="btn-primary btn rounded-l-none rounded-t-none dark:btn-ghost"
 							>
 								още
 							</Link>

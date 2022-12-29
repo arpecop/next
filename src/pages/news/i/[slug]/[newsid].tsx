@@ -7,7 +7,7 @@ import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import { doQuery } from "@/pages/api/graphql";;
+import { doQuery } from "@/pages/api/graphql";
 
 import type { News } from "@/pages/news/";
 import { shuffle } from "../../../../utils/rudash";
@@ -28,39 +28,39 @@ const NewsItem = ({
         <Meta
           title={title}
           description={parsed?.description || parsed?.html[0] || title}
-          cat='Новини'
+          cat="Новини"
           image={image}
-          imgtype='image/jpeg'
+          imgtype="image/jpeg"
           url={`https://kloun.lol/news/i/${slug}/${uid}`}
         />
       }
     >
-      <article className='pt-8 flex w-full flex-col'>
-        <div className='container mx-auto'>
-          <div className='mb-6 flex items-center justify-center'>
+      <article className="pt-8 flex w-full flex-col">
+        <div className="container mx-auto">
+          <div className="mb-6 flex items-center justify-center">
             {image && (
-              <div className='mr-4 pt-2'>
+              <div className="mr-4 pt-2">
                 <img
                   alt={title}
-                  className=' rounded-lg object-cover'
+                  className=" rounded-lg object-cover"
                   src={image}
                 />
               </div>
             )}
-            <h1 className='font-bold sm:text-2xl md:text-4xl'>{title}</h1>
+            <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
           </div>
 
-          <article className='leading-relaxed'>
+          <article className="leading-relaxed">
             {parsed?.html.map((p: string) => (
               <p key={p}>{p}</p>
             ))}
           </article>
         </div>
 
-        <div className='flex flex-wrap'>
+        <div className="flex flex-wrap">
           {newsbg?.map((item) => (
-            <div className='joke' key={item.uid}>
-              <div className='jokewrap'>
+            <div className="joke" key={item.uid}>
+              <div className="jokewrap">
                 <img
                   alt={title}
                   src={JSON.parse(image[0])}
@@ -76,10 +76,7 @@ const NewsItem = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  query,
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
   const { newsid, slug } = query as { newsid: string; slug?: string };
 
   const data = await doQuery(
