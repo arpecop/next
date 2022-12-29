@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { getCookie, setCookie } from "../../utils/cookies";
+import { shuffle } from "lodash";
 export type FBResult = {
 	[key: string]: string | undefined;
 };
@@ -55,9 +56,12 @@ export function useFacebookRandom(app?: FbApp) {
 
 		const chooseRandomJustIncase = async () => {
 			const id = nanoid(5);
-			const res2 = await fetch(`/api/facebook/items/${app?.slug}/`);
+			console.log(`/fb/${app?.slug}/items.json`);
+			const res2 = await fetch(`/fb/${app?.slug}/items.json`);
+
 			const data = await res2.json();
-			const newdata = { ...selectedapp, ...item, ...data };
+
+			const newdata = { ...selectedapp, ...item, ...shuffle(data)[0] };
 			newdata.description = "";
 			setCookie(app?.slug || "", id);
 			const insert = await doMutation(

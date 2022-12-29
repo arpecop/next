@@ -7,11 +7,9 @@ import Nav from "@/components/Nav";
 import FacebookShare from "@/components/FacebookShare";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
 import LoadingResult from "@/components/LoadingResult";
-import dynamic from "next/dynamic";
+
 import { useState } from "react";
-const ResizerGPT = dynamic(() => import("@/components/ResizerGPT"), {
-	ssr: false,
-});
+//const ResizerGPT = dynamic(() => import("@/components/ResizerGPT"), { ssr: false, });
 
 export type FbApp = {
 	count: number;
@@ -22,6 +20,7 @@ export type FbApp = {
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
 	personalisations?: string[];
+	hidden?: boolean;
 };
 
 const Facebook = ({
@@ -65,7 +64,7 @@ const Facebook = ({
 			}
 			noContainer
 		>
-			<div className='flex justify-center items-center'>
+			<div className="flex justify-center items-center">
 				{!imageLoaded && app && <LoadingResult name={pre.error || app?.cat} />}
 				{pre.id && !pre.error && (
 					<img
@@ -74,11 +73,11 @@ const Facebook = ({
 								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
 								: "hidden"
 						}
-						src={`/api/facebook/img/${pre.slug}/${pre.id}.png`}
-						width='640'
-						height='336'
+						src={`/api/facebook/${pre.slug}/${pre.id}/`}
+						width="640"
+						height="336"
 						style={{ maxWidth: 640 }}
-						alt=''
+						alt=""
 						onLoad={() => setImageLoaded(true)}
 					/>
 				)}
@@ -86,10 +85,10 @@ const Facebook = ({
 
 			{app?.personalisations && <div> </div>}
 
-			<div className='container mx-auto'>
+			<div className="container mx-auto">
 				{app && (
 					<div>
-						<div className='flex justify-center items-center my-3'>
+						<div className="flex justify-center items-center my-3">
 							<FacebookShare
 								disabled={imageLoaded ? false : true}
 								text={app?.button}
@@ -100,16 +99,16 @@ const Facebook = ({
 					</div>
 				)}
 				<ins
-					className='adsbygoogle'
+					className="adsbygoogle"
 					style={{ display: "block", textAlign: "center" }}
-					data-ad-layout='in-article'
-					data-ad-format='fluid'
-					data-ad-client='ca-pub-5476404733919333'
-					data-ad-slot='1374619867'
+					data-ad-layout="in-article"
+					data-ad-format="fluid"
+					data-ad-client="ca-pub-5476404733919333"
+					data-ad-slot="1374619867"
 				/>
-				<Nav cats={cats} prefix='fb' />
-				<div className='my-10 flex w-full flex-col'>
-					<div className='flex flex-wrap' />
+				<Nav cats={cats} prefix="fb" />
+				<div className="my-10 flex w-full flex-col">
+					<div className="flex flex-wrap" />
 				</div>
 			</div>
 		</Main>
@@ -121,7 +120,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	return {
 		props: {
-			cats: apps.filter((cat) => cat.slug !== appid),
+			cats: apps.filter((cat) => cat.slug !== appid && !cat.hidden),
 			appid: appid || null,
 			shareid: id || null,
 		},
@@ -135,14 +134,17 @@ const apps = [
 		count: 2022,
 		covertheme: "/images/cmass2022.jpg",
 		personalisations: ["name"],
+		hidden: true,
 		description:
 			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
 	},
 	{
 		cat: "Новогодишна Баница 2023",
-		slug: "banican",
+		slug: "banica2023",
 		count: 2023,
 		covertheme: "/images/2023.jpg",
+		description:
+			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
 	},
 	{
 		cat: "На колко години изглеждаш",
@@ -158,25 +160,34 @@ const apps = [
 		cat: "Добър или лош си днес",
 		slug: "goodbad",
 		isLoginRequired: true,
+		hidden: true,
 	},
 	{
 		cat: "На коя известна личност приличаш",
 		slug: "celeb",
+		hidden: true,
 	},
 	{
 		cat: "Изтегли си късметче",
 		slug: "iztegli",
+		hidden: true,
 	},
 	{
 		cat: "Индиянското ти име",
 		slug: "indianskoime",
+		hidden: true,
 	},
 	{
 		cat: "Виж коя известна личност ти подхожда",
 		slug: "podhojda",
+		hidden: true,
 	},
-	{ cat: "Какво е японското ти име", slug: "iaponskoime" },
-	{ cat: "Провери какъв си бил в предишен живот", slug: "predishenjivot" },
+	{ cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true },
+	{
+		cat: "Провери какъв си бил в предишен живот",
+		slug: "predishenjivot",
+		hidden: true,
+	},
 ];
 export const runtime = "experimental-edge";
 export default Facebook;

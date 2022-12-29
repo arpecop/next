@@ -6,6 +6,8 @@ import wrapText from "wrap-text";
 
 import { INode, parse, stringify } from "svgson";
 import { find, flattenDeep } from "lodash";
+import { doQuery, gql } from "../../graphql";
+import { toPairs } from "lodash";
 
 type Replacement = {
 	lookforid: string;
@@ -30,7 +32,7 @@ function wrapTextr({
 	rectX,
 }: Wrapper): INode[] {
 	const fsize = fontSize + letterSpacing;
-	const letters = Math.round(width / fsize) * 2;
+	const letters = Math.round(width / fsize) * 1.9;
 
 	const wrappedText = wrapText(replacewith, letters).split("\n");
 
@@ -56,20 +58,46 @@ function wrapTextr({
 	return arr as any;
 }
 
+function collectChildren(obj: any) {
+	if (obj.children) {
+		return [obj, ...flattenDeep(obj.children.map(collectChildren))];
+	} else {
+		return [obj];
+	}
+}
+
 async function replaceTextSvg(data: string, replacements: Replacement[]) {
+	//const clean = data.replace(/<g[^>]*">/g, "").replace(/<\/g>/g, "").replace(/<title[^>]*>([^<]*)<\/title>/g, "");
 	const svg = await parse(data);
-	const rects = flattenDeep(svg.children[1].children).filter(
+
+	const key1 = svg.children.length - 1;
+	const key2 = svg.children[key1].children.length - 1;
+	const lastGrandchild = svg.children[key1].children[key2];
+	const rects = collectChildren(lastGrandchild).filter(
 		(x) => x.name === "rect"
 	);
+
+	svg.attributes.width = "100%";
+	svg.attributes.height = "100%";
 	replacements.forEach(({ lookforid, replacewith }) => {
-		svg.children[1].children.forEach((element, i) => {
+		lastGrandchild.children.forEach((element) => {
 			if (element.name === "text" && element.attributes.id === lookforid) {
 				const wrapper = find(rects, (obj) => obj.attributes.id === lookforid);
+
 				const fontSize = Number(element.attributes["font-size"]);
 				const rectX = Number(wrapper?.attributes.x);
 				const rectY = Number(wrapper?.attributes.y) + fontSize;
 				const letterSpacing = Number(element.attributes["letter-spacing"]);
 				const width = Number(wrapper?.attributes.width);
+
+				console.log({
+					width,
+					letterSpacing,
+					rectY,
+					rectX,
+					fontSize,
+					replacewith,
+				});
 
 				const d = wrapTextr({
 					width,
@@ -80,7 +108,7 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 					replacewith,
 				});
 
-				svg.children[1].children[i] = {
+				svg.children[key1].children[key2] = {
 					name: "text",
 					type: "element",
 					value: "",
@@ -94,33 +122,41 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 }
 
 export default async function handler(
-	_req: NextApiRequest,
+	req: NextApiRequest,
 	res: NextApiResponse
 ) {
 	res.setHeader("Content-Type", "image/svg+xml");
+	const appid = req.query.appid;
+	const id = req.query.svgresultid as string;
 
 	const filePath = path.resolve(
 		__dirname,
-		"../../../../../../public/Artboard.svg"
+		`../../../../../../public/fb/${appid}/svg.svg`
 	);
-	const value = fs.readFileSync(filePath);
+	const svgstring = fs.readFileSync(filePath).toString();
 
-	const rendered = await replaceTextSvg(value.toString(), [
+	// result
+
+	const resx = await doQuery(
+		gql`
+      query MyQuery($id: String!) {
+        single: getDdb(id: $id) {
+          id
+          data
+        }
+      }
+    `,
 		{
-			lookforid: "text-1",
-			replacewith: "Lorem vitae quasi quaerat",
-		},
-		{
-			lookforid: "text-2",
-			replacewith:
-				"Lorem vitae quasi quaerat et consectetur quis ea! Eos unde repellendus soluta eaque accusamus deserunt maiores? Facere nihil architecto facilis fuga quidem? Nostrum animi consectetur quis atque architecto totam molestias",
-		},
-		{
-			lookforid: "text-3",
-			replacewith:
-				"emperor vitae quasi на втори ред а това може би отива на трети",
-		},
-	]);
+			id,
+		}
+	);
+
+	const data = toPairs(JSON.parse(resx.data)).map((pair) => ({
+		lookforid: pair[0],
+		replacewith: pair[1],
+	})) as { lookforid: string; replacewith: string }[];
+
+	const rendered = await replaceTextSvg(svgstring, data);
 
 	res.end(rendered.svg);
 }
