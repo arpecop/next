@@ -160,3 +160,5 @@ export default async function handler(
 
 	res.end(rendered.svg);
 }
+
+//test
