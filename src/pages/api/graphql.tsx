@@ -1,4 +1,3 @@
-import { DocumentNode } from "@apollo/client";
 import { print } from "graphql";
 import type { NextRequest } from "next/server";
 import cors from "cors";
@@ -68,7 +67,7 @@ export default async function handler(req: NextRequest) {
 }
 
 async function doMutation(
-	query: DocumentNode,
+	query: any,
 	variables: { [key: string]: string | number }
 ) {
 	const d = await doQuery(query, variables);
