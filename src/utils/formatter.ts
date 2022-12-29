@@ -74,19 +74,33 @@ export const businessdata: Cat[] = business.map((item) => {
   };
 });
 
-export function profanityFilter(title: string): string {
+export function profanityFilter(title: string, character: string): string {
   let tags: string[] = [];
 
   const words = title.split(" ");
 
   const filteredWords = words.map((word) => {
-    return badwords.includes(word.toLowerCase()) ? "🤬🤬🤬🤬" : word;
+    return badwords.includes(word.toLowerCase())
+      ? character.repeat(word.length)
+      : word;
   });
 
   tags = filteredWords.map((word) => word);
 
   return tags.join(" ");
 }
+
+export function profanityRemove(title: string) {
+  const filter = profanityFilter(title, "*")
+    .split(" ")
+    .filter((word) => !word.includes("*"))
+    .join(" ");
+  return filter;
+}
+
+console.log(
+  profanityRemove("тест путка нещ*о не знам ко да кажа и така нататък ебане")
+);
 
 export const formattedjoke = (joke: string): string => {
   const formatted = joke

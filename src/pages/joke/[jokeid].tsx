@@ -22,6 +22,7 @@ const SingleJoke = (props: {
 	items?: [any[], any[], any[]];
 	cats: [Cat[], Cat[]];
 }): JSX.Element => {
+	// яжте ми хуя сИга!
 	return (
 		<Main
 			hideFooter
@@ -29,8 +30,8 @@ const SingleJoke = (props: {
 				<Meta
 					title={props.joke?.joke || ""}
 					description={props.joke?.joke || ""}
-					cat={props.joke?.cat || ""}
 					image={`https://kloun.lol/api/joke/og/?idx=${props.joke?.id}`}
+					removeProfanity
 				/>
 			}
 		>

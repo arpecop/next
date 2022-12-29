@@ -2,20 +2,29 @@ import { AppConfig } from "@/utils/AppConfig";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { profanityRemove } from "../../utils/formatter";
 type IMetaProps = {
 	title: string;
 	description: string;
 	canonical?: string;
 	image?: string;
 	noIndex?: string;
+	removeProfanity?: boolean;
 };
 
 const Meta = (props: IMetaProps) => {
 	const canonicalURL = AppConfig.prefix + useRouter().asPath;
-	const title = props.title
+	let title = props.title.replace(/\s+/g, " ").replace(/\n/g, " ").slice(0, 60);
+
+	let description = props.description
 		.replace(/\s+/g, " ")
 		.replace(/\n/g, " ")
-		.slice(0, 60);
+		.slice(0, 150);
+
+	title = props.removeProfanity ? profanityRemove(title) : title;
+	description = props.removeProfanity
+		? profanityRemove(description)
+		: description;
 
 	return (
 		<>
@@ -27,7 +36,7 @@ const Meta = (props: IMetaProps) => {
 			</Head>
 			<NextSeo
 				title={title}
-				description={props.description}
+				description={description}
 				canonical={canonicalURL.split(/[?#]/)[0]}
 				noindex={props.noIndex ? true : false}
 				nofollow={props.noIndex ? true : false}
@@ -37,7 +46,7 @@ const Meta = (props: IMetaProps) => {
 				openGraph={{
 					url: canonicalURL,
 					title: title,
-					description: props.description,
+					description: description,
 					images: props.image
 						? [
 							{

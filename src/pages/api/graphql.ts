@@ -52,17 +52,8 @@ async function doQuery(query: DocumentNode, variables: Variables) {
 			[key: string]: string;
 		});
 }
-export default async function handler(req: NextRequest) {
-	const d = decodeURIComponent(req.url.replace(/\+/g, " "))
-		.split("?query=")[1]
-		.split("--splitter--");
-	const data = await fetcher({
-		query: JSON.parse(d[0]),
-		variables: JSON.parse(d[1]),
-		operationName: d[2],
-	});
-
-	return new Response(JSON.stringify(data), {
+export default function handler() {
+	return new Response(JSON.stringify({}), {
 		status: 200,
 		headers: {
 			"content-type": "application/json",
