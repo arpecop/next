@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-import { JokeThumbnail } from "@/components/JokeThumbnail";
+import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
@@ -8,6 +6,19 @@ import Pagination, { getPaging, refreshToken } from "@/components/NewPagination"
 import { doQuery, gql } from "@/pages/api/graphql";
 
 import { deslugify } from "@/utils/formatter";
+
+const LIST_JOKES = /* GraphQL */ gql`
+  query MyQuery($cat: String!, $nextToken: String) {
+    queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
+      items {
+        id
+        joke: title
+        cat
+      }
+      nextToken
+    }
+  }
+`;
 
 const CatPage = ({
 	jokes,
@@ -21,7 +32,7 @@ const CatPage = ({
 	cat: string;
 	slug: string;
 	nextToken?: string;
-}): JSX.Element => {
+}) => {
 	return (
 		<Main
 			meta={
@@ -34,13 +45,13 @@ const CatPage = ({
 			<div className="breadcrumbs text-sm">
 				<ul>
 					<li>
-						<Link href={"/?type=Jokes"}>Вицове</Link>
+						<a href={"/?type=Jokes"}>Вицове</a>
 					</li>
 					<li>
-						<Link href={`/cat/${cat}`}>{cat}</Link>
+						<a href={`/cat/${cat}`}>{cat}</a>
 					</li>
 					<li>
-						<Link href={`/cat/${cat}/${pagenum}`}>{pagenum}</Link>
+						<a href={`/cat/${cat}/${pagenum}`}>{pagenum}</a>
 					</li>
 				</ul>
 			</div>
@@ -90,19 +101,6 @@ const CatPage = ({
 };
 
 export default CatPage;
-
-export const LIST_JOKES = /* GraphQL */ gql`
-  query MyQuery($cat: String!, $nextToken: String) {
-    queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
-      items {
-        id
-        joke: title
-        cat
-      }
-      nextToken
-    }
-  }
-`;
 
 export const getServerSideProps = async ({
 	query,

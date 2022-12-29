@@ -4,7 +4,7 @@
 import type { GetServerSideProps } from "next";
 
 import { FormatJoke } from "@/components/JokeText";
-import { JokeThumbnail } from "@/components/JokeThumbnail";
+import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";

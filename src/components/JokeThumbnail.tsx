@@ -1,4 +1,4 @@
-import { FC, MouseEvent, ReactElement, useState } from "react";
+import { MouseEvent, useState } from "react";
 
 import { FormatJoke } from "@/components/JokeText";
 
@@ -14,12 +14,7 @@ interface Props {
 	onClick?: (event: MouseEvent) => void;
 }
 
-export const JokeThumbnail: FC<Props> = ({
-	item,
-	showcats,
-	short,
-	hideReadMore,
-}): ReactElement => {
+const JokeThumbnail = ({ item, showcats, short, hideReadMore }: Props) => {
 	const { joke, cat } = item;
 	const jlen = joke.length <= 150;
 	const [formattedJoke, setFormattedJoke] = useState<JSX.Element | null>(null);
@@ -118,3 +113,4 @@ export const JokeThumbnail: FC<Props> = ({
 		</article>
 	);
 };
+export default JokeThumbnail;

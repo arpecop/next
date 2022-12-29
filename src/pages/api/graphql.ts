@@ -1,28 +1,47 @@
-import { print } from "graphql";
+import { DocumentNode, print } from "graphql";
 import type { NextRequest } from "next/server";
 
 import { gql } from "graphql-tag";
 
-const proxyurl =
-	process.env.NODE_ENV === "development"
-		? "http://localhost:3000/api/graphql"
-		: "https://kloun.lol/api/graphql";
+type Variables = { [key: string]: string | number | boolean };
 
-async function doQuery(
-	query: any,
-	variables: { [key: string]: string | number | boolean }
-) {
+async function fetcher({
+	query,
+	variables,
+	operationName,
+}: {
+	query: string;
+	variables: Variables;
+	operationName: string;
+}) {
 	const response = await fetch(
-		proxyurl +
-		"?query=" +
-		JSON.stringify(print(query)) +
-		"--splitter--" +
-		JSON.stringify(variables) +
-		"--splitter--" +
-		query.definitions[0].name.value
+		"https://n5hlcijfibe3zacynh4p3mk4w4.appsync-api.eu-west-1.amazonaws.com/graphql",
+		{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
+			},
+			body: JSON.stringify({
+				query,
+				variables: variables,
+				operationName: operationName,
+			}),
+		}
 	);
-
 	const d = await response.json();
+	return d.data;
+}
+
+async function doQuery(query: DocumentNode, variables: Variables) {
+	const opname = query.definitions[0] as { name: { value: string } };
+
+	const d = await fetcher({
+		query: print(query),
+		variables,
+		operationName: opname.name.value,
+	});
+
 	return variables.multi
 		? d
 		: (Object.values(d)[0] as {
