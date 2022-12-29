@@ -56,26 +56,13 @@ export default async function handler(req: NextRequest) {
 	const d = decodeURIComponent(req.url.replace(/\+/g, " "))
 		.split("?query=")[1]
 		.split("--splitter--");
+	const data = await fetcher({
+		query: JSON.parse(d[0]),
+		variables: JSON.parse(d[1]),
+		operationName: d[2],
+	});
 
-	const response = await fetch(
-		"https://n5hlcijfibe3zacynh4p3mk4w4.appsync-api.eu-west-1.amazonaws.com/graphql",
-		{
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
-			},
-			body: JSON.stringify({
-				query: JSON.parse(d[0]),
-				variables: JSON.parse(d[1]),
-				operationName: d[2],
-			}),
-		}
-	);
-
-	const data = await response.json();
-
-	return new Response(JSON.stringify(data.data), {
+	return new Response(JSON.stringify(data), {
 		status: 200,
 		headers: {
 			"content-type": "application/json",

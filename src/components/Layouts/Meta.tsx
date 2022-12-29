@@ -7,10 +7,6 @@ type IMetaProps = {
 	description: string;
 	canonical?: string;
 	image?: string;
-	url?: string;
-	cat?: string;
-	imgtype?: string;
-	keywords?: string;
 	noIndex?: string;
 };
 
@@ -26,13 +22,13 @@ const Meta = (props: IMetaProps) => {
 			<Head>
 				<script
 					async
-					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 				/>
 			</Head>
 			<NextSeo
 				title={title}
 				description={props.description}
-				canonical={canonicalURL}
+				canonical={canonicalURL.split(/[?#]/)[0]}
 				noindex={props.noIndex ? true : false}
 				nofollow={props.noIndex ? true : false}
 				facebook={{
