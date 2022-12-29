@@ -71,7 +71,7 @@ export default async (
 
   const child_attachments = data
     .sort((a: any, z: any) => z.joke.length - a.joke.length)
-    .map((item, i) => ({
+    .map((item: any, i: number) => ({
       link: `https://kloun.lol/joke/${item.id}`,
       name: emojis[i],
       picture: `https://kloun.lol/api/joke/og/?idx=${item.id}&w=550&h=550`,

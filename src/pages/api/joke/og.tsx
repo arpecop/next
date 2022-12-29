@@ -1,6 +1,6 @@
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 import { profanityFilter } from "@/utils/formatter";
-import { gql } from "@apollo/client";
+
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 import { remappedJokeFunction } from "../../../components/JokeText";

@@ -1,11 +1,10 @@
-import { gql } from "@apollo/client";
 import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
 import type { Movie } from "@/pages/movies/";
-import { doQuery } from "../../api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
 const Item = ({ movie }: { movie: Movie }): JSX.Element => {
 	return (

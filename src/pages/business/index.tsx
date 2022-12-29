@@ -4,12 +4,11 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import { gql } from "@apollo/client";
 import { getPaging, refreshToken } from "../../components/NewPagination";
 
 import type { Cat } from "../../utils/formatter";
 import { businessdata } from "../../utils/formatter";
-import { doQuery } from "../api/graphql";
+import { doQuery, gql } from "../api/graphql";
 
 export type Company = {
 	_id: string;

@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import { gql } from "@apollo/client";
+
 import Link from "next/link";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 import { shuffle } from "../../utils/rudash";
 
 export type User = {
