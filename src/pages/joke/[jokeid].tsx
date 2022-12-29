@@ -12,7 +12,7 @@ import Nav from "@/components/Nav";
 import type { Cat } from "@/utils/formatter";
 import { catsdata } from "@/utils/formatter";
 
-import { doMQuery, doQuery, gql } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "../../utils/rudash";
@@ -118,7 +118,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		{ id: "cronnerjokesx11" }
 	);
 	const nextToken = datatoken.items?.[0]?.joke;
-	const data = await doMQuery(
+	const data = await doQuery(
 		gql`
       query MyQuery($id: String!, $nextToken: String = "") {
         single: getDdb(id: $id) {
@@ -139,6 +139,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     `,
 		{
 			id: jokeid as string,
+			multi: true,
 			nextToken,
 		}
 	);
