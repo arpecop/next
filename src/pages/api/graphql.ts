@@ -1,6 +1,6 @@
 import { print } from "graphql";
 import type { NextRequest } from "next/server";
-import cors from "cors";
+
 import { gql } from "graphql-tag";
 
 const proxyurl =
@@ -34,12 +34,10 @@ async function doQuery(
 		});
 }
 export default async function handler(req: NextRequest) {
-	cors();
 	const d = decodeURIComponent(req.url.replace(/\+/g, " "))
 		.split("?query=")[1]
 		.split("--splitter--");
-	const formattedQuery = JSON.parse(d[0]);
-	const formattedVariables = JSON.parse(d[1]);
+
 	const response = await fetch(
 		"https://n5hlcijfibe3zacynh4p3mk4w4.appsync-api.eu-west-1.amazonaws.com/graphql",
 		{
@@ -49,8 +47,8 @@ export default async function handler(req: NextRequest) {
 				"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
 			},
 			body: JSON.stringify({
-				query: formattedQuery,
-				variables: formattedVariables,
+				query: JSON.parse(d[0]),
+				variables: JSON.parse(d[1]),
 				operationName: d[2],
 			}),
 		}

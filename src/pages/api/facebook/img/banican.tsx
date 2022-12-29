@@ -1,5 +1,5 @@
-import { doQuery } from "@/pages/api/graphql";
-import { gql } from "@apollo/client";
+import { doQuery, gql } from "@/pages/api/graphql";
+
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 export const config = {
