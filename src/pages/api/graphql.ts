@@ -45,10 +45,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const client = new ApolloClient({
-	uri: "http://localhost:3000/api/graphql",
+	uri: "https://n5hlcijfibe3zacynh4p3mk4w4.appsync-api.eu-west-1.amazonaws.com/graphql",
 	headers: {
 		"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
 	},
+
 	cache: new InMemoryCache(),
 	defaultOptions: defaultOptions,
 });
