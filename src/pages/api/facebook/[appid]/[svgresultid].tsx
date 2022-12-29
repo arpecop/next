@@ -90,15 +90,6 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 				const letterSpacing = Number(element.attributes["letter-spacing"]);
 				const width = Number(wrapper?.attributes.width);
 
-				console.log({
-					width,
-					letterSpacing,
-					rectY,
-					rectX,
-					fontSize,
-					replacewith,
-				});
-
 				const d = wrapTextr({
 					width,
 					letterSpacing,
