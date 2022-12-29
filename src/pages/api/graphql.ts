@@ -5,6 +5,7 @@ import {
 	InMemoryCache,
 	DocumentNode,
 } from "@apollo/client";
+import cors from "cors";
 
 import { NextApiRequest, NextApiResponse } from "next/types";
 
@@ -29,6 +30,7 @@ const clientserver = new ApolloClient({
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+	cors();
 	const { query, variables } = req.body;
 	//operationName
 	if (query) {
@@ -43,7 +45,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const client = new ApolloClient({
-	uri: "https://n5hlcijfibe3zacynh4p3mk4w4.appsync-api.eu-west-1.amazonaws.com/graphql",
+	uri: "http://localhost:3000/api/graphql",
 	headers: {
 		"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
 	},
