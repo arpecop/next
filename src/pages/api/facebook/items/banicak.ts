@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { shuffle } from "../../../../utils/rudash";
+import { shuffle } from "lodash";
 
 const items = [
 	{ info: "Едно нестихващо веселие ще бъде твоето ежедневие" },

@@ -15,7 +15,7 @@ import { catsdata } from "@/utils/formatter";
 import { doQuery, gql } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
-import { chunk, shuffle } from "../../utils/rudash";
+import { chunk, shuffle } from "lodash";
 
 const SingleJoke = (props: {
 	joke: any;

@@ -31,13 +31,7 @@ export interface RootObject {
 	qc: number;
 }
 
-const Program = ({
-	limit,
-	className,
-}: {
-	limit?: number;
-	className: string;
-}) => {
+const Program = ({ limit, className }: { limit?: number; className: string }) => {
 	const [items, setItems] = React.useState<Item[]>([]);
 	const [img, setImg] = React.useState<string | null>(null);
 	async function fetchMyAPI(older?: number) {
@@ -82,21 +76,23 @@ const Program = ({
 					}) => (
 						<label
 							key={id}
-							className='hover:animate-pulse'
-							htmlFor='my-modal'
+							className="hover:animate-pulse"
+							htmlFor="my-modal"
 							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
 						>
-							<div className='rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer'>
+							<div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer">
 								<img
-									className='cursor-pointer'
-									src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
+									className="cursor-pointer"
+									src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 									width={128}
 									height={128}
 								/>
 								<img
-									className='rounded-lg   absolute top-1'
-									alt='pr0gramm'
-									loading='lazy'
+									className="rounded-lg   absolute top-1"
+									alt="pr0gramm"
+									loading="lazy"
+									width={128}
+									height={128}
 									src={`https://thumb.pr0gramm.com/${thumb}`}
 								/>
 							</div>
@@ -104,11 +100,11 @@ const Program = ({
 					)
 				)}
 
-			<input type='checkbox' id='my-modal' className='modal-toggle' />
-			<label htmlFor='my-modal' className='modal cursor-pointer'>
-				<label className='modal-box relative' htmlFor=''>
-					<p className='py-4'>
-						<img src={img || ""} alt='' />
+			<input type="checkbox" id="my-modal" className="modal-toggle" />
+			<label htmlFor="my-modal" className="modal cursor-pointer">
+				<label className="modal-box relative" htmlFor="">
+					<p className="py-4">
+						<img src={img || ""} alt="" />
 					</p>
 				</label>
 			</label>

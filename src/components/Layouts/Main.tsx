@@ -1,5 +1,5 @@
 import Header from "@/components/Layouts/Header";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 import Footer from "./Footer";
 

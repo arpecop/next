@@ -8,12 +8,12 @@ import Meta from "@/components/Layouts/Meta";
 import { doQuery, gql } from "@/pages/api/graphql";
 
 import type { News } from "@/pages/news/";
-import { shuffle } from "../../../../utils/rudash";
+
+import { shuffle } from "lodash";
 
 const NewsItem = ({
   newsbg,
-  slug,
-  newsbg_by_pk: { title, image, uid, parsed },
+  newsbg_by_pk: { title, image, parsed },
 }: {
   newsbg: News[];
   newsbg_by_pk: News;

@@ -8,7 +8,7 @@ import Meta from "@/components/Layouts/Meta";
 
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
 import { doQuery, gql } from "@/pages/api/graphql";
-import { shuffle } from "../../utils/rudash";
+import { shuffle } from "lodash";
 
 export type User = {
 	id: string;
