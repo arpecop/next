@@ -122,7 +122,7 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	res.setHeader("Content-Type", "image/svg+xml");
-	res.setHeader("cache-control", "no-cache, no-store");
+
 	console.log(req.query);
 	const { svgresultid, appid, firstname } = req.query as { [key: string]: string };
 	console.log(req.query);

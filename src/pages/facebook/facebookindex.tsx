@@ -3,7 +3,7 @@ import type { GetServerSideProps } from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
-import { nanoid } from "nanoid";
+import { ReactSVG } from "react-svg";
 
 import FacebookShare from "@/components/FacebookShare";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
@@ -95,19 +95,19 @@ const Facebook = ({
 					<LoadingResult name={curresult?.error || app?.cat} />
 				)}
 				{curresult.id && !curresult.error && (
-					<img
-						className={
-							imageLoaded
-								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
-								: "hidden"
-						}
-						src={`/api/facebook/${app?.slug}/${curresult.id}/${urlparams}`}
-						width="640"
-						height="336"
-						style={{ maxWidth: 640 }}
-						alt=""
-						onLoad={() => setImageLoaded(true)}
-					/>
+					<>
+						<ReactSVG
+							useRequestCache={true}
+							src={`/api/facebook/${app?.slug}/${curresult.id}/${urlparams}`}
+							afterInjection={(error, svg) => {
+								if (error) {
+									console.error(error);
+									return;
+								}
+								setImageLoaded(true);
+							}}
+						/>
+					</>
 				)}
 			</div>
 
