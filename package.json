@@ -9,7 +9,7 @@
     "export": "next export",
     "lint": "next lint",
     "clean": "depcheck --dir=src && npm prune",
-    "lint:fixprod": "eslint --config ./eslintprod.js ./src --fix",
+    "lint:fixprod": "eslint --config ./eslintrcprod.js ./src --fix",
     "lint:fix": "eslint ./src --fix"
   },
   "dependencies": {
