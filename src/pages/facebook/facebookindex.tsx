@@ -5,7 +5,7 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import FacebookShare from "@/components/FacebookShare";
-import { useFacebookRandom } from "@/components/hooks/facebookhook";
+import { insertKasmet, useFacebookRandom } from "@/components/hooks/facebookhook";
 import LoadingResult from "@/components/LoadingResult";
 
 import { useEffect, useState } from "react";
@@ -49,36 +49,14 @@ const Facebook = ({
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<string>("");
 
-	//test
-
-	useEffect(() => {
-		const test = async () => {
-			const response = await fetch("/api/db", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
-				},
-				body: JSON.stringify({
-					key: "test",
-					value: "test",
-				}),
-			});
-			const d = await response.json();
-			console.log(d.data);
-		};
-		test();
-	}, []);
-
-	//end test
-
 	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: { name?: string }) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
 		const properties = merge(form?.properties, values);
 		const urlfriendly = pickBy(formd, (value: string) => value.length);
 		setForm({ ...form, properties });
-		//setResult({ id: curresult.id + "/-" + nanoid(2) });
+		//const newid = await insertKasmet(curresult.id , )
+		//setResult({ id: newid.id  });
 
 		setUrlparams("?" + new URLSearchParams(urlfriendly).toString());
 	};

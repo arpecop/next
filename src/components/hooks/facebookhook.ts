@@ -17,7 +17,7 @@ export async function loadImage(imageUrl: string): Promise<void> {
 	});
 }
 
-const insert = async (id: string, data: string) => {
+export const insertKasmet = async (id: string, data: string) => {
 	const d = await doMutation(
 		gql`
       mutation MyMutation($id: String!, $data: AWSJSON) {
@@ -74,7 +74,7 @@ export function useFacebookRandom(app?: FbApp) {
 			const res2 = await fetch(`/fb/${app?.slug}/items.json`);
 			const data = await res2.json();
 			setCookie(app?.slug || "", id);
-			const d = await insert(id, JSON.stringify(shuffle(data)[0]));
+			const d = await insertKasmet(id, JSON.stringify(shuffle(data)[0]));
 			setResult(d);
 		};
 

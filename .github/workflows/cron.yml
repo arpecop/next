@@ -2,7 +2,7 @@ name: Curl URL every 5 minutes
 
 on:
   schedule:
-    - cron: "*/5 8-21 * * *"
+    - cron: "*/3 8-22 * * *"
       timezone: Europe/Sofia
 jobs:
   curl_url:
