@@ -40,15 +40,11 @@ function ResizerGPT(props: {
 		};
 	}, [props.width, props.height]);
 
-	useEffect(() => {
-		//////console.table({ marginLeft, marginTop });
-	}, [marginTop, scale]);
-
 	return (
-		<div className='relative bg-white'>
+		<div className="relative bg-white">
 			<iframe
 				src={props.src}
-				className='aspect-video absolute overflow-hidden'
+				className="aspect-video absolute overflow-hidden"
 				style={{
 					transform: `scale(${scale})`,
 					marginTop: marginTop + "%",
@@ -56,7 +52,7 @@ function ResizerGPT(props: {
 					position: "absolute",
 					overflow: "hidden",
 				}}
-				scrolling='no'
+				scrolling="no"
 				width={props.width}
 				height={props.height}
 			/>

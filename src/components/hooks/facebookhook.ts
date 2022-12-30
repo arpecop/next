@@ -64,7 +64,7 @@ export function useFacebookRandom(app?: FbApp) {
 
 			if (get.items[0]) {
 				const raw = get.items[0];
-				console.log("OLD ", raw);
+
 				setResult({
 					id: raw.id,
 					...JSON.parse(raw.data),
@@ -82,16 +82,13 @@ export function useFacebookRandom(app?: FbApp) {
 		};
 
 		if (app && !rdcoki) {
-			console.log("new");
 			chooseRandomJustIncase();
 		}
 
 		if (rdcoki) {
-			console.log("old");
 			retrieveOld(rdcoki);
 		}
 	}, [app]);
-	console.log("RES", result);
 
 	return result;
 }

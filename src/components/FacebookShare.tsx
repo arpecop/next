@@ -19,7 +19,6 @@ const FacebookShare = ({
 	const onClick = async () => {
 		if (typeof onbeforeSubmit === "function") {
 			await onbeforeSubmit();
-			console.log("onBeforeSubmit promise resolved");
 		}
 
 		await fetch(`/api/refetch/?url=${url}`);
