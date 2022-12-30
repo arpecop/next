@@ -1,6 +1,6 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
 import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
+import { useEffect, useState, SetStateAction } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { getCookie, setCookie } from "../../utils/cookies";
 import { shuffle } from "lodash";
@@ -38,9 +38,6 @@ const insert = async (id: string, data: string) => {
 
 export function useFacebookRandom(app?: FbApp) {
 	const [result, setResult] = useState<{ id?: string; error?: string }>({});
-	useEffect(() => {
-		console.log(result);
-	}, [result]);
 
 	useEffect(() => {
 		const rdcoki = getCookie(app?.slug || "main");
@@ -90,5 +87,8 @@ export function useFacebookRandom(app?: FbApp) {
 		}
 	}, [app]);
 
-	return result;
+	return [result, setResult] as [
+		{ error?: string; id: string },
+		(value: SetStateAction<{ error?: string; id: string }>) => void
+	];
 }

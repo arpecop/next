@@ -3,6 +3,7 @@ import type { GetServerSideProps } from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
+import { nanoid } from "nanoid";
 
 import FacebookShare from "@/components/FacebookShare";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
@@ -49,12 +50,13 @@ const Facebook = ({
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<string>("");
 
-	const curresult = useFacebookRandom(app);
+	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: { name?: string }) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
 		const properties = merge(form?.properties, values);
 		const urlfriendly = pickBy(formd, (value: string) => value.length);
 		setForm({ ...form, properties });
+		//setResult({ id: curresult.id + "/-" + nanoid(2) });
 
 		setUrlparams("?" + new URLSearchParams(urlfriendly).toString());
 	};
