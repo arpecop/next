@@ -8,6 +8,7 @@ import { INode, parse, stringify } from "svgson";
 import { find, flattenDeep } from "lodash";
 import { doQuery, gql } from "../../graphql";
 import { toPairs } from "lodash";
+import satori from "satori";
 
 type Replacement = {
 	lookforid: string;
@@ -126,10 +127,14 @@ export default async function handler(
 	console.log(req.query);
 	const { svgresultid, appid, firstname } = req.query as { [key: string]: string };
 	console.log(req.query);
+	const fontbuff = path.resolve(
+		__dirname,
+		`../../../../../../public/images/font/Nunito-Medium.ttf`
+	);
 
 	const filePath = path.resolve(
 		__dirname,
-		`../../../../../../public/fb/${appid}/index.svg`
+		`../../../../../../public/fb/${appid}/svgindex.svg`
 	);
 	const svgstring = fs.readFileSync(filePath).toString();
 

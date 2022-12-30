@@ -95,19 +95,19 @@ const Facebook = ({
 					<LoadingResult name={curresult?.error || app?.cat} />
 				)}
 				{curresult.id && !curresult.error && (
-					<>
-						<ReactSVG
-							useRequestCache={true}
-							src={`/api/facebook/${app?.slug}/${curresult.id}/${urlparams}`}
-							afterInjection={(error, svg) => {
-								if (error) {
-									console.error(error);
-									return;
-								}
-								setImageLoaded(true);
-							}}
-						/>
-					</>
+					<img
+						className={
+							imageLoaded
+								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
+								: "hidden"
+						}
+						src={`https://kloun.lol/api/facebook/${app?.slug}/${curresult.id}/${urlparams}`}
+						width="640"
+						height="336"
+						style={{ maxWidth: 640 }}
+						alt=""
+						onLoad={() => setImageLoaded(true)}
+					/>
 				)}
 			</div>
 
