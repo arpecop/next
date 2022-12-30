@@ -110,15 +110,16 @@ const Facebook = ({
 			</div>
 
 			{app?.schema && (
-				<div className="container mx-auto">
-					<div className=" flex justify-center items-center">
-						<Form
-							schema={form}
-							validator={validator}
-							onChange={(x) => formDatax(x.formData)}
-						//onChange={(x) => formData(x.formData)}
-						/>
-					</div>
+				<div
+					className={`flex justify-center items-center ${imageLoaded ? "blur-none" : "blur-sm"
+						}`}
+				>
+					<Form
+						schema={form}
+						validator={validator}
+						onChange={(x) => formDatax(x.formData)}
+					//onChange={(x) => formData(x.formData)}
+					/>
 				</div>
 			)}
 
