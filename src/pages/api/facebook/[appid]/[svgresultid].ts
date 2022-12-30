@@ -8,7 +8,6 @@ import { INode, parse, stringify } from "svgson";
 import { find, flattenDeep } from "lodash";
 import { doQuery, gql } from "../../graphql";
 import { toPairs } from "lodash";
-import satori from "satori";
 
 type Replacement = {
 	lookforid: string;

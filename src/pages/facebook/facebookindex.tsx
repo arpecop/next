@@ -3,7 +3,6 @@ import type { GetServerSideProps } from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
-import { ReactSVG } from "react-svg";
 
 import FacebookShare from "@/components/FacebookShare";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
