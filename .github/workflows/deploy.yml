@@ -24,9 +24,9 @@ jobs:
       - name: 😳 Build
         run: |
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
-          npm install eslint -g
           npm install
           npm prune
+          npm run lint:fixprod
           npm run build
           npm run export
           rm -rf public

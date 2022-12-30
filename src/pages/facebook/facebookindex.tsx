@@ -8,7 +8,7 @@ import FacebookShare from "@/components/FacebookShare";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
 import LoadingResult from "@/components/LoadingResult";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
@@ -48,6 +48,29 @@ const Facebook = ({
 	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<string>("");
+
+	//test
+
+	useEffect(() => {
+		const test = async () => {
+			const response = await fetch("/api/db", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"x-api-key": "da2-lyxskmkifbcrzbjbczvujpzhwa",
+				},
+				body: JSON.stringify({
+					key: "test",
+					value: "test",
+				}),
+			});
+			const d = await response.json();
+			console.log(d.data);
+		};
+		test();
+	}, []);
+
+	//end test
 
 	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: { name?: string }) => {
