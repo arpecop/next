@@ -127,7 +127,7 @@ export default async function handler(
 
 	const filePath = path.resolve(
 		__dirname,
-		`../../../../../../public/fb/${appid}/svg.svg`
+		`../../../../../../public/fb/${appid}/index.svg`
 	);
 	const svgstring = fs.readFileSync(filePath).toString();
 
