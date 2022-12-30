@@ -75,7 +75,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-rome": "^0.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-tailwindcss": "^3.7.1",
+    "eslint-plugin-tailwindcss": "^3.8.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "ini": "^1.3.8",
     "inquirer": "^6.5.2",
