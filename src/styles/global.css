@@ -77,41 +77,16 @@
   .rotateswap {
     @apply swap-rotate;
   }
-}
+  .field fieldset div {
+    @apply mb-2 mx-auto max-w-xs text-sm;
+  }
+  .rjsf div .btn {
+    @apply hidden;
+  }
 
-.speech-bubble-odd {
-  margin-left: 1em;
-}
-.speech-bubble-even {
-  margin-right: 1em;
-}
-.speech-bubble-odd:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border: 20px solid transparent;
-  border-right-color: #db2777;
-  border-left: 0;
-  border-bottom: 0;
-  margin-top: -10px;
-  margin-left: -20px;
-}
-.speech-bubble-even:after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border: 20px solid transparent;
-  border-left-color: #db2777;
-  border-right: 0;
-  border-bottom: 0;
-  margin-top: -10px;
-  margin-right: -20px;
+  .field fieldset div input {
+    @apply input input-bordered input-success w-full max-w-xs dark:bg-white;
+  }
 }
 
 /* cyrillic-ext */

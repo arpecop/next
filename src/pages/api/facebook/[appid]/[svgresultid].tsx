@@ -55,10 +55,10 @@ function wrapTextr({
 		],
 	}));
 
-	return arr as any;
+	return arr;
 }
 
-function collectChildren(obj: any) {
+function collectChildren(obj: INode): INode[] {
 	if (obj.children) {
 		return [obj, ...flattenDeep(obj.children.map(collectChildren))];
 	} else {
@@ -112,13 +112,18 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 	return Promise.resolve({ svg: stringify(svg), json: svg });
 }
 
+function templateEngine(template: string, data: { [key: string]: string }) {
+	const pattern = /{\s*(\w+?)\s*}/g; // {property}
+	return template.replace(pattern, (_, token) => data[token] || "");
+}
+
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
 	res.setHeader("Content-Type", "image/svg+xml");
-	const appid = req.query.appid;
-	const id = req.query.svgresultid as string;
+	const { svgresultid, appid, firstname } = req.query as { [key: string]: string };
+	console.log(req.query);
 
 	const filePath = path.resolve(
 		__dirname,
@@ -138,14 +143,16 @@ export default async function handler(
       }
     `,
 		{
-			id,
+			id: svgresultid,
 		}
 	);
 
-	const data = toPairs(JSON.parse(resx.data)).map((pair) => ({
-		lookforid: pair[0],
-		replacewith: pair[1],
-	})) as { lookforid: string; replacewith: string }[];
+	const data = toPairs(JSON.parse(templateEngine(resx.data, { firstname }))).map(
+		(pair) => ({
+			lookforid: pair[0],
+			replacewith: pair[1],
+		})
+	) as { lookforid: string; replacewith: string }[];
 
 	const rendered = await replaceTextSvg(svgstring, data);
 

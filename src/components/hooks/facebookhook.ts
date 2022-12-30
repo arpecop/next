@@ -17,13 +17,30 @@ export async function loadImage(imageUrl: string): Promise<void> {
 	});
 }
 
-export function useFacebookRandom(app?: FbApp) {
-	const [selectedapp, setSelectedApp] = useState<FbApp | undefined>();
-	const [item, setItem] = useState<FBResult>({});
+const insert = async (id: string, data: string) => {
+	const d = await doMutation(
+		gql`
+      mutation MyMutation($id: String!, $data: AWSJSON) {
+        createDdb(
+          input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}
+        ) {
+          id
+        }
+      }
+    `,
+		{
+			id,
+			data,
+		}
+	);
+	return d;
+};
 
+export function useFacebookRandom(app?: FbApp) {
+	const [result, setResult] = useState<{ id?: string; error?: string }>({});
 	useEffect(() => {
-		setSelectedApp(app);
-	}, []);
+		console.log(result);
+	}, [result]);
 
 	useEffect(() => {
 		const rdcoki = getCookie(app?.slug || "main");
@@ -47,50 +64,34 @@ export function useFacebookRandom(app?: FbApp) {
 
 			if (get.items[0]) {
 				const raw = get.items[0];
-				setItem({
-					...JSON.parse(raw.data as string),
+				console.log("OLD ", raw);
+				setResult({
 					id: raw.id,
+					...JSON.parse(raw.data),
 				});
 			}
 		};
 
 		const chooseRandomJustIncase = async () => {
 			const id = nanoid(5);
-			console.log(`/fb/${app?.slug}/items.json`);
 			const res2 = await fetch(`/fb/${app?.slug}/items.json`);
-
 			const data = await res2.json();
-
-			const newdata = { ...selectedapp, ...item, ...shuffle(data)[0] };
-			newdata.description = "";
 			setCookie(app?.slug || "", id);
-			const insert = await doMutation(
-				gql`
-          mutation MyMutation($id: String!, $data: AWSJSON) {
-            createDdb(
-              input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}
-            ) {
-              id
-            }
-          }
-        `,
-				{
-					id,
-					data: JSON.stringify(newdata),
-				}
-			);
-
-			setItem({ ...newdata, id: insert.id });
+			const d = await insert(id, JSON.stringify(shuffle(data)[0]));
+			setResult(d);
 		};
 
-		if (selectedapp && !rdcoki) {
+		if (app && !rdcoki) {
+			console.log("new");
 			chooseRandomJustIncase();
 		}
 
 		if (rdcoki) {
+			console.log("old");
 			retrieveOld(rdcoki);
 		}
-	}, [selectedapp]);
+	}, [app]);
+	console.log("RES", result);
 
-	return item;
+	return result;
 }
