@@ -5,15 +5,17 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import FacebookShare from "@/components/FacebookShare";
-import { insertKasmet, useFacebookRandom } from "@/components/hooks/facebookhook";
+import { useFacebookRandom } from "@/components/hooks/facebookhook";
+
 import LoadingResult from "@/components/LoadingResult";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
 import Form from "@rjsf/core";
 import { mapValues, merge, pickBy } from "lodash";
+import SVGson from "../../components/SVGson";
 export type FbApp = {
 	count: number;
 	slug: string;
@@ -48,7 +50,7 @@ const Facebook = ({
 	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<string>("");
-
+	const [rid, setrid] = useState<string>("default");
 	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: { name?: string }) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
@@ -57,6 +59,7 @@ const Facebook = ({
 		setForm({ ...form, properties });
 		//const newid = await insertKasmet(curresult.id , )
 		//setResult({ id: newid.id  });
+		//setrid(nanoid(3));
 
 		setUrlparams("?" + new URLSearchParams(urlfriendly).toString());
 	};
@@ -94,20 +97,26 @@ const Facebook = ({
 				{!imageLoaded && app && (
 					<LoadingResult name={curresult?.error || app?.cat} />
 				)}
+
 				{curresult.id && !curresult.error && (
-					<img
-						className={
-							imageLoaded
-								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
-								: "hidden"
-						}
-						src={`https://kloun.lol/api/facebook/${app?.slug}/${curresult.id}/${urlparams}`}
-						width="640"
-						height="336"
-						style={{ maxWidth: 640 }}
-						alt=""
-						onLoad={() => setImageLoaded(true)}
-					/>
+					<>
+						<SVGson
+							url={`/api/facebook/${app?.slug}/json/${curresult.id}/${urlparams}`}
+						/>
+						<img
+							className={
+								imageLoaded
+									? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
+									: "hidden"
+							}
+							src={`/api/facebook/${app?.slug}/json/${curresult.id}/${urlparams}`}
+							width="640"
+							height="336"
+							style={{ maxWidth: 640 }}
+							alt=""
+							onLoad={() => setImageLoaded(true)}
+						/>
+					</>
 				)}
 			</div>
 

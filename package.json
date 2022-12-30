@@ -35,6 +35,7 @@
     "react-css": "^0.0.2",
     "react-dom": "18.2.0",
     "react-svg": "^15.1.17",
+    "react-twemoji": "^0.5.0",
     "satori": "^0.0.44",
     "svgson": "^5.2.1",
     "ulidx": "^0.3.0",

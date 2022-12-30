@@ -6,7 +6,7 @@ import wrapText from "wrap-text";
 
 import { INode, parse, stringify } from "svgson";
 import { find, flattenDeep } from "lodash";
-import { doQuery, gql } from "../../graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 import { toPairs } from "lodash";
 
 type Replacement = {
@@ -109,7 +109,8 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 			}
 		});
 	});
-	return Promise.resolve({ svg: stringify(svg), json: svg });
+	console.log(svg);
+	return Promise.resolve({ svg: stringify(svg), json: JSON.stringify(svg) });
 }
 
 function templateEngine(template: string, data: { [key: string]: string }) {
@@ -121,19 +122,17 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	res.setHeader("Content-Type", "image/svg+xml");
+	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	res.setHeader("Date", new Date().toUTCString());
 
 	console.log(req.query);
-	const { svgresultid, appid, firstname } = req.query as { [key: string]: string };
-	console.log(req.query);
-	const fontbuff = path.resolve(
-		__dirname,
-		`../../../../../../public/images/font/Nunito-Medium.ttf`
-	);
+	const { svgresultid, appid, firstname, type } = req.query as {
+		[key: string]: string;
+	};
 
 	const filePath = path.resolve(
 		__dirname,
-		`../../../../../../public/fb/${appid}/svgindex.svg`
+		`../../../../../../../public/fbapps/${appid}/svg.svg`
 	);
 	const svgstring = fs.readFileSync(filePath).toString();
 
@@ -153,16 +152,20 @@ export default async function handler(
 		}
 	);
 
-	const data = toPairs(JSON.parse(templateEngine(resx.data, { firstname }))).map(
-		(pair) => ({
-			lookforid: pair[0],
-			replacewith: pair[1],
-		})
-	) as { lookforid: string; replacewith: string }[];
+	const data = toPairs(
+		JSON.parse(templateEngine(resx.data, { firstname: type }))
+	).map((pair) => ({
+		lookforid: pair[0],
+		replacewith: pair[1],
+	})) as { lookforid: string; replacewith: string }[];
 
 	const rendered = await replaceTextSvg(svgstring, data);
+	res.setHeader(
+		"Content-Type",
+		type === "json" ? "application/json" : "image/svg+xml"
+	);
 
-	res.end(rendered.svg);
+	res.end(rendered.json);
 }
 
 //test
