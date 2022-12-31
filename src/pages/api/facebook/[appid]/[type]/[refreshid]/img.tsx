@@ -1,10 +1,11 @@
 import { ImageResponse } from "@vercel/og";
+import { NextRequest } from "next/server";
 
 export const config = {
 	runtime: "experimental-edge",
 };
 
-export default async function handler(req) {
+export default async function handler(req: NextRequest) {
 	const { searchParams } = new URL(req.url);
 	const params = req.url
 		.split("?")[0]
@@ -16,7 +17,7 @@ export default async function handler(req) {
 		(
 			<div style={{ display: "flex" }}>
 				<img
-					src={`http://localhost:3000/fbapps/${params[1]}/back.png`}
+					src={`https://kloun.lol/fbapps/${params[1]}/back.png`}
 					alt=""
 					style={{
 						width: 1200,
@@ -24,7 +25,7 @@ export default async function handler(req) {
 					}}
 				/>
 				<img
-					src={`http://localhost:3000/api/facebook/${params[1]}/svg/${params[0]}/res/${params[1]}/`}
+					src={`https://kloun.lol/api/facebook/${params[1]}/svg/x/res/${params[0]}/`}
 					alt=""
 					style={{ position: "absolute" }}
 				/>
