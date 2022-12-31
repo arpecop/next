@@ -1,6 +1,6 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
 import { nanoid } from "nanoid";
-import { useEffect, useState, SetStateAction } from "react";
+import { useEffect, useState } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { getCookie, setCookie } from "../../utils/cookies";
 import { shuffle } from "lodash";
@@ -75,7 +75,7 @@ export function useFacebookRandom(app?: FbApp) {
 			const res2 = await fetch(`/fbapps/${app?.slug}/items.json`);
 			const data = await res2.json();
 			console.log(data);
-			setCookie(app?.slug + "" + cookiprefix, id);
+			setCookie(`${app?.slug}${cookiprefix}`, id);
 			const d = await insertKasmet(id, JSON.stringify(shuffle(data)[0]));
 			console.log(d);
 			setResult(d);

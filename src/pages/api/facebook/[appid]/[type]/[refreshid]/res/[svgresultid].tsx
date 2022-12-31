@@ -120,14 +120,13 @@ export default async function handler(
 
 	const ff = path.resolve(
 		__dirname,
-		`../../../../../../../../public/images/font/Nunito-Medium.ttf`
+		`../../../../../../../../../public/images/font/Nunito-Medium.ttf`
 	);
 
 	const filePath = path.resolve(
 		__dirname,
-		`../../../../../../../../public/fbapps/${appid}/svg.svg`
+		`../../../../../../../../../public/fbapps/${appid}/svg.svg`
 	);
-
 	const svgstring = readFileSync(filePath).toString();
 
 	const resx = await doQuery(
@@ -158,7 +157,7 @@ export default async function handler(
 				<img
 					src={`http://localhost:3000/api/facebook/${appid}/nonsvg/${new Date()
 						.getTime()
-						.toString()}/${svgresultid}/`}
+						.toString()}/res/${svgresultid}/`}
 					alt=""
 				/>
 				{rendered.texts.map((text) => (

@@ -9,7 +9,7 @@ import { useFacebookRandom } from "@/components/hooks/facebookhook";
 
 import LoadingResult from "@/components/LoadingResult";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
@@ -17,7 +17,7 @@ import Form from "@rjsf/core";
 import { mapValues, merge, pickBy } from "lodash";
 
 import { nanoid } from "nanoid";
-import SVGson from "../../components/SVGson";
+//import SVGson from "../../components/SVGson";
 export type FbApp = {
 	count: number;
 	slug: string;
@@ -62,9 +62,6 @@ const Facebook = ({
 		const properties = merge(form?.properties, values);
 		const urlfriendly = pickBy(formd, (value: string) => value.length);
 		setForm({ ...form, properties });
-		//const newid = await insertKasmet(curresult.id , )
-
-		//setrid(nanoid(3));
 
 		setUrlparams({
 			refreshid: nanoid(3),
@@ -113,7 +110,7 @@ const Facebook = ({
 								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
 								: "hidden"
 						}
-						src={`/api/facebook/${app?.slug}/svg/${urlparams.refreshid}/${curresult.id}/${urlparams.params}`}
+						src={`/api/facebook/${app?.slug}/svg/${curresult.id}/res/${curresult.id}/${urlparams.params}`}
 						width="1"
 						height="1"
 						style={{ maxWidth: 640 }}
