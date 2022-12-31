@@ -9,7 +9,7 @@ import { useFacebookRandom } from "@/components/hooks/facebookhook";
 
 import LoadingResult from "@/components/LoadingResult";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
@@ -17,6 +17,7 @@ import Form from "@rjsf/core";
 import { mapValues, merge, pickBy } from "lodash";
 
 import { nanoid } from "nanoid";
+import SVGson from "../../components/SVGson";
 export type FbApp = {
 	count: number;
 	slug: string;
@@ -55,7 +56,7 @@ const Facebook = ({
 		refreshid: string;
 	}>({ params: "?", refreshid: "default" });
 
-	const [curresult, setResult] = useFacebookRandom(app);
+	const curresult = useFacebookRandom(app);
 	const formDatax = (formd: { name?: string }) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
 		const properties = merge(form?.properties, values);
@@ -113,8 +114,8 @@ const Facebook = ({
 								: "hidden"
 						}
 						src={`/api/facebook/${app?.slug}/svg/${urlparams.refreshid}/${curresult.id}/${urlparams.params}`}
-						width="640"
-						height="336"
+						width="1"
+						height="1"
 						style={{ maxWidth: 640 }}
 						alt=""
 						onLoad={() => setImageLoaded(true)}

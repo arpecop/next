@@ -112,6 +112,8 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	res.setHeader("Content-Type", "image/svg+xml");
+	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	res.setHeader("Expires", "0");
 	const { svgresultid, appid, firstname, type } = req.query as {
 		[key: string]: string;
 	};

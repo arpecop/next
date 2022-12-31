@@ -23,6 +23,7 @@
     "@vercel/og": "^0.0.21",
     "cors": "^2.8.5",
     "daisyui": "^2.46.0",
+    "dom-to-image": "^2.6.0",
     "fs": "0.0.1-security",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",

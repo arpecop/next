@@ -37,10 +37,11 @@ export const insertKasmet = async (id: string, data: string) => {
 };
 
 export function useFacebookRandom(app?: FbApp) {
+	const cookiprefix = "v1";
 	const [result, setResult] = useState<{ id?: string; error?: string }>({});
 
 	useEffect(() => {
-		const rdcoki = getCookie(app?.slug || "main");
+		const rdcoki = getCookie(app?.slug + "" + cookiprefix || "main");
 		const retrieveOld = async (id: string) => {
 			const get = await doQuery(
 				gql`
@@ -71,10 +72,12 @@ export function useFacebookRandom(app?: FbApp) {
 
 		const chooseRandomJustIncase = async () => {
 			const id = nanoid(5);
-			const res2 = await fetch(`/fb/${app?.slug}/items.json`);
+			const res2 = await fetch(`/fbapps/${app?.slug}/items.json`);
 			const data = await res2.json();
-			setCookie(app?.slug || "", id);
+			console.log(data);
+			setCookie(app?.slug + "" + cookiprefix, id);
 			const d = await insertKasmet(id, JSON.stringify(shuffle(data)[0]));
+			console.log(d);
 			setResult(d);
 		};
 
@@ -86,9 +89,9 @@ export function useFacebookRandom(app?: FbApp) {
 			retrieveOld(rdcoki);
 		}
 	}, [app]);
-
-	return [result, setResult] as [
-		{ error?: string; id: string },
-		(value: SetStateAction<{ error?: string; id: string }>) => void
-	];
+	return result;
+	// return [result, setResult] as [
+	// 	{ error?: string; id: string },
+	// 	(value: SetStateAction<{ error?: string; id: string }>) => void
+	// ];
 }

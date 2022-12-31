@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { convertSVGToPNGUrl } from "svg-to-png-browser";
+function MyComponent({ src }: { src: string }) {
+	const [newsrc, setNewSrc] = useState<string>("");
+	useEffect(() => {
+		const fetchImage = async () => {
+			try {
+				const response = await fetch(src);
+				const blob = await response.blob();
+				const objectUrl = URL.createObjectURL(blob);
 
-const SVGson = ({ url }: { url: string }) => {
-	const [svgurl, setSvgurl] = React.useState<string>();
-	React.useEffect(() => {
-		const parseSvg = async () => {
-			const svgFile = await fetch(url);
-			const svgText = await svgFile.text();
-			const pngUrl = await convertSVGToPNGUrl(svgText);
-			setSvgurl(pngUrl);
+				setNewSrc(objectUrl);
+			} catch (error) {
+				console.error(error);
+			}
 		};
-		parseSvg();
-	}, [url]);
 
-	return (
-		<img src={svgurl} alt="" width="640" height="336" style={{ maxWidth: 640 }} />
-	);
-};
+		fetchImage();
+	}, [src]);
 
-export default SVGson;
+	return <img id="my-image" alt="My Image" src={newsrc} />;
+}
+export default MyComponent;
