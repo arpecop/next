@@ -4,12 +4,19 @@ export const config = {
 	runtime: "experimental-edge",
 };
 
-export default async function handler() {
+export default async function handler(req) {
+	const { searchParams } = new URL(req.url);
+	const params = req.url
+		.split("?")[0]
+		.split("/")
+		.reverse()
+		.filter((x: string) => x.length > 3);
+	console.log(searchParams, params);
 	return new ImageResponse(
 		(
 			<div style={{ display: "flex" }}>
 				<img
-					src="http://localhost:3000/fbapps/banica2023/back.png"
+					src={`http://localhost:3000/fbapps/${params[1]}/back.png`}
 					alt=""
 					style={{
 						width: 1200,
@@ -17,7 +24,7 @@ export default async function handler() {
 					}}
 				/>
 				<img
-					src="http://localhost:3000/api/facebook/banica2023/svg/c34985d2-14f5-4945-ade5-665f6723ff02/res/c34985d2-14f5-4945-ade5-665f6723ff02/"
+					src={`http://localhost:3000/api/facebook/${params[1]}/svg/${params[0]}/res/${params[1]}/`}
 					alt=""
 					style={{ position: "absolute" }}
 				/>

@@ -102,10 +102,13 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 	});
 }
 
-function templateEngine(template: string, data: { [key: string]: string }) {
+function templateEngine(template: string, data: Params) {
 	const pattern = /{\s*(\w+?)\s*}/g; // {property}
 	return template.replace(pattern, (_, token) => data[token] || "");
 }
+type Params = {
+	[key: string]: string;
+};
 
 export default async function handler(
 	req: NextApiRequest,
@@ -114,9 +117,7 @@ export default async function handler(
 	res.setHeader("Content-Type", "image/svg+xml");
 	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	res.setHeader("Expires", "0");
-	const { svgresultid, appid, firstname, type } = req.query as {
-		[key: string]: string;
-	};
+	const { svgresultid, appid, type, refreshid } = req.query as Params;
 
 	const ff = path.resolve(
 		__dirname,
@@ -139,11 +140,12 @@ export default async function handler(
       }
     `,
 		{
-			id: svgresultid,
+			id: svgresultid || refreshid,
 		}
 	);
 
-	const data = toPairs(JSON.parse(templateEngine(resx.data, { firstname }))).map(
+	const params = req.query as Params;
+	const data = toPairs(JSON.parse(templateEngine(resx.data, params))).map(
 		(pair) => ({
 			lookforid: pair[0],
 			replacewith: pair[1],
