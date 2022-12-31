@@ -1,23 +1,21 @@
 import React from "react";
-import { stringify } from "svgson";
+
+import { convertSVGToPNGUrl } from "svg-to-png-browser";
 
 const SVGson = ({ url }: { url: string }) => {
-	const [svg, setSvg] = React.useState<string>();
+	const [svgurl, setSvgurl] = React.useState<string>();
 	React.useEffect(() => {
-		console.log("refresh");
 		const parseSvg = async () => {
 			const svgFile = await fetch(url);
-			const svgText = await svgFile.json();
-			const svgJson = stringify(svgText);
-			setSvg(svgJson);
+			const svgText = await svgFile.text();
+			const pngUrl = await convertSVGToPNGUrl(svgText);
+			setSvgurl(pngUrl);
 		};
 		parseSvg();
 	}, [url]);
 
 	return (
-		<div>
-			<div dangerouslySetInnerHTML={{ __html: svg || "" }} />
-		</div>
+		<img src={svgurl} alt="" width="640" height="336" style={{ maxWidth: 640 }} />
 	);
 };
 

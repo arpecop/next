@@ -15,7 +15,8 @@ import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
 import Form from "@rjsf/core";
 import { mapValues, merge, pickBy } from "lodash";
-import SVGson from "../../components/SVGson";
+
+import { nanoid } from "nanoid";
 export type FbApp = {
 	count: number;
 	slug: string;
@@ -49,8 +50,11 @@ const Facebook = ({
 }) => {
 	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
-	const [urlparams, setUrlparams] = useState<string>("");
-	const [rid, setrid] = useState<string>("default");
+	const [urlparams, setUrlparams] = useState<{
+		params: string;
+		refreshid: string;
+	}>({ params: "?", refreshid: "default" });
+
 	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: { name?: string }) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
@@ -58,10 +62,13 @@ const Facebook = ({
 		const urlfriendly = pickBy(formd, (value: string) => value.length);
 		setForm({ ...form, properties });
 		//const newid = await insertKasmet(curresult.id , )
-		//setResult({ id: newid.id  });
+
 		//setrid(nanoid(3));
 
-		setUrlparams("?" + new URLSearchParams(urlfriendly).toString());
+		setUrlparams({
+			refreshid: nanoid(3),
+			params: "?" + new URLSearchParams(urlfriendly).toString(),
+		});
 	};
 
 	//<ResizerGPT src={`http://example.com/`} width={640} height={336} />
@@ -99,24 +106,19 @@ const Facebook = ({
 				)}
 
 				{curresult.id && !curresult.error && (
-					<>
-						<SVGson
-							url={`/api/facebook/${app?.slug}/json/${curresult.id}/${urlparams}`}
-						/>
-						<img
-							className={
-								imageLoaded
-									? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
-									: "hidden"
-							}
-							src={`/api/facebook/${app?.slug}/json/${curresult.id}/${urlparams}`}
-							width="640"
-							height="336"
-							style={{ maxWidth: 640 }}
-							alt=""
-							onLoad={() => setImageLoaded(true)}
-						/>
-					</>
+					<img
+						className={
+							imageLoaded
+								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
+								: "hidden"
+						}
+						src={`/api/facebook/${app?.slug}/svg/${urlparams.refreshid}/${curresult.id}/${urlparams.params}`}
+						width="640"
+						height="336"
+						style={{ maxWidth: 640 }}
+						alt=""
+						onLoad={() => setImageLoaded(true)}
+					/>
 				)}
 			</div>
 
@@ -250,4 +252,3 @@ const apps = [
 ];
 export const runtime = "experimental-edge";
 export default Facebook;
-//test
