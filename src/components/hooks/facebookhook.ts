@@ -1,6 +1,6 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
 
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 
 export type FBResult = {
