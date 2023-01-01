@@ -120,6 +120,7 @@ export default async function handler(
 	console.log(rootfolder);
 
 	const { svgresultid, appid, type, refreshid } = req.query as Params;
+	console.log(req.query);
 
 	const ff = path.resolve(rootfolder, `public/images/font/Nunito-Medium.ttf`);
 

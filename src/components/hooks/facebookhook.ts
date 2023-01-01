@@ -1,7 +1,8 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
 
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState, useRef } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
+import { throttle } from "lodash";
 
 export type FBResult = {
 	[key: string]: string | number;
@@ -52,33 +53,39 @@ export const insertKasmet = async (id: string, data: string) => {
 	);
 	return d;
 };
+export const getCookie = (key: string) =>
+	document.cookie.split("; ").reduce((total, currentCookie) => {
+		const item = currentCookie.split("=");
+		const storedKey = item[0];
+		const storedValue = item[1];
+		return key === storedKey ? decodeURIComponent(storedValue) : total;
+	}, "");
+
+export const setCookie = (key: string, value: string | number) => {
+	const now = new Date();
+	now.setTime(now.getTime() + 10 * 60 * 60 * 24 * 1000);
+	document.cookie = `${key}=${value}; expires=${now.toUTCString()}; path=/`;
+};
 
 export function useFacebookRandom(app?: FbApp) {
 	const cookiprefix = "v2";
 	const [result, setResult] = useState<number | null>(null);
 	const [mod, setMod] = useState<FBResult | null>(null);
 
-	const getCookie = (key: string) =>
-		document.cookie.split("; ").reduce((total, currentCookie) => {
-			const item = currentCookie.split("=");
-			const storedKey = item[0];
-			const storedValue = item[1];
-			return key === storedKey ? decodeURIComponent(storedValue) : total;
-		}, "");
-
-	const setCookie = (key: string, value: string | number) => {
-		const now = new Date();
-		now.setTime(now.getTime() + 10 * 60 * 60 * 24 * 1000);
-		document.cookie = `${key}=${value}; expires=${now.toUTCString()}; path=/`;
-	};
-
 	function randomNumber(max: number) {
 		return Math.floor(Math.random() * max);
 	}
 
-	useEffect(() => {
-		console.log(mod);
-	}, [mod]);
+	const throttled = useRef(
+		throttle((newValue) => {
+			insertKasmet("test", JSON.stringify(newValue)).then((d) => {
+				console.log(d);
+				setCookie("result", d.id);
+			});
+		}, 1500)
+	);
+
+	useEffect(() => throttled.current(mod), [mod]);
 
 	useEffect(() => {
 		const rdcoki = getCookie(app?.slug + "" + cookiprefix);

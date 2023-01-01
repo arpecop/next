@@ -11,14 +11,15 @@ const FacebookShare = ({
 	id?: string;
 	noWrapper?: boolean;
 	text?: string;
-	onbeforeSubmit?: () => Promise<unknown>;
+	onbeforeSubmit?: () => Promise<string>;
 	disabled?: boolean;
 }) => {
 	const router = useRouter();
-	const url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
+	let url = id?.includes("https") ? id : `https://kloun.lol/joke/${id}`;
 	const onClick = async () => {
 		if (typeof onbeforeSubmit === "function") {
-			await onbeforeSubmit();
+			url = await onbeforeSubmit();
+			console.log(url);
 		}
 
 		await fetch(`/api/refetch/?url=${url}`);

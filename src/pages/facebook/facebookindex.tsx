@@ -5,7 +5,11 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import FacebookShare from "@/components/FacebookShare";
-import { FBResult, useFacebookRandom } from "@/components/hooks/facebookhook";
+import {
+	FBResult,
+	getCookie,
+	useFacebookRandom,
+} from "@/components/hooks/facebookhook";
 
 import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
@@ -55,7 +59,7 @@ const Facebook = ({
 		params: string;
 		refreshid: string;
 	}>({ params: "?", refreshid: "default" });
-
+	const [shareidclient, setShareId] = useState<string>("");
 	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: FBResult) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
@@ -75,10 +79,8 @@ const Facebook = ({
 
 	const onBeforeLoad = () => {
 		return new Promise((resolve) => {
-			setTimeout(() => {
-				console.log("onBeforeLoad function called");
-				resolve(null);
-			}, 3000);
+			const id = getCookie("result");
+			resolve(`https://kloun.lol/fb/${app?.slug}/${id}`);
 		});
 	};
 
@@ -103,7 +105,7 @@ const Facebook = ({
 				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
-							<svg width={1200} height={630} className="w-full h-full" />
+							<img className="w-full h-full" src="/images/placeholder.png" />
 							<div className="flex absolute top-0 w-full">
 								<img
 									src={`/fbapps/${app?.slug}/back.png`}
@@ -144,7 +146,7 @@ const Facebook = ({
 								onbeforeSubmit={onBeforeLoad}
 								disabled={curresult ? false : true}
 								text={app?.button}
-								id={`https://kloun.lol/fb/${app?.slug}/${curresult}`}
+								id={`https://kloun.lol/fb/${app?.slug}/${shareidclient}`}
 							/>
 						</div>
 						<p>{app?.description}</p>

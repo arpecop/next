@@ -6,13 +6,12 @@ export const config = {
 };
 
 export default async function handler(req: NextRequest) {
-	const { searchParams } = new URL(req.url);
 	const params = req.url
 		.split("?")[0]
 		.split("/")
 		.reverse()
 		.filter((x: string) => x.length > 3);
-	console.log(searchParams, params);
+
 	return new ImageResponse(
 		(
 			<div style={{ display: "flex" }}>
