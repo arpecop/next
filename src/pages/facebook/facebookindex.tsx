@@ -94,7 +94,7 @@ const Facebook = ({
 					}
 					image={
 						shareid
-							? `https://kloun.lol/api/facebook/${appid}/svg/${shareid}/img`
+							? `https://kloun.lol/img/${appid}/${shareid}.png`
 							: "https://kloun.lol/images/og.jpg"
 					}
 					noIndex={shareid}
