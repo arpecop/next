@@ -69,8 +69,6 @@ const Facebook = ({
 		});
 	};
 
-	//<ResizerGPT src={`http://example.com/`} width={640} height={336} />
-
 	const onBeforeLoad = () => {
 		return new Promise((resolve) => {
 			setTimeout(() => {
@@ -88,9 +86,10 @@ const Facebook = ({
 					description={
 						result?.description || app?.description || "Фейсбук приложения"
 					}
+					//http://localhost:3000/api/facebook/banica2023/svg/c34985d2-14f5-4945-ade5-665f6723ff02/img/
 					image={
 						shareid
-							? `https://kloun.lol/api/facebook/img/${appid}/${shareid}.png`
+							? `https://kloun.lol/api/facebook/${appid}/svg/${shareid}/img`
 							: "https://kloun.lol/images/og.jpg"
 					}
 					noIndex={shareid}
@@ -99,24 +98,17 @@ const Facebook = ({
 			noContainer
 		>
 			<div className="flex justify-center items-center">
-				{!imageLoaded && app && (
-					<LoadingResult name={curresult?.error || app?.cat} />
-				)}
-
-				{curresult.id && !curresult.error && (
+				{curresult.id && !curresult.error ? (
 					<img
-						className={
-							imageLoaded
-								? "container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
-								: "hidden"
-						}
+						className="container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
 						src={`/api/facebook/${app?.slug}/svg/${curresult.id}/res/${curresult.id}/${urlparams.params}`}
 						width="1"
 						height="1"
 						style={{ maxWidth: 640 }}
 						alt=""
-						onLoad={() => setImageLoaded(true)}
 					/>
+				) : (
+					<LoadingResult name={curresult?.error || app?.cat} />
 				)}
 			</div>
 

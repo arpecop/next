@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-function MyComponent({ src }: { src: string }) {
+function SVGImage({
+	src,
+	params,
+}: {
+	src: string;
+	params?: { [key: string]: string };
+}) {
 	const [newsrc, setNewSrc] = useState<string>("");
 	useEffect(() => {
 		const fetchImage = async () => {
@@ -8,7 +14,6 @@ function MyComponent({ src }: { src: string }) {
 				const response = await fetch(src);
 				const blob = await response.blob();
 				const objectUrl = URL.createObjectURL(blob);
-
 				setNewSrc(objectUrl);
 			} catch (error) {
 				console.error(error);
@@ -18,6 +23,6 @@ function MyComponent({ src }: { src: string }) {
 		fetchImage();
 	}, [src]);
 
-	return <img id="my-image" alt="My Image" src={newsrc} />;
+	return <img alt="My Image" src={newsrc} />;
 }
-export default MyComponent;
+export default SVGImage;

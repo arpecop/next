@@ -62,7 +62,9 @@ export function useFacebookRandom(app?: FbApp) {
 
 			if (get.items[0]) {
 				const raw = get.items[0];
-
+				await loadImage(
+					`/api/facebook/${app?.slug}/svg/${raw.id}/res/${raw.id}/`
+				);
 				setResult({
 					id: raw.id,
 					...JSON.parse(raw.data),
@@ -77,7 +79,7 @@ export function useFacebookRandom(app?: FbApp) {
 			console.log(data);
 			setCookie(`${app?.slug}${cookiprefix}`, id);
 			const d = await insertKasmet(id, JSON.stringify(shuffle(data)[0]));
-			console.log(d);
+			await loadImage(`/api/facebook/${app?.slug}/svg/${d.id}/res/${d.id}/`);
 			setResult(d);
 		};
 

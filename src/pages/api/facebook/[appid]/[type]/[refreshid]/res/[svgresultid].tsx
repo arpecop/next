@@ -64,7 +64,7 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 				const lineHeight = Number(element.attributes["line-spacing"]);
 				const width = Number(wrapper?.attributes.width);
 				const height = Number(wrapper?.attributes.height);
-				console.log(element?.attributes);
+
 				texts.push({
 					id: lookforid,
 					width,
@@ -157,7 +157,7 @@ export default async function handler(
 		const svgx = await satori(
 			<div style={{ display: "flex" }}>
 				<img
-					src={`http://localhost:3000/api/facebook/${appid}/nonsvg/${new Date()
+					src={`https://kloun.lol/api/facebook/${appid}/nonsvg/${new Date()
 						.getTime()
 						.toString()}/res/${svgresultid}/`}
 					alt=""
