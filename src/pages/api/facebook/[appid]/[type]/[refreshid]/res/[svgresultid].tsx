@@ -156,12 +156,6 @@ export default async function handler(
 	if (type === "svg") {
 		const svgx = await satori(
 			<div style={{ display: "flex" }}>
-				<img
-					src={`https://kloun.lol/api/facebook/${appid}/nonsvg/${new Date()
-						.getTime()
-						.toString()}/res/${svgresultid}/`}
-					alt=""
-				/>
 				{rendered.texts.map((text) => (
 					<div
 						key={text.id}

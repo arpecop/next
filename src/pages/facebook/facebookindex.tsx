@@ -7,7 +7,7 @@ import Nav from "@/components/Nav";
 import FacebookShare from "@/components/FacebookShare";
 import { useFacebookRandom } from "@/components/hooks/facebookhook";
 
-import LoadingResult from "@/components/LoadingResult";
+import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ import Form from "@rjsf/core";
 import { mapValues, merge, pickBy } from "lodash";
 
 import { nanoid } from "nanoid";
-//import SVGson from "../../components/SVGson";
+
 export type FbApp = {
 	count: number;
 	slug: string;
@@ -49,7 +49,6 @@ const Facebook = ({
 	appid?: string;
 	shareid?: string;
 }) => {
-	const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<{
 		params: string;
@@ -86,7 +85,6 @@ const Facebook = ({
 					description={
 						result?.description || app?.description || "Фейсбук приложения"
 					}
-					//http://localhost:3000/api/facebook/banica2023/svg/c34985d2-14f5-4945-ade5-665f6723ff02/img/
 					image={
 						shareid
 							? `https://kloun.lol/api/facebook/${appid}/svg/${shareid}/img`
@@ -95,18 +93,26 @@ const Facebook = ({
 					noIndex={shareid}
 				/>
 			}
-			noContainer
 		>
 			<div className="flex justify-center items-center">
 				{curresult.id && !curresult.error ? (
-					<img
-						className="container overflow-hidden  rounded-xl bg-gradient-to-r from-pink-500 to-violet-500 p-1"
-						src={`/api/facebook/${app?.slug}/svg/${curresult.id}/res/${curresult.id}/${urlparams.params}`}
-						width="1"
-						height="1"
-						style={{ maxWidth: 640 }}
-						alt=""
-					/>
+					<ResultWrapper>
+						<div className="relative flex">
+							<svg width={1200} height={630} className="w-full h-full" />
+							<div className="flex absolute top-0 w-full">
+								<img
+									src={`/fbapps/${app?.slug}/back.png`}
+									alt=""
+									className="w-full"
+								/>
+							</div>
+							<img
+								src={`/api/facebook/${app?.slug}/svg/${curresult.id}/res/${curresult.id}/${urlparams.params}`}
+								alt=""
+								className="absolute top-0 w-full"
+							/>
+						</div>
+					</ResultWrapper>
 				) : (
 					<LoadingResult name={curresult?.error || app?.cat} />
 				)}
@@ -114,7 +120,7 @@ const Facebook = ({
 
 			{app?.schema && (
 				<div
-					className={`flex justify-center items-center ${imageLoaded ? "blur-none" : "blur-sm"
+					className={`flex justify-center items-center ${curresult ? "blur-none" : "blur-sm"
 						}`}
 				>
 					<Form
@@ -132,7 +138,7 @@ const Facebook = ({
 						<div className="flex justify-center items-center my-3">
 							<FacebookShare
 								onbeforeSubmit={onBeforeLoad}
-								disabled={imageLoaded ? false : true}
+								disabled={curresult.id ? false : true}
 								text={app?.button}
 								id={`https://kloun.lol/fb/${app?.slug}/${curresult.id}`}
 							/>

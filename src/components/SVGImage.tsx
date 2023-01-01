@@ -19,7 +19,6 @@ function SVGImage({
 				console.error(error);
 			}
 		};
-
 		fetchImage();
 	}, [src]);
 
