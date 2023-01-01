@@ -46,9 +46,10 @@ const Meta = (props: IMetaProps) => {
 					appId: "281985576166744",
 				}}
 				openGraph={{
-					url: canonicalURL,
+					url: canonicalURL.split(/[?#]/)[0],
 					title: title,
 					description: description,
+					type: "article",
 					images: props.image
 						? [
 							{

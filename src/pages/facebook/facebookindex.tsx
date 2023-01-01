@@ -146,7 +146,7 @@ const Facebook = ({
 								onbeforeSubmit={onBeforeLoad}
 								disabled={curresult ? false : true}
 								text={app?.button}
-								id={`https://kloun.lol/fb/${app?.slug}/`}
+								id={""}
 							/>
 						</div>
 						<p>{app?.description}</p>
