@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const res2 = await fetch(
 		`https://graph.facebook.com/?id=${encodeURIComponent(
 			url
-		)}&access_token=${fbtoken}`
+		)}&scrape=true&access_token=${fbtoken}`
 	);
 	const data = await res2.json();
 
