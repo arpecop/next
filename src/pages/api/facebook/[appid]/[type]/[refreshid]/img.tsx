@@ -12,6 +12,15 @@ export default async function handler(req: NextRequest) {
 		.reverse()
 		.filter((x: string) => x.length > 3);
 
+	console.log(params);
+
+	const newid = params[0].split("_");
+	// `http://localhost:3000/api/facebook/${params[1]}/svg/${newid[1]}/res/${newid[0]}/`
+	console.log(
+		`http://localhost:3000/api/facebook/${params[1]}/svg/${newid[1] || "x"
+		}/res/${newid[0]}/`
+	);
+
 	return new ImageResponse(
 		(
 			<div style={{ display: "flex" }}>
@@ -24,7 +33,8 @@ export default async function handler(req: NextRequest) {
 					}}
 				/>
 				<img
-					src={`https://kloun.lol/api/facebook/${params[1]}/svg/x/res/${params[0]}/`}
+					src={`https://kloun.lol/api/facebook/${params[1]}/svg/${newid[1] || "x"
+						}/res/${newid[0]}/`}
 					alt=""
 					style={{ position: "absolute" }}
 				/>

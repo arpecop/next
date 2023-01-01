@@ -117,7 +117,6 @@ export default async function handler(
 	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	res.setHeader("Expires", "0");
 	const rootfolder = __dirname.split(".next")[0];
-	console.log(rootfolder);
 
 	const { svgresultid, appid, type, refreshid } = req.query as Params;
 	console.log(req.query);
@@ -133,6 +132,8 @@ export default async function handler(
 	const result = items[svgresultid];
 
 	const params = req.query as Params;
+	console.log(refreshid);
+
 	const data = toPairs(
 		JSON.parse(templateEngine(JSON.stringify(result), params))
 	).map((pair) => ({

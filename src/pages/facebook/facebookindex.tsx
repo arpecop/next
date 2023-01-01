@@ -59,7 +59,7 @@ const Facebook = ({
 		params: string;
 		refreshid: string;
 	}>({ params: "?", refreshid: "default" });
-	const [shareidclient, setShareId] = useState<string>("");
+
 	const [curresult, setResult] = useFacebookRandom(app);
 	const formDatax = (formd: FBResult) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
@@ -80,7 +80,7 @@ const Facebook = ({
 	const onBeforeLoad = () => {
 		return new Promise((resolve) => {
 			const id = getCookie("result");
-			resolve(`https://kloun.lol/fb/${app?.slug}/${id}`);
+			resolve(`https://kloun.lol/fb/${app?.slug}/${curresult}_${id}`);
 		});
 	};
 
@@ -146,7 +146,7 @@ const Facebook = ({
 								onbeforeSubmit={onBeforeLoad}
 								disabled={curresult ? false : true}
 								text={app?.button}
-								id={`https://kloun.lol/fb/${app?.slug}/${shareidclient}`}
+								id={`https://kloun.lol/fb/${app?.slug}/`}
 							/>
 						</div>
 						<p>{app?.description}</p>
