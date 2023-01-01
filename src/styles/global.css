@@ -27,13 +27,15 @@
 }
 
 @layer components {
-  html {
+  .bg {
+    @apply bg-gray-900 dark:bg-gray-400 text-base text-gray-400  dark:text-gray-900;
+  }
+
+  body {
+    @apply m-0 p-0  bg;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
   }
-  body {
-    @apply m-0 bg-gray-900 p-0 text-base text-gray-400 dark:bg-gray-400 dark:text-gray-900;
-    font-family: "Nunito", sans-serif !important;
-  }
+
   .btn1 {
     @apply w-full grow p-2 sm:w-1/3 md:h-1/4;
   }

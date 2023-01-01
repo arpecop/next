@@ -95,9 +95,9 @@ const Facebook = ({
 			}
 		>
 			<div className="flex justify-center items-center">
-				{curresult.id && !curresult.error ? (
+				{curresult.id && !curresult.error && (
 					<ResultWrapper>
-						<div className="relative flex">
+						<div className="relative flex bg">
 							<svg width={1200} height={630} className="w-full h-full" />
 							<div className="flex absolute top-0 w-full">
 								<img
@@ -113,7 +113,8 @@ const Facebook = ({
 							/>
 						</div>
 					</ResultWrapper>
-				) : (
+				)}
+				{!curresult.id && app && (
 					<LoadingResult name={curresult?.error || app?.cat} />
 				)}
 			</div>

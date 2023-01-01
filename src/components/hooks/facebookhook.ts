@@ -1,9 +1,8 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
-import { nanoid } from "nanoid";
+
 import { useEffect, useState } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
-import { getCookie, setCookie } from "../../utils/cookies";
-import { shuffle } from "lodash";
+
 export type FBResult = {
 	[key: string]: string | undefined;
 };
@@ -16,7 +15,25 @@ export async function loadImage(imageUrl: string): Promise<void> {
 		image.src = imageUrl;
 	});
 }
-
+export const getKasmet = async (id: string) => {
+	const get = await doQuery(
+		gql`
+      query MyQuery($id: String!) {
+        queryDdbsByBySubcat(subcat: $id, first: 1) {
+          nextToken
+          items {
+            id
+            data
+          }
+        }
+      }
+    `,
+		{
+			id,
+		}
+	);
+	return JSON.parse(get.items[0].data);
+};
 export const insertKasmet = async (id: string, data: string) => {
 	const d = await doMutation(
 		gql`
@@ -40,46 +57,47 @@ export function useFacebookRandom(app?: FbApp) {
 	const cookiprefix = "v1";
 	const [result, setResult] = useState<{ id?: string; error?: string }>({});
 
-	useEffect(() => {
-		const rdcoki = getCookie(app?.slug + "" + cookiprefix || "main");
-		const retrieveOld = async (id: string) => {
-			const get = await doQuery(
-				gql`
-          query MyQuery($id: String!) {
-            queryDdbsByBySubcat(subcat: $id, first: 1) {
-              nextToken
-              items {
-                id
-                data
-              }
-            }
-          }
-        `,
-				{
-					id,
-				}
-			);
+	const getCookie = (key: string) =>
+		document.cookie.split("; ").reduce((total, currentCookie) => {
+			const item = currentCookie.split("=");
+			const storedKey = item[0];
+			const storedValue = item[1];
+			return key === storedKey ? decodeURIComponent(storedValue) : total;
+		}, "");
 
-			if (get.items[0]) {
-				const raw = get.items[0];
-				await loadImage(`/fbapps/${app?.slug}/back.png`);
-				await loadImage(
-					`/api/facebook/${app?.slug}/svg/${raw.id}/res/${raw.id}/`
-				);
-				setResult({
-					id: raw.id,
-					...JSON.parse(raw.data),
-				});
-			}
+	const setCookie = (key: string, value: string) => {
+		const now = new Date();
+		now.setTime(now.getTime() + 10 * 60 * 60 * 24 * 1000);
+		document.cookie = `${key}=${value}; expires=${now.toUTCString()}; path=/`;
+	};
+
+	function randomNumber(max: number) {
+		return Math.floor(Math.random() * max);
+	}
+
+	useEffect(() => {
+		const rdcoki = getCookie(app?.slug + "" + cookiprefix);
+		const retrieveOld = async (data: string) => {
+			console.log(data);
+			const raw = JSON.parse(data);
+
+			await loadImage(`/fbapps/${app?.slug}/back.png`);
+			await loadImage(
+				`/api/facebook/${app?.slug}/svg/${raw.id}/res/${raw.id}/`
+			);
+			setResult({
+				id: raw.id,
+				...raw,
+			});
 		};
 
 		const chooseRandomJustIncase = async () => {
-			const id = nanoid(5);
 			const res2 = await fetch(`/fbapps/${app?.slug}/items.json`);
 			const data = await res2.json();
-			console.log(data);
-			setCookie(`${app?.slug}${cookiprefix}`, id);
-			const d = await insertKasmet(id, JSON.stringify(shuffle(data)[0]));
+			const id = randomNumber(data.length);
+			const d = { id, ...data[id] };
+			console.log(d);
+			setCookie(`${app?.slug}${cookiprefix}`, JSON.stringify(d));
 			await loadImage(`/fbapps/${app?.slug}/back.png`);
 			await loadImage(`/api/facebook/${app?.slug}/svg/${d.id}/res/${d.id}/`);
 			setResult(d);

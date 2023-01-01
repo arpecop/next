@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
+  publicRuntimeConfig: {
+    publicDir: "/public",
+  },
 
   async rewrites() {
     return [
@@ -57,11 +60,11 @@ const nextConfig = {
   },
   exportPathMap: async function (
     defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
+    {dev, dir, outDir, distDir, buildId}
   ) {
     return {
-      "/": { page: "/" },
-      "/other/about": { page: "/other/about" },
+      "/": {page: "/"},
+      "/other/about": {page: "/other/about"},
     };
   },
 };

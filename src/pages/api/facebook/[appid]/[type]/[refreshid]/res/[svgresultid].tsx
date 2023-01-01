@@ -7,7 +7,6 @@ import { readFileSync } from "fs";
 
 import { INode, parse, stringify } from "svgson";
 import { find, flattenDeep } from "lodash";
-import { doQuery, gql } from "@/pages/api/graphql";
 
 import { toPairs } from "lodash";
 import satori from "satori";
@@ -117,40 +116,28 @@ export default async function handler(
 	res.setHeader("Content-Type", "image/svg+xml");
 	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	res.setHeader("Expires", "0");
+	const rootfolder = __dirname.split(".next")[0];
+	console.log(rootfolder);
+
 	const { svgresultid, appid, type, refreshid } = req.query as Params;
 
-	const ff = path.resolve(
-		__dirname,
-		`../../../../../../../../../public/images/font/Nunito-Medium.ttf`
-	);
+	const ff = path.resolve(rootfolder, `public/images/font/Nunito-Medium.ttf`);
 
-	const filePath = path.resolve(
-		__dirname,
-		`../../../../../../../../../public/fbapps/${appid}/svg.svg`
-	);
+	const filePath = path.resolve(rootfolder, `public/fbapps/${appid}/svg.svg`);
 	const svgstring = readFileSync(filePath).toString();
 
-	const resx = await doQuery(
-		gql`
-      query MyQuery($id: String!) {
-        single: getDdb(id: $id) {
-          id
-          data
-        }
-      }
-    `,
-		{
-			id: svgresultid || refreshid,
-		}
-	);
+	const res2 = await fetch(`https://kloun.lol/fbapps/${appid}/items.json`);
+	const items = await res2.json();
+
+	const result = items[svgresultid || refreshid];
 
 	const params = req.query as Params;
-	const data = toPairs(JSON.parse(templateEngine(resx.data, params))).map(
-		(pair) => ({
-			lookforid: pair[0],
-			replacewith: pair[1],
-		})
-	) as { lookforid: string; replacewith: string }[];
+	const data = toPairs(
+		JSON.parse(templateEngine(JSON.stringify(result), params))
+	).map((pair) => ({
+		lookforid: pair[0],
+		replacewith: pair[1],
+	})) as { lookforid: string; replacewith: string }[];
 
 	const rendered = await replaceTextSvg(svgstring, data);
 	if (type === "svg") {
