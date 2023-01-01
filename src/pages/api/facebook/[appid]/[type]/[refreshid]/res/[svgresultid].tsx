@@ -129,7 +129,7 @@ export default async function handler(
 	const res2 = await fetch(`https://kloun.lol/fbapps/${appid}/items.json`);
 	const items = await res2.json();
 
-	const result = items[svgresultid || refreshid];
+	const result = items[svgresultid];
 
 	const params = req.query as Params;
 	const data = toPairs(

@@ -5,7 +5,7 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import FacebookShare from "@/components/FacebookShare";
-import { useFacebookRandom } from "@/components/hooks/facebookhook";
+import { FBResult, useFacebookRandom } from "@/components/hooks/facebookhook";
 
 import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
@@ -14,7 +14,7 @@ import { useState } from "react";
 import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
 import Form from "@rjsf/core";
-import { mapValues, merge, pickBy } from "lodash";
+import { mapValues, merge } from "lodash";
 
 import { nanoid } from "nanoid";
 
@@ -56,16 +56,20 @@ const Facebook = ({
 		refreshid: string;
 	}>({ params: "?", refreshid: "default" });
 
-	const curresult = useFacebookRandom(app);
-	const formDatax = (formd: { name?: string }) => {
+	const [curresult, setResult] = useFacebookRandom(app);
+	const formDatax = (formd: FBResult) => {
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
 		const properties = merge(form?.properties, values);
-		const urlfriendly = pickBy(formd, (value: string) => value.length);
+		const queryString = Object.keys(formd)
+			.map((key) => key + "=" + formd[key])
+			.join("&");
+
 		setForm({ ...form, properties });
+		setResult(formd);
 
 		setUrlparams({
 			refreshid: nanoid(3),
-			params: "?" + new URLSearchParams(urlfriendly).toString(),
+			params: "?" + queryString,
 		});
 	};
 

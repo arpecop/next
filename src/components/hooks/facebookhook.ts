@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 
 export type FBResult = {
-	[key: string]: string | undefined;
+	[key: string]: string | number;
 };
 
 export async function loadImage(imageUrl: string): Promise<void> {
@@ -56,6 +56,7 @@ export const insertKasmet = async (id: string, data: string) => {
 export function useFacebookRandom(app?: FbApp) {
 	const cookiprefix = "v2";
 	const [result, setResult] = useState<number | null>(null);
+	const [mod, setMod] = useState<FBResult | null>(null);
 
 	const getCookie = (key: string) =>
 		document.cookie.split("; ").reduce((total, currentCookie) => {
@@ -76,19 +77,17 @@ export function useFacebookRandom(app?: FbApp) {
 	}
 
 	useEffect(() => {
-		const rdcoki = getCookie(app?.slug + "" + cookiprefix);
-		const retrieveOld = async (data: string) => {
-			console.log(data);
-			const raw = JSON.parse(data);
+		console.log(mod);
+	}, [mod]);
 
+	useEffect(() => {
+		const rdcoki = getCookie(app?.slug + "" + cookiprefix);
+		const retrieveOld = async (data: number) => {
 			await loadImage(`/fbapps/${app?.slug}/back.png`);
 			await loadImage(
-				`/api/facebook/${app?.slug}/svg/${raw.id}/res/${raw.id}/`
+				`/api/facebook/${app?.slug}/svg/${rdcoki}/res/${rdcoki}/`
 			);
-			setResult({
-				id: raw.id,
-				...raw,
-			});
+			setResult(data);
 		};
 
 		const chooseRandomJustIncase = async () => {
@@ -105,12 +104,12 @@ export function useFacebookRandom(app?: FbApp) {
 		}
 
 		if (rdcoki) {
-			retrieveOld(rdcoki);
+			retrieveOld(Number(rdcoki));
 		}
 	}, [app]);
-	return result;
-	// return [result, setResult] as [
-	// 	{ error?: string; id: string },
-	// 	(value: SetStateAction<{ error?: string; id: string }>) => void
-	// ];
+
+	return [result, setMod] as [
+		number,
+		(value: SetStateAction<FBResult>) => void
+	];
 }
