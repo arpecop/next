@@ -105,7 +105,7 @@ const Facebook = ({
 				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
-							<img className="w-full h-full" src="/images/placeholder.png" />
+							<img className="w-full h-full" src="/images/placeholderfb.png" />
 							<div className="flex absolute top-0 w-full">
 								<img
 									src={`/fbapps/${app?.slug}/back.png`}
