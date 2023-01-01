@@ -26,6 +26,7 @@ export type FbApp = {
 	button?: string;
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
+	items: number;
 	schema: RJSFSchema;
 	hidden?: boolean;
 };
@@ -95,7 +96,7 @@ const Facebook = ({
 			}
 		>
 			<div className="flex justify-center items-center">
-				{curresult.id && !curresult.error && (
+				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
 							<svg width={1200} height={630} className="w-full h-full" />
@@ -107,16 +108,14 @@ const Facebook = ({
 								/>
 							</div>
 							<img
-								src={`/api/facebook/${app?.slug}/svg/${curresult.id}/res/${curresult.id}/${urlparams.params}`}
+								src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
 								alt=""
 								className="absolute top-0 w-full"
 							/>
 						</div>
 					</ResultWrapper>
 				)}
-				{!curresult.id && app && (
-					<LoadingResult name={curresult?.error || app?.cat} />
-				)}
+				{!curresult && app && <LoadingResult name={app?.cat} />}
 			</div>
 
 			{app?.schema && (
@@ -139,9 +138,9 @@ const Facebook = ({
 						<div className="flex justify-center items-center my-3">
 							<FacebookShare
 								onbeforeSubmit={onBeforeLoad}
-								disabled={curresult.id ? false : true}
+								disabled={curresult ? false : true}
 								text={app?.button}
-								id={`https://kloun.lol/fb/${app?.slug}/${curresult.id}`}
+								id={`https://kloun.lol/fb/${app?.slug}/${curresult}`}
 							/>
 						</div>
 						<p>{app?.description}</p>
@@ -183,6 +182,7 @@ const apps = [
 		slug: "banica2023",
 		count: 2023,
 		covertheme: "/images/2023.jpg",
+		items: 40,
 		schema: {
 			title: "Персонализирай",
 			type: "object",
@@ -193,17 +193,6 @@ const apps = [
 		description:
 			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
 	},
-	{
-		cat: "Баница с късмети за коледа 2022",
-		slug: "banicak",
-		count: 2022,
-		covertheme: "/images/cmass2022.jpg",
-
-		hidden: true,
-		description:
-			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
-	},
-
 	{
 		cat: "На колко години изглеждаш",
 		slug: "godini",
