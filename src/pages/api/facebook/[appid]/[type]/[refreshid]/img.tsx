@@ -16,10 +16,6 @@ export default async function handler(req: NextRequest) {
 
 	const newid = params[0].split("_");
 	// `http://localhost:3000/api/facebook/${params[1]}/svg/${newid[1]}/res/${newid[0]}/`
-	console.log(
-		`http://localhost:3000/api/facebook/${params[1]}/svg/${newid[1] || "x"
-		}/res/${newid[0]}/`
-	);
 
 	return new ImageResponse(
 		(
