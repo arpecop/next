@@ -10,12 +10,12 @@ export const fbtoken = Buffer.from(
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const url = req.query.url as string;
-	const res2 = await fetch(
-		`https://graph.facebook.com/?id=${encodeURIComponent(
-			url
-		)}&scrape=true&access_token=${fbtoken}`
-	);
+	const apiurl = `https://graph.facebook.com/?id=${encodeURIComponent(
+		url
+	)}&scrape=true&access_token=${fbtoken}`
+	const res2 = await fetch(apiurl, {
+		method: 'POST'
+	});
 	const data = await res2.json();
-
 	res.status(200).json(data);
 };
