@@ -4,7 +4,7 @@ import Head from "next/head";
 import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
-import Script from 'next/script';
+
 type IMetaProps = {
 	title: string;
 	description: string;
@@ -31,7 +31,6 @@ const Meta = (props: IMetaProps) => {
 
 	return (
 		<>
-
 			<NextSeo
 				title={title}
 				description={description}
@@ -74,7 +73,7 @@ const Meta = (props: IMetaProps) => {
 				}}
 			/>
 			<Head>
-				<Script
+				<script
 					async
 					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 				/>

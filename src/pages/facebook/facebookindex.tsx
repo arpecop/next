@@ -21,6 +21,7 @@ import Form from "@rjsf/core";
 import { mapValues, merge } from "lodash";
 
 import { nanoid } from "nanoid";
+import FBLogin from "../../components/FBLogin";
 
 export type FbApp = {
 	count: number;
@@ -41,6 +42,7 @@ const Facebook = ({
 	appid,
 	shareid,
 	app,
+	env,
 }: {
 	cats: FbApp[];
 	app?: FbApp;
@@ -53,6 +55,7 @@ const Facebook = ({
 	};
 	appid?: string;
 	shareid?: string;
+	env: "prod" | "dev";
 }) => {
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<{
@@ -142,6 +145,7 @@ const Facebook = ({
 				{app && (
 					<div>
 						<div className="flex justify-center items-center my-3">
+							<FBLogin app={app} />
 							<FacebookShare
 								onbeforeSubmit={onBeforeLoad}
 								disabled={curresult ? false : true}
@@ -170,10 +174,80 @@ const Facebook = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	const apps = [
+		{
+			cat: "Новогодишна Баница 2023",
+			slug: "banica2023",
+			count: 2023,
+			covertheme: "/images/2023.jpg",
+			items: 40,
+			schema: {
+				title: "Персонализирай",
+				type: "object",
+				properties: {
+					firstname: { type: "string", title: "Напиши името си", default: "" },
+				},
+			},
+			description:
+				"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
+		},
+		{
+			cat: "На колко години изглеждаш",
+			slug: "godini",
+			button: "Провери на колко изглеждаш",
+			isLoginRequired: true,
+		},
+		{
+			cat: "Провери значението на името си",
+			slug: "assbg_BG",
+		},
+		{
+			cat: "Добър или лош си днес",
+			slug: "goodbad",
+			isLoginRequired: false,
+			items: 138,
+			schema: {
+				title: "Персонализирай",
+				type: "object",
+				properties: {
+					firstname: { type: "string", title: "Напиши името си", default: "" },
+				},
+			},
+			hidden: false,
+		},
+		{
+			cat: "На коя известна личност приличаш",
+			slug: "celeb",
+			hidden: true,
+		},
+		{
+			cat: "Изтегли си късметче",
+			slug: "iztegli",
+			hidden: true,
+		},
+		{
+			cat: "Индиянското ти име",
+			slug: "indianskoime",
+			hidden: true,
+		},
+		{
+			cat: "Виж коя известна личност ти подхожда",
+			slug: "podhojda",
+			hidden: true,
+		},
+		{ cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true },
+		{
+			cat: "Провери какъв си бил в предишен живот",
+			slug: "predishenjivot",
+			hidden: true,
+		},
+	];
+	console.log(process.env);
 	const { appid, id } = context.query;
 	const app = apps.find((app) => app.slug === appid);
 	return {
 		props: {
+			env: process.env.USER === "rudix" ? "dev" : "prod",
 			cats: apps.filter((cat) => cat.slug !== appid && !cat.hidden),
 			appid: appid || null,
 			shareid: id || null,
@@ -182,73 +256,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	};
 };
 
-const apps = [
-	{
-		cat: "Новогодишна Баница 2023",
-		slug: "banica2023",
-		count: 2023,
-		covertheme: "/images/2023.jpg",
-		items: 40,
-		schema: {
-			title: "Персонализирай",
-			type: "object",
-			properties: {
-				firstname: { type: "string", title: "Напиши името си", default: "" },
-			},
-		},
-		description:
-			"Баницата с удачни амулети е традиция в България, която се спазва на Рождество. Тя се прави от тесто, което се разправя в тава и се пълни с различни вкусности, като сирене, яйца, чесън и лук. В тавата се скриват удачни амулети, като златно монети, златни колела или някакви други символи на спечелване. Те се разпределят случайно по тавата, а хората се надяват да хвърлят кости и да спечелят амулета, който ще им принесе удача през новата година.",
-	},
-	{
-		cat: "На колко години изглеждаш",
-		slug: "godini",
-		button: "Провери на колко изглеждаш",
-		isLoginRequired: true,
-	},
-	{
-		cat: "Провери значението на името си",
-		slug: "assbg_BG",
-	},
-	{
-		cat: "Добър или лош си днес",
-		slug: "goodbad",
-		isLoginRequired: false,
-		items: 138,
-		schema: {
-			title: "Персонализирай",
-			type: "object",
-			properties: {
-				firstname: { type: "string", title: "Напиши името си", default: "" },
-			},
-		},
-		hidden: false,
-	},
-	{
-		cat: "На коя известна личност приличаш",
-		slug: "celeb",
-		hidden: true,
-	},
-	{
-		cat: "Изтегли си късметче",
-		slug: "iztegli",
-		hidden: true,
-	},
-	{
-		cat: "Индиянското ти име",
-		slug: "indianskoime",
-		hidden: true,
-	},
-	{
-		cat: "Виж коя известна личност ти подхожда",
-		slug: "podhojda",
-		hidden: true,
-	},
-	{ cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true },
-	{
-		cat: "Провери какъв си бил в предишен живот",
-		slug: "predishenjivot",
-		hidden: true,
-	},
-];
 export const runtime = "experimental-edge";
 export default Facebook;

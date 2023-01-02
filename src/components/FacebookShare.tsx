@@ -41,9 +41,10 @@ const FacebookShare = ({
 	return (
 		<button
 			onClick={onClick}
-			className={`btn bg-blue-600 border-0 hover:bg-blue-600 text-white w-fit transition duration-300 ${noWrapper && " rounded-l-none rounded-t-none bg-transparent"
+			className={`btn  border-0 text-white w-fit transition duration-300 ${noWrapper && " rounded-l-none rounded-t-none bg-transparent"
 				} ${dis && "btn-disabled grayscale"} ${disabled && "btn-disabled grayscale"
 				}`}
+			style={{ backgroundColor: "#1877F3" }}
 		>
 			{!noWrapper ? (
 				<>

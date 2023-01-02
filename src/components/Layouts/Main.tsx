@@ -1,4 +1,5 @@
 import Header from "@/components/Layouts/Header";
+
 import { ReactNode, useEffect } from "react";
 
 import Footer from "./Footer";
@@ -28,6 +29,7 @@ const Main = (props: IMainProps) => {
 	return (
 		<div className="flex min-h-screen flex-col">
 			{props.meta}
+
 			<Header title={props.title} />
 			{props.noContainer ? (
 				<main className="flex grow flex-col z-30">{props.children}</main>
