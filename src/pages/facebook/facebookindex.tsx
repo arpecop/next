@@ -43,6 +43,7 @@ const Facebook = ({
 	shareid,
 	app,
 	env,
+	code,
 }: {
 	cats: FbApp[];
 	app?: FbApp;
@@ -53,6 +54,7 @@ const Facebook = ({
 		description: string;
 		image: string;
 	};
+	code?: string;
 	appid?: string;
 	shareid?: string;
 	env: "prod" | "dev";
@@ -140,12 +142,11 @@ const Facebook = ({
 					/>
 				</div>
 			)}
-
+			<FBLogin app={app} env={env} code={code} />
 			<div className="container mx-auto">
 				{app && (
 					<div>
 						<div className="flex justify-center items-center my-3">
-							<FBLogin app={app} />
 							<FacebookShare
 								onbeforeSubmit={onBeforeLoad}
 								disabled={curresult ? false : true}
@@ -242,7 +243,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			hidden: true,
 		},
 	];
-	console.log(process.env);
+
 	const { appid, id } = context.query;
 	const app = apps.find((app) => app.slug === appid);
 	return {
@@ -252,6 +253,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			appid: appid || null,
 			shareid: id || null,
 			app: app || null,
+			code: context.query.code || null,
 		},
 	};
 };
