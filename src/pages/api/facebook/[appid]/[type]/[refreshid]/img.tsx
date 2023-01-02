@@ -1,6 +1,5 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-import { returnStyles } from "./res/[svgresultid]";
 
 export const config = {
 	runtime: "experimental-edge",
@@ -14,9 +13,7 @@ export default async function handler(req: NextRequest) {
 		.filter((x: string) => x.length > 3);
 
 	const newid = params[0].split("_");
-	console.log(
-		`${params[3]}//${params[2]}/api/facebook/${params[1]}/json/${newid[1]}/res/${newid[0]}/`
-	);
+
 	const res = await fetch(
 		`${params[3]}//${params[2]}/api/facebook/${params[1]}/json/${newid[1]}/res/${newid[0]}/`
 	);
@@ -27,7 +24,7 @@ export default async function handler(req: NextRequest) {
 		(
 			<div style={{ display: "flex" }}>
 				<img
-					src={`https://kloun.lol/fbapps/${params[1]}/back.png`}
+					src={`${params[3]}//${params[2]}/fbapps/${params[1]}/back.png`}
 					alt=""
 					style={{
 						width: 1200,
