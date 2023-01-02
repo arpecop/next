@@ -10,6 +10,7 @@ import { find, flattenDeep } from "lodash";
 
 import { toPairs } from "lodash";
 import satori from "satori";
+import { getKasmet } from "@/components/hooks/facebookhook";
 
 type Replacement = {
 	lookforid: string;
@@ -117,25 +118,26 @@ export default async function handler(
 	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	res.setHeader("Expires", "0");
 	const rootfolder = __dirname.split(".next")[0];
+	let additional;
 
 	const { svgresultid, appid, type, refreshid } = req.query as Params;
-	console.log(req.query);
 
 	const ff = path.resolve(rootfolder, `public/images/font/Nunito-Medium.ttf`);
-
 	const filePath = path.resolve(rootfolder, `public/fbapps/${appid}/svg.svg`);
+	const res2 = path.resolve(rootfolder, `public/fbapps/${appid}/items.json`);
+
 	const svgstring = readFileSync(filePath).toString();
-
-	const res2 = await fetch(`https://kloun.lol/fbapps/${appid}/items.json`);
-	const items = await res2.json();
-
+	const items = JSON.parse(readFileSync(res2).toString());
 	const result = items[svgresultid];
-
 	const params = req.query as Params;
-	console.log(refreshid);
+
+	if (refreshid.length > 5) {
+		const checkadditional = await getKasmet(refreshid.replace(".png", ""));
+		additional = checkadditional;
+	}
 
 	const data = toPairs(
-		JSON.parse(templateEngine(JSON.stringify(result), params))
+		JSON.parse(templateEngine(JSON.stringify(result), additional || params))
 	).map((pair) => ({
 		lookforid: pair[0],
 		replacewith: pair[1],

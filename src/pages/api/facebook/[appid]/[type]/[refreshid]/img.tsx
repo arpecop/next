@@ -12,8 +12,6 @@ export default async function handler(req: NextRequest) {
 		.reverse()
 		.filter((x: string) => x.length > 3);
 
-	console.log(params);
-
 	const newid = params[0].split("_");
 
 	return new ImageResponse(
@@ -28,7 +26,7 @@ export default async function handler(req: NextRequest) {
 					}}
 				/>
 				<img
-					src={`https://kloun.lol/api/facebook/${params[1]}/svg/${newid[1]}/res/${newid[0]}/`}
+					src={`${params[3]}//${params[2]}/api/facebook/${params[1]}/svg/${newid[1]}/res/${newid[0]}/`}
 					alt=""
 					style={{ position: "absolute" }}
 				/>

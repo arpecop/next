@@ -20,12 +20,8 @@ export const getKasmet = async (id: string) => {
 	const get = await doQuery(
 		gql`
       query MyQuery($id: String!) {
-        queryDdbsByBySubcat(subcat: $id, first: 1) {
-          nextToken
-          items {
-            id
-            data
-          }
+        getDdb(id: $id) {
+          data
         }
       }
     `,
@@ -33,7 +29,8 @@ export const getKasmet = async (id: string) => {
 			id,
 		}
 	);
-	return JSON.parse(get.items[0].data);
+
+	return JSON.parse(get.data);
 };
 export const insertKasmet = async (id: string, data: string) => {
 	const d = await doMutation(
@@ -79,7 +76,6 @@ export function useFacebookRandom(app?: FbApp) {
 	const throttled = useRef(
 		throttle((newValue) => {
 			insertKasmet("test", JSON.stringify(newValue)).then((d) => {
-				console.log(d);
 				setCookie("result", d.id);
 			});
 		}, 1500)
