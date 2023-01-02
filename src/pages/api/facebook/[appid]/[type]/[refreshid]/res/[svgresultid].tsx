@@ -61,7 +61,7 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 				const rectY = Number(wrapper?.attributes.y);
 				const letterSpacing = Number(element.attributes["letter-spacing"]);
 				const color = element.attributes["fill"];
-				const lineHeight = Number(element.attributes["line-spacing"]);
+
 				const width = Number(wrapper?.attributes.width);
 				const height = Number(wrapper?.attributes.height);
 
@@ -71,7 +71,6 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 					height,
 					color,
 					letterSpacing,
-					lineHeight,
 					rectY,
 					rectX,
 					fontSize,
@@ -106,6 +105,55 @@ function templateEngine(template: string, data: Params) {
 	const pattern = /{\s*(\w+?)\s*}/g; // {property}
 	return template.replace(pattern, (_, token) => data[token] || "");
 }
+
+export function returnStyles(text: Wrapper): { [key: string]: string | number } {
+	return {
+		display: "flex",
+		position: "absolute",
+		top: text.rectY,
+		left: text.rectX,
+		width: text.width,
+		justifyContent: "center",
+		alignContent: "center",
+		alignItems: "center",
+		fontSize: text.fontSize,
+		color: text.color,
+		lineHeight: 0.94,
+		padding: 0,
+		margin: 0,
+		height: text.height,
+	};
+}
+
+export function returnStylesOg(text: Wrapper): {
+	text: string;
+	id: string;
+	style: {
+		[key: string]: string | number;
+	};
+} {
+	return {
+		text: text.replacewith,
+		id: text.id,
+		style: {
+			display: "flex",
+			position: "absolute",
+			top: Math.ceil(text.rectY),
+			left: Math.ceil(text.rectX),
+			width: text.width,
+			justifyContent: "center",
+			alignContent: "center",
+			alignItems: "center",
+			fontSize: text.fontSize,
+			color: text.color,
+			lineHeight: 0.94,
+			padding: 0,
+			margin: 0,
+			height: text.height,
+		},
+	};
+}
+
 type Params = {
 	[key: string]: string;
 };
@@ -114,7 +162,6 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	res.setHeader("Content-Type", "image/svg+xml");
 	res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	res.setHeader("Expires", "0");
 	const rootfolder = __dirname.split(".next")[0];
@@ -145,28 +192,11 @@ export default async function handler(
 
 	const rendered = await replaceTextSvg(svgstring, data);
 	if (type === "svg") {
+		res.setHeader("Content-Type", "image/svg+xml");
 		const svgx = await satori(
 			<div style={{ display: "flex" }}>
 				{rendered.texts.map((text) => (
-					<div
-						key={text.id}
-						style={{
-							display: "flex",
-							position: "absolute",
-							top: text.rectY,
-							left: text.rectX,
-							width: text.width,
-							justifyContent: "center",
-							alignContent: "center",
-							alignItems: "center",
-							fontSize: text.fontSize,
-							color: text.color,
-							lineHeight: 0.94,
-							padding: 0,
-							margin: 0,
-							height: text.height,
-						}}
-					>
+					<div key={text.id} style={returnStyles(text)}>
 						{text.replacewith}
 					</div>
 				))}
@@ -186,6 +216,6 @@ export default async function handler(
 		);
 		res.end(svgx);
 	} else {
-		res.end(rendered.svg);
+		res.json(rendered.texts.map((item) => returnStylesOg(item)));
 	}
 }

@@ -1,5 +1,6 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
+import { returnStyles } from "./res/[svgresultid]";
 
 export const config = {
 	runtime: "experimental-edge",
@@ -13,6 +14,14 @@ export default async function handler(req: NextRequest) {
 		.filter((x: string) => x.length > 3);
 
 	const newid = params[0].split("_");
+	console.log(
+		`${params[3]}//${params[2]}/api/facebook/${params[1]}/json/${newid[1]}/res/${newid[0]}/`
+	);
+	const res = await fetch(
+		`${params[3]}//${params[2]}/api/facebook/${params[1]}/json/${newid[1]}/res/${newid[0]}/`
+	);
+
+	const rendered = await res.json();
 
 	return new ImageResponse(
 		(
@@ -23,13 +32,18 @@ export default async function handler(req: NextRequest) {
 					style={{
 						width: 1200,
 						height: 630,
+						position: "absolute",
+						top: 0,
+						left: 0,
 					}}
 				/>
-				<img
-					src={`${params[3]}//${params[2]}/api/facebook/${params[1]}/svg/${newid[1]}/res/${newid[0]}/`}
-					alt=""
-					style={{ position: "absolute" }}
-				/>
+				<div style={{ display: "flex" }}>
+					{rendered.map((text: any) => (
+						<div key={text.id} style={text.style}>
+							{text.text}
+						</div>
+					))}
+				</div>
 			</div>
 		),
 		{
