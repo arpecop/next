@@ -45,6 +45,10 @@ const nextConfig = {
         destination: "/twitter/twitter?page=:page",
       },
       {
+        source: "/tw/u/:id",
+        destination: "/twitter/:id",
+      },
+      {
         source: "/tw/:page/:letter",
         destination: "/twitter/?page=:page&letter=:letter",
       },

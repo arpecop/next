@@ -1,8 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 
-import Link from "next/link";
-
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
@@ -48,14 +46,12 @@ const Index = ({
 			<ul className="menu menu-compact flex-row flex-wrap justify-center p-0">
 				{twusers.map((user) => (
 					<li key={user.id} className="m-1">
-						<Link
-							href={`https://twitter.com/${user.id
-								.replace("_tw", "")
-								.toLowerCase()}`}
+						<a
+							href={`/tw/u/${user.id.replace("_tw", "").toLowerCase()}`}
 							className="active flex gap-4 bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900"
 						>
 							{user.id.replace("_tw", "")}
-						</Link>
+						</a>
 					</li>
 				))}
 			</ul>
