@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { FbApp } from "../pages/facebook/facebookindex";
-import { setCookie } from "./hooks/facebookhook";
-declare global {
-	interface Window {
-		FB: any;
-	}
-}
+import { getCookie, setCookie } from "./hooks/facebookhook";
 
 function FBLogin({
 	app,
@@ -16,29 +12,55 @@ function FBLogin({
 	env: "prod" | "dev";
 	code?: string;
 }) {
+	const router = useRouter();
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
+	const [token, setToken] = useState<string | null>(null);
+	const clientId = "456304742501728";
+	const redirectUri =
+		env === "dev" ? "https://localhost:3001/fb/" : "https://kloun.lol/fb/";
+	const scope = "public_profile,email";
+	const responseType = "code";
+	const clientSecret = "NjJhYzRjNWFkMTc4ZjcxYjJmMDBiODQ0ZDdmNDVlZjY=";
 
 	useEffect(() => {
-		console.log("there is code");
+		const tok = getCookie("token");
+		if (tok) {
+			setToken(tok);
+		}
+	}, []);
+
+	useEffect(() => {
+		const getUser = async () => {
+			const tokenResponse = await fetch(
+				`https://graph.facebook.com/oauth/access_token?client_id=${clientId}&client_secret=${atob(
+					clientSecret
+				)}&redirect_uri=${redirectUri}&code=${code}`
+			);
+			const tokenData = await tokenResponse.json();
+			if (tokenData.access_token) {
+				console.log("first timer");
+				setCookie("token", tokenData.access_token);
+				setToken(tokenData.access_token);
+				console.log(tokenData);
+				const redirect = getCookie("redirect");
+				router.push(redirectUri + "" + redirect);
+			}
+		};
+
+		if (code) {
+			console.log("there is code");
+			getUser();
+		}
 	}, [code]);
 
 	const handleLoginClick = () => {
 		setLoading(true);
-		setError(null);
-		setCookie("redirect", app?.cat || "");
-
-		const clientId = "456304742501728";
-		const redirectUri =
-			env === "dev" ? "https://localhost:3001/fb/" : "https://kloun.lol/fb/";
-		const scope = "public_profile,email";
-		const responseType = "code";
-
-		const loginUrl = `https://www.facebook.com/v14.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`;
+		setCookie("redirect", app?.slug || "");
+		const loginUrl = `https://www.facebook.com/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`;
 
 		window.location.href = loginUrl;
 	};
-	if (app?.cat) {
+	if (app?.cat && !token) {
 		return (
 			<div className="flex justify-center items-center">
 				<button
@@ -85,7 +107,8 @@ function FBLogin({
 				</button>
 			</div>
 		);
+	} else {
+		return <></>;
 	}
-	return <div>no app</div>;
 }
 export default FBLogin;

@@ -21,7 +21,7 @@ import Form from "@rjsf/core";
 import { mapValues, merge } from "lodash";
 
 import { nanoid } from "nanoid";
-import FBLogin from "../../components/FBLogin";
+import FBLogin from "@/components/FacebookLogin";
 
 export type FbApp = {
 	count: number;
@@ -70,6 +70,7 @@ const Facebook = ({
 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
 		const properties = merge(form?.properties, values);
 		const queryString = Object.keys(formd)
+			.filter((key) => formd[key].toString().length >= 1)
 			.map((key) => key + "=" + formd[key])
 			.join("&");
 
@@ -78,7 +79,7 @@ const Facebook = ({
 
 		setUrlparams({
 			refreshid: nanoid(3),
-			params: "?" + queryString,
+			params: queryString ? "?" + queryString : "",
 		});
 	};
 

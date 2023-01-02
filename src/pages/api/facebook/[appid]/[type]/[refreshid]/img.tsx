@@ -35,11 +35,17 @@ export default async function handler(req: NextRequest) {
 					}}
 				/>
 				<div style={{ display: "flex" }}>
-					{rendered.map((text: any) => (
-						<div key={text.id} style={text.style}>
-							{text.text}
-						</div>
-					))}
+					{rendered.map(
+						(text: {
+							id: string;
+							text: string;
+							style: { [key: string]: string };
+						}) => (
+							<div key={text.id} style={text.style}>
+								{text.text}
+							</div>
+						)
+					)}
 				</div>
 			</div>
 		),

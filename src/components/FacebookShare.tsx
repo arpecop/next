@@ -44,7 +44,7 @@ const FacebookShare = ({
 			className={`text-white  transition duration-300 max-w-xs w-full rounded-3xl uppercase flex text-sm font-bold p-3  relative  ${noWrapper && " rounded-l-none rounded-t-none bg-transparent"
 				} ${dis && "btn-disabled grayscale"} ${disabled && "btn-disabled grayscale"
 				}`}
-			style={{ backgroundColor: "#1877F3" }}
+			style={{ backgroundColor: noWrapper ? "transparent" : "#1877F3" }}
 		>
 			{!noWrapper ? (
 				<>
