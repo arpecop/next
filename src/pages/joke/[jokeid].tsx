@@ -16,10 +16,11 @@ import { doQuery, gql } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "lodash";
+import { Doc } from "../../data/structure";
 
 const SingleJoke = (props: {
-	joke: any;
-	items?: [any[], any[], any[]];
+	joke: Doc;
+	items?: [Doc[], Doc[], Doc[]];
 	cats: [Cat[], Cat[]];
 }): JSX.Element => {
 	// яжте ми хуя сИга!

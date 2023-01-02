@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function SVGImage({
-	src,
-	params,
-}: {
-	src: string;
-	params?: { [key: string]: string };
-}) {
+function SVGImage({ src }: { src: string; params?: { [key: string]: string } }) {
 	const [newsrc, setNewSrc] = useState<string>("");
 	useEffect(() => {
 		const fetchImage = async () => {

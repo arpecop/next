@@ -77,12 +77,12 @@ const Facebook = ({
 		});
 	};
 
-	const onBeforeLoad = () => {
+	function onBeforeLoad(): Promise<string> {
 		return new Promise((resolve) => {
 			const id = getCookie("result");
 			resolve(`https://kloun.lol/fb/${app?.slug}/${curresult}_${id}`);
 		});
-	};
+	}
 
 	return (
 		<Main

@@ -11,7 +11,7 @@ const FacebookShare = ({
 	id?: string;
 	noWrapper?: boolean;
 	text?: string;
-	onbeforeSubmit?: () => Promise<any>;
+	onbeforeSubmit?: () => Promise<string>;
 	disabled?: boolean;
 }) => {
 	const router = useRouter();

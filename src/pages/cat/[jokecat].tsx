@@ -6,6 +6,7 @@ import Pagination, { getPaging, refreshToken } from "@/components/NewPagination"
 import { doQuery, gql } from "@/pages/api/graphql";
 
 import { deslugify } from "@/utils/formatter";
+import { Doc } from "../../data/structure";
 
 const LIST_JOKES = /* GraphQL */ gql`
   query MyQuery($cat: String!, $nextToken: String) {
@@ -27,7 +28,7 @@ const CatPage = ({
 	slug,
 	nextToken,
 }: {
-	jokes: any[];
+	jokes: Doc[];
 	pagenum: number;
 	cat: string;
 	slug: string;

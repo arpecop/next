@@ -4,6 +4,7 @@ import Head from "next/head";
 import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
+import Script from 'next/script';
 type IMetaProps = {
 	title: string;
 	description: string;
@@ -30,12 +31,7 @@ const Meta = (props: IMetaProps) => {
 
 	return (
 		<>
-			<Head>
-				<script
-					async
-					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-				/>
-			</Head>
+
 			<NextSeo
 				title={title}
 				description={description}
@@ -77,6 +73,12 @@ const Meta = (props: IMetaProps) => {
 					cardType: "summary_large_image",
 				}}
 			/>
+			<Head>
+				<Script
+					async
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+				/>
+			</Head>
 		</>
 	);
 };

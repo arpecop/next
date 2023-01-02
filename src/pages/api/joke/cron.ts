@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { ulid } from "ulidx";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { fbtoken } from "../refetch";
+import { Doc } from "../../../data/structure";
 
 const id = "cronnerjokesx11";
 
@@ -66,15 +67,15 @@ async function prepare() {
 }
 
 export default async (
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   const data = await prepare();
   const emojis = ["🤣", "🤪", "😁", "🤭", "😂"];
 
   const child_attachments = data
-    .sort((a: any, z: any) => z.joke.length - a.joke.length)
-    .map((item: any, i: number) => ({
+    .sort((a: Doc, z: Doc) => z.joke.length - a.joke.length)
+    .map((item: Doc, i: number) => ({
       link: `https://kloun.lol/joke/${item.id}`,
       name: emojis[i],
       picture: `https://kloun.lol/api/joke/og/?idx=${item.id}&w=550&h=550`,

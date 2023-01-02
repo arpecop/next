@@ -61,7 +61,7 @@ export default function handler() {
 }
 
 async function doMutation(
-	query: any,
+	query: DocumentNode,
 	variables: { [key: string]: string | number }
 ) {
 	const d = await doQuery(query, variables);
