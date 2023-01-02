@@ -212,8 +212,16 @@ const apps = [
 	{
 		cat: "Добър или лош си днес",
 		slug: "goodbad",
-		isLoginRequired: true,
-		hidden: true,
+		isLoginRequired: false,
+		items: 138,
+		schema: {
+			title: "Персонализирай",
+			type: "object",
+			properties: {
+				firstname: { type: "string", title: "Напиши името си", default: "" },
+			},
+		},
+		hidden: false,
 	},
 	{
 		cat: "На коя известна личност приличаш",

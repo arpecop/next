@@ -182,10 +182,15 @@ export default async function handler(
 		const checkadditional = await getKasmet(refreshid.replace(".png", ""));
 		additional = checkadditional;
 	}
+	const template = JSON.parse(
+		templateEngine(JSON.stringify(result), additional || params)
+	);
 
-	const data = toPairs(
-		JSON.parse(templateEngine(JSON.stringify(result), additional || params))
-	).map((pair) => ({
+	const data = toPairs({
+		...template,
+		...params,
+		date: new Date().toISOString().split("T")[0],
+	}).map((pair) => ({
 		lookforid: pair[0],
 		replacewith: pair[1],
 	})) as { lookforid: string; replacewith: string }[];
