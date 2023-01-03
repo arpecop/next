@@ -34,21 +34,56 @@ const TwuserPage = (props: TwitterFeed): JSX.Element => {
 										alt=""
 									/>
 								</div>
-								<div className="ml-3">
-									<p className="text-base leading-6 font-medium text-white">
+								<div className="ml-2">
+									<p className="text-base leading-6 font-bold">
 										{t.content.tweet.user.name}
-										<span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
-											16 April
+										<span className="text-sm leading-5 font-medium  pl-2">
+											{
+												new Date(t.content.tweet.created_at)
+													.toISOString()
+													.split("T")[0]
+											}
 										</span>
+										{t.content.tweet.retweeted_status ? " retweeted:" : ""}
 									</p>
 								</div>
 							</div>
 						</a>
 					</div>
 					<div>
-						{t.content.tweet.text.split("\n").map((p, i) => (
-							<p key={i}>{p}</p>
-						))}
+						{t.content.tweet.retweeted_status ? (
+							<a
+								className="flex  items-center"
+								href={
+									"/tw/u/" + t.content.tweet.retweeted_status.user.screen_name
+								}
+							>
+								<img
+									className="inline-block h-5 w-5 rounded-full ml-14"
+									src={
+										t.content.tweet.retweeted_status.user
+											.profile_image_url_https
+									}
+									alt=""
+								/>
+								<div className="text-base leading-6 font-bold pl-2">
+									{t.content.tweet.retweeted_status.user.name} :
+								</div>
+							</a>
+						) : (
+							<div className="h-1" />
+						)}
+
+						{(t.content.tweet.retweeted_status
+							? t.content.tweet.retweeted_status.full_text
+							: t.content.tweet.text
+						)
+							.split("\n")
+							.map((p, i) => (
+								<div key={i} className="pl-14 w-full">
+									{p}
+								</div>
+							))}
 					</div>
 				</div>
 			))}
