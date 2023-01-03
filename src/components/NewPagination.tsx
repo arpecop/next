@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { FC, ReactElement } from "react";
+
 import { ulid } from "ulidx";
 
-import { doMutation, doQuery, gql } from "@/pages/api/graphql";
+import { doMutation, doQuery } from "@/pages/api/graphql";
 const prefix = "11x";
 
 interface Props {
@@ -20,7 +20,7 @@ export async function refreshToken(
 		return "ok";
 	}
 	doMutation(
-		gql`
+		`
       mutation MyMutation(
         $joke: String = ""
         $id: String = ""
@@ -51,7 +51,7 @@ export async function refreshToken(
 
 export async function getPaging(slug: string, page: number) {
 	const check = await doQuery(
-		gql`
+		`
       query MyQuery($id: String = "") {
         queryDdbsByByAppCat(type: $id, first: 1) {
           items {
@@ -66,8 +66,7 @@ export async function getPaging(slug: string, page: number) {
 
 	return check.items?.[0]?.joke;
 }
-
-const Pagination: FC<Props> = ({ pagenum, cat, nextToken }): ReactElement => {
+export default function Pagination({ pagenum, cat, nextToken }: Props) {
 	const prev = pagenum - 1 === 1 ? "" : pagenum - 1;
 	const lengths = [
 		"",
@@ -137,6 +136,4 @@ const Pagination: FC<Props> = ({ pagenum, cat, nextToken }): ReactElement => {
 			</div>
 		</div>
 	);
-};
-
-export default Pagination;
+}

@@ -5,7 +5,7 @@ import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import { doQuery, gql } from "@/pages/api/graphql";
+import { doQuery } from "@/pages/api/graphql";
 
 import type { News } from "@/pages/news/";
 
@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
   const { newsid, slug } = query as { newsid: string; slug?: string };
 
   const data = await doQuery(
-    gql`
+    `
       query MyQuery($newsid: String!) {
         getDdb(id: $newsid) {
           title

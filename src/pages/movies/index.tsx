@@ -10,7 +10,7 @@ import Pagination, {
 	getPaging,
 	refreshToken,
 } from "../../components/NewPagination";
-import { doQuery, gql } from "@/pages/api/graphql";
+import { doQuery } from "@/pages/api/graphql";
 
 export type Movie = {
 	title: string;
@@ -98,7 +98,7 @@ export default function MoviesIndex({
 	);
 }
 
-const MOVIES = gql`
+const MOVIES = `
   query QueryDdbsByByAppCat($start: String) {
     queryDdbsByByAppCat(type: "MoviesBG1", first: 15, after: $start) {
       items {

@@ -2,7 +2,7 @@ import { FbApp } from "@/pages/facebook/facebookindex";
 import { SetStateAction } from "react";
 
 import { useEffect, useState, useRef } from "react";
-import { doMutation, doQuery, gql } from "@/pages/api/graphql";
+import { doMutation, doQuery } from "@/pages/api/graphql";
 import { throttle } from "lodash";
 
 export type FBResult = {
@@ -19,7 +19,7 @@ export async function loadImage(imageUrl: string): Promise<void> {
 }
 export const getKasmet = async (id: string) => {
 	const get = await doQuery(
-		gql`
+		`
       query MyQuery($id: String!) {
         getDdb(id: $id) {
           data
@@ -35,7 +35,7 @@ export const getKasmet = async (id: string) => {
 };
 export const insertKasmet = async (id: string, data: string) => {
 	const d = await doMutation(
-		gql`
+		`
       mutation MyMutation($id: String!, $data: AWSJSON) {
         createDdb(
           input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}

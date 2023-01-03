@@ -1,6 +1,20 @@
+import { useEffect } from "react";
 import MenuNavBar from "../MenuNavBar";
 
 function Header({ title }: { title?: string }) {
+	useEffect(() => {
+		// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+		let adsbygoogle: any;
+		const ads = document.getElementsByClassName("adsbygoogle").length as number;
+		for (let i = 0; i < ads; i++) {
+			try {
+				// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+				(adsbygoogle = (window as any).adsbygoogle || []).push({});
+			} catch (e) {
+				//////console.log(e);
+			}
+		}
+	}, []);
 	return (
 		<header>
 			<div className="absolute w-full z-10 top-0">

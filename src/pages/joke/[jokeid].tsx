@@ -12,7 +12,7 @@ import Nav from "@/components/Nav";
 import type { Cat } from "@/utils/formatter";
 import { catsdata } from "@/utils/formatter";
 
-import { doQuery, gql } from "@/pages/api/graphql";
+import { doQuery } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "lodash";
@@ -106,7 +106,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { jokeid } = query;
 	const cats = chunk(shuffle(catsdata), 7);
 	const datatoken = await doQuery(
-		gql`
+		`
       query MyQuery($id: String = "") {
         queryDdbsByByAppCat(type: $id, first: 10) {
           items {
@@ -120,7 +120,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	);
 	const nextToken = datatoken.items?.[0]?.joke;
 	const data = await doQuery(
-		gql`
+		`
       query MyQuery($id: String!, $nextToken: String = "") {
         single: getDdb(id: $id) {
           id

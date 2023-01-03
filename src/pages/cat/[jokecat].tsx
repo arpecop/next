@@ -3,23 +3,10 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
 // import { getPaging } from '@/components/NewPagination';
-import { doQuery, gql } from "@/pages/api/graphql";
+import { doQuery } from "@/pages/api/graphql";
 
 import { deslugify } from "@/utils/formatter";
-import { Doc } from "../../data/structure";
-
-const LIST_JOKES = /* GraphQL */ gql`
-  query MyQuery($cat: String!, $nextToken: String) {
-    queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
-      items {
-        id
-        joke: title
-        cat
-      }
-      nextToken
-    }
-  }
-`;
+import { Doc } from "@/data/structure";
 
 const CatPage = ({
 	jokes,
@@ -108,6 +95,18 @@ export const getServerSideProps = async ({
 }: {
 	query: { page: string; jokecat: string };
 }) => {
+	const LIST_JOKES = `
+    query MyQuery($cat: String!, $nextToken: String) {
+      queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
+        items {
+          id
+          joke: title
+          cat
+        }
+        nextToken
+      }
+    }
+  `;
 	const pagenum = Number(query.page) || 1;
 	const nextTokenCurrent = await getPaging(query.jokecat, pagenum);
 

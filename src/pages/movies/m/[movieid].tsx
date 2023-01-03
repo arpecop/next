@@ -4,7 +4,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
 import type { Movie } from "@/pages/movies/";
-import { doQuery, gql } from "@/pages/api/graphql";
+import { doQuery } from "@/pages/api/graphql";
 export default function Item({ movie }: { movie: Movie }) {
 	return (
 		<Main
@@ -41,7 +41,7 @@ export default function Item({ movie }: { movie: Movie }) {
 	);
 }
 
-export const USERS = gql`
+export const USERS = `
   query MyQuery2($offset: Int!) {
     movies_aggregate {
       aggregate {
@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { movieid } = query;
 
 	const data = await doQuery(
-		gql`
+		`
       query MyQuery($id: String!) {
         getDdb(id: $id) {
           id

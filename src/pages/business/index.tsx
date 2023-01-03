@@ -8,7 +8,7 @@ import { getPaging, refreshToken } from "../../components/NewPagination";
 
 import type { Cat } from "../../utils/formatter";
 import { businessdata } from "../../utils/formatter";
-import { doQuery, gql } from "../api/graphql";
+import { doQuery } from "../api/graphql";
 
 export type Company = {
 	_id: string;
@@ -33,7 +33,7 @@ export default function Business({ cats }: { cats: Cat[] }) {
 	);
 }
 
-const qindex = gql`
+const qindex = `
   query MyQuery($nextToken: String = "") {
     queryDdbsByByLetter(type: "CompaniesBG", first: 50, after: $nextToken) {
       items {

@@ -2,7 +2,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
 import NewsThumbnail from "@/components/NewsThumbnail";
-import { doQuery, gql } from "@/pages/api/graphql";
+import { doQuery } from "@/pages/api/graphql";
 
 export type News = {
 	title: string;
@@ -62,7 +62,7 @@ export const getServerSideProps = async (context: { query: { page?: string } }) 
 	const nextTokenCurrent = await getPaging("newsbg", pagenum);
 
 	const data = await doQuery(
-		gql`
+		`
       query MyQuery($cat: String = "NewsBG", $nextToken: String) {
         queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
           items {
