@@ -35,8 +35,7 @@ export const getKasmet = async (id: string) => {
 };
 export const insertKasmet = async (id: string, data: string) => {
 	const d = await doMutation(
-		`
-      mutation MyMutation($id: String!, $data: AWSJSON) {
+		`mutation MyMutation($id: String!, $data: AWSJSON) {
         createDdb(
           input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}
         ) {

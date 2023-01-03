@@ -20,8 +20,7 @@ export async function refreshToken(
 		return "ok";
 	}
 	doMutation(
-		`
-      mutation MyMutation(
+		`mutation MyMutation(
         $joke: String = ""
         $id: String = ""
         $nid: String = ""
@@ -51,8 +50,7 @@ export async function refreshToken(
 
 export async function getPaging(slug: string, page: number) {
 	const check = await doQuery(
-		`
-      query MyQuery($id: String = "") {
+		`query MyQuery($id: String = "") {
         queryDdbsByByAppCat(type: $id, first: 1) {
           items {
             id

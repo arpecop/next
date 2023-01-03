@@ -5,10 +5,9 @@ import Pagination, { getPaging, refreshToken } from "@/components/NewPagination"
 // import { getPaging } from '@/components/NewPagination';
 import { doQuery } from "@/pages/api/graphql";
 
-import { deslugify } from "@/utils/formatter";
+import { deslugify, jokecats } from "@/utils/formatter";
 import { Doc } from "@/data/structure";
-
-const CatPage = ({
+export default function CatPage({
 	jokes,
 	pagenum,
 	cat,
@@ -20,7 +19,7 @@ const CatPage = ({
 	cat: string;
 	slug: string;
 	nextToken?: string;
-}) => {
+}) {
 	return (
 		<Main
 			meta={
@@ -86,9 +85,7 @@ const CatPage = ({
 			</div>
 		</Main>
 	);
-};
-
-export default CatPage;
+}
 
 export const getServerSideProps = async ({
 	query,
@@ -111,7 +108,7 @@ export const getServerSideProps = async ({
 	const nextTokenCurrent = await getPaging(query.jokecat, pagenum);
 
 	const data = await doQuery(LIST_JOKES, {
-		cat: `JOK${deslugify(query.jokecat)}`,
+		cat: `JOK${deslugify(jokecats, query.jokecat)}`,
 
 		nextToken: nextTokenCurrent,
 	});
@@ -122,7 +119,7 @@ export const getServerSideProps = async ({
 		props: {
 			jokes: data.items,
 			pagenum,
-			cat: deslugify(query.jokecat),
+			cat: deslugify(jokecats, query.jokecat),
 			slug: query.jokecat,
 			nextToken: data.nextToken,
 		},

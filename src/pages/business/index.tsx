@@ -6,8 +6,8 @@ import Nav from "@/components/Nav";
 
 import { getPaging, refreshToken } from "../../components/NewPagination";
 
-import type { Cat } from "../../utils/formatter";
-import { businessdata } from "../../utils/formatter";
+import { businesscats, Cat, slugifyarr } from "../../utils/formatter";
+
 import { doQuery } from "../api/graphql";
 
 export type Company = {
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	return {
 		props: {
-			cats: businessdata,
+			cats: slugifyarr(businesscats),
 		},
 	};
 };

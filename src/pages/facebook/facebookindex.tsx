@@ -110,14 +110,11 @@ export default function FacebookIndex({
 				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
-							<picture>
-								<img
-									className="w-full h-full"
-									src="/images/placeholderfb.png"
-								/>
+							<picture className="w-full h-full">
+								<img src="/images/placeholderfb.png" />
 							</picture>
 							<div className="flex absolute top-0 w-full">
-								<picture>
+								<picture className="w-full">
 									<img
 										src={`/fbapps/${app?.slug}/back.png`}
 										alt=""
@@ -125,11 +122,10 @@ export default function FacebookIndex({
 									/>
 								</picture>
 							</div>
-							<picture>
+							<picture className="absolute top-0 w-full">
 								<img
 									src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
 									alt=""
-									className="absolute top-0 w-full"
 								/>
 							</picture>
 						</div>

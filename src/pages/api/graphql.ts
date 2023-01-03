@@ -1,5 +1,3 @@
-import { gql } from "graphql-tag";
-
 type Variables = { [key: string]: string | number | boolean };
 
 async function fetcher({
@@ -30,13 +28,15 @@ async function fetcher({
 	return d.data;
 }
 
-async function doQuery(query: string, variables: Variables) {
-	const opname = gql(query).definitions[0] as { name: { value: string } };
-
+async function doQuery(
+	query: string,
+	variables: Variables,
+	operationName?: string
+) {
 	const d = await fetcher({
 		query: query,
 		variables,
-		operationName: opname.name.value,
+		operationName: operationName ? operationName : "MyQuery",
 	});
 
 	return variables.multi
@@ -62,7 +62,7 @@ async function doMutation(
 	query: string,
 	variables: { [key: string]: string | number }
 ) {
-	const d = await doQuery(query, variables);
+	const d = await doQuery(query, variables, "MyMutation");
 	return d;
 }
 

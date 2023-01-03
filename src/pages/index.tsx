@@ -5,7 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { Program } from "@/components/Program";
-import { catsdata } from "@/utils/formatter";
+import { Cat, catsdata, jokecats } from "@/utils/formatter";
 
 const MoreButton = ({
   text,
@@ -22,12 +22,12 @@ const MoreButton = ({
     {text}
   </Link>
 );
-export default function Index() {
+export default function Index({ cats }: { cats: Cat[] }) {
   const router = useRouter();
   const {
     query: { type },
   } = router;
-  const cats = catsdata.sort((a, b) => b.count - a.count);
+
   return (
     <Main
       meta={
@@ -61,7 +61,8 @@ export default function Index() {
 }
 
 export async function getStaticProps() {
+  const cats = catsdata(jokecats).sort((a, b) => b.count - a.count) as Cat[];
   return {
-    props: {},
+    props: { cats },
   };
 }

@@ -9,18 +9,17 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import type { Cat } from "@/utils/formatter";
-import { catsdata } from "@/utils/formatter";
+import { Cat, jokecats, slugifyarr } from "@/utils/formatter";
 
 import { doQuery } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "lodash";
-import { Doc } from "../../data/structure";
+import { Doc } from "@/data/structure";
 export default function SingleJoke(props: {
 	joke: Doc;
 	items?: [Doc[], Doc[], Doc[]];
-	cats: [Cat[], Cat[]];
+	cats: [Cat[], Cat[], Cat[]];
 }) {
 	// яжте ми хуя сИга!
 	return (
@@ -62,6 +61,7 @@ export default function SingleJoke(props: {
 								/>
 							</div>
 						</article>
+						<Nav cats={props.cats[2]} prefix="cat" />
 						{props.items?.[0].map((item): JSX.Element => {
 							return (
 								<JokeThumbnail
@@ -73,6 +73,7 @@ export default function SingleJoke(props: {
 							);
 						})}
 					</div>
+					<Nav cats={props.cats[0]} prefix="cat" />
 					<ins
 						className="adsbygoogle"
 						style={{ display: "block", textAlign: "center" }}
@@ -104,7 +105,8 @@ export default function SingleJoke(props: {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { jokeid } = query;
-	const cats = chunk(shuffle(catsdata), 7);
+	const cats = chunk(shuffle(slugifyarr(jokecats)), 4);
+	console.log(cats);
 	const datatoken = await doQuery(
 		`
       query MyQuery($id: String = "") {
