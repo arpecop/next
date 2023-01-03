@@ -5,13 +5,13 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import { TwitterFeed } from "../../data/twittertypes";
 
-type Tweet = {
+type Item = {
 	id: string;
 	text: string;
-	createdAt: string;
 	screenName: string;
 	name: string;
 	profileImageUrl: string;
+	createdAt: string;
 	originalPoster: {
 		screenName: string;
 		name: string;
@@ -19,8 +19,16 @@ type Tweet = {
 	} | null;
 };
 
+type Tweet = {
+	screenName: string;
+	name: string;
+	description: string;
+	profileImageUrl: string;
+	tweets: Item[];
+};
+
 const minifyTweets = (obj: TwitterFeed) => {
-	const tweets = obj.props.pageProps.timeline.entries.map((t) => {
+	const tweets = obj.props.pageProps.timeline.entries.map((t, i) => {
 		const originalPoster = t.content.tweet.retweeted_status
 			? {
 				screenName: t.content.tweet.retweeted_status.user.screen_name,
@@ -37,13 +45,21 @@ const minifyTweets = (obj: TwitterFeed) => {
 			createdAt: new Date(t.content.tweet.created_at)
 				.toISOString()
 				.split("T")[0],
-			screenName: t.content.tweet.user.screen_name,
-			name: t.content.tweet.user.name,
-			profileImageUrl: t.content.tweet.user.profile_image_url_https,
+
 			originalPoster,
 		};
 	});
-	return tweets;
+	return {
+		description:
+			obj.props.pageProps.timeline.entries[0].content.tweet.user.description,
+		screenName:
+			obj.props.pageProps.timeline.entries[0].content.tweet.user.screen_name,
+		name: obj.props.pageProps.timeline.entries[0].content.tweet.user.name,
+		profileImageUrl:
+			obj.props.pageProps.timeline.entries[0].content.tweet.user
+				.profile_image_url_https,
+		tweets,
+	};
 };
 
 const TwuserPage = ({
@@ -51,25 +67,16 @@ const TwuserPage = ({
 	tweets,
 }: {
 	props: TwitterFeed;
-	tweets: Tweet[];
+	tweets: Tweet;
 }): JSX.Element => {
 	return (
 		<Main
 			hideFooter
 			meta={
-				<Meta
-					title={
-						props.props.pageProps.timeline.entries[0].content.tweet.user
-							.description
-					}
-					description={
-						props.props.pageProps.timeline.entries[0].content.tweet.user
-							.description
-					}
-				/>
+				<Meta title={tweets.description} description={tweets.description} />
 			}
 		>
-			{tweets.map((t) => (
+			{tweets.tweets.map((t) => (
 				<div key={t.id}>
 					<div className="flex flex-shrink-0 p-4 pb-0">
 						<a className="flex-shrink-0 group block">
@@ -77,13 +84,13 @@ const TwuserPage = ({
 								<div>
 									<img
 										className="inline-block h-10 w-10 rounded-full"
-										src={t.profileImageUrl}
+										src={tweets.profileImageUrl}
 										alt=""
 									/>
 								</div>
 								<div className="ml-2">
 									<p className="text-base leading-6 font-bold">
-										{t.name}
+										{tweets.name}
 										<span className="text-sm leading-5 font-medium  pl-2">
 											{t.createdAt}
 										</span>
@@ -142,12 +149,10 @@ export const getServerSideProps = async ({ query }: { query: { id: string } }) =
 			.replace(' id="__NEXT_DATA__" type="application/json"', "")
 			.split("<script>")[1]
 			.split("</script>")[0]
-	) as TwitterFeed;
-	console.log(minifyTweets(props));
+	);
 
 	return {
 		props: {
-			props,
 			tweets: minifyTweets(props),
 		},
 	};
