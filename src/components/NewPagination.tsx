@@ -1,16 +1,22 @@
 import Link from "next/link";
 
-import { ulid } from "ulidx";
-
 import { doMutation, doQuery } from "@/pages/api/graphql";
-const prefix = "11x";
+const prefix = "v2";
 
 interface Props {
 	pagenum: number;
 	cat: string;
 	nextToken?: string;
 }
-
+function numToString(num: number) {
+	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	let str = "";
+	while (num > 0) {
+		str = alphabet[num % 26] + str;
+		num = Math.floor(num / 26);
+	}
+	return str;
+}
 export async function refreshToken(
 	cat: string,
 	pagenum: number,
@@ -41,7 +47,7 @@ export async function refreshToken(
 		{
 			joke: nextToken,
 			id: `${prefix}${cat}${pagenum + 1}`,
-			nid: ulid(new Date(2222, 0, 1).getTime() - Date.now()),
+			nid: numToString(new Date(2222, 0, 1).getTime() - Date.now()),
 		}
 	);
 
