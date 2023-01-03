@@ -35,7 +35,8 @@ export type FbApp = {
 	schema: RJSFSchema;
 	hidden?: boolean;
 };
-export default function FacebookIndex({
+
+const Facebook = ({
 	cats,
 	result,
 	appid,
@@ -57,7 +58,7 @@ export default function FacebookIndex({
 	appid?: string;
 	shareid?: string;
 	env: "prod" | "dev";
-}) {
+}) => {
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<{
 		params: string;
@@ -110,8 +111,11 @@ export default function FacebookIndex({
 				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
-							<picture className="w-full h-full">
-								<img src="/images/placeholderfb.png" />
+							<picture className="w-full">
+								<img
+									className="w-full h-full"
+									src="/images/placeholderfb.png"
+								/>
 							</picture>
 							<div className="flex absolute top-0 w-full">
 								<picture className="w-full">
@@ -122,10 +126,11 @@ export default function FacebookIndex({
 									/>
 								</picture>
 							</div>
-							<picture className="absolute top-0 w-full">
+							<picture className="w-full absolute top-0">
 								<img
 									src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
 									alt=""
+									className="w-full"
 								/>
 							</picture>
 						</div>
@@ -133,10 +138,13 @@ export default function FacebookIndex({
 				)}
 				{!curresult && app && <LoadingResult name={app?.cat} />}
 			</div>
-
+			<div className="pt-1">
+				<FBLogin app={app} env={env} code={code} />
+				<div className="flex justify-center items-center">или</div>
+			</div>
 			{app?.schema && (
 				<div
-					className={`flex justify-center items-center ${curresult ? "blur-none" : "blur-sm"
+					className={`flex justify-center items-center flex-col ${curresult ? "blur-none" : "blur-sm"
 						}`}
 				>
 					<Form
@@ -147,7 +155,7 @@ export default function FacebookIndex({
 					/>
 				</div>
 			)}
-			<FBLogin app={app} env={env} code={code} />
+
 			<div className="container mx-auto">
 				{app && (
 					<div>
@@ -177,7 +185,7 @@ export default function FacebookIndex({
 			</div>
 		</Main>
 	);
-}
+};
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const apps = [
@@ -264,3 +272,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export const runtime = "experimental-edge";
+export default Facebook;

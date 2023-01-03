@@ -2,9 +2,7 @@ import { ReactNode } from "react";
 
 import Footer from "./Footer";
 
-import dynamic from "next/dynamic";
-
-const Header = dynamic(() => import("@/components/Layouts/Header"));
+import Header from "./Header";
 
 type IMainProps = {
 	meta: ReactNode;
