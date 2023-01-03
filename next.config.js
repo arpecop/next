@@ -5,10 +5,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-  publicRuntimeConfig: {
-    publicDir: "/public",
-  },
-
   async rewrites() {
     return [
       {

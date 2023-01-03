@@ -7,7 +7,7 @@ import { TwitterFeed } from "../../data/twittertypes";
 
 type Item = {
 	id: string;
-	text: string;
+	text: { id: number; text: string }[];
 	screenName: string;
 	name: string;
 	profileImageUrl: string;
@@ -27,8 +27,25 @@ type Tweet = {
 	tweets: Item[];
 };
 
-const minifyTweets = (obj: TwitterFeed) => {
-	const tweets = obj.props.pageProps.timeline.entries.map((t, i) => {
+export const minifyTweets = async (id: string): Promise<Tweet> => {
+	const headers = {
+		"User-Agent":
+			"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
+	};
+
+	const datafetch = await fetch(
+		`https://syndication.twitter.com/srv/timeline-profile/screen-name/${id}`,
+		{ headers }
+	);
+	const html = await datafetch.text();
+	const obj = JSON.parse(
+		html
+			.replace(' id="__NEXT_DATA__" type="application/json"', "")
+			.split("<script>")[1]
+			.split("</script>")[0]
+	) as TwitterFeed;
+
+	const tweets = obj.props.pageProps.timeline.entries.map((t) => {
 		const originalPoster = t.content.tweet.retweeted_status
 			? {
 				screenName: t.content.tweet.retweeted_status.user.screen_name,
@@ -39,17 +56,20 @@ const minifyTweets = (obj: TwitterFeed) => {
 			: null;
 		return {
 			id: t.entry_id,
-			text: t.content.tweet.retweeted_status
+			text: (t.content.tweet.retweeted_status
 				? t.content.tweet.retweeted_status.full_text
-				: t.content.tweet.text,
+				: t.content.tweet.full_text
+			)
+				.split("\n")
+				.map((text: string, id: number) => ({ id, text })),
 			createdAt: new Date(t.content.tweet.created_at)
 				.toISOString()
 				.split("T")[0],
 
 			originalPoster,
 		};
-	});
-	return {
+	}) as Item[];
+	return Promise.resolve({
 		description:
 			obj.props.pageProps.timeline.entries[0].content.tweet.user.description,
 		screenName:
@@ -59,16 +79,10 @@ const minifyTweets = (obj: TwitterFeed) => {
 			obj.props.pageProps.timeline.entries[0].content.tweet.user
 				.profile_image_url_https,
 		tweets,
-	};
+	});
 };
 
-const TwuserPage = ({
-	props,
-	tweets,
-}: {
-	props: TwitterFeed;
-	tweets: Tweet;
-}): JSX.Element => {
+const TwuserPage = ({ tweets }: { tweets: Tweet }): JSX.Element => {
 	return (
 		<Main
 			hideFooter
@@ -119,9 +133,9 @@ const TwuserPage = ({
 							<div className="h-1" />
 						)}
 
-						{t.text.split("\n").map((p, i) => (
-							<div key={i} className="pl-14 w-full">
-								{p}
+						{t.text.map((p) => (
+							<div key={p.id} className="pl-14 w-full">
+								{p.text}
 							</div>
 						))}
 					</div>
@@ -133,27 +147,11 @@ const TwuserPage = ({
 
 export const getServerSideProps = async ({ query }: { query: { id: string } }) => {
 	const { id } = query;
-
-	const headers = {
-		"User-Agent":
-			"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
-	};
-
-	const datafetch = await fetch(
-		`https://syndication.twitter.com/srv/timeline-profile/screen-name/${id}`,
-		{ headers }
-	);
-	const html = await datafetch.text();
-	const props = JSON.parse(
-		html
-			.replace(' id="__NEXT_DATA__" type="application/json"', "")
-			.split("<script>")[1]
-			.split("</script>")[0]
-	);
+	const tweets = await minifyTweets(id);
 
 	return {
 		props: {
-			tweets: minifyTweets(props),
+			tweets,
 		},
 	};
 };
