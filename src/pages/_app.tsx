@@ -7,12 +7,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider
       enableSystem={false}
-      attribute='class'
+      attribute="class"
       defaultTheme={"light"}
     >
       <Component {...pageProps} />
     </ThemeProvider>
   );
 }
+
 export default MyApp;
 //x

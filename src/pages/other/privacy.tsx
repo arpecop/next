@@ -2,7 +2,7 @@ import Meta from "@/components/Layouts/Meta";
 
 const Index = (): JSX.Element => {
 	return (
-		<div>
+		<div className="h-screen">
 			<Meta title="Новини" description="Новини" />
 			<div>
 				<p>

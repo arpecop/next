@@ -1,8 +1,8 @@
 import Meta from "@/components/Layouts/Meta";
 
-const Index = (): JSX.Element => {
+const Index = () => {
 	return (
-		<div>
+		<div className="h-screen">
 			<Meta title="Contact" description="Contact" />
 			<h1 className="text-center text-3xl font-thin">Contact</h1>
 			<div className="mt-10 flex flex-row items-center justify-center">
@@ -18,9 +18,5 @@ const Index = (): JSX.Element => {
 		</div>
 	);
 };
-export async function getStaticProps() {
-	return {
-		props: { lastupdate: new Date().toISOString() },
-	};
-}
+
 export default Index;

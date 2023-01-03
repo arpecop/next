@@ -2,7 +2,7 @@ import Meta from "@/components/Layouts/Meta";
 
 const Index = (): JSX.Element => {
 	return (
-		<>
+		<div className="h-screen">
 			<Meta
 				title="За нас"
 				description="решения, предоставени чрез признати от
@@ -19,7 +19,7 @@ const Index = (): JSX.Element => {
 			познания в сектора и индустриални връзки със специфични нужди на
 			клиентите, което води до надеждни решения, предоставени чрез признати от
 			индустрията техники за доставка.
-		</>
+		</div>
 	);
 };
 export async function getStaticProps() {
