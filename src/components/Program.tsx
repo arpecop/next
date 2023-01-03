@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export interface Item {
 	id: number;
@@ -32,8 +32,8 @@ export interface RootObject {
 }
 
 const Program = ({ limit, className }: { limit?: number; className: string }) => {
-	const [items, setItems] = React.useState<Item[]>([]);
-	const [img, setImg] = React.useState<string | null>(null);
+	const [items, setItems] = useState<Item[]>([]);
+	const [img, setImg] = useState<string | null>(null);
 	async function fetchMyAPI(older?: number) {
 		const res2 = await fetch(
 			`https://api.codetabs.com/v1/proxy?quest=https://pr0gramm.com/api/items/get?flags=1&promoted=1${older ? `&older=${older}` : ""
@@ -81,20 +81,22 @@ const Program = ({ limit, className }: { limit?: number; className: string }) =>
 							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
 						>
 							<div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer">
-								<img
-									className="cursor-pointer"
-									src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-									width={128}
-									height={128}
-								/>
-								<img
-									className="rounded-lg   absolute top-1"
-									alt="pr0gramm"
-									loading="lazy"
-									width={128}
-									height={128}
-									src={`https://thumb.pr0gramm.com/${thumb}`}
-								/>
+								<picture>
+									<img
+										className="cursor-pointer"
+										src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+										width={128}
+										height={128}
+									/>
+									<img
+										className="rounded-lg   absolute top-1"
+										alt="pr0gramm"
+										loading="lazy"
+										width={128}
+										height={128}
+										src={`https://thumb.pr0gramm.com/${thumb}`}
+									/>
+								</picture>
 							</div>
 						</label>
 					)
@@ -104,7 +106,9 @@ const Program = ({ limit, className }: { limit?: number; className: string }) =>
 			<label htmlFor="my-modal" className="modal cursor-pointer">
 				<label className="modal-box relative" htmlFor="">
 					<p className="py-4">
-						<img src={img || ""} alt="" />
+						<picture>
+							<img src={img || ""} alt="" />
+						</picture>
 					</p>
 				</label>
 			</label>

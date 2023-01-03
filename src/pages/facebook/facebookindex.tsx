@@ -35,8 +35,7 @@ export type FbApp = {
 	schema: RJSFSchema;
 	hidden?: boolean;
 };
-
-const Facebook = ({
+export default function FacebookIndex({
 	cats,
 	result,
 	appid,
@@ -58,7 +57,7 @@ const Facebook = ({
 	appid?: string;
 	shareid?: string;
 	env: "prod" | "dev";
-}) => {
+}) {
 	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<{
 		params: string;
@@ -111,19 +110,28 @@ const Facebook = ({
 				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
-							<img className="w-full h-full" src="/images/placeholderfb.png" />
-							<div className="flex absolute top-0 w-full">
+							<picture>
 								<img
-									src={`/fbapps/${app?.slug}/back.png`}
-									alt=""
-									className="w-full"
+									className="w-full h-full"
+									src="/images/placeholderfb.png"
 								/>
+							</picture>
+							<div className="flex absolute top-0 w-full">
+								<picture>
+									<img
+										src={`/fbapps/${app?.slug}/back.png`}
+										alt=""
+										className="w-full"
+									/>
+								</picture>
 							</div>
-							<img
-								src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
-								alt=""
-								className="absolute top-0 w-full"
-							/>
+							<picture>
+								<img
+									src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
+									alt=""
+									className="absolute top-0 w-full"
+								/>
+							</picture>
 						</div>
 					</ResultWrapper>
 				)}
@@ -173,7 +181,7 @@ const Facebook = ({
 			</div>
 		</Main>
 	);
-};
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const apps = [
@@ -260,4 +268,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export const runtime = "experimental-edge";
-export default Facebook;

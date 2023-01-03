@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function SVGImage({ src }: { src: string; params?: { [key: string]: string } }) {
 	const [newsrc, setNewSrc] = useState<string>("");
@@ -16,6 +16,10 @@ function SVGImage({ src }: { src: string; params?: { [key: string]: string } }) 
 		fetchImage();
 	}, [src]);
 
-	return <img alt="My Image" src={newsrc} />;
+	return (
+		<picture>
+			<img alt="My Image" src={newsrc} />
+		</picture>
+	);
 }
 export default SVGImage;

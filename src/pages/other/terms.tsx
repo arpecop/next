@@ -1,6 +1,6 @@
 import Meta from "@/components/Layouts/Meta";
 
-const Index = (): JSX.Element => {
+export default function Terms() {
 	return (
 		<div className="h-screen">
 			<Meta title="Terms of Use" description="Terms" />
@@ -19,10 +19,9 @@ const Index = (): JSX.Element => {
 			</p>
 		</div>
 	);
-};
+}
 export async function getStaticProps() {
 	return {
 		props: { lastupdate: new Date().toISOString() },
 	};
 }
-export default Index;

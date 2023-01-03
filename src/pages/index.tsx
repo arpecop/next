@@ -22,8 +22,7 @@ const MoreButton = ({
     {text}
   </Link>
 );
-
-const Index = () => {
+export default function Index() {
   const router = useRouter();
   const {
     query: { type },
@@ -59,12 +58,10 @@ const Index = () => {
       )}
     </Main>
   );
-};
+}
 
 export async function getStaticProps() {
   return {
     props: {},
   };
 }
-
-export default Index;

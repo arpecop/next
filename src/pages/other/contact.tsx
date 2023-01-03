@@ -1,6 +1,6 @@
 import Meta from "@/components/Layouts/Meta";
 
-const Index = () => {
+export default function Contact() {
 	return (
 		<div className="h-screen">
 			<Meta title="Contact" description="Contact" />
@@ -17,6 +17,9 @@ const Index = () => {
 			</div>
 		</div>
 	);
-};
-
-export default Index;
+}
+export async function getStaticProps() {
+	return {
+		props: { lastupdate: new Date().toISOString() },
+	};
+}

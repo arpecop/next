@@ -81,8 +81,7 @@ export const minifyTweets = async (id: string): Promise<Tweet> => {
 		tweets,
 	});
 };
-
-const TwuserPage = ({ tweets }: { tweets: Tweet }): JSX.Element => {
+export default function TwuserPage({ tweets }: { tweets: Tweet }) {
 	return (
 		<Main
 			hideFooter
@@ -95,13 +94,13 @@ const TwuserPage = ({ tweets }: { tweets: Tweet }): JSX.Element => {
 					<div className="flex flex-shrink-0 p-4 pb-0">
 						<a className="flex-shrink-0 group block">
 							<div className="flex items-center">
-								<div>
+								<picture>
 									<img
 										className="inline-block h-10 w-10 rounded-full"
 										src={tweets.profileImageUrl}
 										alt=""
 									/>
-								</div>
+								</picture>
 								<div className="ml-2">
 									<p className="text-base leading-6 font-bold">
 										{tweets.name}
@@ -120,11 +119,13 @@ const TwuserPage = ({ tweets }: { tweets: Tweet }): JSX.Element => {
 								className="flex  items-center"
 								href={"/tw/u/" + t.originalPoster.screenName}
 							>
-								<img
-									className="inline-block h-5 w-5 rounded-full ml-14"
-									src={t.originalPoster.profileImageUrl}
-									alt=""
-								/>
+								<picture>
+									<img
+										className="inline-block h-5 w-5 rounded-full ml-14"
+										src={t.originalPoster.profileImageUrl}
+										alt=""
+									/>
+								</picture>
 								<div className="text-base leading-6 font-bold pl-2">
 									{t.originalPoster.screenName} :
 								</div>
@@ -143,7 +144,7 @@ const TwuserPage = ({ tweets }: { tweets: Tweet }): JSX.Element => {
 			))}
 		</Main>
 	);
-};
+}
 
 export const getServerSideProps = async ({ query }: { query: { id: string } }) => {
 	const { id } = query;
@@ -157,5 +158,3 @@ export const getServerSideProps = async ({ query }: { query: { id: string } }) =
 };
 
 export const runtime = "experimental-edge";
-
-export default TwuserPage;

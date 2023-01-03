@@ -5,8 +5,7 @@ import Meta from "@/components/Layouts/Meta";
 
 import type { Movie } from "@/pages/movies/";
 import { doQuery, gql } from "@/pages/api/graphql";
-
-const Item = ({ movie }: { movie: Movie }): JSX.Element => {
+export default function Item({ movie }: { movie: Movie }) {
 	return (
 		<Main
 			hideFooter
@@ -20,15 +19,17 @@ const Item = ({ movie }: { movie: Movie }): JSX.Element => {
 					<span className="absolute bottom-0 right-0 z-20 rounded-md bg-indigo-700 p-3 font-light">
 						{movie.year}
 					</span>
-					<img
-						src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${movie.id.replace(
-							"-mov",
-							""
-						)}.jpg`}
-						alt={movie.title}
-						width={342}
-						height={513}
-					/>
+					<picture>
+						<img
+							src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${movie.id.replace(
+								"-mov",
+								""
+							)}.jpg`}
+							alt={movie.title}
+							width={342}
+							height={513}
+						/>
+					</picture>
 				</div>
 
 				<div className="px-4">
@@ -38,7 +39,7 @@ const Item = ({ movie }: { movie: Movie }): JSX.Element => {
 			</div>
 		</Main>
 	);
-};
+}
 
 export const USERS = gql`
   query MyQuery2($offset: Int!) {
@@ -80,4 +81,3 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		props: { movie: data },
 	};
 };
-export default Item;

@@ -10,15 +10,14 @@ import { doQuery, gql } from "@/pages/api/graphql";
 import type { News } from "@/pages/news/";
 
 import { shuffle } from "lodash";
-
-const NewsItem = ({
+export default function NewsItem({
   newsbg,
   newsbg_by_pk: { title, image, parsed },
 }: {
   newsbg: News[];
   newsbg_by_pk: News;
   slug: string;
-}): JSX.Element => {
+}) {
   return (
     <Main
       hideFooter
@@ -36,11 +35,13 @@ const NewsItem = ({
           <div className="mb-6 flex items-center justify-center">
             {image && (
               <div className="mr-4 pt-2">
-                <img
-                  alt={title}
-                  className=" rounded-lg object-cover"
-                  src={image}
-                />
+                <picture>
+                  <img
+                    alt={title}
+                    className=" rounded-lg object-cover"
+                    src={image}
+                  />
+                </picture>
               </div>
             )}
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
@@ -57,12 +58,14 @@ const NewsItem = ({
           {newsbg?.map((item) => (
             <div className="joke" key={item.uid}>
               <div className="jokewrap">
-                <img
-                  alt={title}
-                  src={JSON.parse(image[0])}
-                  width={200}
-                  height={200}
-                />
+                <picture>
+                  <img
+                    alt={title}
+                    src={JSON.parse(image[0])}
+                    width={200}
+                    height={200}
+                  />
+                </picture>
               </div>
             </div>
           ))}
@@ -70,7 +73,7 @@ const NewsItem = ({
       </article>
     </Main>
   );
-};
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
   const { newsid, slug } = query as { newsid: string; slug?: string };
@@ -134,5 +137,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
   };
 };
 
-export default NewsItem;
 export const runtime = "experimental-edge";

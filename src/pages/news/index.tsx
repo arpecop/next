@@ -21,7 +21,7 @@ export type RootNewsProps = {
 	nextToken?: string;
 };
 
-const Index = ({ newsbg, pagenum, nextToken }: RootNewsProps): JSX.Element => {
+export default function Index({ newsbg, pagenum, nextToken }: RootNewsProps) {
 	return (
 		<Main meta={<Meta title={"Новини"} description="Новини" />}>
 			<div className="my-10 flex w-full flex-col">
@@ -55,7 +55,7 @@ const Index = ({ newsbg, pagenum, nextToken }: RootNewsProps): JSX.Element => {
 			</div>
 		</Main>
 	);
-};
+}
 
 export const getServerSideProps = async (context: { query: { page?: string } }) => {
 	const pagenum = context.query.page ? Number(context.query.page) : 1;
@@ -89,5 +89,4 @@ export const getServerSideProps = async (context: { query: { page?: string } }) 
 	};
 };
 
-export default Index;
 export const runtime = "experimental-edge";

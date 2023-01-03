@@ -11,7 +11,8 @@ import { shuffle } from "lodash";
 export type User = {
 	id: string;
 };
-const Index = ({
+
+export default function Index({
 	twusers,
 	pagenum,
 	nextToken,
@@ -19,7 +20,7 @@ const Index = ({
 	twusers: User[];
 	pagenum: number;
 	nextToken?: string;
-}): JSX.Element => {
+}) {
 	return (
 		<Main
 			hideFooter
@@ -58,7 +59,7 @@ const Index = ({
 			<Pagination pagenum={pagenum} cat="/tw/" nextToken={nextToken} />
 		</Main>
 	);
-};
+}
 
 export const getServerSideProps = async ({
 	query,
@@ -94,5 +95,3 @@ export const getServerSideProps = async ({
 		},
 	};
 };
-
-export default Index;

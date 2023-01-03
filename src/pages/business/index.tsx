@@ -18,8 +18,7 @@ export type Company = {
 	uid?: string;
 	created_at: number;
 };
-
-const Index = ({ cats }: { cats: Cat[] }): JSX.Element => {
+export default function Business({ cats }: { cats: Cat[] }) {
 	return (
 		<Main meta={<Meta title="Бизнес фирми" description="Бизнес фирми" />}>
 			<Nav cats={cats} prefix="business" limit={50} />
@@ -32,7 +31,7 @@ const Index = ({ cats }: { cats: Cat[] }): JSX.Element => {
 			</p>
 		</Main>
 	);
-};
+}
 
 const qindex = gql`
   query MyQuery($nextToken: String = "") {
@@ -64,4 +63,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		},
 	};
 };
-export default Index;

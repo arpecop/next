@@ -20,7 +20,7 @@ export type Movie = {
 	year: number;
 };
 
-const Index = ({
+export default function MoviesIndex({
 	movies,
 	pagenum,
 	nextToken,
@@ -28,7 +28,7 @@ const Index = ({
 	movies: Movie[];
 	pagenum: number;
 	nextToken?: string;
-}): JSX.Element => {
+}) {
 	return (
 		<Main
 			meta={
@@ -55,13 +55,15 @@ const Index = ({
 							<figure className="relative flex w-1/2  overflow-hidden rounded-l-lg">
 								<div className="absolute inset-0  h-full">
 									<Link href={`/movies/${id.replace("-mov", "")}`}>
-										<img
-											src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
-												"-mov",
-												""
-											)}.jpg`}
-											alt={title}
-										/>
+										<picture>
+											<img
+												src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
+													"-mov",
+													""
+												)}.jpg`}
+												alt={title}
+											/>
+										</picture>
 									</Link>
 								</div>
 							</figure>
@@ -94,7 +96,7 @@ const Index = ({
 			<Pagination pagenum={pagenum} cat={"/movies/p/"} nextToken={nextToken} />
 		</Main>
 	);
-};
+}
 
 const MOVIES = gql`
   query QueryDdbsByByAppCat($start: String) {
@@ -127,4 +129,3 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		},
 	};
 };
-export default Index;

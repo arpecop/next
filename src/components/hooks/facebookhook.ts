@@ -1,6 +1,7 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
+import { SetStateAction } from "react";
 
-import { SetStateAction, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { throttle } from "lodash";
 

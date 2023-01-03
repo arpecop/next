@@ -17,12 +17,11 @@ import { doQuery, gql } from "@/pages/api/graphql";
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "lodash";
 import { Doc } from "../../data/structure";
-
-const SingleJoke = (props: {
+export default function SingleJoke(props: {
 	joke: Doc;
 	items?: [Doc[], Doc[], Doc[]];
 	cats: [Cat[], Cat[]];
-}): JSX.Element => {
+}) {
 	// яжте ми хуя сИга!
 	return (
 		<Main
@@ -101,7 +100,7 @@ const SingleJoke = (props: {
 			)}
 		</Main>
 	);
-};
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { jokeid } = query;
@@ -158,4 +157,3 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	};
 };
 export const runtime = "experimental-edge";
-export default SingleJoke;
