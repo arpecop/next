@@ -13,6 +13,7 @@ jobs:
       - name: 😳 Build
         with:
           node-version: 18
+          cache: "npm"
         run: |
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
