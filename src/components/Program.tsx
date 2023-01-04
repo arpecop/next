@@ -82,16 +82,16 @@ const Program = ({ limit, className }: { limit?: number; className: string }) =>
 						>
 							<div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer">
 								<picture className="relative">
-									<svg
-										width={128}
-										height={128}
-										xmlns="http://www.w3.org/2000/svg"
-									/>
 									<img
 										className="rounded-lg w-full h-full absolute top-0 left-0"
 										alt="pr0gramm"
 										loading="lazy"
 										src={`https://thumb.pr0gramm.com/${thumb}`}
+									/>
+									<svg
+										width={128}
+										height={128}
+										xmlns="http://www.w3.org/2000/svg"
 									/>
 								</picture>
 							</div>
