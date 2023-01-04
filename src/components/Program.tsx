@@ -81,20 +81,16 @@ const Program = ({ limit, className }: { limit?: number; className: string }) =>
 							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
 						>
 							<div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer">
-								<img
-									className="cursor-pointer"
-									src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-									width={128}
-									height={128}
-								/>
-								<img
-									className="rounded-lg   absolute top-1"
-									alt="pr0gramm"
-									loading="lazy"
-									width={128}
-									height={128}
-									src={`https://thumb.pr0gramm.com/${thumb}`}
-								/>
+								<picture>
+									<img
+										className="rounded-lg"
+										alt="pr0gramm"
+										loading="lazy"
+										width={128}
+										height={128}
+										src={`https://thumb.pr0gramm.com/${thumb}`}
+									/>
+								</picture>
 							</div>
 						</label>
 					)

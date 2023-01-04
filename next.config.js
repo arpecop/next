@@ -2,9 +2,13 @@
 
 const nextConfig = {
   output: "standalone",
-  reactStrictMode: false,
+  reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
+  i18n: {
+    locales: ["bg"],
+    defaultLocale: "bg",
+  },
   async rewrites() {
     return [
       {
