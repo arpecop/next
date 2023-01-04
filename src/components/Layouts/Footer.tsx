@@ -41,7 +41,7 @@ const Analytics = ({ className }: { className: string }) => (
 		/>
 	</div>
 );
-
+//analytics
 function Footer({ hideFooter }: { hideFooter?: boolean }) {
 	return !hideFooter ? (
 		<footer className="footer gap-y-2 px-10 font-bold text-neutral-content dark:text-gray-800  md:gap-y-6   z-10 mb-4 relative">
