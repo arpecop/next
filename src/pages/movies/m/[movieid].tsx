@@ -4,8 +4,9 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
 import type { Movie } from "@/pages/movies/";
-import { doQuery } from "@/pages/api/graphql";
-export default function Item({ movie }: { movie: Movie }) {
+import { doQuery, gql } from "@/pages/api/graphql";
+
+const Item = ({ movie }: { movie: Movie }): JSX.Element => {
 	return (
 		<Main
 			hideFooter
@@ -19,17 +20,15 @@ export default function Item({ movie }: { movie: Movie }) {
 					<span className="absolute bottom-0 right-0 z-20 rounded-md bg-indigo-700 p-3 font-light">
 						{movie.year}
 					</span>
-					<picture>
-						<img
-							src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${movie.id.replace(
-								"-mov",
-								""
-							)}.jpg`}
-							alt={movie.title}
-							width={342}
-							height={513}
-						/>
-					</picture>
+					<img
+						src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${movie.id.replace(
+							"-mov",
+							""
+						)}.jpg`}
+						alt={movie.title}
+						width={342}
+						height={513}
+					/>
 				</div>
 
 				<div className="px-4">
@@ -39,9 +38,9 @@ export default function Item({ movie }: { movie: Movie }) {
 			</div>
 		</Main>
 	);
-}
+};
 
-export const USERS = `
+export const USERS = gql`
   query MyQuery2($offset: Int!) {
     movies_aggregate {
       aggregate {
@@ -62,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { movieid } = query;
 
 	const data = await doQuery(
-		`
+		gql`
       query MyQuery($id: String!) {
         getDdb(id: $id) {
           id
@@ -81,3 +80,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		props: { movie: data },
 	};
 };
+export default Item;

@@ -10,7 +10,7 @@ import Pagination, {
 	getPaging,
 	refreshToken,
 } from "../../components/NewPagination";
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
 export type Movie = {
 	title: string;
@@ -20,7 +20,7 @@ export type Movie = {
 	year: number;
 };
 
-export default function MoviesIndex({
+const Index = ({
 	movies,
 	pagenum,
 	nextToken,
@@ -28,7 +28,7 @@ export default function MoviesIndex({
 	movies: Movie[];
 	pagenum: number;
 	nextToken?: string;
-}) {
+}): JSX.Element => {
 	return (
 		<Main
 			meta={
@@ -55,15 +55,13 @@ export default function MoviesIndex({
 							<figure className="relative flex w-1/2  overflow-hidden rounded-l-lg">
 								<div className="absolute inset-0  h-full">
 									<Link href={`/movies/${id.replace("-mov", "")}`}>
-										<picture>
-											<img
-												src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
-													"-mov",
-													""
-												)}.jpg`}
-												alt={title}
-											/>
-										</picture>
+										<img
+											src={`https://klounda-s3.s3.amazonaws.com/public/filmi/${id.replace(
+												"-mov",
+												""
+											)}.jpg`}
+											alt={title}
+										/>
 									</Link>
 								</div>
 							</figure>
@@ -96,9 +94,9 @@ export default function MoviesIndex({
 			<Pagination pagenum={pagenum} cat={"/movies/p/"} nextToken={nextToken} />
 		</Main>
 	);
-}
+};
 
-const MOVIES = `
+const MOVIES = gql`
   query QueryDdbsByByAppCat($start: String) {
     queryDdbsByByAppCat(type: "MoviesBG1", first: 15, after: $start) {
       items {
@@ -129,3 +127,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		},
 	};
 };
+export default Index;

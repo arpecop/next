@@ -23,19 +23,17 @@ export default async function handler(req: NextRequest) {
 	return new ImageResponse(
 		(
 			<div style={{ display: "flex" }}>
-				<picture>
-					<img
-						src={`${params[3]}//${params[2]}/fbapps/${params[1]}/back.png`}
-						alt=""
-						style={{
-							width: 1200,
-							height: 630,
-							position: "absolute",
-							top: 0,
-							left: 0,
-						}}
-					/>
-				</picture>
+				<img
+					src={`${params[3]}//${params[2]}/fbapps/${params[1]}/back.png`}
+					alt=""
+					style={{
+						width: 1200,
+						height: 630,
+						position: "absolute",
+						top: 0,
+						left: 0,
+					}}
+				/>
 				<div style={{ display: "flex" }}>
 					{rendered.map(
 						(text: {

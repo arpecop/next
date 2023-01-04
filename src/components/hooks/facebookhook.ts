@@ -1,7 +1,7 @@
 import { FbApp } from "@/pages/facebook/facebookindex";
 
 import { SetStateAction, useEffect, useState, useRef } from "react";
-import { doMutation, doQuery } from "@/pages/api/graphql";
+import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { throttle } from "lodash";
 
 export type FBResult = {
@@ -18,11 +18,13 @@ export async function loadImage(imageUrl: string): Promise<void> {
 }
 export const getKasmet = async (id: string) => {
 	const get = await doQuery(
-		`query MyQuery($id: String!) {
+		gql`
+      query MyQuery($id: String!) {
         getDdb(id: $id) {
           data
         }
-      }`,
+      }
+    `,
 		{
 			id,
 		}
@@ -32,13 +34,15 @@ export const getKasmet = async (id: string) => {
 };
 export const insertKasmet = async (id: string, data: string) => {
 	const d = await doMutation(
-		`mutation MyMutation($id: String!, $data: AWSJSON) {
+		gql`
+      mutation MyMutation($id: String!, $data: AWSJSON) {
         createDdb(
           input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}
         ) {
           id
         }
-      }`,
+      }
+    `,
 		{
 			id,
 			data,
@@ -52,7 +56,7 @@ export const setCookie = (key: string, value: string) =>
 	localStorage.setItem(key, value);
 
 export function useFacebookRandom(app?: FbApp) {
-	const cookiprefix = "v4";
+	const cookiprefix = "v2";
 	const [result, setResult] = useState<number | null>(null);
 	const [mod, setMod] = useState<FBResult | null>(null);
 

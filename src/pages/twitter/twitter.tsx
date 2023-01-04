@@ -5,14 +5,13 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 import { shuffle } from "lodash";
 
 export type User = {
 	id: string;
 };
-
-export default function Index({
+const Index = ({
 	twusers,
 	pagenum,
 	nextToken,
@@ -20,7 +19,7 @@ export default function Index({
 	twusers: User[];
 	pagenum: number;
 	nextToken?: string;
-}) {
+}): JSX.Element => {
 	return (
 		<Main
 			hideFooter
@@ -59,7 +58,7 @@ export default function Index({
 			<Pagination pagenum={pagenum} cat="/tw/" nextToken={nextToken} />
 		</Main>
 	);
-}
+};
 
 export const getServerSideProps = async ({
 	query,
@@ -70,7 +69,7 @@ export const getServerSideProps = async ({
 	const nextTokenCurrent = await getPaging(query.jokecat, pagenum);
 
 	const data = await doQuery(
-		`
+		gql`
       query MyQuery($nextToken: String = "") {
         queryDdbsByByLetter(type: "Twuser", first: 150, after: $nextToken) {
           nextToken
@@ -95,3 +94,5 @@ export const getServerSideProps = async ({
 		},
 	};
 };
+
+export default Index;

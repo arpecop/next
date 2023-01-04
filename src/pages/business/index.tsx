@@ -6,9 +6,9 @@ import Nav from "@/components/Nav";
 
 import { getPaging, refreshToken } from "../../components/NewPagination";
 
-import { businesscats, Cat, slugifyarr } from "../../utils/formatter";
-
-import { doQuery } from "../api/graphql";
+import type { Cat } from "../../utils/formatter";
+import { businessdata } from "../../utils/formatter";
+import { doQuery, gql } from "../api/graphql";
 
 export type Company = {
 	_id: string;
@@ -18,7 +18,8 @@ export type Company = {
 	uid?: string;
 	created_at: number;
 };
-export default function Business({ cats }: { cats: Cat[] }) {
+
+const Index = ({ cats }: { cats: Cat[] }): JSX.Element => {
 	return (
 		<Main meta={<Meta title="Бизнес фирми" description="Бизнес фирми" />}>
 			<Nav cats={cats} prefix="business" limit={50} />
@@ -31,9 +32,9 @@ export default function Business({ cats }: { cats: Cat[] }) {
 			</p>
 		</Main>
 	);
-}
+};
 
-const qindex = `
+const qindex = gql`
   query MyQuery($nextToken: String = "") {
     queryDdbsByByLetter(type: "CompaniesBG", first: 50, after: $nextToken) {
       items {
@@ -59,7 +60,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	return {
 		props: {
-			cats: slugifyarr(businesscats),
+			cats: businessdata,
 		},
 	};
 };
+export default Index;

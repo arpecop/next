@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import Header from "@/components/Layouts/Header";
+
+import { ReactNode, useEffect } from "react";
 
 import Footer from "./Footer";
-
-import Header from "./Header";
 
 type IMainProps = {
 	meta: ReactNode;
@@ -13,6 +13,19 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => {
+	useEffect(() => {
+		// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+		let adsbygoogle: any;
+		const ads = document.getElementsByClassName("adsbygoogle").length as number;
+		for (let i = 0; i < ads; i++) {
+			try {
+				// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+				(adsbygoogle = (window as any).adsbygoogle || []).push({});
+			} catch (e) {
+				//////console.log(e);
+			}
+		}
+	}, []);
 	return (
 		<div className="flex min-h-screen flex-col">
 			{props.meta}

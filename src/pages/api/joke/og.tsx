@@ -1,4 +1,4 @@
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 // import { profanityFilter } from "@/utils/formatter";
 
 import { ImageResponse } from "@vercel/og";
@@ -29,7 +29,7 @@ export default async function handler(req: NextRequest) {
 	const h = hasH ? Number(searchParams.get("h")) : 630;
 
 	const data = await doQuery(
-		`
+		gql`
       query MyQuery($id: String!) {
         single: getDdb(id: $id) {
           id

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ulid } from "ulidx";
-import { doMutation, doQuery } from "@/pages/api/graphql";
+import { doMutation, doQuery, gql } from "@/pages/api/graphql";
 import { fbtoken } from "../refetch";
 import { Doc } from "../../../data/structure";
 
@@ -8,7 +8,7 @@ const id = "cronnerjokesx11";
 
 async function prepare() {
   const data1 = await doQuery(
-    `
+    gql`
       query MyQuery($id: String = "") {
         queryDdbsByByAppCat(type: $id, first: 1) {
           items {
@@ -24,7 +24,7 @@ async function prepare() {
   const tok = data1.joke;
 
   const data = await doQuery(
-    `
+    gql`
       query MyQuery($cat: String!, $nextToken: String) {
         queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
           items {
@@ -42,7 +42,7 @@ async function prepare() {
   );
 
   await doMutation(
-    `
+    gql`
       mutation MyMutation(
         $joke: String = ""
         $id: String = ""

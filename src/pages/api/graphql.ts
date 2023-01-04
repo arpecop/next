@@ -1,3 +1,7 @@
+import { DocumentNode, print } from "graphql";
+
+import { gql } from "graphql-tag";
+
 type Variables = { [key: string]: string | number | boolean };
 
 async function fetcher({
@@ -28,15 +32,13 @@ async function fetcher({
 	return d.data;
 }
 
-async function doQuery(
-	query: string,
-	variables: Variables,
-	operationName?: string
-) {
+async function doQuery(query: DocumentNode, variables: Variables) {
+	const opname = query.definitions[0] as { name: { value: string } };
+
 	const d = await fetcher({
-		query: query,
+		query: print(query),
 		variables,
-		operationName: operationName ? operationName : "MyQuery",
+		operationName: opname.name.value,
 	});
 
 	return variables.multi
@@ -59,13 +61,13 @@ export default function handler() {
 }
 
 async function doMutation(
-	query: string,
+	query: DocumentNode,
 	variables: { [key: string]: string | number }
 ) {
-	const d = await doQuery(query, variables, "MyMutation");
+	const d = await doQuery(query, variables);
 	return d;
 }
 
 export const runtime = "experimental-edge";
 
-export { doMutation, doQuery };
+export { doMutation, doQuery, gql };

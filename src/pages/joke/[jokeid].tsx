@@ -9,18 +9,20 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import { Cat, jokecats, slugifyarr } from "@/utils/formatter";
+import type { Cat } from "@/utils/formatter";
+import { catsdata } from "@/utils/formatter";
 
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
 import FacebookShare from "@/components/FacebookShare";
 import { chunk, shuffle } from "lodash";
-import { Doc } from "@/data/structure";
-export default function SingleJoke(props: {
+import { Doc } from "../../data/structure";
+
+const SingleJoke = (props: {
 	joke: Doc;
 	items?: [Doc[], Doc[], Doc[]];
-	cats: [Cat[], Cat[], Cat[]];
-}) {
+	cats: [Cat[], Cat[]];
+}): JSX.Element => {
 	// яжте ми хуя сИга!
 	return (
 		<Main
@@ -61,7 +63,6 @@ export default function SingleJoke(props: {
 								/>
 							</div>
 						</article>
-						<Nav cats={props.cats[2]} prefix="cat" />
 						{props.items?.[0].map((item): JSX.Element => {
 							return (
 								<JokeThumbnail
@@ -73,7 +74,6 @@ export default function SingleJoke(props: {
 							);
 						})}
 					</div>
-					<Nav cats={props.cats[0]} prefix="cat" />
 					<ins
 						className="adsbygoogle"
 						style={{ display: "block", textAlign: "center" }}
@@ -101,14 +101,13 @@ export default function SingleJoke(props: {
 			)}
 		</Main>
 	);
-}
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { jokeid } = query;
-	const cats = chunk(shuffle(slugifyarr(jokecats)), 4);
-	console.log(cats);
+	const cats = chunk(shuffle(catsdata), 7);
 	const datatoken = await doQuery(
-		`
+		gql`
       query MyQuery($id: String = "") {
         queryDdbsByByAppCat(type: $id, first: 10) {
           items {
@@ -122,7 +121,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	);
 	const nextToken = datatoken.items?.[0]?.joke;
 	const data = await doQuery(
-		`
+		gql`
       query MyQuery($id: String!, $nextToken: String = "") {
         single: getDdb(id: $id) {
           id
@@ -159,3 +158,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	};
 };
 export const runtime = "experimental-edge";
+export default SingleJoke;

@@ -1,11 +1,11 @@
+import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-export default function Terms() {
+const Index = (): JSX.Element => {
 	return (
-		<div className="h-screen">
-			<Meta title="Terms of Use" description="Terms" />
-
-			<p className="mt-10">
+		<Main hideFooter meta={<Meta title='Terms of Use' description='Terms' />}>
+			<img src='/rudixops.png' width={171} height={40} alt='' />
+			<p className='mt-10'>
 				RudixOps не носи отговорност за настъпили вреди или пропуснати ползи от
 				поместената в сайта информация или от нейното неправилно
 				възприемане/тълкуване.
@@ -17,11 +17,12 @@ export default function Terms() {
 				за невъзможност за достъп до сайта поради причини извън нашата
 				компетенция и други.
 			</p>
-		</div>
+		</Main>
 	);
-}
+};
 export async function getStaticProps() {
 	return {
 		props: { lastupdate: new Date().toISOString() },
 	};
 }
+export default Index;

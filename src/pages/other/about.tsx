@@ -1,13 +1,18 @@
+import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-export default function About() {
+const Index = (): JSX.Element => {
 	return (
-		<div className="h-screen">
-			<Meta
-				title="За нас"
-				description="решения, предоставени чрез признати от
-    индустрията техники за доставка."
-			/>
+		<Main
+			hideFooter
+			meta={
+				<Meta
+					title='За нас'
+					description='решения, предоставени чрез признати от
+    индустрията техники за доставка.'
+				/>
+			}
+		>
 			RudixOps, облачни и аутсорсинг услуги, както и осигуряване на качество и
 			управление на проекти, всички са достъпни чрез нас. Не говорим за сервиз.
 			Ние се потапяме във всеки проект, сякаш е наш собствен , работят с
@@ -19,11 +24,12 @@ export default function About() {
 			познания в сектора и индустриални връзки със специфични нужди на
 			клиентите, което води до надеждни решения, предоставени чрез признати от
 			индустрията техники за доставка.
-		</div>
+		</Main>
 	);
-}
+};
 export async function getStaticProps() {
 	return {
 		props: { lastupdate: new Date().toISOString() },
 	};
 }
+export default Index;

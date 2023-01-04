@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import React from "react";
 import { slugify } from "@/utils/formatter";
 
 const NewsThumbnail = ({
@@ -11,24 +11,18 @@ const NewsThumbnail = ({
 	image?: string;
 	uid: string;
 }) => (
-	<article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3">
+	<article className='relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3'>
 		<Link
 			href={`/news/i/${slugify(title)}/${uid}/`}
 			passHref
-			className="newswrap"
+			className='newswrap'
 		>
-			<div className="flex  w-full items-center ">
-				<div className="flex items-center justify-center">
+			<div className='flex  w-full items-center '>
+				<div className='flex items-center justify-center'>
 					{image && (
-						<picture>
-							<img
-								alt={title}
-								src={image}
-								className="h-28 w-1/3 object-cover"
-							/>
-						</picture>
+						<img alt={title} src={image} className='h-28 w-1/3 object-cover' />
 					)}
-					<h3 className="px-2 font-bold text-slate-300 dark:text-gray-800">
+					<h3 className='px-2 font-bold text-slate-300 dark:text-gray-800'>
 						{title}
 					</h3>
 				</div>

@@ -1,5 +1,4 @@
-import { MouseEvent } from "react";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
 import { FormatJoke } from "@/components/JokeText";
 

@@ -1,9 +1,9 @@
+import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-export default function Privacy() {
+const Index = (): JSX.Element => {
 	return (
-		<div className="h-screen">
-			<Meta title="Новини" description="Новини" />
+		<Main hideFooter meta={<Meta title='Новини' description='Новини' />}>
 			<div>
 				<p>
 					This Privacy Policy governs the manner in which kloun.lol collects,
@@ -134,7 +134,7 @@ export default function Privacy() {
 					they believe will be of most interest to you. This privacy policy does
 					not cover the use of cookies by any advertisers. You may learn more
 					about opting out of major ad networks at{" "}
-					<a href="https://websitebuilders.com/tools/advertiser-opt-out/">
+					<a href='https://websitebuilders.com/tools/advertiser-opt-out/'>
 						https://websitebuilders.com/tools/advertiser-opt-out/
 					</a>
 					.
@@ -148,7 +148,7 @@ export default function Privacy() {
 					about you, such as your name, email address, physical address, etc.
 					You may opt out of the use of the DART cookie by visiting the Google
 					ad and content network privacy policy at{" "}
-					<a href="http://google.com/privacy_ads.html">
+					<a href='http://google.com/privacy_ads.html'>
 						http://google.com/privacy_ads.html
 					</a>
 				</p>
@@ -168,7 +168,15 @@ export default function Privacy() {
 					do not agree to this policy, please do not use our Site. Your
 					continued use of the Site following the posting of changes to this
 					policy will be deemed your acceptance of those changes. This privacy
-					policy was built .
+					policy was built{" "}
+					<a
+						href='https://privacypolicies.com/'
+						target='_blank'
+						rel='noreferrer'
+					>
+						using the generator at PrivacyPolicies.com
+					</a>
+					.
 				</p>
 				<h3>Contacting us</h3>
 				<p>
@@ -177,12 +185,13 @@ export default function Privacy() {
 				</p>
 				<p>This document was last updated on November 29, 2017</p>
 			</div>
-		</div>
+		</Main>
 	);
-}
+};
 
 export async function getStaticProps() {
 	return {
 		props: { lastupdate: new Date().toISOString() },
 	};
 }
+export default Index;

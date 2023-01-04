@@ -5,7 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import { Program } from "@/components/Program";
-import { Cat, catsdata, jokecats } from "@/utils/formatter";
+import { catsdata } from "@/utils/formatter";
 
 const MoreButton = ({
   text,
@@ -17,52 +17,54 @@ const MoreButton = ({
   <Link
     href={{ pathname: "/", query: { type } }}
     passHref={true}
-    className="btn-primary btn-active btn dark:btn-ghost"
+    className='btn-primary btn-active btn dark:btn-ghost'
   >
     {text}
   </Link>
 );
-export default function Index({ cats }: { cats: Cat[] }) {
+
+const Index = () => {
   const router = useRouter();
   const {
     query: { type },
   } = router;
-
+  const cats = catsdata.sort((a, b) => b.count - a.count);
   return (
     <Main
       meta={
         <Meta
-          title="Вицове и забавни котки и мемета"
-          description="Вицове и забавни котки и мемета"
+          title='Вицове и забавни котки и мемета'
+          description='Вицове и забавни котки и мемета'
         />
       }
     >
-      {type === "Jokes" && <Nav cats={cats} prefix="cat" />}
+      {type === "Jokes" && <Nav cats={cats} prefix='cat' />}
       {type === "Program" && (
-        <Program className="container flex flex-wrap items-center justify-center sm:mx-auto" />
+        <Program className='container flex flex-wrap items-center justify-center sm:mx-auto' />
       )}
       {!type && (
         <>
-          <Nav cats={cats} limit={9} prefix="cat" />
-          <div className="flex flex-wrap justify-end mb-2">
-            <MoreButton text="всички категории" type="Jokes" />
+          <Nav cats={cats} limit={9} prefix='cat' />
+          <div className='flex flex-wrap justify-end mb-2'>
+            <MoreButton text='всички категории' type='Jokes' />
           </div>
           <Program
             limit={12}
-            className="mb-2 grid crid-cols-3 xs:grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2"
+            className='mb-2 grid crid-cols-3 xs:grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2'
           />
-          <div className="flex flex-wrap justify-end">
-            <MoreButton text="Oще Memeта" type="Program" />
+          <div className='flex flex-wrap justify-end'>
+            <MoreButton text='Oще Memeта' type='Program' />
           </div>
         </>
       )}
     </Main>
   );
-}
+};
 
 export async function getStaticProps() {
-  const cats = catsdata(jokecats).sort((a, b) => b.count - a.count) as Cat[];
   return {
-    props: { cats },
+    props: { lastupdate: new Date().toISOString() },
   };
 }
+
+export default Index;

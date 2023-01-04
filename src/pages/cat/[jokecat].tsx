@@ -3,11 +3,25 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination, { getPaging, refreshToken } from "@/components/NewPagination";
 // import { getPaging } from '@/components/NewPagination';
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
-import { deslugify, jokecats } from "@/utils/formatter";
-import { Doc } from "@/data/structure";
-export default function CatPage({
+import { deslugify } from "@/utils/formatter";
+import { Doc } from "../../data/structure";
+
+const LIST_JOKES = /* GraphQL */ gql`
+  query MyQuery($cat: String!, $nextToken: String) {
+    queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
+      items {
+        id
+        joke: title
+        cat
+      }
+      nextToken
+    }
+  }
+`;
+
+const CatPage = ({
 	jokes,
 	pagenum,
 	cat,
@@ -19,7 +33,7 @@ export default function CatPage({
 	cat: string;
 	slug: string;
 	nextToken?: string;
-}) {
+}) => {
 	return (
 		<Main
 			meta={
@@ -85,30 +99,20 @@ export default function CatPage({
 			</div>
 		</Main>
 	);
-}
+};
+
+export default CatPage;
 
 export const getServerSideProps = async ({
 	query,
 }: {
 	query: { page: string; jokecat: string };
 }) => {
-	const LIST_JOKES = `
-    query MyQuery($cat: String!, $nextToken: String) {
-      queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
-        items {
-          id
-          joke: title
-          cat
-        }
-        nextToken
-      }
-    }
-  `;
 	const pagenum = Number(query.page) || 1;
 	const nextTokenCurrent = await getPaging(query.jokecat, pagenum);
 
 	const data = await doQuery(LIST_JOKES, {
-		cat: `JOK${deslugify(jokecats, query.jokecat)}`,
+		cat: `JOK${deslugify(query.jokecat)}`,
 
 		nextToken: nextTokenCurrent,
 	});
@@ -119,7 +123,7 @@ export const getServerSideProps = async ({
 		props: {
 			jokes: data.items,
 			pagenum,
-			cat: deslugify(jokecats, query.jokecat),
+			cat: deslugify(query.jokecat),
 			slug: query.jokecat,
 			nextToken: data.nextToken,
 		},

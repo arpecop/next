@@ -5,19 +5,20 @@ import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import { doQuery } from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
 import type { News } from "@/pages/news/";
 
 import { shuffle } from "lodash";
-export default function NewsItem({
+
+const NewsItem = ({
   newsbg,
   newsbg_by_pk: { title, image, parsed },
 }: {
   newsbg: News[];
   newsbg_by_pk: News;
   slug: string;
-}) {
+}): JSX.Element => {
   return (
     <Main
       hideFooter
@@ -35,13 +36,11 @@ export default function NewsItem({
           <div className="mb-6 flex items-center justify-center">
             {image && (
               <div className="mr-4 pt-2">
-                <picture>
-                  <img
-                    alt={title}
-                    className=" rounded-lg object-cover"
-                    src={image}
-                  />
-                </picture>
+                <img
+                  alt={title}
+                  className=" rounded-lg object-cover"
+                  src={image}
+                />
               </div>
             )}
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
@@ -58,14 +57,12 @@ export default function NewsItem({
           {newsbg?.map((item) => (
             <div className="joke" key={item.uid}>
               <div className="jokewrap">
-                <picture>
-                  <img
-                    alt={title}
-                    src={JSON.parse(image[0])}
-                    width={200}
-                    height={200}
-                  />
-                </picture>
+                <img
+                  alt={title}
+                  src={JSON.parse(image[0])}
+                  width={200}
+                  height={200}
+                />
               </div>
             </div>
           ))}
@@ -73,13 +70,13 @@ export default function NewsItem({
       </article>
     </Main>
   );
-}
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
   const { newsid, slug } = query as { newsid: string; slug?: string };
 
   const data = await doQuery(
-    `
+    gql`
       query MyQuery($newsid: String!) {
         getDdb(id: $newsid) {
           title
@@ -137,4 +134,5 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
   };
 };
 
+export default NewsItem;
 export const runtime = "experimental-edge";

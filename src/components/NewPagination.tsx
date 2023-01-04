@@ -1,22 +1,16 @@
 import Link from "next/link";
+import type { FC, ReactElement } from "react";
+import { ulid } from "ulidx";
 
-import { doMutation, doQuery } from "@/pages/api/graphql";
-const prefix = "v2";
+import { doMutation, doQuery, gql } from "@/pages/api/graphql";
+const prefix = "11x";
 
 interface Props {
 	pagenum: number;
 	cat: string;
 	nextToken?: string;
 }
-function numToString(num: number) {
-	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	let str = "";
-	while (num > 0) {
-		str = alphabet[num % 26] + str;
-		num = Math.floor(num / 26);
-	}
-	return str;
-}
+
 export async function refreshToken(
 	cat: string,
 	pagenum: number,
@@ -26,7 +20,8 @@ export async function refreshToken(
 		return "ok";
 	}
 	doMutation(
-		`mutation MyMutation(
+		gql`
+      mutation MyMutation(
         $joke: String = ""
         $id: String = ""
         $nid: String = ""
@@ -47,7 +42,7 @@ export async function refreshToken(
 		{
 			joke: nextToken,
 			id: `${prefix}${cat}${pagenum + 1}`,
-			nid: numToString(new Date(2222, 0, 1).getTime() - Date.now()),
+			nid: ulid(new Date(2222, 0, 1).getTime() - Date.now()),
 		}
 	);
 
@@ -56,7 +51,8 @@ export async function refreshToken(
 
 export async function getPaging(slug: string, page: number) {
 	const check = await doQuery(
-		`query MyQuery($id: String = "") {
+		gql`
+      query MyQuery($id: String = "") {
         queryDdbsByByAppCat(type: $id, first: 1) {
           items {
             id
@@ -70,7 +66,8 @@ export async function getPaging(slug: string, page: number) {
 
 	return check.items?.[0]?.joke;
 }
-export default function Pagination({ pagenum, cat, nextToken }: Props) {
+
+const Pagination: FC<Props> = ({ pagenum, cat, nextToken }): ReactElement => {
 	const prev = pagenum - 1 === 1 ? "" : pagenum - 1;
 	const lengths = [
 		"",
@@ -140,4 +137,6 @@ export default function Pagination({ pagenum, cat, nextToken }: Props) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default Pagination;
