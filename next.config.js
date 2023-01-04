@@ -5,10 +5,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-  i18n: {
-    locales: ["bg"],
-    defaultLocale: "bg",
-  },
   async rewrites() {
     return [
       {
