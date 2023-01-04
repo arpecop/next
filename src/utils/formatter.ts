@@ -77,7 +77,7 @@ export const businessdata: Cat[] = business.map((item) => {
 export function profanityFilter(title: string, character: string): string {
   let tags: string[] = [];
 
-  const words = title.split(" ");
+  const words = title.replace(/[^А-Яа-я]/g, " ").split(" ");
 
   const filteredWords = words.map((word) => {
     return badwords.includes(word.toLowerCase())
