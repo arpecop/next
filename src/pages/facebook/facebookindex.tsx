@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 
 import FacebookShare from "@/components/FacebookShare";
 import {
-	FBResult,
+	//FBResult,
 	getCookie,
 	useFacebookRandom,
 } from "@/components/hooks/facebookhook";
@@ -15,12 +15,6 @@ import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
 import { useState } from "react";
 
-import validator from "@rjsf/validator-ajv8";
-import { RJSFSchema } from "@rjsf/utils";
-import Form from "@rjsf/core";
-import { mapValues, merge } from "lodash";
-
-import { nanoid } from "nanoid";
 import FBLogin from "@/components/FacebookLogin";
 
 export type FbApp = {
@@ -32,7 +26,7 @@ export type FbApp = {
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
 	items: number;
-	schema: RJSFSchema;
+	//schema: RJSFSchema;
 	hidden?: boolean;
 };
 
@@ -59,29 +53,28 @@ const Facebook = ({
 	shareid?: string;
 	env: "prod" | "dev";
 }) => {
-	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<{
 		params: string;
 		refreshid: string;
-	}>({ params: "?", refreshid: "default" });
+	}>({ params: "", refreshid: "default" });
 
 	const [curresult, setResult] = useFacebookRandom(app);
-	const formDatax = (formd: FBResult) => {
-		const values = mapValues(formd, (val) => ({ ["default"]: val }));
-		const properties = merge(form?.properties, values);
-		const queryString = Object.keys(formd)
-			.filter((key) => formd[key].toString().length >= 1)
-			.map((key) => key + "=" + formd[key])
-			.join("&");
-
-		setForm({ ...form, properties });
-		setResult(formd);
-
-		setUrlparams({
-			refreshid: nanoid(3),
-			params: queryString ? "?" + queryString : "",
-		});
-	};
+	// 	const formDatax = (formd: any) => {
+	// 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
+	// 		const properties = merge(form?.properties, values);
+	// 		const queryString = Object.keys(formd)
+	// 			.filter((key) => formd[key].toString().length >= 1)
+	// 			.map((key) => key + "=" + formd[key])
+	// 			.join("&");
+	//
+	// 		//setForm({ ...form, properties });
+	// 		setResult(formd);
+	//
+	// 		setUrlparams({
+	// 			refreshid: nanoid(3),
+	// 			params: queryString ? "?" + queryString : "",
+	// 		});
+	// 	};
 
 	function onBeforeLoad(): Promise<string> {
 		return new Promise((resolve) => {
@@ -111,39 +104,37 @@ const Facebook = ({
 				{curresult && (
 					<ResultWrapper>
 						<div className="relative flex bg">
-							<img className="w-full h-full" src="/images/placeholderfb.png" />
-							<div className="flex absolute top-0 w-full">
+							<picture className="w-full">
 								<img
-									src={`/fbapps/${app?.slug}/back.png`}
+									className="w-full h-full"
+									src="/images/placeholderfb.png"
+								/>
+							</picture>
+							<div className="flex absolute top-0 w-full">
+								<picture className="w-full">
+									<img
+										src={`/fbapps/${app?.slug}/back.png`}
+										alt=""
+										className="w-full"
+									/>
+								</picture>
+							</div>
+							<picture className="w-full absolute top-0">
+								<img
+									src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
 									alt=""
 									className="w-full"
 								/>
-							</div>
-							<img
-								src={`/api/facebook/${app?.slug}/svg/${curresult}/res/${curresult}/${urlparams.params}`}
-								alt=""
-								className="absolute top-0 w-full"
-							/>
+							</picture>
 						</div>
 					</ResultWrapper>
 				)}
 				{!curresult && app && <LoadingResult name={app?.cat} />}
 			</div>
+			<div className="pt-1">
+				<FBLogin app={app} env={env} code={code} />
+			</div>
 
-			{app?.schema && (
-				<div
-					className={`flex justify-center items-center ${curresult ? "blur-none" : "blur-sm"
-						}`}
-				>
-					<Form
-						schema={form}
-						validator={validator}
-						onChange={(x) => formDatax(x.formData)}
-					//onChange={(x) => formData(x.formData)}
-					/>
-				</div>
-			)}
-			<FBLogin app={app} env={env} code={code} />
 			<div className="container mx-auto">
 				{app && (
 					<div>
