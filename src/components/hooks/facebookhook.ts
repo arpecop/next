@@ -18,13 +18,11 @@ export async function loadImage(imageUrl: string): Promise<void> {
 }
 export const getKasmet = async (id: string) => {
 	const get = await doQuery(
-		`
-      query MyQuery($id: String!) {
+		`query MyQuery($id: String!) {
         getDdb(id: $id) {
           data
         }
-      }
-    `,
+      }`,
 		{
 			id,
 		}

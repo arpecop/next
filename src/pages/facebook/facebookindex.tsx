@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 
 import FacebookShare from "@/components/FacebookShare";
 import {
-	FBResult,
+	//FBResult,
 	getCookie,
 	useFacebookRandom,
 } from "@/components/hooks/facebookhook";
@@ -15,9 +15,6 @@ import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
 import { useState } from "react";
 
-import { mapValues, merge } from "lodash";
-
-import { nanoid } from "nanoid";
 import FBLogin from "@/components/FacebookLogin";
 
 export type FbApp = {
@@ -29,7 +26,7 @@ export type FbApp = {
 	isLoginOptional?: boolean;
 	isLoginRequired?: boolean;
 	items: number;
-	schema: RJSFSchema;
+	//schema: RJSFSchema;
 	hidden?: boolean;
 };
 
@@ -137,12 +134,6 @@ const Facebook = ({
 			<div className="pt-1">
 				<FBLogin app={app} env={env} code={code} />
 			</div>
-			{app?.schema && (
-				<div
-					className={`flex justify-center items-center flex-col ${curresult ? "blur-none" : "blur-sm"
-						}`}
-				></div>
-			)}
 
 			<div className="container mx-auto">
 				{app && (
