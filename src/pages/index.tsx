@@ -17,7 +17,7 @@ const MoreButton = ({
   <Link
     href={{ pathname: "/", query: { type } }}
     passHref={true}
-    className='btn-primary btn-active btn dark:btn-ghost'
+    className="btn-primary btn-active btn dark:btn-ghost"
   >
     {text}
   </Link>
@@ -33,27 +33,27 @@ const Index = () => {
     <Main
       meta={
         <Meta
-          title='Вицове и забавни котки и мемета'
-          description='Вицове и забавни котки и мемета'
+          title="Вицове и забавни котки и мемета"
+          description="Вицове и забавни котки и мемета"
         />
       }
     >
-      {type === "Jokes" && <Nav cats={cats} prefix='cat' />}
+      {type === "Jokes" && <Nav cats={cats} prefix="cat" />}
       {type === "Program" && (
-        <Program className='container flex flex-wrap items-center justify-center sm:mx-auto' />
+        <Program className="container flex flex-wrap items-center justify-center sm:mx-auto" />
       )}
       {!type && (
         <>
-          <Nav cats={cats} limit={9} prefix='cat' />
-          <div className='flex flex-wrap justify-end mb-2'>
-            <MoreButton text='всички категории' type='Jokes' />
+          <Nav cats={cats} limit={9} prefix="cat" />
+          <div className="flex flex-wrap justify-end mb-2">
+            <MoreButton text="всички категории" type="Jokes" />
           </div>
           <Program
             limit={12}
-            className='mb-2 grid crid-cols-3 xs:grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2'
+            className="snap-x flex overflow-auto py-2 snap-proximity"
           />
-          <div className='flex flex-wrap justify-end'>
-            <MoreButton text='Oще Memeта' type='Program' />
+          <div className="flex flex-wrap justify-end">
+            <MoreButton text="Oще Memeта" type="Program" />
           </div>
         </>
       )}

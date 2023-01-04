@@ -76,18 +76,21 @@ const Program = ({ limit, className }: { limit?: number; className: string }) =>
 					}) => (
 						<label
 							key={id}
-							className="hover:animate-pulse"
+							className="hover:animate-pulse snap-center"
 							htmlFor="my-modal"
 							onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
 						>
 							<div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer">
-								<picture>
-									<img
-										className="rounded-lg"
-										alt="pr0gramm"
-										loading="lazy"
+								<picture className="relative">
+									<svg
 										width={128}
 										height={128}
+										xmlns="http://www.w3.org/2000/svg"
+									/>
+									<img
+										className="rounded-lg w-full h-full absolute top-0 left-0"
+										alt="pr0gramm"
+										loading="lazy"
 										src={`https://thumb.pr0gramm.com/${thumb}`}
 									/>
 								</picture>
@@ -99,9 +102,9 @@ const Program = ({ limit, className }: { limit?: number; className: string }) =>
 			<input type="checkbox" id="my-modal" className="modal-toggle" />
 			<label htmlFor="my-modal" className="modal cursor-pointer">
 				<label className="modal-box relative" htmlFor="">
-					<p className="py-4">
+					<picture className="py-4">
 						<img src={img || ""} alt="" />
-					</p>
+					</picture>
 				</label>
 			</label>
 		</div>
