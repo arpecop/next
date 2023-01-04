@@ -58,6 +58,15 @@ const nextConfig = {
       },
     ];
   },
+  exportPathMap: async function (
+    defaultPathMap,
+    {dev, dir, outDir, distDir, buildId}
+  ) {
+    return {
+      "/": {page: "/"},
+      "/other/about": {page: "/other/about"},
+    };
+  },
 };
 
 module.exports = nextConfig;
