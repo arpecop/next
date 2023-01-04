@@ -54,7 +54,7 @@ export const setCookie = (key: string, value: string) =>
 	localStorage.setItem(key, value);
 
 export function useFacebookRandom(app?: FbApp) {
-	const cookiprefix = "v2";
+	const cookiprefix = "v4";
 	const [result, setResult] = useState<number | null>(null);
 	const [mod, setMod] = useState<FBResult | null>(null);
 

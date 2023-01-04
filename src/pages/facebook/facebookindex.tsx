@@ -15,8 +15,6 @@ import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
 import { useState } from "react";
 
-import { RJSFSchema } from "@rjsf/utils";
-
 import { mapValues, merge } from "lodash";
 
 import { nanoid } from "nanoid";
@@ -58,29 +56,28 @@ const Facebook = ({
 	shareid?: string;
 	env: "prod" | "dev";
 }) => {
-	const [form, setForm] = useState<RJSFSchema>(app?.schema || {});
 	const [urlparams, setUrlparams] = useState<{
 		params: string;
 		refreshid: string;
-	}>({ params: "?", refreshid: "default" });
+	}>({ params: "", refreshid: "default" });
 
 	const [curresult, setResult] = useFacebookRandom(app);
-	const formDatax = (formd: FBResult) => {
-		const values = mapValues(formd, (val) => ({ ["default"]: val }));
-		const properties = merge(form?.properties, values);
-		const queryString = Object.keys(formd)
-			.filter((key) => formd[key].toString().length >= 1)
-			.map((key) => key + "=" + formd[key])
-			.join("&");
-
-		setForm({ ...form, properties });
-		setResult(formd);
-
-		setUrlparams({
-			refreshid: nanoid(3),
-			params: queryString ? "?" + queryString : "",
-		});
-	};
+	// 	const formDatax = (formd: any) => {
+	// 		const values = mapValues(formd, (val) => ({ ["default"]: val }));
+	// 		const properties = merge(form?.properties, values);
+	// 		const queryString = Object.keys(formd)
+	// 			.filter((key) => formd[key].toString().length >= 1)
+	// 			.map((key) => key + "=" + formd[key])
+	// 			.join("&");
+	//
+	// 		//setForm({ ...form, properties });
+	// 		setResult(formd);
+	//
+	// 		setUrlparams({
+	// 			refreshid: nanoid(3),
+	// 			params: queryString ? "?" + queryString : "",
+	// 		});
+	// 	};
 
 	function onBeforeLoad(): Promise<string> {
 		return new Promise((resolve) => {
