@@ -1,5 +1,6 @@
 import Link from "next/link";
-const Ornament = ({ className }: { className: string }) => (
+import Script from "next/script";
+const Analytics = ({ className }: { className: string }) => (
 	<div className={className}>
 		<svg
 			xmlns="http://w3.org/2000/svg"
@@ -22,6 +23,22 @@ const Ornament = ({ className }: { className: string }) => (
 				d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
 			/>
 		</svg>
+
+		<Script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-PDX6T8DTFR"
+			strategy="afterInteractive"
+		/>
+		<Script
+			id="google-analytics"
+			strategy="afterInteractive"
+			dangerouslySetInnerHTML={{
+				__html: `window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-PDX6T8DTFR');`,
+			}}
+		/>
 	</div>
 );
 
@@ -77,7 +94,7 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 				</Link>
 			</div>
 
-			<Ornament className="absolute  w-full -bottom-4" />
+			<Analytics className="absolute  w-full -bottom-4" />
 			<div className="mb-2 absolute  right-2 -bottom-4">
 				<img
 					src="/images/powered-white.png"
@@ -88,7 +105,7 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
 		</footer>
 	) : (
 		<div className="relative   py-12">
-			<Ornament className="w-full absolute z-10 bottom-0" />
+			<Analytics className="w-full absolute z-10 bottom-0" />
 			<div className="flex justify-center items-center text-xs text-gray-600 z-10   absolute w-full bottom-2 drop-shadow-md dark:text-white">
 				Copyright 2023 kloUn™ | All Rights Reserved ®
 			</div>
