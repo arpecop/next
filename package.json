@@ -9,6 +9,7 @@
     "lint": "next lint",
     "lint:fix": "eslint src --fix && npm run format",
     "format": "prettier -w .",
+    "export": "next export",
     "format:check": "prettier -c .",
     "sitemap": "next-sitemap  --config next-sitemap.config.mjs",
     "amplify-modelgen": "node amplify/scripts/amplify-modelgen.js",

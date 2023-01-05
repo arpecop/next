@@ -1,4 +1,4 @@
-name: Deploy kloun.lol
+name: Deploy eziktok.com
 on: push
 jobs:
   build:
