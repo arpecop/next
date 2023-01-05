@@ -1,7 +1,4 @@
-import {useRef, useEffect, RefObject, useState} from "react";
-import {Exclude} from "TypeScript";
-
-type NonNullableHTMLInputElement = Exclude<HTMLInputElement, null | undefined>;
+import {useRef, useEffect, LegacyRef, useState} from "react";
 
 export interface Item {
   id: number;
@@ -37,15 +34,21 @@ export interface RootObject {
 const Program = ({limit, className}: {limit?: number; className: string}) => {
   const [items, setItems] = useState<Item[]>([]);
   const [img, setImg] = useState<string | null>(null);
-  const checkboxRef: RefObject<NonNullableHTMLInputElement> = useRef(null);
+  const checkboxRef: LegacyRef<HTMLInputElement> = useRef(null);
 
   useEffect(() => {
     const handleChange = () => {
-      if (!checkboxRef.current.checked) {
-        setImg(null);
+      if (checkboxRef.current) {
+        console.log(checkboxRef.current.checked);
+        if (!checkboxRef.current.checked) {
+          setImg(null);
+        }
       }
     };
-    checkboxRef.current.addEventListener("change", handleChange);
+
+    if (checkboxRef.current) {
+      checkboxRef.current.addEventListener("change", handleChange);
+    }
     return () => {
       if (checkboxRef.current) {
         checkboxRef.current.removeEventListener("change", handleChange);
@@ -124,26 +127,32 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
         className="modal-toggle "
         ref={checkboxRef}
       />
-      <label htmlFor="my-modal" className="modal cursor-pointer">
+      {img && (
         <label
-          className="flex justify-center items-center max-w-md bg-black px-4 rounded-md z-60"
-          htmlFor=""
+          htmlFor="my-modal"
+          className="cursor-pointer fixed top-0 left-0 w-screen h-screen  z-60 flex justify-center items-center backdrop-blur-md bg-black/30"
         >
-          {img?.includes("mp4") ? (
-            <video controls autoPlay className="rounded-md h-fit my-4 z-60">
-              <source src={"https://vid.pr0gramm.com/" + img} />
-            </video>
-          ) : (
-            <picture className="z-60">
-              <img
-                src={"https://img.pr0gramm.com/" + img}
-                alt=""
-                className="rounded-md max-h-screen my-4 "
-              />
-            </picture>
-          )}
+          <div className="w-3/4  flex items-center justify-center">
+            {img?.includes("mp4") ? (
+              <video
+                controls
+                autoPlay
+                className="rounded-md   z-50 aspect-auto max-h-screen rounded-md w-auto border border-4  border-black"
+              >
+                <source src={"https://vid.pr0gramm.com/" + img} />
+              </video>
+            ) : (
+              <picture className="z-50">
+                <img
+                  src={"https://img.pr0gramm.com/" + img}
+                  alt=""
+                  className="aspect-auto max-h-screen rounded-md border border-4  border-black"
+                />
+              </picture>
+            )}
+          </div>
         </label>
-      </label>
+      )}
     </div>
   );
 };
