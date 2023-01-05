@@ -17,9 +17,6 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm run build
-          npm run export
-          rm -rf public
-          mv out public
           find public -type f -regex '.*\.\(jpg\|ttf\|woff\|webarchive\|woff2\|sketch\|gif\)' -print0 | xargs -0 touch -d '2020-01-01 00:00:00'
           rm -rf .next/cache
           rm -rf ./Applications.sketch
