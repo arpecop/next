@@ -1,4 +1,7 @@
-import React, {useEffect} from "react";
+import {useRef, useEffect, RefObject, useState} from "react";
+import {Exclude} from "TypeScript";
+
+type NonNullableHTMLInputElement = Exclude<HTMLInputElement, null | undefined>;
 
 export interface Item {
   id: number;
@@ -32,8 +35,23 @@ export interface RootObject {
 }
 
 const Program = ({limit, className}: {limit?: number; className: string}) => {
-  const [items, setItems] = React.useState<Item[]>([]);
-  const [img, setImg] = React.useState<string | null>(null);
+  const [items, setItems] = useState<Item[]>([]);
+  const [img, setImg] = useState<string | null>(null);
+  const checkboxRef: RefObject<NonNullableHTMLInputElement> = useRef(null);
+
+  useEffect(() => {
+    const handleChange = () => {
+      if (!checkboxRef.current.checked) {
+        setImg(null);
+      }
+    };
+    checkboxRef.current.addEventListener("change", handleChange);
+    return () => {
+      if (checkboxRef.current) {
+        checkboxRef.current.removeEventListener("change", handleChange);
+      }
+    };
+  }, [checkboxRef]);
   async function fetchMyAPI(older?: number) {
     const res2 = await fetch(
       `https://api.codetabs.com/v1/proxy?quest=https://pr0gramm.com/api/items/get?flags=1&promoted=1${
@@ -68,6 +86,7 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
           ({
             thumb,
             id,
+            image,
           }: {
             thumb: string;
             fullsize?: string;
@@ -79,36 +98,50 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
               key={id}
               className="hover:animate-pulse snap-center"
               htmlFor="my-modal"
-              onClick={() => setImg(`https://img.pr0gramm.com/${thumb}`)}
+              onClick={() => setImg(`${image}`)}
             >
-              <div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer relative">
+              <div
+                className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 relative m-1 cursor-pointer relative"
+                style={{minHeight: 128}}
+              >
                 <picture>
                   <img
-                    className="rounded-lg w-full"
+                    className="rounded-lg w-full h-full"
                     alt="pr0gramm"
                     loading="lazy"
                     style={{minWidth: 128}}
                     src={`https://thumb.pr0gramm.com/${thumb}`}
                   />
                 </picture>
-                <svg
-                  className="absolute"
-                  width={128}
-                  height={128}
-                  style={{minWidth: 128}}
-                  xmlns="http://www.w3.org/2000/svg"
-                />
               </div>
             </label>
           )
         )}
 
-      <input type="checkbox" id="my-modal" className="modal-toggle" />
+      <input
+        type="checkbox"
+        id="my-modal"
+        className="modal-toggle "
+        ref={checkboxRef}
+      />
       <label htmlFor="my-modal" className="modal cursor-pointer">
-        <label className="modal-box relative" htmlFor="">
-          <picture className="py-4">
-            <img src={img || ""} alt="" />
-          </picture>
+        <label
+          className="flex justify-center items-center max-w-md bg-black px-4 rounded-md z-60"
+          htmlFor=""
+        >
+          {img?.includes("mp4") ? (
+            <video controls autoPlay className="rounded-md h-fit my-4 z-60">
+              <source src={"https://vid.pr0gramm.com/" + img} />
+            </video>
+          ) : (
+            <picture className="z-60">
+              <img
+                src={"https://img.pr0gramm.com/" + img}
+                alt=""
+                className="rounded-md max-h-screen my-4 "
+              />
+            </picture>
+          )}
         </label>
       </label>
     </div>
