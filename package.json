@@ -25,14 +25,12 @@
     "next": "^13.1.1",
     "next-seo": "^5.15.0",
     "next-themes": "^0.2.1",
-    "preact": "^10.11.3",
-    "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-svg": "^15.1.17",
     "satori": "^0.0.44",
+    "stopwords-bg": "^0.3.0",
     "svgo": "^3.0.2",
-    "svgson": "^5.2.1",
-    "ulidx": "^0.3.0"
+    "svgson": "^5.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
