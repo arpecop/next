@@ -3,7 +3,6 @@
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import { TwitterFeed } from "../../data/twittertypes";
 
 type Item = {
 	id: string;
