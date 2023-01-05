@@ -1,4 +1,5 @@
 import AdItem from "@/components/ads/AdItem";
+import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 import { createSlug } from "@/components/helpers/slug";
 import Layout from "@/components/Main";
@@ -6,8 +7,6 @@ import { AdsDataSchema, AdsDataSubcat, SideBarContainer } from "@/pages/ads";
 
 import { NextApiRequest } from "next";
 import Link from "next/link";
-
-import loadStaticFile from "@/components/helpers/loadStaticFile";
 
 const CatId = ({
   keywords,
@@ -63,7 +62,7 @@ const CatId = ({
 };
 
 export const getServerSideProps = async (req: NextApiRequest) => {
-  const adsData = await loadStaticFile("adsData");
+  const adsData = await loadFetchFile("adsData");
   const data = adsData.find(
     (x) => x.slug === req.query.catid?.[0]
   ) as AdsDataSchema;
@@ -92,5 +91,7 @@ export const getServerSideProps = async (req: NextApiRequest) => {
     },
   };
 };
+
+export const runtime = "experimental-edge";
 
 export default CatId;

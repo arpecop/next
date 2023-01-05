@@ -2,8 +2,9 @@ import CatButton from "@/components/ads/CatButton";
 import Layout from "@/components/Main";
 
 import { Ad } from "src/API";
-import loadStaticFile from "@/components/helpers/loadStaticFile";
+
 import { AdsDataSchema } from "..";
+import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 const CatId = ({ data }: { data: AdsDataSchema; items: [Ad] }) => {
   return (
@@ -34,12 +35,13 @@ export const getServerSideProps = async ({
   query: { createid: string };
 }) => {
   const { createid } = query;
-  const adsData = await loadStaticFile("adsData");
+  const adsData = await loadFetchFile("adsData");
   const data = adsData.find((x) => x.slug === createid) as AdsDataSchema;
 
   return {
     props: { data },
   };
 };
+export const runtime = "experimental-edge";
 
 export default CatId;

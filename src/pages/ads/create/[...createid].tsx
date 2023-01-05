@@ -8,11 +8,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import FormInput, { onSubmit } from "@/components/forms/inputs/AllForms";
 
-import loadStaticFile from "@/components/helpers/loadStaticFile";
 import Err from "@/components/forms/Err";
 
 import { OptionalField } from "../ad/[adid]";
 import { AdsDataSchema, AdsDataSubcat, Field } from "..";
+import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 function CreatefreeAd({ data }: { data: AdsDataSubcat }) {
   const [submitted, setSubmitted] = useState(false);
@@ -142,7 +142,7 @@ export const getServerSideProps = async ({
 }: {
   query: { createid: string[] };
 }) => {
-  const adsData = (await loadStaticFile("adsData")) as {
+  const adsData = (await loadFetchFile("adsData")) as {
     name: string;
     slug: string;
     items: { name: string; slug: string; fields: Field[] }[];
@@ -155,5 +155,6 @@ export const getServerSideProps = async ({
 
   return { props: { data: subcat } };
 };
+export const runtime = "experimental-edge";
 
 export default CreatefreeAd;

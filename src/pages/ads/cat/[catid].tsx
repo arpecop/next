@@ -7,8 +7,9 @@ import Link from "next/link";
 
 import AdItem from "@/components/ads/AdItem";
 import Layout from "@/components/Main";
-import loadStaticFile from "@/components/helpers/loadStaticFile";
+
 import { Ad } from "src/API";
+import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 const CatId = ({
   data,
@@ -56,7 +57,7 @@ const CatId = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { catid } = query;
-  const adsData = await loadStaticFile("adsData");
+  const adsData = await loadFetchFile("adsData");
   const data = adsData.find((x) => x.slug === catid) as AdsDataSchema;
   const items = [] as any;
 
@@ -64,5 +65,5 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     props: { data, items, catid },
   };
 };
-
+export const runtime = "experimental-edge";
 export default CatId;

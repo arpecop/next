@@ -1,12 +1,11 @@
 import AdItem from "@/components/ads/AdItem";
 import CatButton from "@/components/ads/CatButton";
+import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 import Layout from "@/components/Main";
 
 import { GetServerSideProps } from "next";
 import { ReactNode } from "react";
-
-import loadStaticFile from "@/components/helpers/loadStaticFile";
 
 export type Field = {
   name: string;
@@ -84,7 +83,7 @@ export const AdsContainer = ({ children }: { children: ReactNode }) => (
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const adsData = await loadStaticFile("adsData");
+  const adsData = await loadFetchFile("adsData");
 
   return {
     props: {
@@ -98,3 +97,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   };
 };
+
+export const runtime = "experimental-edge";

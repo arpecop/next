@@ -2,11 +2,11 @@ import AdItem from "@/components/ads/AdItem";
 
 import { createSlug } from "@/components/helpers/slug";
 import Layout from "@/components/Main";
+import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 import { NextApiRequest } from "next";
 import { Ad } from "src/API";
 
-import loadStaticFile from "@/components/helpers/loadStaticFile";
 import { AdsContainer, AdsDataSchema, Field } from "..";
 
 const CatId = ({
@@ -41,7 +41,7 @@ const CatId = ({
 export const getServerSideProps = async (req: NextApiRequest) => {
   const reqs = req.query.keyword as string;
   const subcatid = reqs.split("_");
-  const adsData = (await loadStaticFile("adsData")) as {
+  const adsData = (await loadFetchFile("adsData")) as {
     items: { name: string; slug: string; fields: Field[] }[];
   }[];
 
@@ -76,5 +76,5 @@ export const getServerSideProps = async (req: NextApiRequest) => {
     props: { current, keywords, items },
   };
 };
-
+export const runtime = "experimental-edge";
 export default CatId;
