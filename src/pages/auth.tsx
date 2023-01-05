@@ -320,7 +320,7 @@ const AuthPage = ({ refer }: { refer: string }) => {
 
 export async function getServerSideProps({ req }: any) {
   const ref = req.headers.referer;
-  console.log(ref);
+
   if (
     !(
       ref.includes("auth") &&
