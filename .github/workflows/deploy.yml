@@ -16,8 +16,6 @@ jobs:
         run: |
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
-          npm prune
-          npm run lint:fixprod
           npm run build
           npm run export
           rm -rf public
@@ -30,12 +28,12 @@ jobs:
           rm -rf src .vscode .nova .eslitrc.js next.config.js out
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
-          git checkout --orphan build
+          git checkout --orphan eziktokbuild
           git add -A .next public -f
           git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: build
+          branch: eziktokbuild
           force: true
