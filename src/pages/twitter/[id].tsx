@@ -31,7 +31,7 @@ export type Tweet = {
 };
 
 export default function TwuserPage({tweets}: {tweets: Tweet}) {
-  const [meta, setMetas] = useState<ItemTweet[]>([]);
+  //const [meta, setMetas] = useState<ItemTweet[]>([]);
 
   return (
     <Main
@@ -112,7 +112,6 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
 
 export const getServerSideProps = async ({query}: {query: {id: string}}) => {
   const id = query.id;
-
   const data = await doQuery(
     gql`
       query MyQuery($id: String!) {
@@ -129,16 +128,25 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     }
   );
 
-  return {
-    props: {
-      tweets: {
-        description: data.description,
-        name: data.name,
-        profileImageUrl: data.profileImageUrl,
-        tweets: JSON.parse(data.tweets),
+  if (!data) {
+    const tweets = await (
+      await fetch("https://kloun.lol/api/twitter/user/?id=" + id)
+    ).json();
+    return {
+      props: {tweets},
+    };
+  } else {
+    return {
+      props: {
+        tweets: {
+          description: data.description,
+          name: data.name,
+          profileImageUrl: data.profileImageUrl,
+          tweets: JSON.parse(data.tweets),
+        },
       },
-    },
-  };
+    };
+  }
 };
 
 export const runtime = "experimental-edge";
