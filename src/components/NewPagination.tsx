@@ -8,7 +8,7 @@ interface Props {
   cat: string;
   nextToken?: string;
 }
-function numToString(num: number) {
+export function numToString(num: number) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let str = "";
   while (num > 0) {
