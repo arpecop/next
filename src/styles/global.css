@@ -35,10 +35,29 @@
     @apply m-0 p-0  bg;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
   }
+  .btn {
+    @apply bg-gray-800 dark:bg-gray-300 rounded-md flex justify-center items-center uppercase px-3 border tracking-wide;
+    min-height: 3rem;
+  }
+  .btn-group button,
+  .btn-group a {
+    @apply rounded-none;
+  }
+  .btn-group button:first-child,
+  .btn-group a:first-child {
+    @apply rounded-l-md;
+    border-right: 0px;
+  }
+  .btn-group button:last-child,
+  .btn-group a:last-child {
+    @apply rounded-r-md;
+    border-left: 0px;
+  }
 
   .btn1 {
     @apply w-full grow p-2 sm:w-1/3 md:h-1/4;
   }
+
   .btn1-count {
     @apply flex-none  rounded bg-purple-900 px-2 text-2xl font-extralight dark:bg-slate-300;
   }
