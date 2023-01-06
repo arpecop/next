@@ -121,7 +121,6 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
               <div className="h-1" />
             )}
             <div className="flex">
-              <Templatize obj={t.text} />
               {typeof t.text === "string"
                 ? t.text.split("\n").map((p, i) => (
                     <div key={i} className="pl-14 w-full">

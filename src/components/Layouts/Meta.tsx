@@ -4,7 +4,7 @@ import {NextSeo} from "next-seo";
 import {encode} from "html-entities";
 import {useRouter} from "next/router";
 import {profanityRemove} from "../../utils/formatter";
-import Script from "next/script";
+
 import Head from "next/head";
 
 type IMetaProps = {

@@ -25,6 +25,7 @@ specifiers:
   '@types/react-dom': ^18.0.10
   '@types/react-transition-group': ^4.4.5
   '@types/react-twemoji': ^0.4.0
+  '@types/stopword': ^2.0.0
   '@typescript-eslint/eslint-plugin': ^5.48.0
   '@typescript-eslint/parser': ^5.48.0
   '@vercel/og': ^0.0.21
@@ -130,6 +131,7 @@ devDependencies:
   '@types/react-dom': 18.0.10
   '@types/react-transition-group': 4.4.5
   '@types/react-twemoji': 0.4.0
+  '@types/stopword': 2.0.0
   '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
   autoprefixer: 10.4.13_postcss@8.4.20
@@ -3243,6 +3245,10 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
+    dev: true
+
+  /@types/stopword/2.0.0:
+    resolution: {integrity: sha512-R9g+FLEFzxRANryn5f2Beg7WMMopGBNI6Ghi3+8WrOZL7C063db0VuVrEpbKrML8o6sOryNN81ms9waSJITJqw==}
     dev: true
 
   /@types/tern/0.23.4:
