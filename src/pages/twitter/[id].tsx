@@ -1,13 +1,19 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-
+import {eng} from "stopword";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
-import {useState} from "react";
-import Twemoji from "react-twemoji";
+
 import {doQuery, gql} from "../api/graphql";
 
+export type Tweet = {
+  screenName: string;
+  name: string;
+  description: string;
+  profileImageUrl: string;
+  tweets: ItemTweet[];
+};
 export type ItemTweet = {
   id: string;
   text: string | {id: number; text: string}[];
@@ -22,12 +28,36 @@ export type ItemTweet = {
   } | null;
 };
 
-export type Tweet = {
-  screenName: string;
-  name: string;
-  description: string;
-  profileImageUrl: string;
-  tweets: ItemTweet[];
+function removewords(str: string) {
+  const urlRegex =
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi;
+  const stopWordRegex = new RegExp(`\\b(${eng.join("|")})\\b`, "gi");
+  const emojiRegex =
+    /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
+
+  const processedSentence = str
+    .replace(stopWordRegex, (match: string) => `start--=${match}=--end`)
+    .replace(urlRegex, (match) => `start--=${match}=--end`)
+    .replace(emojiRegex, (match) => `start--=${match}=--end`);
+  return processedSentence;
+}
+
+const Templatize = ({obj}: {obj: string | {id: number; text: string}[]}) => {
+  let str = obj;
+  if (Array.isArray(str)) {
+    str = str.map((x) => x.text).join("\n");
+  }
+  const filtered = removewords(str);
+
+  const starts = filtered.split("start--=");
+  const ends = filtered.split("=--end");
+
+  return (
+    <pre>
+      {JSON.stringify(starts, null, 2)}
+      {JSON.stringify(ends, null, 2)}
+    </pre>
+  );
 };
 
 export default function TwuserPage({tweets}: {tweets: Tweet}) {
@@ -76,7 +106,9 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
                   <picture>
                     <img
                       className="inline-block h-5 w-5 rounded-full ml-14"
-                      src={t.originalPoster.profileImageUrl}
+                      src={t.originalPoster.profileImageUrl
+                        .replace("=--end", "")
+                        .replace("start--=", "")}
                       alt=""
                     />
                   </picture>
@@ -89,19 +121,18 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
               <div className="h-1" />
             )}
             <div className="flex">
-              <Twemoji options={{className: "w-4 float-left pt-0.5 mr-1"}}>
-                {typeof t.text === "string"
-                  ? t.text.split("\n").map((p, i) => (
-                      <div key={i} className="pl-14 w-full">
-                        {p}
-                      </div>
-                    ))
-                  : t.text.map((p) => (
-                      <div key={p.id} className="pl-14 w-full">
-                        {p.text}
-                      </div>
-                    ))}
-              </Twemoji>
+              <Templatize obj={t.text} />
+              {typeof t.text === "string"
+                ? t.text.split("\n").map((p, i) => (
+                    <div key={i} className="pl-14 w-full">
+                      {p}
+                    </div>
+                  ))
+                : t.text.map((p) => (
+                    <div key={p.id} className="pl-14 w-full">
+                      {p.text}
+                    </div>
+                  ))}
             </div>
           </div>
         </div>
@@ -129,20 +160,20 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
   );
 
   if (!data) {
-    const tweets = await (
-      await fetch("https://kloun.lol/api/twitter/user/?id=" + id)
-    ).json();
+    const d = await fetch("https://kloun.lol/api/twitter/user/?id=" + id);
+    const tweets = await d.json();
     return {
       props: {tweets},
     };
   } else {
+    const stopped = removewords(data.tweets);
     return {
       props: {
         tweets: {
           description: data.description,
           name: data.name,
           profileImageUrl: data.profileImageUrl,
-          tweets: JSON.parse(data.tweets),
+          tweets: JSON.parse(stopped),
         },
       },
     };

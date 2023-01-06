@@ -5,6 +5,7 @@ import {encode} from "html-entities";
 import {useRouter} from "next/router";
 import {profanityRemove} from "../../utils/formatter";
 import Script from "next/script";
+import Head from "next/head";
 
 type IMetaProps = {
   title: string;
@@ -73,10 +74,13 @@ const Meta = (props: IMetaProps) => {
           cardType: "summary_large_image",
         }}
       />
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-      />
+      <Head>
+        <script
+          async
+          crossOrigin="anonymous"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
+        />
+      </Head>
     </>
   );
 };
