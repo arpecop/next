@@ -47,9 +47,9 @@ const Analytics = ({className}: {className: string}) => (
 //analytics
 function Footer({hideFooter}: {hideFooter?: boolean}) {
   return !hideFooter ? (
-    <footer className="flex justify-center items-center relative">
-      <div className="grid grid-cols-2 sm:grid-cols-4  pb-6 bg gap-3">
-        <div className="z-10">
+    <footer className="relative">
+      <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6  pb-6 bg gap-3 container mx-auto px-4">
+        <div className="z-10 text-sm">
           <h3 className="headingbottom">Services</h3>
 
           <Link href={"/?type=Jokes"} passHref className="block">
@@ -66,7 +66,7 @@ function Footer({hideFooter}: {hideFooter?: boolean}) {
           </Link>
         </div>
 
-        <div className="z-10">
+        <div className="z-10 text-sm text-right sm:text-left">
           <div className="headingbottom">&nbsp;</div>
           <Link href={"/movies/"} passHref className="block">
             Филми
@@ -78,8 +78,9 @@ function Footer({hideFooter}: {hideFooter?: boolean}) {
             DevOps
           </Link>
         </div>
-
-        <div className="z-10">
+        <div className="z-10 text-sm text-right sm:text-left hidden sm:block"></div>
+        <div className="z-10 text-sm text-right sm:text-left hidden md:block"></div>
+        <div className="z-10 text-sm">
           <h3 className="headingbottom">Company</h3>
           <Link href={"/other/about/"} className="block">
             За
@@ -88,7 +89,7 @@ function Footer({hideFooter}: {hideFooter?: boolean}) {
             Контакт
           </Link>
         </div>
-        <div className="z-10">
+        <div className="z-10 text-sm">
           <h3 className="headingbottom text-right">Legal</h3>
           <Link href={"/other/terms/"} passHref className="block text-right">
             Terms of use

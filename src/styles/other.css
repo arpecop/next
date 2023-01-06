@@ -1,3 +1,28 @@
+:root {
+  --primary: transparent;
+  --secondary: rgb(45, 55, 73);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+.programmindex::-webkit-scrollbar {
+  height: 10px;
+}
+
+.programmindex::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+.programmindex::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 5px;
+  border: 3px solid var(--primary);
+}
+
 .my-transition-enter {
   transform: translateX(100%);
 }

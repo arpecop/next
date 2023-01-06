@@ -50,7 +50,7 @@ const Index = () => {
           </div>
           <Program
             limit={12}
-            className="snap-x flex overflow-auto py-2 snap-proximity"
+            className="snap-x flex overflow-auto py-2 snap-proximity programmindex"
           />
           <div className="flex flex-wrap justify-end my-2">
             <MoreButton text="Oще Memeта" type="Program" />
