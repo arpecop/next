@@ -23,6 +23,7 @@
     "@vercel/og": "^0.0.21",
     "daisyui": "^2.46.1",
     "html-entities": "^2.3.3",
+    "lodash": "^4.17.21",
     "next": "^13.1.1",
     "next-seo": "^5.15.0",
     "next-themes": "^0.2.1",
@@ -35,6 +36,7 @@
     "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0",
     "stopwords-bg": "^0.3.0",
+    "svgson": "^5.2.1",
     "ulidx": "^0.3.0"
   },
   "devDependencies": {

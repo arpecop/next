@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
-import { Program } from "@/components/Program";
-import { catsdata } from "@/utils/formatter";
+import {Program} from "@/components/Program";
+import {catsdata} from "@/utils/formatter";
 
 const MoreButton = ({
   text,
@@ -15,9 +15,9 @@ const MoreButton = ({
   type: string;
 }): JSX.Element => (
   <Link
-    href={{ pathname: "/", query: { type } }}
+    href={{pathname: "/", query: {type}}}
     passHref={true}
-    className="btn-primary btn-active btn dark:btn-ghost"
+    className="btn dark:btn-ghost border-2 border"
   >
     {text}
   </Link>
@@ -26,7 +26,7 @@ const MoreButton = ({
 const Index = () => {
   const router = useRouter();
   const {
-    query: { type },
+    query: {type},
   } = router;
   const cats = catsdata.sort((a, b) => b.count - a.count);
   return (
@@ -52,7 +52,7 @@ const Index = () => {
             limit={12}
             className="snap-x flex overflow-auto py-2 snap-proximity"
           />
-          <div className="flex flex-wrap justify-end">
+          <div className="flex flex-wrap justify-end my-2">
             <MoreButton text="Oще Memeта" type="Program" />
           </div>
         </>
@@ -63,7 +63,7 @@ const Index = () => {
 
 export async function getStaticProps() {
   return {
-    props: { lastupdate: new Date().toISOString() },
+    props: {lastupdate: new Date().toISOString()},
   };
 }
 

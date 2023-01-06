@@ -69,15 +69,13 @@
   .btndisabled {
     @apply btn btn-disabled;
   }
-  .inputx {
-    @apply input input-bordered;
-  }
+
   .text-shadow-none {
     text-shadow: none;
   }
 
   .rotateswap {
-    @apply swap-rotate;
+    @apply bg-black;
   }
   .field fieldset div {
     @apply mb-2 mx-auto max-w-xs text-sm;
@@ -85,9 +83,25 @@
   .rjsf div .btn {
     @apply hidden;
   }
+  .headingbottom {
+    @apply uppercase text-lg font-light pb-2;
+  }
+}
 
-  .field fieldset div input {
-    @apply input input-bordered input-success w-full max-w-xs dark:bg-white;
+.rotate-swap {
+  /* Add other styles for the element here */
+  animation: rotate-swap 0.5s ease-in-out;
+}
+
+@keyframes rotate-swap {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(22deg);
+    opacity: 0.7;
   }
 }
 

@@ -42,6 +42,9 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
         console.log(checkboxRef.current.checked);
         if (!checkboxRef.current.checked) {
           setImg(null);
+          document.body.style.overflow = "auto";
+        } else {
+          document.body.style.overflow = "hidden";
         }
       }
     };
@@ -124,7 +127,7 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
       <input
         type="checkbox"
         id="my-modal"
-        className="modal-toggle "
+        className="invisible"
         ref={checkboxRef}
       />
       {img && (
