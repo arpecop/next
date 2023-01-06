@@ -7,7 +7,7 @@
     "start": "next start --port 3000",
     "build": "next build",
     "lint": "next lint",
-    "lint:fix": "eslint src --fix && npm run format",
+    "lint:fix": "eslint src --fix",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "sitemap": "next-sitemap  --config next-sitemap.config.mjs",
