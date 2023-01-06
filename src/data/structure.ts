@@ -29,5 +29,5 @@ export interface Data {
 }
 
 export interface Paths {
-  props: { id: string };
+  props: {id: string};
 }

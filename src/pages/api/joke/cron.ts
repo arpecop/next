@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { ulid } from "ulidx";
-import { doMutation, doQuery, gql } from "@/pages/api/graphql";
-import { fbtoken } from "../refetch";
-import { Doc } from "../../../data/structure";
+import {NextApiRequest, NextApiResponse} from "next";
+import {ulid} from "ulidx";
+import {doMutation, doQuery, gql} from "@/pages/api/graphql";
+import {fbtoken} from "../refetch";
+import {Doc} from "../../../data/structure";
 
 const id = "cronnerjokesx11";
 
@@ -18,7 +18,7 @@ async function prepare() {
         }
       }
     `,
-    { id }
+    {id}
   );
 
   const tok = data1.joke;
@@ -86,7 +86,7 @@ export default async (
   // "103340854630134" <- old one
   const datax = await res2.json();
   const jokestoken = datax.data.find(
-    (x: { id: string }) => x.id === "111266738511276"
+    (x: {id: string}) => x.id === "111266738511276"
   ).access_token as string;
 
   const rawResponse = await fetch(
@@ -107,5 +107,5 @@ export default async (
   );
   const resp = await rawResponse.json();
 
-  res.json({ child_attachments, resp });
+  res.json({child_attachments, resp});
 };

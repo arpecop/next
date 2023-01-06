@@ -52,7 +52,6 @@ const MenuNavBar = ({
             className="hidden"
             type="checkbox"
             defaultChecked
-            checked={theme === "dark"}
             onClick={() => switchTheme()}
             onChange={() => null}
           />

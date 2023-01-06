@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable prettier/prettier */
-import fetch from 'cross-fetch';
-import fs from 'fs';
-import pkg from 'lodash';
+import fetch from "cross-fetch";
+import fs from "fs";
+import pkg from "lodash";
 
-const { shuffle } = pkg;
+const {shuffle} = pkg;
 
 const urlize = (string) => {
   return `${string}`.replace(/&#\d+;/gm, (s) => {
@@ -12,14 +12,14 @@ const urlize = (string) => {
   });
 };
 
-const { chunk } = pkg;
+const {chunk} = pkg;
 
-const lastmod = '\t<lastmod>2022-07-22</lastmod>\n';
+const lastmod = "\t<lastmod>2022-07-22</lastmod>\n";
 
-fetch('http://54.247.0.27/api/rest/others/structure/sitemaps')
+fetch("http://54.247.0.27/api/rest/others/structure/sitemaps")
   .then((res) => res.json())
   .then((data) => {
-    const { jokes, news, business, jokeids } = data;
+    const {jokes, news, business, jokeids} = data;
     const jokesmap = jokes.flatMap((item) =>
       new Array(Math.round(item.count / 30))
         .fill(0)
@@ -78,7 +78,7 @@ fetch('http://54.247.0.27/api/rest/others/structure/sitemaps')
     // });
 
     fs.writeFileSync(
-      '/Users/rudix/Desktop/kloun/public/robots.txt',
+      "/Users/rudix/Desktop/kloun/public/robots.txt",
       `# *
 User-agent: *
 Allow: /
@@ -91,14 +91,14 @@ Host: https://kloun.lol
           (_, i) =>
             `Sitemap: https://kloun.lol/sitemaps/out/${i + 1}_sitemap.xml`
         )
-        .join('\n')}`
+        .join("\n")}`
     );
 
     sitemap.forEach(async (element, i) => {
       fs.writeFileSync(
         `/Users/rudix/Desktop/kloun/public/sitemaps/out/${i + 1}_sitemap.xml`,
         `<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://w3.org/1999/xhtml">\n${element.join(
-          '\n'
+          "\n"
         )}\n</urlset>`
       );
     });

@@ -1,4 +1,4 @@
-import { badwords } from "./badwords";
+import {badwords} from "./badwords";
 import business from "./data/business.json";
 import jokes from "./data/jokes.json";
 
@@ -48,7 +48,7 @@ export function slugify(string: string) {
     э: "e",
     ю: "iu",
     я: "ia",
-  } as { [key: string]: string };
+  } as {[key: string]: string};
   // Replace spaces with dashes
   slug = Array.from(slug)
     .map((ch) => CYRILLIC_TO_LATIN_MAP[ch.toLowerCase()] || ch)

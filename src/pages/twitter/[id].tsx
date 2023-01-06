@@ -4,6 +4,7 @@
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
+import {useState} from "react";
 import Twemoji from "react-twemoji";
 import {doQuery, gql} from "../api/graphql";
 
@@ -30,6 +31,8 @@ export type Tweet = {
 };
 
 export default function TwuserPage({tweets}: {tweets: Tweet}) {
+  const [meta, setMetas] = useState<ItemTweet[]>([]);
+
   return (
     <Main
       hideFooter
@@ -107,16 +110,8 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
   );
 }
 
-export const getServerSideProps = async ({
-  req,
-  query,
-}: {
-  req: any;
-  query: {id: string};
-}) => {
+export const getServerSideProps = async ({query}: {query: {id: string}}) => {
   const id = query.id;
-  const isServer = !!req;
-  console.log(isServer);
 
   const data = await doQuery(
     gql`

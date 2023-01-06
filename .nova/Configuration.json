@@ -1,7 +1,4 @@
 {
-  "index.ignored_file_patterns" : [
-    "public",
-    "node_modules"
-  ],
-  "workspace.color" : 14
+  "index.ignored_file_patterns": ["public", "node_modules"],
+  "workspace.color": 14
 }

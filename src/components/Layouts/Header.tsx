@@ -42,7 +42,6 @@ export default function Header() {
           <input
             type="checkbox"
             className="hidden"
-            defaultChecked
             checked={menu}
             onChange={() => null}
             onClick={() => setMenu(!menu)}

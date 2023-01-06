@@ -15,7 +15,7 @@ module.exports = {
     "no-console": "error",
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
-    "no-multiple-empty-lines": ["error", { max: 0 }],
+    "no-multiple-empty-lines": ["error", {max: 0}],
     "unused-imports/no-unused-vars": [
       "warn",
       {
