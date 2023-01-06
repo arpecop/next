@@ -1,6 +1,6 @@
 import {AppConfig} from "@/utils/AppConfig";
 import {NextSeo} from "next-seo";
-import Head from "next/head";
+//import Head from "next/head";
 import {encode} from "html-entities";
 import {useRouter} from "next/router";
 import {profanityRemove} from "../../utils/formatter";
