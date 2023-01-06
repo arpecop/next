@@ -70,7 +70,7 @@ export async function getPaging(slug: string, page: number) {
     {id: `${prefix}${slug}${page}`}
   );
 
-  return check.items[0].joke;
+  return check.items?.[0]?.joke;
 }
 export default function Pagination({pagenum, cat, nextToken}: Props) {
   const prev = pagenum - 1 === 1 ? "" : pagenum - 1;
