@@ -4,7 +4,7 @@ import {eng} from "stopword";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
-
+import {decode} from "html-entities";
 import {doQuery, gql} from "../api/graphql";
 
 export type Tweet = {
@@ -31,11 +31,19 @@ export type ItemTweet = {
 function removewords(str: string) {
   const urlRegex =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi;
+  const userRegex = /@[a-zA-Z]*/g;
+  const hashTags = /#[a-zA-Z]*/g;
+  const expressions = /\b’[a-zA-Z]+\b/gi;
   const stopWordRegex = new RegExp(`\\b(${eng.join("|")})\\b`, "gi");
   //const emojiRegex = /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
   //.replace(emojiRegex, (match) => `--=${match}=--`);
-  const processedSentence = str
+
+  const processedSentence = decode(str)
+    .replace(expressions, (match: string) => `--=${match}=--`)
     .replace(stopWordRegex, (match: string) => `--=${match}=--`)
+    .replace(hashTags, (match: string) => `--=${match}=--`)
+
+    .replace(userRegex, (match: string) => `--=${match}=--`)
     .replace(urlRegex, (match) => `--=${match}=--`);
 
   return processedSentence;
@@ -44,9 +52,7 @@ function removewords(str: string) {
 function templatizeline(str: string) {
   const filtered = removewords(str);
   const keywordRegex = /--=(.*?)=--/g;
-
   const substrings = filtered.split(keywordRegex);
-
   const keywordMatch = filtered
     .match(keywordRegex)
     ?.map((x) => x.replace("--=", "").replace("=--", ""));
@@ -71,7 +77,7 @@ const TemplatizeElement = ({
         {substrings.map((substring, index) => {
           if (keywordMatch?.includes(substring)) {
             return (
-              <NoSSR key={index + "" + i}>
+              <NoSSR key={index}>
                 <span className={"pseudo" + normalizestr(substring)} />
               </NoSSR>
             );
@@ -85,13 +91,20 @@ const TemplatizeElement = ({
   return <>{jsx}</>;
 };
 function normalizestr(str: string) {
-  return str.replaceAll("/", "").replaceAll(".", "").replaceAll(":", "");
+  return str
+    .replace("@", "")
+    .replaceAll("'", "")
+    .replaceAll("/", "")
+    .replaceAll(".", "")
+    .replaceAll(":", "");
 }
 
 export default function TwuserPage({
   tweets,
   cssx,
+  username,
 }: {
+  username: string;
   tweets: Tweet;
   cssx: string;
 }) {
@@ -101,7 +114,10 @@ export default function TwuserPage({
     <Main
       hideFooter
       meta={
-        <Meta title={tweets.description} description={tweets.description} />
+        <Meta
+          title={`${username} public tweets on twitter`}
+          description={tweets.description}
+        />
       }
     >
       {tweets.tweets.map((t) => (
@@ -185,18 +201,19 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
       id: id + "_tw",
     }
   );
+  const cssx = templatizeline(data.tweets)
+    .keywordMatch?.map(
+      (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
+    )
+    .join("\n");
 
   return {
     props: {
-      cssx: templatizeline(data.tweets)
-        .keywordMatch?.map(
-          (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
-        )
-        .join("\n"),
+      cssx,
+      username: id,
       tweets: {
         description: data.description,
         name: data.name,
-
         profileImageUrl: data.profileImageUrl,
         tweets: JSON.parse(data.tweets),
       },
