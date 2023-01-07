@@ -32,13 +32,12 @@ function removewords(str: string) {
   const urlRegex =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi;
   const stopWordRegex = new RegExp(`\\b(${eng.join("|")})\\b`, "gi");
-  const emojiRegex =
-    /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
-
+  //const emojiRegex = /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
+  //.replace(emojiRegex, (match) => `--=${match}=--`);
   const processedSentence = str
     .replace(stopWordRegex, (match: string) => `--=${match}=--`)
-    .replace(urlRegex, (match) => `--=${match}=--`)
-    .replace(emojiRegex, (match) => `--=${match}=--`);
+    .replace(urlRegex, (match) => `--=${match}=--`);
+
   return processedSentence;
 }
 
@@ -55,7 +54,7 @@ function templatizeline(str: string) {
   return {substrings, keywordMatch};
 }
 
-const Templatize = ({
+const TemplatizeElement = ({
   obj,
 }: {
   obj: string | {id: number; text: string}[];
@@ -65,14 +64,17 @@ const Templatize = ({
     str = str.map((x) => x.text).join("\n");
   }
   const lines = str.split("\n").map((line) => templatizeline(line));
-  console.log(lines);
 
   const jsx = lines.map(({substrings, keywordMatch}, i) => {
     return (
       <p key={i} className="ml-14">
         {substrings.map((substring, index) => {
           if (keywordMatch?.includes(substring)) {
-            return <NoSSR key={index}>{substring}</NoSSR>;
+            return (
+              <NoSSR key={index + "" + i}>
+                <span className={"pseudo" + normalizestr(substring)} />
+              </NoSSR>
+            );
           }
           return substring;
         })}
@@ -82,8 +84,17 @@ const Templatize = ({
 
   return <>{jsx}</>;
 };
+function normalizestr(str: string) {
+  return str.replaceAll("/", "").replaceAll(".", "").replaceAll(":", "");
+}
 
-export default function TwuserPage({tweets}: {tweets: Tweet}) {
+export default function TwuserPage({
+  tweets,
+  cssx,
+}: {
+  tweets: Tweet;
+  cssx: string;
+}) {
   //const [meta, setMetas] = useState<ItemTweet[]>([]);
 
   return (
@@ -145,11 +156,14 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
               </a>
             )}
             <div className="flex flex-col">
-              <Templatize obj={t.text} />
+              <TemplatizeElement obj={t.text} />
             </div>
           </div>
         </div>
       ))}
+      <NoSSR>
+        <style dangerouslySetInnerHTML={{__html: cssx}} />
+      </NoSSR>
     </Main>
   );
 }
@@ -174,9 +188,15 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
 
   return {
     props: {
+      cssx: templatizeline(data.tweets)
+        .keywordMatch?.map(
+          (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
+        )
+        .join("\n"),
       tweets: {
         description: data.description,
         name: data.name,
+
         profileImageUrl: data.profileImageUrl,
         tweets: JSON.parse(data.tweets),
       },

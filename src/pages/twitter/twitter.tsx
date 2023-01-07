@@ -47,7 +47,7 @@ const Index = ({
         {twusers.map((user) => (
           <li key={user.id} className="m-1">
             <a
-              href={`/tw/u/${user.id.replace("_tw", "").toLowerCase()}`}
+              href={`/tw/u/${user.id.replace("_tw", "")}`}
               className="active flex gap-4 bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900"
             >
               {user.id.replace("_tw", "")}
