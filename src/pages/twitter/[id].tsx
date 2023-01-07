@@ -36,28 +36,51 @@ function removewords(str: string) {
     /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
 
   const processedSentence = str
-    .replace(stopWordRegex, (match: string) => `start--=${match}=--end`)
-    .replace(urlRegex, (match) => `start--=${match}=--end`)
-    .replace(emojiRegex, (match) => `start--=${match}=--end`);
+    .replace(stopWordRegex, (match: string) => `--=${match}=--`)
+    .replace(urlRegex, (match) => `--=${match}=--`)
+    .replace(emojiRegex, (match) => `--=${match}=--`);
   return processedSentence;
 }
 
-const Templatize = ({obj}: {obj: string | {id: number; text: string}[]}) => {
+function templatizeline(str: string) {
+  const filtered = removewords(str);
+  const keywordRegex = /--=(.*?)=--/g;
+
+  const substrings = filtered.split(keywordRegex);
+
+  const keywordMatch = filtered
+    .match(keywordRegex)
+    ?.map((x) => x.replace("--=", "").replace("=--", ""));
+
+  return {substrings, keywordMatch};
+}
+
+const Templatize = ({
+  obj,
+}: {
+  obj: string | {id: number; text: string}[];
+}): JSX.Element => {
   let str = obj;
   if (Array.isArray(str)) {
     str = str.map((x) => x.text).join("\n");
   }
-  const filtered = removewords(str);
+  const lines = str.split("\n").map((line) => templatizeline(line));
+  console.log(lines);
 
-  const starts = filtered.split("start--=");
-  const ends = filtered.split("=--end");
+  const jsx = lines.map(({substrings, keywordMatch}, i) => {
+    return (
+      <p key={i} className="ml-14">
+        {substrings.map((substring, index) => {
+          if (keywordMatch?.includes(substring)) {
+            return <NoSSR key={index}>{substring}</NoSSR>;
+          }
+          return substring;
+        })}
+      </p>
+    );
+  });
 
-  return (
-    <pre>
-      {JSON.stringify(starts, null, 2)}
-      {JSON.stringify(ends, null, 2)}
-    </pre>
-  );
+  return <>{jsx}</>;
 };
 
 export default function TwuserPage({tweets}: {tweets: Tweet}) {
@@ -71,9 +94,12 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
       }
     >
       {tweets.tweets.map((t) => (
-        <div key={t.id}>
+        <div
+          key={t.id}
+          className="bg-gray-800 dark:bg-white mb-2 rounded-md border boder-1 dark:border-gray-500 pb-2"
+        >
           <NoSSR>
-            <div className="flex flex-shrink-0 p-4 pb-0">
+            <div className="flex flex-shrink-0 p-2 pb-0">
               <div className="flex-shrink-0 group block">
                 <div className="flex items-center">
                   <picture>
@@ -97,7 +123,7 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
             </div>
           </NoSSR>
           <div>
-            {t.originalPoster ? (
+            {t.originalPoster && (
               <a
                 className="flex  items-center"
                 href={"/tw/u/" + t.originalPoster.screenName}
@@ -107,8 +133,8 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
                     <img
                       className="inline-block h-5 w-5 rounded-full ml-14"
                       src={t.originalPoster.profileImageUrl
-                        .replace("=--end", "")
-                        .replace("start--=", "")}
+                        .replace("=--", "")
+                        .replace("--=", "")}
                       alt=""
                     />
                   </picture>
@@ -117,21 +143,9 @@ export default function TwuserPage({tweets}: {tweets: Tweet}) {
                   {t.originalPoster.screenName} :
                 </div>
               </a>
-            ) : (
-              <div className="h-1" />
             )}
-            <div className="flex">
-              {typeof t.text === "string"
-                ? t.text.split("\n").map((p, i) => (
-                    <div key={i} className="pl-14 w-full">
-                      {p}
-                    </div>
-                  ))
-                : t.text.map((p) => (
-                    <div key={p.id} className="pl-14 w-full">
-                      {p.text}
-                    </div>
-                  ))}
+            <div className="flex flex-col">
+              <Templatize obj={t.text} />
             </div>
           </div>
         </div>
@@ -158,25 +172,16 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     }
   );
 
-  if (!data) {
-    const d = await fetch("https://kloun.lol/api/twitter/user/?id=" + id);
-    const tweets = await d.json();
-    return {
-      props: {tweets},
-    };
-  } else {
-    const stopped = removewords(data.tweets);
-    return {
-      props: {
-        tweets: {
-          description: data.description,
-          name: data.name,
-          profileImageUrl: data.profileImageUrl,
-          tweets: JSON.parse(stopped),
-        },
+  return {
+    props: {
+      tweets: {
+        description: data.description,
+        name: data.name,
+        profileImageUrl: data.profileImageUrl,
+        tweets: JSON.parse(data.tweets),
       },
-    };
-  }
+    },
+  };
 };
 
 export const runtime = "experimental-edge";
