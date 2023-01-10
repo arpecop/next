@@ -7,7 +7,7 @@ import {shuffle} from "lodash";
 import {profanityRemove} from "@/utils/formatter";
 import {numToString} from "@/components/NewPagination";
 
-const id = "crommercheim";
+export const cronidjokes = "crommercheim";
 
 async function prepare() {
   const data1 = await doQuery(
@@ -22,7 +22,7 @@ async function prepare() {
         }
       }
     `,
-    {id}
+    {id: cronidjokes}
   );
 
   const tok = data1.items[0].joke;
@@ -61,7 +61,7 @@ async function prepare() {
     `,
     {
       joke: data.nextToken,
-      id,
+      id: cronidjokes,
       nid: numToString(new Date(2222, 0, 1).getTime() - Date.now()),
     }
   );

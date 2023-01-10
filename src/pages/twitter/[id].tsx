@@ -4,7 +4,7 @@ import {eng} from "stopword";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
-import {decode} from "html-entities";
+
 import {doQuery, gql} from "../api/graphql";
 
 export type Tweet = {
@@ -34,15 +34,16 @@ function removewords(str: string) {
   const userRegex = /@[a-zA-Z]*/g;
   const hashTags = /#[a-zA-Z]*/g;
   const expressions = /\b’[a-zA-Z]+\b/gi;
+  const expressions2 = /\b'[a-zA-Z]+\b/gi;
   const stopWordRegex = new RegExp(`\\b(${eng.join("|")})\\b`, "gi");
   //const emojiRegex = /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
   //.replace(emojiRegex, (match) => `--=${match}=--`);
 
-  const processedSentence = decode(str)
+  const processedSentence = str
     .replace(expressions, (match: string) => `--=${match}=--`)
+    .replace(expressions2, (match: string) => `--=${match}=--`)
     .replace(stopWordRegex, (match: string) => `--=${match}=--`)
     .replace(hashTags, (match: string) => `--=${match}=--`)
-
     .replace(userRegex, (match: string) => `--=${match}=--`)
     .replace(urlRegex, (match) => `--=${match}=--`);
 

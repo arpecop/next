@@ -17,6 +17,7 @@ import {doQuery, gql} from "@/pages/api/graphql";
 import FacebookShare from "@/components/FacebookShare";
 import {chunk, shuffle} from "lodash";
 import {Doc} from "../../data/structure";
+import {cronidjokes} from "../api/joke/cron";
 
 const SingleJoke = (props: {
   joke: Doc;
@@ -117,7 +118,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
         }
       }
     `,
-    {id: "cronnerjokesx11"}
+    {id: cronidjokes}
   );
   const nextToken = datatoken.items?.[0]?.joke;
   const data = await doQuery(
