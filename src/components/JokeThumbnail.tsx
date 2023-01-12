@@ -21,10 +21,9 @@ const JokeThumbnail = ({item, showcats, short, hideReadMore}: Props) => {
   const [expandedJoke, setexpandedJoke] = useState<string>("");
   useEffect(() => {
     const getjoke = async () => {
-      console.log(id);
       const d1 = await fetch("/api/data/db/" + id);
       const d = await d1.json();
-      console.log(d);
+
       setexpandedJoke(d.title);
     };
     if (popup) {

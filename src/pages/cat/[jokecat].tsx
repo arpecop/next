@@ -126,7 +126,6 @@ export const getServerSideProps = async ({
   query: {page: string; jokecat: string};
 }) => {
   const pagenum = Number(query.page) || 1;
-  console.log(pagenum * 30 - 30);
 
   const data = await db.view("joke/cat", {
     key: `JOK${deslugify(query.jokecat)}`,

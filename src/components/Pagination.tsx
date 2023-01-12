@@ -12,7 +12,6 @@ function makeArray({
   currentPage: number;
 }) {
   const middle = Math.floor(pagesToShow / 2);
-  console.log(middle);
 
   let startIndex = currentPage - middle;
   let endIndex = currentPage + middle;
