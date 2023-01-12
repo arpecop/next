@@ -4,7 +4,6 @@ import {FormatJoke} from "@/components/JokeText";
 
 import type {Doc} from "../data/structure";
 import FacebookShare from "./FacebookShare";
-import db from "@/data/client";
 
 interface Props {
   item: Doc;
