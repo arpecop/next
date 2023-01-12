@@ -6,6 +6,7 @@ import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
 
 import {doQuery, gql} from "../api/graphql";
+import db from "@/data/client";
 
 export type Tweet = {
   screenName: string;
@@ -187,22 +188,8 @@ export default function TwuserPage({
 
 export const getServerSideProps = async ({query}: {query: {id: string}}) => {
   const id = query.id;
-  const data = await doQuery(
-    gql`
-      query MyQuery($id: String!) {
-        getDdb(id: $id) {
-          description
-          name
-          profileImageUrl
-          tweets
-        }
-      }
-    `,
-    {
-      id: id + "_tw",
-    }
-  );
-  const cssx = templatizeline(data.tweets)
+  const data = await db.get(id + "_tw");
+  const cssx = templatizeline(JSON.stringify(data.tweets))
     .keywordMatch?.map(
       (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
     )
@@ -216,7 +203,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
         description: data.description,
         name: data.name,
         profileImageUrl: data.profileImageUrl,
-        tweets: JSON.parse(data.tweets),
+        tweets: data.tweets,
       },
     },
   };

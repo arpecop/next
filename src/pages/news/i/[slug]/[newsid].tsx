@@ -10,6 +10,7 @@ import {doQuery, gql} from "@/pages/api/graphql";
 import type {News} from "@/pages/news/";
 
 import {shuffle} from "lodash";
+import db from "@/data/client";
 
 const NewsItem = ({
   newsbg,
@@ -75,26 +76,9 @@ const NewsItem = ({
 export const getServerSideProps: GetServerSideProps = async ({req, query}) => {
   const {newsid, slug} = query as {newsid: string; slug?: string};
 
-  const data = await doQuery(
-    gql`
-      query MyQuery($newsid: String!) {
-        getDdb(id: $newsid) {
-          title
-          data
-          image
-          content
-          id
-        }
-      }
-    `,
-    {
-      newsid,
-    }
-  );
+  const data = await db.get(newsid);
 
-  // const content = data.content.length > 30 ? JSON.parse(data.content) : {};
-
-  const content = JSON.parse(JSON.parse(data?.content)) as {
+  const content = JSON.parse(data?.content) as {
     description: null;
     html: string[];
   };

@@ -1,14 +1,15 @@
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import Pagination, {getPaging, refreshToken} from "@/components/NewPagination";
+
 import NewsThumbnail from "@/components/NewsThumbnail";
-import {doQuery, gql} from "@/pages/api/graphql";
+import Pagination from "@/components/Pagination";
+import db from "@/data/client";
 
 export type News = {
   title: string;
   image: string;
   nid: string;
-  uid: string;
+  id: string;
   description?: string;
   parsed?: {html: string[]; description?: string};
   content: string;
@@ -18,10 +19,10 @@ export type RootNewsProps = {
   newsbg: News[];
   pagenum: number;
   newsbg_by_pk?: News;
-  nextToken?: string;
+  items: number;
 };
 
-const Index = ({newsbg, pagenum, nextToken}: RootNewsProps): JSX.Element => {
+const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
   return (
     <Main meta={<Meta title={"Новини"} description="Новини" />}>
       <div className="my-10 flex w-full flex-col">
@@ -36,8 +37,8 @@ const Index = ({newsbg, pagenum, nextToken}: RootNewsProps): JSX.Element => {
               data-ad-slot="1374619867"
             />
           </div>
-          {newsbg.map(({uid, title, image}) => (
-            <NewsThumbnail uid={uid} title={title} image={image} key={uid} />
+          {newsbg.map(({id, title, image}) => (
+            <NewsThumbnail uid={id} title={title} image={image} key={id} />
           ))}
           <div className="w-full joke">
             <ins
@@ -49,42 +50,37 @@ const Index = ({newsbg, pagenum, nextToken}: RootNewsProps): JSX.Element => {
               data-ad-slot="1374619867"
             />
           </div>
-
-          <Pagination pagenum={pagenum} cat="/news/" nextToken={nextToken} />
         </div>
       </div>
+      <Pagination
+        items={items}
+        currentPage={pagenum}
+        pageSize={30}
+        prefix={`/news/`}
+      />
     </Main>
   );
 };
 
 export const getServerSideProps = async (context: {query: {page?: string}}) => {
   const pagenum = context.query.page ? Number(context.query.page) : 1;
-  const nextTokenCurrent = await getPaging("newsbg", pagenum);
+  const agregate = await db.view("newsbg/news", {
+    update: false,
+  });
 
-  const data = await doQuery(
-    gql`
-      query MyQuery($cat: String = "NewsBG", $nextToken: String) {
-        queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
-          items {
-            uid: id
-            title
-            image
-          }
-          nextToken
-        }
-      }
-    `,
-    {
-      nextToken: nextTokenCurrent,
-    }
-  );
-  await refreshToken("newsbg", pagenum, data.nextToken);
+  const data = await db.view("newsbg/news", {
+    reduce: false,
+    limit: 30,
+    skip: pagenum * 30 - 30,
+    update: false,
+  });
+  console.log(data);
 
   return {
     props: {
-      newsbg: data.items,
-      nextToken: data.nextToken,
+      newsbg: data.rows,
       pagenum,
+      items: Number(agregate.value),
     },
   };
 };

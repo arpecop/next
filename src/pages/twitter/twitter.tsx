@@ -3,10 +3,10 @@
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
+import Pagination from "@/components/Pagination";
 
-import Pagination, {getPaging, refreshToken} from "@/components/NewPagination";
 import db from "@/data/client";
-import {doQuery, gql} from "@/pages/api/graphql";
+
 import {shuffle} from "lodash";
 
 export type User = {
@@ -15,11 +15,11 @@ export type User = {
 const Index = ({
   twusers,
   pagenum,
-  nextToken,
+  items,
 }: {
   twusers: User[];
   pagenum: number;
-  nextToken?: string;
+  items: number;
 }): JSX.Element => {
   return (
     <Main
@@ -56,7 +56,12 @@ const Index = ({
           </li>
         ))}
       </ul>
-      <Pagination pagenum={pagenum} cat="/tw/" nextToken={nextToken} />
+      <Pagination
+        items={items}
+        currentPage={pagenum}
+        pageSize={120}
+        prefix={`/tw/`}
+      />
     </Main>
   );
 };
@@ -67,32 +72,19 @@ export const getServerSideProps = async ({
   query: {page: string; jokecat: string};
 }) => {
   const pagenum = Number(query.page) || 1;
-  const nextTokenCurrent = await getPaging(query.jokecat, pagenum);
 
-  const data = await doQuery(
-    gql`
-      query MyQuery($nextToken: String = "") {
-        queryDdbsByByLetter(type: "Twuser2", first: 150, after: $nextToken) {
-          nextToken
-          items {
-            id
-          }
-        }
-      }
-    `,
-    {
-      nextToken: nextTokenCurrent,
-    }
-  );
-
-  db.view("twitter/byletter", {limit: 120, reduce: false});
-
-  await refreshToken(query.jokecat, pagenum, data.nextToken);
+  const data = await db.view("twitter/byletter", {
+    limit: 120,
+    reduce: false,
+    update: false,
+    skip: pagenum * 120 - 120,
+  });
+  console.log(data);
 
   return {
     props: {
-      twusers: data.items,
-      nextToken: data.nextToken,
+      twusers: data.rows,
+      items: data.total_rows,
       pagenum,
     },
   };
