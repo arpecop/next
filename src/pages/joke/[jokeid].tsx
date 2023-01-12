@@ -20,8 +20,8 @@ import db from "@/data/client";
 
 const SingleJoke = (props: {
   joke: Doc;
-  items?: [Doc[], Doc[], Doc[]];
-  cats: [Cat[], Cat[]];
+  items: [Doc[], Doc[], Doc[]];
+  cats: [Cat[], Cat[], Cat[]];
 }): JSX.Element => {
   // яжте ми хуя сИга!
   return (
@@ -48,57 +48,88 @@ const SingleJoke = (props: {
         </div>
       </div>
 
-      {props.items?.[0] && (
-        <>
-          <div className="-m-2 flex flex-wrap">
-            <article className="joke">
-              <div className="jokewrap">
-                <ins
-                  className="adsbygoogle"
-                  style={{display: "block", textAlign: "center"}}
-                  data-ad-layout="in-article"
-                  data-ad-format="fluid"
-                  data-ad-client="ca-pub-5476404733919333"
-                  data-ad-slot="1374619867"
-                />
-              </div>
-            </article>
-            {props.items?.[0].map((item): JSX.Element => {
-              return (
-                <JokeThumbnail
-                  item={item}
-                  key={item.id}
-                  showcats={true}
-                  short={true}
-                />
-              );
-            })}
+      <div className="-m-2 flex flex-wrap">
+        <article className="joke">
+          <div className="jokewrap">
+            <ins
+              className="adsbygoogle"
+              style={{display: "block", textAlign: "center"}}
+              data-ad-layout="in-article"
+              data-ad-format="fluid"
+              data-ad-client="ca-pub-5476404733919333"
+              data-ad-slot="1374619867"
+            />
           </div>
-          <ins
-            className="adsbygoogle"
-            style={{display: "block", textAlign: "center"}}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="1374619867"
-          />
-          <Nav cats={props.cats[1]} prefix="cat" />
-          <div className="-m-2 flex flex-wrap">
-            <article className="joke">
-              <div className="jokewrap">
-                <ins
-                  className="adsbygoogle"
-                  style={{display: "block", textAlign: "center"}}
-                  data-ad-layout="in-article"
-                  data-ad-format="fluid"
-                  data-ad-client="ca-pub-5476404733919333"
-                  data-ad-slot="1374619867"
-                />
-              </div>
-            </article>
+        </article>
+        {props.items[0].map((item): JSX.Element => {
+          return (
+            <JokeThumbnail
+              item={item}
+              key={item.id}
+              showcats={true}
+              short={true}
+            />
+          );
+        })}
+      </div>
+      <ins
+        className="adsbygoogle"
+        style={{display: "block", textAlign: "center"}}
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-5476404733919333"
+        data-ad-slot="1374619867"
+      />
+      <Nav cats={props.cats[1]} prefix="cat" />
+      <div className="-m-2 flex flex-wrap">
+        <article className="joke">
+          <div className="jokewrap">
+            <ins
+              className="adsbygoogle"
+              style={{display: "block", textAlign: "center"}}
+              data-ad-layout="in-article"
+              data-ad-format="fluid"
+              data-ad-client="ca-pub-5476404733919333"
+              data-ad-slot="1374619867"
+            />
           </div>
-        </>
-      )}
+        </article>
+        {props.items[1].map((item): JSX.Element => {
+          return (
+            <JokeThumbnail
+              item={item}
+              key={item.id}
+              showcats={true}
+              short={true}
+            />
+          );
+        })}
+      </div>
+      <Nav cats={props.cats[2]} prefix="cat" />
+      <div className="-m-2 flex flex-wrap">
+        <article className="joke">
+          <div className="jokewrap">
+            <ins
+              className="adsbygoogle"
+              style={{display: "block", textAlign: "center"}}
+              data-ad-layout="in-article"
+              data-ad-format="fluid"
+              data-ad-client="ca-pub-5476404733919333"
+              data-ad-slot="1374619867"
+            />
+          </div>
+        </article>
+        {props.items[2].map((item): JSX.Element => {
+          return (
+            <JokeThumbnail
+              item={item}
+              key={item.id}
+              showcats={true}
+              short={true}
+            />
+          );
+        })}
+      </div>
     </Main>
   );
 };
