@@ -1,9 +1,10 @@
-import {MouseEvent, useState} from "react";
+import {MouseEvent, useEffect, useState} from "react";
 
 import {FormatJoke} from "@/components/JokeText";
 
 import type {Doc} from "../data/structure";
 import FacebookShare from "./FacebookShare";
+import db from "@/data/client";
 
 interface Props {
   item: Doc;
@@ -15,9 +16,22 @@ interface Props {
 }
 
 const JokeThumbnail = ({item, showcats, short, hideReadMore}: Props) => {
-  const {joke, cat} = item;
+  const {joke, cat, id} = item;
   const jlen = joke.length <= 150;
   const [popup, setPopup] = useState(false);
+  const [expandedJoke, setexpandedJoke] = useState<string>("");
+  useEffect(() => {
+    const getjoke = async () => {
+      console.log(id);
+      const d1 = await fetch("/api/data/db/" + id);
+      const d = await d1.json();
+      console.log(d);
+      setexpandedJoke(d.title);
+    };
+    if (popup) {
+      getjoke();
+    }
+  }, [popup]);
 
   return (
     <article className="joke relative">
@@ -32,7 +46,7 @@ const JokeThumbnail = ({item, showcats, short, hideReadMore}: Props) => {
       {popup && (
         <div className="fixed inset-0 flex items-center justify-center bg z-20 overflow-auto">
           <div className="max-w-md">
-            <FormatJoke joke={item.joke} />
+            <FormatJoke joke={expandedJoke} />
             <div className="btn-group">
               <FacebookShare
                 id={`https://kloun.lol/joke/${item.id}`}

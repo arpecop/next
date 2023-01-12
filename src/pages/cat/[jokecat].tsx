@@ -1,38 +1,26 @@
 import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import Pagination, {getPaging, refreshToken} from "@/components/NewPagination";
+import Pagination from "@/components/Pagination";
+
+import db from "@/data/client";
 // import { getPaging } from '@/components/NewPagination';
-import {doQuery, gql} from "@/pages/api/graphql";
 
 import {deslugify} from "@/utils/formatter";
 import {Doc} from "../../data/structure";
-
-const LIST_JOKES = /* GraphQL */ gql`
-  query MyQuery($cat: String!, $nextToken: String) {
-    queryDdbsByByCat(cat: $cat, first: 30, after: $nextToken) {
-      items {
-        id
-        joke: title
-        cat
-      }
-      nextToken
-    }
-  }
-`;
 
 const CatPage = ({
   jokes,
   pagenum,
   cat,
   slug,
-  nextToken,
+  items,
 }: {
   jokes: Doc[];
   pagenum: number;
   cat: string;
   slug: string;
-  nextToken?: string;
+  items: number;
 }) => {
   return (
     <Main
@@ -86,9 +74,10 @@ const CatPage = ({
       </div>
 
       <Pagination
-        pagenum={pagenum}
-        cat={`/cat/${slug}/`}
-        nextToken={nextToken}
+        items={items}
+        currentPage={pagenum}
+        pageSize={30}
+        prefix={`/cat/${slug}/`}
       />
 
       <div className="flex flex-wrap">
@@ -137,23 +126,30 @@ export const getServerSideProps = async ({
   query: {page: string; jokecat: string};
 }) => {
   const pagenum = Number(query.page) || 1;
-  const nextTokenCurrent = await getPaging(query.jokecat, pagenum);
+  console.log(pagenum * 30 - 30);
 
-  const data = await doQuery(LIST_JOKES, {
-    cat: `JOK${deslugify(query.jokecat)}`,
-
-    nextToken: nextTokenCurrent,
+  const data = await db.view("joke/cat", {
+    key: `JOK${deslugify(query.jokecat)}`,
+    limit: 30,
+    update: "lazy",
+    reduce: false,
+    skip: pagenum * 30 - 30,
   });
 
-  await refreshToken(query.jokecat, pagenum, data.nextToken);
+  const count = await db.view("joke/cat", {
+    key: `JOK${deslugify(query.jokecat)}`,
+    limit: 1,
+    update: "lazy",
+    reduce: true,
+  });
 
   return {
     props: {
-      jokes: data.items,
+      jokes: data.rows,
       pagenum,
       cat: deslugify(query.jokecat),
       slug: query.jokecat,
-      nextToken: data.nextToken,
+      items: count.value,
     },
   };
 };

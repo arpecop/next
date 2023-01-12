@@ -12,12 +12,11 @@ import Nav from "@/components/Nav";
 import type {Cat} from "@/utils/formatter";
 import {catsdata} from "@/utils/formatter";
 
-import {doQuery, gql} from "@/pages/api/graphql";
-
 import FacebookShare from "@/components/FacebookShare";
 import {chunk, shuffle} from "lodash";
 import {Doc} from "../../data/structure";
-import {cronidjokes} from "../api/joke/cron";
+
+import db from "@/data/client";
 
 const SingleJoke = (props: {
   joke: Doc;
@@ -107,53 +106,60 @@ const SingleJoke = (props: {
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
   const {jokeid} = query;
   const cats = chunk(shuffle(catsdata), 7);
-  const datatoken = await doQuery(
-    gql`
-      query MyQuery($id: String = "") {
-        queryDdbsByByAppCat(type: $id, first: 10) {
-          items {
-            id
-            joke
-          }
-        }
-      }
-    `,
-    {id: cronidjokes}
-  );
-  const nextToken = datatoken.items?.[0]?.joke;
-  const data = await doQuery(
-    gql`
-      query MyQuery($id: String!, $nextToken: String = "") {
-        single: getDdb(id: $id) {
-          id
-          joke: title
-          cat
-          nid
-          type
-        }
-        multi: queryDdbsByByCat(cat: "JOKРазни", first: 25, after: $nextToken) {
-          items {
-            id
-            joke: title
-            cat
-          }
-        }
-      }
-    `,
-    {
-      id: jokeid as string,
-      multi: true,
-      nextToken,
-    }
-  );
+  // const datatoken = await doQuery(
+  //   gql`
+  //     query MyQuery($id: String = "") {
+  //       queryDdbsByByAppCat(type: $id, first: 10) {
+  //         items {
+  //           id
+  //           joke
+  //         }
+  //       }
+  //     }
+  //   `,
+  //   {id: cronidjokes}
+  // );
+  // const nextToken = datatoken.items?.[0]?.joke;
+  // const data = await doQuery(
+  //   gql`
+  //     query MyQuery($id: String!, $nextToken: String = "") {
+  //       multi: queryDdbsByByCat(cat: "JOKРазни", first: 25, after: $nextToken) {
+  //         items {
+  //           id
+  //           joke: title
+  //           cat
+  //         }
+  //       }
+  //     }
+  //   `,
+  //   {
+  //     id: jokeid as string,
+  //     multi: true,
+  //     nextToken,
+  //   }
+  // );
+  const joke = await db.get(jokeid as string);
+  const count = await db.view("joke/cat", {
+    key: `JOKРазни`,
+    limit: 1,
+    update: "false",
+    reduce: true,
+  });
 
-  const jokes = data.multi.items;
+  const jokes = await db.view("joke/cat", {
+    key: `JOKРазни`,
+    limit: 30,
+    update: "false",
+    reduce: false,
+    skip: Math.floor(Math.random() * count.value),
+  });
+
+  const items = chunk(jokes.rows, Math.round(jokes.rows.length / 3));
 
   return {
     props: {
-      joke: data.single,
-
-      items: chunk(jokes, Math.round(jokes.length / 3)),
+      joke: {...joke, joke: joke.title},
+      items: items,
       cats,
     },
   };

@@ -73,11 +73,10 @@ export default async (
   res: NextApiResponse
 ): Promise<void> => {
   const data = await prepare();
-  //const emojis = ["🤣", "🤪", "😁", "🤭", "😂"];
 
   const child_attachments = data
     .sort((a: Doc, z: Doc) => z.joke.length - a.joke.length)
-    .map((item: Doc, i: number) => ({
+    .map((item: Doc) => ({
       link: `https://kloun.lol/joke/${item.id}`,
       name: profanityRemove(
         shuffle(item.joke.split(" "))

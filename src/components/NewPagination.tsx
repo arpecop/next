@@ -72,7 +72,7 @@ export async function getPaging(slug: string, page: number) {
 
   return check.items?.[0]?.joke;
 }
-export default function Pagination({pagenum, cat, nextToken}: Props) {
+export default function NewPagination({pagenum, cat, nextToken}: Props) {
   const prev = pagenum - 1 === 1 ? "" : pagenum - 1;
   const lengths = [
     "",

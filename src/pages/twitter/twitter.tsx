@@ -5,6 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
 import Pagination, {getPaging, refreshToken} from "@/components/NewPagination";
+import db from "@/data/client";
 import {doQuery, gql} from "@/pages/api/graphql";
 import {shuffle} from "lodash";
 
@@ -83,6 +84,8 @@ export const getServerSideProps = async ({
       nextToken: nextTokenCurrent,
     }
   );
+
+  db.view("twitter/byletter", {limit: 120, reduce: false});
 
   await refreshToken(query.jokecat, pagenum, data.nextToken);
 
