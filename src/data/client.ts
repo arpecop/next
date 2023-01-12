@@ -16,7 +16,6 @@ async function fetcher(query: Variables) {
   const buildurl = `${url}${db || "db/"}${
     _design ? `_design/${_design}/_view/${_view}?${params}` : ""
   }${id || ""}`;
-  console.log(buildurl);
 
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",

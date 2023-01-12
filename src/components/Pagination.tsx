@@ -69,7 +69,9 @@ const Pagination = ({
         {pagesToRender.map((page) => (
           <Link
             passHref
-            href={`${prefix}${page}/`}
+            href={
+              page === currentPage ? "#" : `${prefix}${page === 1 ? "" : page}/`
+            }
             key={page}
             className={
               page === currentPage
@@ -85,7 +87,9 @@ const Pagination = ({
         {pagesToRenderMobile.map((page) => (
           <Link
             passHref={false}
-            href={`${prefix}${page}/`}
+            href={
+              page === currentPage ? "#" : `${prefix}${page === 1 ? "" : page}/`
+            }
             key={page}
             className={
               page === currentPage
