@@ -5,7 +5,6 @@ import type {GetServerSideProps} from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
-import {doQuery, gql} from "@/pages/api/graphql";
 
 import type {News} from "@/pages/news/";
 
@@ -56,7 +55,7 @@ const NewsItem = ({
 
         <div className="flex flex-wrap">
           {newsbg?.map((item) => (
-            <div className="joke" key={item.uid}>
+            <div className="joke" key={item.id}>
               <div className="jokewrap">
                 <img
                   alt={title}

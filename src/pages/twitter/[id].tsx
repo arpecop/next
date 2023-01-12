@@ -5,7 +5,6 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
 
-import {doQuery, gql} from "../api/graphql";
 import db from "@/data/client";
 
 export type Tweet = {

@@ -176,13 +176,13 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
     update: "false",
     reduce: true,
   });
-
+  console.log(Math.floor(Math.random() * (count.value / 30 + 1)) * 30);
   const jokes = await db.view("joke/cat", {
     key: `JOKРазни`,
     limit: 30,
     update: "false",
     reduce: false,
-    skip: Math.floor(Math.random() * count.value),
+    skip: Math.floor(Math.random() * (count.value / 30 + 1)) * 30,
   });
 
   const items = chunk(jokes.rows, Math.round(jokes.rows.length / 3));

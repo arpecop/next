@@ -79,7 +79,6 @@ export const getServerSideProps = async ({
     update: false,
     skip: pagenum * 120 - 120,
   });
-  console.log(data);
 
   return {
     props: {
