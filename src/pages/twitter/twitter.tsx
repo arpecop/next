@@ -66,7 +66,7 @@ const Index = ({
       <Pagination
         items={items}
         currentPage={pagenum}
-        pageSize={120}
+        pageSize={150}
         prefix={`/tw/${letter}_`}
       />
     </Main>
@@ -83,18 +83,17 @@ export const getServerSideProps = async ({
   const letter = p ? p.split("_")[0] : "a" || "a";
 
   const data = await db.view("twitter/byletter", {
-    limit: 120,
+    limit: 150,
     reduce: false,
     update: "lazy",
     key: letter,
-    skip: pagenum * 120 - 120,
+    skip: pagenum * 150 - 150,
   });
   const agregate = await db.view("twitter/byletter", {
     key: letter,
     reduce: true,
     update: "lazy",
   });
-  console.log(agregate);
 
   return {
     props: {

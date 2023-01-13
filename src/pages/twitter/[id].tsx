@@ -193,6 +193,13 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
       (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
     )
     .join("\n");
+  const reposts = data.tweets
+    .filter((item: ItemTweet) => item.originalPoster)
+    .map(
+      (user: {originalPoster: {screenName: string}}) =>
+        user.originalPoster.screenName + "_tw"
+    );
+  console.log(reposts);
 
   return {
     props: {

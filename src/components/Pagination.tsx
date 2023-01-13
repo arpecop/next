@@ -44,11 +44,13 @@ const Pagination = ({
   pageSize,
   currentPage,
   prefix,
+  noReplace,
 }: {
   items: number;
   pageSize: number;
   currentPage: number;
   prefix: string;
+  noReplace?: boolean;
 }) => {
   const pagesToRender = makeArray({
     pagesToShow: 9,
@@ -70,7 +72,11 @@ const Pagination = ({
           <Link
             passHref
             href={
-              page === currentPage ? "#" : `${prefix}${page === 1 ? "" : page}/`
+              page === currentPage
+                ? "#"
+                : `${prefix}${
+                    page === 1 ? (prefix.includes("_") ? 1 : "") : page
+                  }/`
             }
             key={page}
             className={
