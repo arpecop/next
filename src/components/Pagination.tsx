@@ -7,15 +7,16 @@ function makeArray({
   currentPage,
 }: {
   pagesToShow: number;
-  items: number;
+  items: number | {key: string}[];
   pageSize: number;
   currentPage: number;
 }) {
   const middle = Math.floor(pagesToShow / 2);
+  const isArr = Array.isArray(items);
 
   let startIndex = currentPage - middle;
   let endIndex = currentPage + middle;
-  const pagesCount = Math.ceil(items / pageSize);
+  const pagesCount = Math.ceil(isArr ? items.length : items / pageSize);
   const pages = Array.from({length: pagesCount}, (_, i) => i + 1);
 
   if (startIndex < 1) {

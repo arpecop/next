@@ -8,12 +8,10 @@ const serialize = (obj: Variables) => {
     .join("&");
 };
 async function fetcher(query: Variables) {
-  const {db, id, _view, _design, params} = query;
-  const body = JSON.stringify({
-    query,
-  });
-  const isPost = body.includes("_id");
-  const buildurl = `${url}${db || "db/"}${
+  const {db, id, _view, _design, params, insert} = query;
+  const body = JSON.stringify(query);
+  const isPost = body.includes("_id") || insert;
+  const buildurl = `${url}${db ? db + "/" : "db/"}${
     _design ? `_design/${_design}/_view/${_view}?${params}` : ""
   }${id || ""}`;
 
@@ -49,10 +47,15 @@ async function view(id: string, params: Variables) {
   }
   return Promise.resolve({...d, rows});
 }
+async function insert(obj: Variables) {
+  const ins = await fetcher(obj);
+  return Promise.resolve(ins);
+}
 
 const db = {
   view,
   get,
+  insert,
 };
 
 export default db;

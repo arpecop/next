@@ -126,13 +126,14 @@ export const getServerSideProps = async ({
   query: {page: string; jokecat: string};
 }) => {
   const pagenum = Number(query.page) || 1;
+  const skip = pagenum * 30 - 30;
 
   const data = await db.view("joke/cat", {
     key: `JOK${deslugify(query.jokecat)}`,
     limit: 30,
     update: "false",
-    reduce: false,
-    skip: pagenum * 30 - 30,
+    reduce: "false",
+    skip,
   });
 
   const count = await db.view("joke/cat", {
