@@ -1,5 +1,5 @@
 //const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
-const url = "http://34.244.23.189/";
+const url = "http://34.244.23.189:5984/";
 
 type Variables = {[key: string]: string | number | boolean};
 const serialize = (obj: Variables) => {
