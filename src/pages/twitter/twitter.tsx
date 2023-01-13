@@ -78,8 +78,9 @@ export const getServerSideProps = async ({
 }: {
   query: {page: string; jokecat: string};
 }) => {
-  const pagenum = Number(query.page.split("_")[1]) || 1;
-  const letter = query.page.split("_")[0] || "_";
+  const p = query.page;
+  const pagenum = p ? Number(query.page.split("_")[1]) : 1 || 1;
+  const letter = p ? p.split("_")[0] : "a" || "a";
 
   const data = await db.view("twitter/byletter", {
     limit: 120,
