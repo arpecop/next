@@ -199,7 +199,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
       (user: {originalPoster: {screenName: string}}) =>
         user.originalPoster.screenName + "_tw"
     );
-  console.log(reposts);
+  //console.log(reposts);
 
   return {
     props: {
