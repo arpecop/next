@@ -27,9 +27,9 @@ const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
     <Main meta={<Meta title={"Новини"} description="Новини" />}>
       <div className="my-10 flex w-full flex-col">
         <div className="flex flex-wrap">
-          <div className="w-full joke">
+          <div className="w-full">
             <ins
-              className="adsbygoogle rounded-md jokewrap p-0"
+              className="adsbygoogle"
               style={{display: "block", textAlign: "center"}}
               data-ad-layout="in-article"
               data-ad-format="fluid"

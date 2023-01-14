@@ -34,6 +34,16 @@ const Index = ({
 }): JSX.Element => {
   return (
     <Main meta={<Meta title="Бизнес фирми" description="Бизнес фирми" />}>
+      <div className=" flex justify-center items-center">
+        <ins
+          className="adsbygoogle"
+          style={{display: "block", textAlign: "center"}}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="1374619867"
+        />
+      </div>
       <Nav cats={cats} prefix="business" limit={50} />
       <div className="my-5 flex w-full flex-wrap">
         {cat?.map((item) => (
@@ -59,7 +69,16 @@ const Index = ({
           prefix={`/business/${slug}_`}
         />
       )}
-
+      <div className=" flex justify-center items-center">
+        <ins
+          className="adsbygoogle"
+          style={{display: "block", textAlign: "center"}}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="1374619867"
+        />
+      </div>
       <p className="text-center text-xs font-thin">
         Източник на информацията: Официални регистри на Националната агенция по
         приходите и Комисия за защита на личните данни.

@@ -121,6 +121,16 @@ export default function TwuserPage({
         />
       }
     >
+      <div className=" flex justify-center items-center">
+        <ins
+          className="adsbygoogle"
+          style={{display: "block", textAlign: "center"}}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="1374619867"
+        />
+      </div>
       {tweets.tweets.map((t) => (
         <div
           key={t.id}
@@ -178,6 +188,16 @@ export default function TwuserPage({
           </div>
         </div>
       ))}
+      <div className=" flex justify-center items-center">
+        <ins
+          className="adsbygoogle"
+          style={{display: "block", textAlign: "center"}}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="1374619867"
+        />
+      </div>
       <NoSSR>
         <style dangerouslySetInnerHTML={{__html: cssx}} />
       </NoSSR>

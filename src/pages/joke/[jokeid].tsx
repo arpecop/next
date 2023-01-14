@@ -50,16 +50,14 @@ const SingleJoke = (props: {
 
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <div className="jokewrap">
-            <ins
-              className="adsbygoogle"
-              style={{display: "block", textAlign: "center"}}
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="1374619867"
-            />
-          </div>
+          <ins
+            className="adsbygoogle"
+            style={{display: "block", textAlign: "center"}}
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-5476404733919333"
+            data-ad-slot="1374619867"
+          />
         </article>
         {props.items[0].map((item): JSX.Element => {
           return (
@@ -108,16 +106,14 @@ const SingleJoke = (props: {
       <Nav cats={props.cats[2]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <div className="jokewrap">
-            <ins
-              className="adsbygoogle"
-              style={{display: "block", textAlign: "center"}}
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="1374619867"
-            />
-          </div>
+          <ins
+            className="adsbygoogle"
+            style={{display: "block", textAlign: "center"}}
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-5476404733919333"
+            data-ad-slot="1374619867"
+          />
         </article>
         {props.items[2].map((item): JSX.Element => {
           return (
@@ -170,12 +166,6 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
   //   }
   // );
   const joke = await db.get(jokeid as string);
-  const count = await db.view("joke/cat", {
-    key: `JOKРазни`,
-    limit: 1,
-    update: "false",
-    reduce: true,
-  });
 
   const jokes = await db.view("joke/random", {
     key: Math.floor(Math.random() * 1938).toString(),
