@@ -1,5 +1,5 @@
 //const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
-const url = "http://34.244.23.189:5984/";
+const url = "http://arpecop.click:5984/";
 
 type Variables = {[key: string]: string | number | boolean};
 const serialize = (obj: Variables) => {
@@ -17,6 +17,7 @@ async function fetcher(query: {[key: string]: string}) {
   }${db ? db + "/" : "db/"}${
     _design ? `_design/${_design}/_view/${_view}?${params}` : ""
   }${id || ""}`;
+  console.log(buildurl);
 
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",

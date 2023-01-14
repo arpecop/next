@@ -94,6 +94,7 @@ export const getServerSideProps = async ({
     key: letter,
     reduce: true,
     update: "lazy",
+    cache: "ok",
   });
 
   return {
