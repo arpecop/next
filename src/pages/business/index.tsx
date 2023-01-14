@@ -5,7 +5,7 @@ import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
 import {Cat, slugify} from "../../utils/formatter";
-import {businessdata} from "../../utils/formatter";
+
 import db from "@/data/client";
 
 export type Company = {

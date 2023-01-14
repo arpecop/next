@@ -51,7 +51,7 @@ async function view(id: string, params: Variables) {
   }
   return Promise.resolve({...d, rows});
 }
-async function insert(obj: Variables) {
+async function insert(obj: {[key: string]: string}) {
   const ins = await fetcher(obj);
   return Promise.resolve(ins);
 }
