@@ -127,19 +127,23 @@ export const getServerSideProps = async ({
 }) => {
   const pagenum = Number(query.page) || 1;
   const skip = pagenum * 30 - 30;
+  console.log(skip);
 
   const data = await db.view("joke/cat", {
     key: `JOK${deslugify(query.jokecat)}`,
     limit: 30,
     update: "false",
     reduce: "false",
+    cache: skip > 1000 ? "ok" : "nok",
     skip,
   });
 
   const count = await db.view("joke/cat", {
     key: `JOK${deslugify(query.jokecat)}`,
+
     limit: 1,
     update: "false",
+    cache: "ok",
     reduce: true,
   });
 

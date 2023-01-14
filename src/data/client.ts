@@ -1,19 +1,19 @@
 //const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
 const url = "http://34.244.23.189:5984/";
 
-type Variables = {[key: string]: string};
+type Variables = {[key: string]: string | number | boolean};
 const serialize = (obj: Variables) => {
   return Object.entries(obj)
     .map(([key, val]) => `${key}=${key === "key" ? `"${val}"` : val}`)
     .join("&");
 };
-async function fetcher(query: Variables) {
+async function fetcher(query: {[key: string]: string}) {
   const {db, id, _view, _design, params, insert} = query;
 
   const body = JSON.stringify(query);
   const isPost = body.includes("_id") || insert;
   const buildurl = `${
-    params.includes("stale") ? url.replace(":5984", "") : url
+    params.includes("cache=ok") ? url.replace(":5984", "") : url
   }${db ? db + "/" : "db/"}${
     _design ? `_design/${_design}/_view/${_view}?${params}` : ""
   }${id || ""}`;

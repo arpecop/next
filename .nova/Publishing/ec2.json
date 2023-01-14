@@ -4,7 +4,7 @@
     ".next"
   ],
   "localPath" : ".",
-  "remotePath" : "\/ramdisk",
+  "remotePath" : "\/efs\/node",
   "server" : "ec2",
   "usesPublishing" : false
 }
