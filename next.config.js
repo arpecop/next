@@ -53,6 +53,10 @@ const nextConfig = {
         destination: "/cat/:cat/?page=:page",
       },
       {
+        source: "/business/:page",
+        destination: "/business/?page=:page",
+      },
+      {
         source: "/movies/p/:page",
         destination: "/movies/?page=:page",
       },

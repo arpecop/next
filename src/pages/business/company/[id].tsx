@@ -5,20 +5,24 @@ import type {GetServerSideProps} from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-import {Company} from "..";
+import db from "@/data/client";
 
 const Index = ({
-  companies_by_pk: {name, zip, location, created_at},
+  title,
+  zip,
+  location,
 }: {
-  companies_by_pk: Company;
+  title: string;
+  zip: number;
+  location: string;
 }): JSX.Element => {
   return (
     <Main
       hideFooter
       meta={
         <Meta
-          title={name.toLowerCase()}
-          description={`${name} ${location} ${zip} България`}
+          title={title.toLowerCase()}
+          description={`${title} ${location} ${zip} България`}
         />
       }
     >
@@ -32,9 +36,7 @@ const Index = ({
               <th className="border-b p-4 pl-8 pt-0 pb-3 text-left font-medium text-slate-400 dark:border-slate-600 dark:text-slate-200">
                 Локация
               </th>
-              <th className="border-b p-4 pl-8 pt-0 pb-3 text-left font-medium text-slate-400 dark:border-slate-600 dark:text-slate-200">
-                Създадена
-              </th>
+
               <th className="border-b p-4 pl-8 pt-0 pb-3 text-left font-medium text-slate-400 dark:border-slate-600 dark:text-slate-200">
                 П.Код
               </th>
@@ -43,14 +45,12 @@ const Index = ({
           <tbody className="dark:bg-slate-500">
             <tr>
               <td className="border-b border-slate-100 p-4 pl-8 text-slate-500 dark:border-slate-700 dark:text-slate-400">
-                {name}
+                {title}
               </td>
               <td className="border-b border-slate-100 p-4 pl-8 text-slate-500 dark:border-slate-700 dark:text-slate-400">
                 {location}
               </td>
-              <td className="border-b border-slate-100 p-4 pl-8 text-slate-500 dark:border-slate-700 dark:text-slate-400">
-                {created_at}
-              </td>
+
               <td className="border-b border-slate-100 p-4 pl-8 text-slate-500 dark:border-slate-700 dark:text-slate-400">
                 {zip}
               </td>
@@ -64,14 +64,9 @@ const Index = ({
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
   const id = query.id as string;
-
-  const data = {name: "", zip: 111, location: ""};
-
+  const data = await db.get(id);
   return {
-    props: {
-      id,
-      ...data,
-    },
+    props: data,
   };
 };
 export default Index;

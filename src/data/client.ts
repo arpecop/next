@@ -44,7 +44,8 @@ async function view(id: string, params: Variables) {
     params: serialize(params),
   });
   const rows = d.rows.map((x: {key: string; id: string; value: Variables}) => {
-    return {...x.value, id: x.id, key: x.key, value: x.value};
+    const val = typeof x.value === "string" ? {value: x.value} : {...x.value};
+    return {...val, id: x.id, key: x.key, value: x.value};
   });
   if (rows.length === 1) {
     return Promise.resolve(rows[0]);
