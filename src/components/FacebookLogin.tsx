@@ -48,7 +48,6 @@ function FBLogin({
     };
 
     if (code) {
-      console.log("there is code");
       getUser();
     }
   }, [code]);

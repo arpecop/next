@@ -74,7 +74,6 @@ export const getServerSideProps = async (context: {query: {page?: string}}) => {
     skip: pagenum * 30 - 30,
     update: false,
   });
-  console.log(data);
 
   return {
     props: {
