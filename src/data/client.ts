@@ -11,9 +11,9 @@ async function fetcher(query: {[key: string]: string}) {
   const {db, id, _view, _design, params, insert} = query;
 
   const body = JSON.stringify(query);
-  const isPost = body.includes("_id") || insert;
+  const isPost = body?.includes("_id") || insert;
   const buildurl = `${
-    params.includes("cache=ok") ? url.replace(":5984", "") : url
+    params?.includes("cache=ok") ? url.replace(":5984", "") : url
   }${db ? db + "/" : "db/"}${
     _design ? `_design/${_design}/_view/${_view}?${params}` : ""
   }${id || ""}`;
