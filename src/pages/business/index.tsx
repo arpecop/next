@@ -70,7 +70,7 @@ const Index = ({
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
   const page = query.page as string;
-  const p = page ? page.split("_") : ["1"];
+  const p = page ? page.split("_") : [null, "1"];
   const pagenum = p ? Number(p[1]) : 1;
 
   const cats = await db.view("company/companiesbg", {
