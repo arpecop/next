@@ -5,7 +5,7 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import {Program} from "@/components/Program";
-import {catsdata, slugify} from "@/utils/formatter";
+import {Cat, catsdata, slugify} from "@/utils/formatter";
 import db from "@/data/client";
 
 const MoreButton = ({
@@ -24,7 +24,7 @@ const MoreButton = ({
   </Link>
 );
 
-const Index = ({cats}) => {
+const Index = ({cats}: {cats: Cat[]}) => {
   const router = useRouter();
   const {
     query: {type},
