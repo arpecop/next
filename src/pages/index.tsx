@@ -83,6 +83,5 @@ export async function getStaticProps() {
     },
   };
 }
-export const runtime = "experimental-edge";
 
 export default Index;
