@@ -5,7 +5,8 @@ import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import {Program} from "@/components/Program";
-import {catsdata} from "@/utils/formatter";
+import {catsdata, slugify} from "@/utils/formatter";
+import db from "@/data/client";
 
 const MoreButton = ({
   text,
@@ -23,12 +24,12 @@ const MoreButton = ({
   </Link>
 );
 
-const Index = () => {
+const Index = ({cats}) => {
   const router = useRouter();
   const {
     query: {type},
   } = router;
-  const cats = catsdata.sort((a, b) => b.count - a.count);
+
   return (
     <Main
       meta={
@@ -62,9 +63,26 @@ const Index = () => {
 };
 
 export async function getStaticProps() {
+  const catsx = await db.view("joke/cat", {
+    reduce: true,
+    update: "lazy",
+    group: true,
+  });
+  const cats = catsx.rows
+    .filter((x: {value: number}) => x.value > 156)
+    .map((x: {key: string; value: number}) => ({
+      cat: x.key.replace("JOK", ""),
+      slug: slugify(x.key.replace("JOK", "")),
+      count: x.value,
+    }))
+    .sort((a: {count: number}, b: {count: number}) => b.count - a.count);
   return {
-    props: {lastupdate: new Date().toISOString()},
+    props: {
+      cats,
+      lastupdate: new Date().toISOString(),
+    },
   };
 }
+export const runtime = "experimental-edge";
 
 export default Index;
