@@ -68,6 +68,6 @@ async function doMutation(
   return d;
 }
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export {doMutation, doQuery, gql};

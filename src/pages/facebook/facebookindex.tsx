@@ -250,5 +250,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 export default Facebook;

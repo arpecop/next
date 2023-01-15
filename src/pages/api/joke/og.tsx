@@ -5,7 +5,7 @@ import {ImageResponse} from "@vercel/og";
 import {NextRequest} from "next/server";
 import {remappedJokeFunction} from "../../../components/JokeText";
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 const font = fetch(
