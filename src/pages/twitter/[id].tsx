@@ -107,7 +107,7 @@ export default function TwuserPage({
   username,
 }: {
   username: string;
-  exist: string[];
+  exist?: string[];
   tweets: Tweet;
   cssx: string;
 }) {
@@ -168,7 +168,7 @@ export default function TwuserPage({
               <a
                 className="flex items-center w-auto bg-black w-fit"
                 href={
-                  exist.includes(t.originalPoster.screenName)
+                  exist?.includes(t.originalPoster.screenName)
                     ? "/tw/u/" + t.originalPoster.screenName
                     : "https://twitter.com/" + t.originalPoster.screenName
                 }
@@ -234,7 +234,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     update: false,
     keys: JSON.stringify(reposts),
   });
-  const exist = existget.rows.map((it: {id: string}) =>
+  const exist = existget.rows?.map((it: {id: string}) =>
     it.id.replace("_tw", "")
   );
 
@@ -242,7 +242,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     props: {
       cssx,
       username: id,
-      exist,
+      exist: exist || null,
       tweets: {
         description: data.description,
         name: data.name,
@@ -253,5 +253,5 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
   };
 };
 
-export const runtime = "experimental-edge";
+//export const runtime = "experimental-edge";
 //x
