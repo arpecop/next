@@ -36,9 +36,6 @@ const SingleJoke = (props: {
         />
       }
     >
-      <h1 className="text-purple-200 dark:text-indigo-900">
-        <span className="font-medium">/ Бисери</span>
-      </h1>
       <div className="my-10 flex w-full flex-col text-center">
         <article className="mx-auto mb-6 px-10 text-xl leading-relaxed xs:px-2 sm:px-4 lg:w-2/3">
           <FormatJoke joke={props.joke?.joke} />

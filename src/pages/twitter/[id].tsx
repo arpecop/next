@@ -103,9 +103,11 @@ function normalizestr(str: string) {
 export default function TwuserPage({
   tweets,
   cssx,
+  exist,
   username,
 }: {
   username: string;
+  exist: string[];
   tweets: Tweet;
   cssx: string;
 }) {
@@ -131,6 +133,7 @@ export default function TwuserPage({
           data-ad-slot="1374619867"
         />
       </div>
+      {JSON.stringify(exist)}
       {tweets.tweets.map((t) => (
         <div
           key={t.id}
@@ -164,7 +167,11 @@ export default function TwuserPage({
             {t.originalPoster && (
               <a
                 className="flex  items-center"
-                href={"/tw/u/" + t.originalPoster.screenName}
+                href={
+                  exist.includes(t.originalPoster.screenName)
+                    ? "/tw/u/" + t.originalPoster.screenName
+                    : "https://twitter.com/" + t.originalPoster.screenName
+                }
               >
                 <NoSSR>
                   <picture>
@@ -213,18 +220,29 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
       (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
     )
     .join("\n");
-  const reposts = data.tweets
-    .filter((item: ItemTweet) => item.originalPoster)
-    .map(
-      (user: {originalPoster: {screenName: string}}) =>
-        user.originalPoster.screenName + "_tw"
-    );
-  //console.log(reposts);
+  const reposts = Array.from(
+    new Set(
+      data.tweets
+        .filter((item: ItemTweet) => item.originalPoster)
+        .map(
+          (user: {originalPoster: {screenName: string}}) =>
+            user.originalPoster.screenName + "_tw"
+        )
+    )
+  );
+  const existget = await db.view("twitter/exist", {
+    update: false,
+    keys: JSON.stringify(reposts),
+  });
+  const exist = existget.rows.map((it: {id: string}) =>
+    it.id.replace("_tw", "")
+  );
 
   return {
     props: {
       cssx,
       username: id,
+      exist,
       tweets: {
         description: data.description,
         name: data.name,
