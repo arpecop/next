@@ -133,7 +133,7 @@ export default function TwuserPage({
           data-ad-slot="1374619867"
         />
       </div>
-      {JSON.stringify(exist)}
+
       {tweets.tweets.map((t) => (
         <div
           key={t.id}
@@ -151,12 +151,12 @@ export default function TwuserPage({
                     />
                   </picture>
                   <div className="ml-2">
-                    <p className="text-base leading-6 font-bold">
+                    <p className="leading-6 font-light text-xl">
                       {tweets.name}
-                      <span className="text-sm leading-5 font-medium  pl-2">
-                        {t.createdAt}
-                      </span>
-                      {t.originalPoster ? " retweeted:" : ""}
+                      <div className="text-xs leading-5 font-light">
+                        {t.createdAt}{" "}
+                        {t.originalPoster ? "| retweeted:" : "| tweeted:"}
+                      </div>
                     </p>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function TwuserPage({
           <div>
             {t.originalPoster && (
               <a
-                className="flex  items-center"
+                className="flex items-center w-auto bg-black w-fit"
                 href={
                   exist.includes(t.originalPoster.screenName)
                     ? "/tw/u/" + t.originalPoster.screenName
@@ -185,7 +185,7 @@ export default function TwuserPage({
                   </picture>
                 </NoSSR>
                 <div className="text-base leading-6 font-bold pl-2">
-                  {t.originalPoster.screenName} :
+                  {t.originalPoster.name} :
                 </div>
               </a>
             )}
