@@ -1,5 +1,6 @@
 //const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
-const url = "http://arpecop.click:5984/";
+const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
+const urlnocdn = "http://arpecop.click:5984/";
 
 type Variables = {[key: string]: string | number | boolean};
 const serialize = (obj: Variables) => {
@@ -8,15 +9,14 @@ const serialize = (obj: Variables) => {
     .join("&");
 };
 async function fetcher(query: {[key: string]: string}) {
-  const {db, id, _view, _design, params, insert} = query;
+  const {db, id, _view, _design, params, insert, nocdn} = query;
 
   const body = JSON.stringify(query);
   const isPost = body?.includes("_id") || insert;
-  const buildurl = `${
-    params?.includes("cache=ok") ? url.replace(":5984", "") : url
-  }${db ? db + "/" : "db/"}${
+  const buildurl = `${nocdn ? urlnocdn : url}${db ? db + "/" : "db/"}${
     _design ? `_design/${_design}/_view/${_view}?${params}` : ""
   }${id || ""}`;
+  console.log(buildurl);
 
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",
@@ -30,7 +30,7 @@ async function fetcher(query: {[key: string]: string}) {
   return d;
 }
 async function get(id: string) {
-  const d = await fetcher({id});
+  const d = await fetcher({id, nocdn: true});
   d.id = d._id;
   return Promise.resolve(d);
 }
