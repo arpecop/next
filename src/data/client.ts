@@ -30,7 +30,7 @@ async function fetcher(query: {[key: string]: string}) {
   return d;
 }
 async function get(id: string) {
-  const d = await fetcher({id, nocdn: true});
+  const d = await fetcher({id, nocdn: "yes"});
   d.id = d._id;
   return Promise.resolve(d);
 }
