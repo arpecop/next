@@ -6,7 +6,7 @@ import Pagination from "@/components/Pagination";
 import db from "@/data/client";
 // import { getPaging } from '@/components/NewPagination';
 
-import {deslugify} from "@/utils/formatter";
+import {deslugify, slugify} from "@/utils/formatter";
 import {Doc} from "../../data/structure";
 
 const CatPage = ({
@@ -51,7 +51,7 @@ const CatPage = ({
             />
           </svg>
           <li>
-            <a href={`/cat/${cat}`}>{cat}</a>
+            <a href={`/cat/${slugify(cat)}`}>{cat}</a>
           </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
