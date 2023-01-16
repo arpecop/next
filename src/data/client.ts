@@ -13,10 +13,9 @@ async function fetcher(query: {[key: string]: string}) {
 
   const body = JSON.stringify(query);
   const isPost = body?.includes("_id") || insert;
-  const buildurl = `${nocdn ? urlnocdn : url}${db ? db + "/" : "db/"}${
-    _design ? `_design/${_design}/_view/${_view}?${params}` : ""
-  }${id || ""}`;
-  console.log(buildurl);
+  const buildurl = `${nocdn || params.includes("nocdn") ? urlnocdn : url}${
+    db ? db + "/" : "db/"
+  }${_design ? `_design/${_design}/_view/${_view}?${params}` : ""}${id || ""}`;
 
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",

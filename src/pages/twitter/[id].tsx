@@ -233,6 +233,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
   const existget = await db.view("twitter/exist", {
     update: false,
     keys: JSON.stringify(reposts),
+    nocdn: "ok",
   });
   const exist = existget.rows?.map((it: {id: string}) =>
     it.id.replace("_tw", "")
