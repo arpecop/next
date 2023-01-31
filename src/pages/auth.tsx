@@ -2,23 +2,23 @@
 
 import Amplify, { Auth } from "@aws-amplify/auth";
 
-import Router, { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import Err from "@/components/forms/Err";
 import SubForm from "@/components/forms/SubForm";
 import useLocalStorage from "@/components/hooks/storage";
+import Router, { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import Input from "@/components/forms/inputs/Input";
 
 interface State {
   action?:
-    | "signup"
-    | "signin"
-    | "forgot"
-    | "forgotchange"
-    | "reset"
-    | "confirmsignup"
-    | "signout";
+  | "signup"
+  | "signin"
+  | "forgot"
+  | "forgotchange"
+  | "reset"
+  | "confirmsignup"
+  | "signout";
   email: string;
   username: string;
   password: string;
@@ -323,9 +323,9 @@ export async function getServerSideProps({ req }: any) {
 
   if (
     !(
-      ref.includes("auth") &&
-      ref.includes("facebook") &&
-      ref.includes("google")
+      ref?.includes("auth") &&
+      ref?.includes("facebook") &&
+      ref?.includes("google")
     )
   ) {
     return {
