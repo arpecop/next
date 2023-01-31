@@ -6,6 +6,7 @@ import Err from "@/components/forms/Err";
 import SubForm from "@/components/forms/SubForm";
 import useLocalStorage from "@/components/hooks/storage";
 import Router, { useRouter } from "next/router";
+
 import { useEffect, useState } from "react";
 
 import Input from "@/components/forms/inputs/Input";
@@ -81,7 +82,6 @@ const AuthPage = ({ refer }: { refer: string }) => {
   const router = useRouter();
   const sekcia = router.query.sekcia as string;
   const x = sekcia ? sekcia : "signin";
-
   const [section, setSection] = useState<string>(x);
   const [errx, setErr] = useState<{ message: string } | null>(null);
   const [state, setForm] = useState({} as State);
@@ -93,19 +93,15 @@ const AuthPage = ({ refer }: { refer: string }) => {
   async function initialise() {
     const data = await Auth.currentAuthenticatedUser();
 
-    try {
-      Router.push(refer);
-      setUser({
-        username: data.username,
-        sub: data.attributes.sub,
-      });
-    } catch (e) {
-      Router.push(refer);
-      setUser({
-        username: data.username,
-        sub: data.attributes.sub,
-      });
-    }
+    setUser({
+      username: data.username,
+      sub: data.attributes.sub,
+    });
+
+
+    Router.push(refer.replace('auth/', ''));
+
+
   }
 
   useEffect(() => {
@@ -329,7 +325,7 @@ export async function getServerSideProps({ req }: any) {
     )
   ) {
     return {
-      props: { refer: ref },
+      props: { refer: ref || '/' },
     };
   } else {
     return {
