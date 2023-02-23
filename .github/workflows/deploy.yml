@@ -26,7 +26,7 @@ jobs:
         run: |
           rm -rf src .vscode .nova .eslitrc.js next.config.js out
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "Rudi"
+          git config --global user.name "Rudix"
           git checkout --orphan klounbuild
           git add -A .next public -f
           git commit  --allow-empty -n -m  "Add build directory"
