@@ -24,7 +24,7 @@ jobs:
           rm -rf ./Applications.sketch
       - name: 🚀 Deployx
         run: |
-          rm -rf src .vscode .nova .eslitrc.js out
+          rm -rf src .vscode .nova .eslitrc.js out node_modules
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudi"
           git checkout --orphan klounbuild
