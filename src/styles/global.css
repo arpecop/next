@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 200;
+  src: url("/images/font/Nunito-ExtraLight.woff2") format("woff2"),
+    url("/images/font/Nunito-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/images/font/Nunito-Regular.woff2") format("woff2"),
+    url("/images/font/Nunito-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/images/font/Nunito-Bold.woff2") format("woff2"),
+    url("/images/font/Nunito-Bold.woff") format("woff");
+}
+
+@layer components {
+  .bg {
+    @apply bg-gray-900 dark:bg-gray-400 text-base text-gray-400  dark:text-gray-900;
+  }
+
+  body {
+    @apply m-0 p-0  bg;
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  }
+  .btn {
+    @apply bg-gray-800 dark:bg-gray-300 rounded-md flex justify-center items-center uppercase px-3 border tracking-wide;
+    min-height: 3rem;
+  }
+  .btn-group button,
+  .btn-group a {
+    @apply rounded-none;
+  }
+  .btn-group button:first-child,
+  .btn-group a:first-child {
+    @apply rounded-l-md;
+    border-right: 0px;
+  }
+  .btn-group button:last-child,
+  .btn-group a:last-child {
+    @apply rounded-r-md;
+    border-left: 0px;
+  }
+
+  .btn1 {
+    @apply w-full grow p-2 sm:w-1/3 md:h-1/4;
+  }
+
+  .btn1-count {
+    @apply flex-none  rounded bg-purple-900 px-2 text-2xl font-extralight dark:bg-slate-300;
+  }
+  .btn1-wrap {
+    @apply flex h-full items-center rounded bg-gray-800 p-4 dark:bg-slate-200;
+  }
+  .joke {
+    @apply w-full grow p-2 md:w-1/2 lg:w-1/3;
+  }
+  .jokewrap {
+    @apply flex h-full grow items-center rounded-lg border border-gray-800 bg-gray-900 p-4 py-5 text-gray-400 backdrop-blur-sm dark:border-gray-500 dark:bg-white dark:text-gray-900;
+  }
+  .newswrap {
+    @apply jokewrap p-0 m-0 overflow-hidden;
+  }
+
+  .joketop {
+    @apply absolute left-2 z-10 float-left inline-flex items-center rounded-tl rounded-br bg-gray-800 py-2 px-4 font-bold text-gray-200 dark:bg-gray-500 dark:text-gray-800;
+  }
+
+  .jokebottom {
+    @apply absolute right-2 float-right   inline-flex items-center rounded-tl rounded-br bg-gray-800 py-2 px-4 font-bold text-gray-200 shadow-lg;
+    margin-top: -2.7rem;
+  }
+  .speech-bubble {
+    @apply relative my-3 rounded-lg from-purple-900 to-pink-600 p-3;
+  }
+  .btndisabled {
+    @apply btn btn-disabled;
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }
+
+  .rotateswap {
+    @apply bg-black;
+  }
+  .field fieldset div {
+    @apply mb-2 mx-auto max-w-xs text-sm;
+  }
+  .rjsf div .btn {
+    @apply hidden;
+  }
+  .headingbottom {
+    @apply uppercase text-lg font-light pb-2;
+  }
+}
+
+.rotate-swap {
+  /* Add other styles for the element here */
+  animation: rotate-swap 0.5s ease-in-out;
+}
+
+@keyframes rotate-swap {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(22deg);
+    opacity: 0.7;
+  }
+}
+
+/* cyrillic-ext */

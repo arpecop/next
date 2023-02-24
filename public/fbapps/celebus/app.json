@@ -1,0 +1,8 @@
+{
+  "cover": "https://s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/celeb/cover.jpg",
+  "coverimg": "<img src=\"//s3.eu-central-1.amazonaws.com/img.rudixlab.herokuapp.com/apps/celeb/cover.jpg\">",
+  "title": "Which Celebrity Do You Look Like?",
+  "contentx": "<div class=\"form-group\" style=\"text-align:center;\">  <button type=\"button\" class=\"btn btn-primary btn-lg\" onclick=\"celeb(); return false;\">Click here to find out ...</button></div>",
+  "showshare": "true",
+  "geo": "US"
+}

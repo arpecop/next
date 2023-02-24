@@ -1,0 +1,12 @@
+name: Curl URL every 5 minutes
+
+on:
+  schedule:
+    - cron: "*/5 8-22 * * *"
+      timezone: Europe/Sofia
+jobs:
+  curl_url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl URL
+        run: curl https://kloun.lol/api/joke/cron/
