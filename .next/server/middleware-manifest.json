@@ -1,0 +1,32 @@
+{
+  "sortedMiddleware": [],
+  "middleware": {},
+  "functions": {
+    "/twitter/[id]": {
+      "env": [
+        "NEXT_OTEL_VERBOSE",
+        "NEXT_PRIVATE_MINIMAL_MODE",
+        "__NEXT_TEST_MAX_ISR_CACHE",
+        "USER",
+        "NEXT_PRIVATE_DEBUG_CACHE"
+      ],
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/font-loader-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/pages/twitter/[id].js"
+      ],
+      "name": "pages/twitter/[id]",
+      "page": "/twitter/[id]",
+      "matchers": [
+        {
+          "regexp": "^/twitter/(?<id>[^/]+?)$"
+        }
+      ],
+      "wasm": [],
+      "assets": []
+    }
+  },
+  "version": 2
+}

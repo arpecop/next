@@ -1,0 +1,7 @@
+{
+  "/twitter/[id]": "pages/twitter/[id].js",
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/twitter/twitter": "pages/twitter/twitter.js"
+}

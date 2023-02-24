@@ -47,7 +47,7 @@ const Index = ({cats}: {cats: Cat[]}) => {
         <>
           <Nav cats={cats} limit={9} prefix="cat" />
           <div className="flex flex-wrap justify-end mb-2">
-            <MoreButton text="още категории" type="Jokes" />
+            <MoreButton text="всички категории" type="Jokes" />
           </div>
           <Program
             limit={12}
