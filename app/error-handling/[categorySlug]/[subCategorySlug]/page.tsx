@@ -1,9 +1,10 @@
-import { fetchSubCategory, PageProps } from '@/lib/getCategories';
+import { fetchSubCategory } from '@/lib/getCategories';
 import BuggyButton from '@/ui/BuggyButton';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 import { use } from 'react';
+ 
 
-export default function Page({ params }: PageProps) {
+const Page = ({ params }: any)=> {
   const category = use(
     fetchSubCategory(params.categorySlug, params.subCategorySlug),
   );
@@ -25,3 +26,5 @@ export default function Page({ params }: PageProps) {
     </div>
   );
 }
+
+export default Page

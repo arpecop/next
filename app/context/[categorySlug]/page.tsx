@@ -1,9 +1,10 @@
-import { fetchCategoryBySlug, PageProps } from '@/lib/getCategories';
+import { fetchCategoryBySlug } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import { use } from 'react';
+ 
 import { Counter } from '../ClickCounter';
 
-export default function Page({ params }: PageProps) {
+const Page = ({ params }: any)=> {
   const category = use(fetchCategoryBySlug(params.categorySlug));
   if (!category) return null;
 
@@ -19,3 +20,4 @@ export default function Page({ params }: PageProps) {
     </Boundary>
   );
 }
+export default Page

@@ -40,5 +40,7 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "rome.rome"
-  }
+  },
+  "typescript.tsdk": "node_modules/.pnpm/typescript@4.7.4/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

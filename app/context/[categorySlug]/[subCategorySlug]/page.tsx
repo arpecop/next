@@ -1,9 +1,10 @@
-import { fetchSubCategory, type PageProps } from '@/lib/getCategories';
+import { fetchSubCategory,  PageProps } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import { use } from 'react';
+ 
 import { Counter } from '../../ClickCounter';
-
-export default function Page({ params }: PageProps) {
+const Page = ({ params }: any)=> {
+  
   const category = use(
     fetchSubCategory(params.categorySlug, params.subCategorySlug),
   );
@@ -19,3 +20,4 @@ export default function Page({ params }: PageProps) {
     </Boundary>
   );
 }
+export default Page

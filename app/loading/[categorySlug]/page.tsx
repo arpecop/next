@@ -2,7 +2,7 @@
 import { use } from 'react';
 import {
   fetchCategoryBySlug,
-  PageProps,
+ 
   type Category,
 } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
@@ -18,7 +18,7 @@ const fetchCategory = async (
   return await fetchCategoryBySlug(categorySlug);
 };
 
-export default function Page({ params }: PageProps) {
+export default function Page({ params }: any) {
   const category = use(fetchCategory(params.categorySlug));
   if (!category) return null;
 

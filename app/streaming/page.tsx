@@ -1,8 +1,9 @@
 import { SkeletonCard } from '@/ui/SkeletonCard';
-import { Suspense } from 'react';
+ 
 import Description from './description';
 import ProductHeader from './product-header';
 import BuyNow from './buy-now';
+import { Suspense } from 'react';
 
 export default function Posts() {
   return (
