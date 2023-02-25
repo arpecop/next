@@ -18,16 +18,16 @@ jobs:
           npm install
           npm run lint:fix
           npm run build
-          find public -type f -regex '.*\.\(jpg\|ttf\|woff\|webarchive\|woff2\|sketch\|gif\)' -print0 | xargs -0 touch -d '2020-01-01 00:00:00'
-          rm -rf .next/cache pnpm-lock.yaml .nmpmrc
-          rm -rf ./Applications.sketch
+          npm run export
+          rm -rf public ./Applications.sketch
+          mv out public
       - name: 🚀 Deploy
         run: |
           rm -rf src .vscode .nova .eslitrc.js next.config.js out
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan build
-          git add -A .next public -f
+          git add -A .next public out -f
           git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
