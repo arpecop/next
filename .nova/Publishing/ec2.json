@@ -5,6 +5,6 @@
   ],
   "localPath" : "..",
   "remotePath" : "\/eziktokfriendly114941-staging\/public\/face",
-  "server" : "s3",
+  "server" : "ec2",
   "usesPublishing" : false
 }
