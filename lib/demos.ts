@@ -10,21 +10,21 @@ type Item = {
 
 export const demos: Item[] = [
   {
-    name: 'Layouts 6',
+    name: 'Layouts 7',
     items: [
       {
-        name: 'Nested Layouts 6',
+        name: 'Nested Layouts 7',
         slug: 'layouts',
         description: 'Create UI that is shared across routes',
       },
       {
-        name: 'Grouped Layouts 6',
+        name: 'Grouped Layouts 7',
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
 
       {
-        name: 'Streaming with Suspense 6',
+        name: 'Streaming with Suspense 7',
         slug: 'streaming',
         description:
           'Streaming data fetching from the server with React Suspense',
