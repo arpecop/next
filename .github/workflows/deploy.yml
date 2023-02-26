@@ -20,7 +20,8 @@ jobs:
           mv package.json /tmp/
           rm -rf *.*
           mv /tmp/package.json ./
-          rm -rf .next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib
+          rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib
+          ls -la
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
