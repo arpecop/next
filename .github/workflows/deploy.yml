@@ -17,11 +17,12 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm run build
-          npm run export
+          mv package.json /tmp/
+          rm -rf *.*
+          mv /tmp/package.json ./
           rm -rf .next/cache app public styles ui Applications.sketch node_modules .github
       - name: 🚀 Deploy
         run: |
-          rm -rf src .vscode .nova .eslitrc.js next.config.js out node_modules
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan eziktokbuild
