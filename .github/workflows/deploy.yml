@@ -18,7 +18,7 @@ jobs:
           npm install
           npm run build
           rm -rf .next/cache
-          find . -maxdepth 1 ! -name . -prune ! -name .next ! -name package.json -exec rm -rv {} \;
+          find . -maxdepth 1 ! -name . -prune ! -name .next ! -name package.json ! -name .git -exec rm -rv {} \;
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
