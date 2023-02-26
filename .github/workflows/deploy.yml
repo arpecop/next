@@ -22,7 +22,7 @@ jobs:
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "Rudix"
+          git config --global user.name "Rudixx"
           git checkout --orphan eziktokbuild
           git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
