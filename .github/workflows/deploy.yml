@@ -17,6 +17,7 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm run build
+          rm -rf .next/cache
           rm rm -v !(".next")
       - name: 🚀 Deploy
         run: |
