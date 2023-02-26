@@ -18,12 +18,9 @@ jobs:
           npm install
           npm run build
           rm -rf .next/cache
-          mv .next /tmp
-          mv package.json /tmp
-          mv .git /tmp
+          find . -type f -not \(-name '.git' -or -name '.next' -or -name 'package.json' \) -delete
       - name: 🚀 Deploy
         run: |
-          cd /tmp
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan eziktokbuild
