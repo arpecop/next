@@ -17,8 +17,7 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm run build
-          rm -rf .next/cache
-          find . -type f -not \(-name '.git' -or -name '.next' -or -name 'package.json' \) -delete
+          rm -rf .next/cache && find . -type f -not \(-name '.git' -or -name '.next' -or -name 'package.json' \) -delete
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
