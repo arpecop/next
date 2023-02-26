@@ -18,11 +18,11 @@ jobs:
           npm install
           npm run build
           rm -rf .next/cache
-          find . -maxdepth 1 ! -name . -prune ! -name .next ! -name package.json ! -name .git -exec rm -rv {} \;
+          rm -v !(".next"|"package.json|.git") 
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "Rudixx"
+          git config --global user.name "Rudix"
           git checkout --orphan eziktokbuild
           git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
