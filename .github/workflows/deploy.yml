@@ -17,16 +17,14 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm run build
-          npm run export
-          rm -rf .next/cache app public styles ui Applications.sketch
-          mv out public
+          rm rm -v !(".next")
       - name: 🚀 Deploy
         run: |
           rm -rf src .vscode .nova .eslitrc.js next.config.js out node_modules
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan eziktokbuild
-          git add -A .next public -f
+          git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
