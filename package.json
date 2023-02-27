@@ -44,6 +44,7 @@
     "stopwords-bg": "^0.3.0",
     "svgo": "^3.0.2",
     "svgson": "^5.2.1",
+    "tslib": "^2.5.0",
     "ulidx": "^0.3.0"
   },
   "devDependencies": {
