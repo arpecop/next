@@ -15,7 +15,6 @@ export default function Page() {
                 <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
                   {section.name}
                 </div>
-
                 <div className="grid grid-cols-2 gap-5">
                   {section.items
                     .filter((item) => !item.isDisabled)
