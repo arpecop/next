@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Pagination from "@/components/Pagination";
 
 import db from "@/data/client";
 
-import {shuffle} from "lodash";
+import { shuffle } from "lodash";
 import Link from "next/link";
 
 export type User = {
@@ -24,7 +24,7 @@ const Index = ({
   pagenum: number;
   items: number;
   letter: string;
-  sections: {key: string; value: number}[];
+  sections: { key: string; value: number }[];
 }): JSX.Element => {
   return (
     <Main
@@ -40,7 +40,7 @@ const Index = ({
       }
     >
       <div className="flex flex-wrap justify-center items-center gap-1 mb-3">
-        {sections.map(({key}) => (
+        {sections.map(({ key }) => (
           <Link
             passHref
             key={key}
@@ -64,14 +64,11 @@ const Index = ({
         ))}
       </div>
       <div className=" flex justify-center items-center">
-        <ins
-          className="adsbygoogle"
-          style={{display: "block", textAlign: "center"}}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="1374619867"
-        />
+
+        <ResponsiveAdUnit
+          publisherId="ca-pub-5476404733919333"
+          slotId="6617253971"
+          type="in-article" />
       </div>
       <Pagination
         noReplace
@@ -87,7 +84,7 @@ const Index = ({
 export const getServerSideProps = async ({
   query,
 }: {
-  query: {page: string; jokecat: string};
+  query: { page: string; jokecat: string };
 }) => {
   const p = query.page;
   const pagenum = p ? Number(query.page.split("_")[1]) : 1 || 1;

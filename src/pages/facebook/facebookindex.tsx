@@ -1,5 +1,5 @@
-import type {GetServerSideProps} from "next";
-
+import type { GetServerSideProps } from "next";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
@@ -11,9 +11,9 @@ import {
   useFacebookRandom,
 } from "@/components/hooks/facebookhook";
 
-import LoadingResult, {ResultWrapper} from "@/components/LoadingResult";
+import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
-import {useState} from "react";
+import { useState } from "react";
 
 import FBLogin from "@/components/FacebookLogin";
 
@@ -56,7 +56,7 @@ const Facebook = ({
   const [urlparams, setUrlparams] = useState<{
     params: string;
     refreshid: string;
-  }>({params: "", refreshid: "default"});
+  }>({ params: "", refreshid: "default" });
 
   const [curresult, setResult] = useFacebookRandom(app);
   // 	const formDatax = (formd: any) => {
@@ -149,14 +149,10 @@ const Facebook = ({
             <p>{app?.description}</p>
           </div>
         )}
-        <ins
-          className="adsbygoogle"
-          style={{display: "block", textAlign: "center"}}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="1374619867"
-        />
+        <ResponsiveAdUnit
+          publisherId="ca-pub-5476404733919333"
+          slotId="6617253971"
+          type="after-home-hero" />
         <Nav cats={cats} prefix="fb" />
         <div className="my-10 flex w-full flex-col">
           <div className="flex flex-wrap" />
@@ -178,7 +174,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         title: "Персонализирай",
         type: "object",
         properties: {
-          firstname: {type: "string", title: "Напиши името си", default: ""},
+          firstname: { type: "string", title: "Напиши името си", default: "" },
         },
       },
       description:
@@ -203,7 +199,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         title: "Персонализирай",
         type: "object",
         properties: {
-          firstname: {type: "string", title: "Напиши името си", default: ""},
+          firstname: { type: "string", title: "Напиши името си", default: "" },
         },
       },
       hidden: false,
@@ -228,7 +224,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       slug: "podhojda",
       hidden: true,
     },
-    {cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true},
+    { cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true },
     {
       cat: "Провери какъв си бил в предишен живот",
       slug: "predishenjivot",
@@ -236,7 +232,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   ];
 
-  const {appid, id} = context.query;
+  const { appid, id } = context.query;
   const app = apps.find((app) => app.slug === appid);
   return {
     props: {

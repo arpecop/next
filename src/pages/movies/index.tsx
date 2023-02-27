@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-
-import type {GetServerSideProps} from "next";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
 
 import Main from "@/components/Layouts/Main";
@@ -10,7 +10,7 @@ import Pagination, {
   getPaging,
   refreshToken,
 } from "../../components/NewPagination";
-import {doQuery, gql} from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 
 export type Movie = {
   title: string;
@@ -37,16 +37,12 @@ const Index = ({
     >
       <div className="mb-10 flex flex-wrap justify-center">
         <article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
-          <ins
-            className="adsbygoogle rounded-md jokewrap p-0"
-            style={{display: "block", textAlign: "center"}}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="1374619867"
-          />
+          <ResponsiveAdUnit
+            publisherId="ca-pub-5476404733919333"
+            slotId="6617253971"
+            type="after-home-hero" />
         </article>
-        {movies.map(({slug, title, description, id}) => (
+        {movies.map(({ slug, title, description, id }) => (
           <article
             key={slug}
             className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5"
@@ -110,13 +106,13 @@ const MOVIES = gql`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {page}: {page?: string} = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { page }: { page?: string } = query;
   const pagenum = page ? Number(page) : 1;
 
   const nextTokenCurrent = await getPaging("/movies/p/", pagenum);
 
-  const data = await doQuery(MOVIES, {start: nextTokenCurrent});
+  const data = await doQuery(MOVIES, { start: nextTokenCurrent });
   await refreshToken("/movies/p/", pagenum, data.nextToken);
 
   return {

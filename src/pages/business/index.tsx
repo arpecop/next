@@ -1,10 +1,10 @@
-import type {GetServerSideProps} from "next";
-
+import type { GetServerSideProps } from "next";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import {Cat, slugify} from "../../utils/formatter";
+import { Cat, slugify } from "../../utils/formatter";
 
 import db from "@/data/client";
 import Link from "next/link";
@@ -30,19 +30,16 @@ const Index = ({
   items?: number;
   pagenum?: number;
   slug?: string;
-  cat?: {value: string; id: string}[];
+  cat?: { value: string; id: string }[];
 }): JSX.Element => {
   return (
     <Main meta={<Meta title="Бизнес фирми" description="Бизнес фирми" />}>
       <div className=" flex justify-center items-center">
-        <ins
-          className="adsbygoogle"
-          style={{display: "block", textAlign: "center"}}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="1374619867"
-        />
+
+        <ResponsiveAdUnit
+          publisherId="ca-pub-5476404733919333"
+          slotId="1374619867"
+          type="after-home-hero" />
       </div>
       <Nav cats={cats} prefix="business" limit={50} />
       <div className="my-5 flex w-full flex-wrap">
@@ -70,14 +67,10 @@ const Index = ({
         />
       )}
       <div className=" flex justify-center items-center">
-        <ins
-          className="adsbygoogle"
-          style={{display: "block", textAlign: "center"}}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="1374619867"
-        />
+        <ResponsiveAdUnit
+          publisherId="ca-pub-5476404733919333"
+          slotId="6617253971"
+          type="after-home-hero" />
       </div>
       <p className="text-center text-xs font-thin">
         Източник на информацията: Официални регистри на Националната агенция по
@@ -87,7 +80,7 @@ const Index = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const page = query.page as string;
   const p = page ? page.split("_") : [null, "1"];
   const pagenum = p ? Number(p[1]) : 1;
@@ -101,9 +94,9 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
     group: true,
   });
   const sortedcats = cats.rows
-    .sort((a: {value: number}, z: {value: number}) => z.value - a.value)
+    .sort((a: { value: number }, z: { value: number }) => z.value - a.value)
     .slice(0, 100)
-    .map((item: {slug: string; key: string; value: number}) => {
+    .map((item: { slug: string; key: string; value: number }) => {
       return {
         slug: slugify(item.key),
         althref: slugify(item.key) + "_1",
@@ -114,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
     });
   if (p[0]) {
     const selected = sortedcats.find(
-      (x: {slug: string; id: string}) => x.slug === p[0]
+      (x: { slug: string; id: string }) => x.slug === p[0]
     );
     const skip = pagenum * 100 - 100;
     const cat = await db.view("company/companiesbg", {

@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import type {GetServerSideProps} from "next";
-
+import type { GetServerSideProps } from "next";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
@@ -58,21 +58,18 @@ const Index = ({
           </tbody>
         </table>
         <div className=" flex justify-center items-center">
-          <ins
-            className="adsbygoogle"
-            style={{display: "block", textAlign: "center"}}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="1374619867"
-          />
+
+          <ResponsiveAdUnit
+            publisherId="ca-pub-5476404733919333"
+            slotId="1374619867"
+            type="after-home-hero" />
         </div>
       </div>
     </Main>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const id = query.id as string;
   const data = await db.get(id);
   return {

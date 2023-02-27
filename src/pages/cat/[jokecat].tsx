@@ -5,9 +5,9 @@ import Pagination from "@/components/Pagination";
 
 import db from "@/data/client";
 // import { getPaging } from '@/components/NewPagination';
-
-import {deslugify, slugify} from "@/utils/formatter";
-import {Doc} from "../../data/structure";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
+import { deslugify, slugify } from "@/utils/formatter";
+import { Doc } from "../../data/structure";
 
 const CatPage = ({
   jokes,
@@ -83,14 +83,11 @@ const CatPage = ({
       <div className="flex flex-wrap">
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
-            <ins
-              className="adsbygoogle"
-              style={{display: "block", textAlign: "center"}}
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="1374619867"
-            />
+
+            <ResponsiveAdUnit
+              publisherId="ca-pub-5476404733919333"
+              slotId="1374619867"
+              type="in-article" />
           </div>
         </div>
         {jokes.map((item) => (
@@ -103,14 +100,11 @@ const CatPage = ({
         ))}
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
-            <ins
-              className="adsbygoogle"
-              style={{display: "block", textAlign: "center"}}
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="1374619867"
-            />
+
+            <ResponsiveAdUnit
+              publisherId="ca-pub-5476404733919333"
+              slotId="1374619867"
+              type="in-article" />
           </div>
         </div>
       </div>
@@ -123,7 +117,7 @@ export default CatPage;
 export const getServerSideProps = async ({
   query,
 }: {
-  query: {page: string; jokecat: string};
+  query: { page: string; jokecat: string };
 }) => {
   const pagenum = Number(query.page) || 1;
   const skip = pagenum * 30 - 30;

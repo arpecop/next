@@ -1,20 +1,20 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 
-import type {GetServerSideProps} from "next";
-
-import {FormatJoke} from "@/components/JokeText";
+import type { GetServerSideProps } from "next";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
+import { FormatJoke } from "@/components/JokeText";
 import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import type {Cat} from "@/utils/formatter";
-import {catsdata} from "@/utils/formatter";
+import type { Cat } from "@/utils/formatter";
+import { catsdata } from "@/utils/formatter";
 
 import FacebookShare from "@/components/FacebookShare";
-import {chunk, shuffle} from "lodash";
-import {Doc} from "../../data/structure";
+import { chunk, shuffle } from "lodash";
+import { Doc } from "../../data/structure";
 
 import db from "@/data/client";
 
@@ -47,14 +47,10 @@ const SingleJoke = (props: {
 
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ins
-            className="adsbygoogle"
-            style={{display: "block", textAlign: "center"}}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="1374619867"
-          />
+          <ResponsiveAdUnit
+            publisherId="ca-pub-5476404733919333"
+            slotId="6617253971"
+            type="after-home-hero" />
         </article>
         {props.items[0].map((item): JSX.Element => {
           return (
@@ -67,26 +63,18 @@ const SingleJoke = (props: {
           );
         })}
       </div>
-      <ins
-        className="adsbygoogle"
-        style={{display: "block", textAlign: "center"}}
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
-        data-ad-client="ca-pub-5476404733919333"
-        data-ad-slot="1374619867"
-      />
+      <ResponsiveAdUnit
+        publisherId="ca-pub-5476404733919333"
+        slotId="6617253971"
+        type="after-home-hero" />
       <Nav cats={props.cats[1]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <div className="jokewrap">
-            <ins
-              className="adsbygoogle"
-              style={{display: "block", textAlign: "center"}}
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="1374619867"
-            />
+            <ResponsiveAdUnit
+              publisherId="ca-pub-5476404733919333"
+              slotId="6617253971"
+              type="after-home-hero" />
           </div>
         </article>
         {props.items[1].map((item): JSX.Element => {
@@ -105,7 +93,7 @@ const SingleJoke = (props: {
         <article className="joke">
           <ins
             className="adsbygoogle"
-            style={{display: "block", textAlign: "center"}}
+            style={{ display: "block", textAlign: "center" }}
             data-ad-layout="in-article"
             data-ad-format="fluid"
             data-ad-client="ca-pub-5476404733919333"
@@ -127,8 +115,8 @@ const SingleJoke = (props: {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {jokeid} = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { jokeid } = query;
   const cats = chunk(shuffle(catsdata), 7);
   // const datatoken = await doQuery(
   //   gql`
@@ -174,7 +162,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
 
   return {
     props: {
-      joke: {...joke, joke: joke.title},
+      joke: { ...joke, joke: joke.title },
       items: items,
       cats,
     },

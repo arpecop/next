@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import {eng} from "stopword";
+import { ResponsiveAdUnit } from "nextjs-google-adsense";
+import { eng } from "stopword";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import NoSSR from "@/components/NoSSR";
@@ -16,7 +17,7 @@ export type Tweet = {
 };
 export type ItemTweet = {
   id: string;
-  text: string | {id: number; text: string}[];
+  text: string | { id: number; text: string }[];
   screenName: string;
   name: string;
   profileImageUrl: string;
@@ -58,13 +59,13 @@ function templatizeline(str: string) {
     .match(keywordRegex)
     ?.map((x) => x.replace("--=", "").replace("=--", ""));
 
-  return {substrings, keywordMatch};
+  return { substrings, keywordMatch };
 }
 
 const TemplatizeElement = ({
   obj,
 }: {
-  obj: string | {id: number; text: string}[];
+  obj: string | { id: number; text: string }[];
 }): JSX.Element => {
   let str = obj;
   if (Array.isArray(str)) {
@@ -72,7 +73,7 @@ const TemplatizeElement = ({
   }
   const lines = str.split("\n").map((line) => templatizeline(line));
 
-  const jsx = lines.map(({substrings, keywordMatch}, i) => {
+  const jsx = lines.map(({ substrings, keywordMatch }, i) => {
     return (
       <p key={i} className="ml-14">
         {substrings.map((substring, index) => {
@@ -124,14 +125,11 @@ export default function TwuserPage({
       }
     >
       <div className=" flex justify-center items-center">
-        <ins
-          className="adsbygoogle"
-          style={{display: "block", textAlign: "center"}}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="1374619867"
-        />
+
+        <ResponsiveAdUnit
+          publisherId="ca-pub-5476404733919333"
+          slotId="1374619867"
+          type="in-article" />
       </div>
 
       {tweets.tweets.map((t) => (
@@ -196,23 +194,19 @@ export default function TwuserPage({
         </div>
       ))}
       <div className=" flex justify-center items-center">
-        <ins
-          className="adsbygoogle"
-          style={{display: "block", textAlign: "center"}}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="1374619867"
-        />
+        <ResponsiveAdUnit
+          publisherId="ca-pub-5476404733919333"
+          slotId="1374619867"
+          type="in-article" />
       </div>
       <NoSSR>
-        <style dangerouslySetInnerHTML={{__html: cssx}} />
+        <style dangerouslySetInnerHTML={{ __html: cssx }} />
       </NoSSR>
     </Main>
   );
 }
 
-export const getServerSideProps = async ({query}: {query: {id: string}}) => {
+export const getServerSideProps = async ({ query }: { query: { id: string } }) => {
   const id = query.id;
   const data = await db.get(id + "_tw");
   const cssx = templatizeline(JSON.stringify(data.tweets))
@@ -225,7 +219,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
       data.tweets
         .filter((item: ItemTweet) => item.originalPoster)
         .map(
-          (user: {originalPoster: {screenName: string}}) =>
+          (user: { originalPoster: { screenName: string } }) =>
             user.originalPoster.screenName + "_tw"
         )
     )
@@ -235,7 +229,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     keys: JSON.stringify(reposts),
     nocdn: "ok",
   });
-  const exist = existget.rows?.map((it: {id: string}) =>
+  const exist = existget.rows?.map((it: { id: string }) =>
     it.id.replace("_tw", "")
   );
 
