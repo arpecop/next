@@ -11,6 +11,7 @@ module.exports = {
     "plugin:@next/next/recommended",
   ],
   rules: {
+    "react/no-unknown-property": "off",
     "lint/a11y/useKeyWithClickEvents": "off",
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "off",

@@ -1,5 +1,4 @@
 import type { GetServerSideProps } from "next";
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
@@ -35,11 +34,14 @@ const Index = ({
   return (
     <Main meta={<Meta title="Бизнес фирми" description="Бизнес фирми" />}>
       <div className=" flex justify-center items-center">
-
-        <ResponsiveAdUnit
-          publisherId="ca-pub-5476404733919333"
-          slotId="1374619867"
-          type="after-home-hero" />
+        <amp-ad width="100vw" height="320"
+          type="adsense"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="6617253971"
+          data-auto-format="rspv"
+          data-full-width="">
+          <div overflow=""></div>
+        </amp-ad>
       </div>
       <Nav cats={cats} prefix="business" limit={50} />
       <div className="my-5 flex w-full flex-wrap">
@@ -67,10 +69,14 @@ const Index = ({
         />
       )}
       <div className=" flex justify-center items-center">
-        <ResponsiveAdUnit
-          publisherId="ca-pub-5476404733919333"
-          slotId="6617253971"
-          type="after-home-hero" />
+        <amp-ad width="100vw" height="320"
+          type="adsense"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="6617253971"
+          data-auto-format="rspv"
+          data-full-width="">
+          <div overflow=""></div>
+        </amp-ad>
       </div>
       <p className="text-center text-xs font-thin">
         Източник на информацията: Официални регистри на Националната агенция по

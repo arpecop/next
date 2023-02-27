@@ -1,5 +1,4 @@
 import type { GetServerSideProps } from "next";
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
@@ -149,10 +148,14 @@ const Facebook = ({
             <p>{app?.description}</p>
           </div>
         )}
-        <ResponsiveAdUnit
-          publisherId="ca-pub-5476404733919333"
-          slotId="6617253971"
-          type="after-home-hero" />
+        <amp-ad width="100vw" height="320"
+          type="adsense"
+          data-ad-client="ca-pub-5476404733919333"
+          data-ad-slot="6617253971"
+          data-auto-format="rspv"
+          data-full-width="">
+          <div overflow=""></div>
+        </amp-ad>
         <Nav cats={cats} prefix="fb" />
         <div className="my-10 flex w-full flex-col">
           <div className="flex flex-wrap" />

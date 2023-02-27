@@ -5,7 +5,6 @@ import Pagination from "@/components/Pagination";
 
 import db from "@/data/client";
 // import { getPaging } from '@/components/NewPagination';
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import { deslugify, slugify } from "@/utils/formatter";
 import { Doc } from "../../data/structure";
 
@@ -84,10 +83,14 @@ const CatPage = ({
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
 
-            <ResponsiveAdUnit
-              publisherId="ca-pub-5476404733919333"
-              slotId="1374619867"
-              type="in-article" />
+            <amp-ad width="100vw" height="320"
+              type="adsense"
+              data-ad-client="ca-pub-5476404733919333"
+              data-ad-slot="6617253971"
+              data-auto-format="rspv"
+              data-full-width="">
+              <div overflow=""></div>
+            </amp-ad>
           </div>
         </div>
         {jokes.map((item) => (
@@ -101,10 +104,14 @@ const CatPage = ({
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
 
-            <ResponsiveAdUnit
-              publisherId="ca-pub-5476404733919333"
-              slotId="1374619867"
-              type="in-article" />
+            <amp-ad width="100vw" height="320"
+              type="adsense"
+              data-ad-client="ca-pub-5476404733919333"
+              data-ad-slot="6617253971"
+              data-auto-format="rspv"
+              data-full-width="">
+              <div overflow=""></div>
+            </amp-ad>
           </div>
         </div>
       </div>

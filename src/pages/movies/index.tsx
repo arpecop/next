@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import type { GetServerSideProps } from "next";
 import Link from "next/link";
 
@@ -37,10 +36,14 @@ const Index = ({
     >
       <div className="mb-10 flex flex-wrap justify-center">
         <article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
-          <ResponsiveAdUnit
-            publisherId="ca-pub-5476404733919333"
-            slotId="6617253971"
-            type="after-home-hero" />
+          <amp-ad width="100vw" height="320"
+            type="adsense"
+            data-ad-client="ca-pub-5476404733919333"
+            data-ad-slot="6617253971"
+            data-auto-format="rspv"
+            data-full-width="">
+            <div overflow=""></div>
+          </amp-ad>
         </article>
         {movies.map(({ slug, title, description, id }) => (
           <article

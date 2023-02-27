@@ -1,9 +1,9 @@
-import {AppConfig} from "@/utils/AppConfig";
-import {NextSeo} from "next-seo";
+import { AppConfig } from "@/utils/AppConfig";
+import { NextSeo } from "next-seo";
 //import Head from "next/head";
-import {encode} from "html-entities";
-import {useRouter} from "next/router";
-import {profanityRemove} from "../../utils/formatter";
+import { encode } from "html-entities";
+import { useRouter } from "next/router";
+import { profanityRemove } from "../../utils/formatter";
 
 type IMetaProps = {
   title: string;
@@ -14,7 +14,9 @@ type IMetaProps = {
   noIndex?: string;
   removeProfanity?: boolean;
 };
-
+interface Window {
+  adsbygoogle: { [key: string]: unknown }[]
+}
 const Meta = (props: IMetaProps) => {
   const canonicalURL = AppConfig.prefix + useRouter().asPath;
   let title = props.title.replace(/\s+/g, " ").replace(/\n/g, " ").slice(0, 60);
@@ -30,22 +32,23 @@ const Meta = (props: IMetaProps) => {
   );
 
   return (
-    <NextSeo
-      title={title}
-      description={description}
-      canonical={canonicalURL.split(/[?#]/)[0]}
-      noindex={props.noIndex ? true : false}
-      nofollow={props.noIndex ? true : false}
-      facebook={{
-        appId: "281985576166744",
-      }}
-      openGraph={{
-        url: canonicalURL.split(/[?#]/)[0],
-        title: title,
-        description: description,
-        type: "article",
-        images: props.image
-          ? [
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={canonicalURL.split(/[?#]/)[0]}
+        noindex={props.noIndex ? true : false}
+        nofollow={props.noIndex ? true : false}
+        facebook={{
+          appId: "281985576166744",
+        }}
+        openGraph={{
+          url: canonicalURL.split(/[?#]/)[0],
+          title: title,
+          description: description,
+          type: "article",
+          images: props.image
+            ? [
               {
                 url: props.image,
                 width: 1200,
@@ -54,7 +57,7 @@ const Meta = (props: IMetaProps) => {
                 type: props.imgtype || "image/png",
               },
             ]
-          : [
+            : [
               {
                 url: "https://kloun.lol/images/og.jpg",
                 width: 800,
@@ -63,15 +66,22 @@ const Meta = (props: IMetaProps) => {
                 type: "image/jpeg",
               },
             ],
-        siteName: "kloun.lol",
-      }}
-      twitter={{
-        handle: "@handle",
-        site: "@site",
-        cardType: "summary_large_image",
-      }}
-    />
+          siteName: "kloun.lol",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+    </>
   );
 };
 
 export default Meta;
+
+function useEffect(arg0: () => void, arg1: never[]) {
+  throw new Error("Function not implemented.");
+}

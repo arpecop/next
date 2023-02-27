@@ -1,11 +1,14 @@
 
 import { formattedjoke } from "@/utils/formatter";
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
 const Ad = () => (
-  <ResponsiveAdUnit
-    publisherId="ca-pub-5476404733919333"
-    slotId="6617253971"
-    type="after-home-hero" />
+  <amp-ad width="100vw" height="320"
+    type="adsense"
+    data-ad-client="ca-pub-5476404733919333"
+    data-ad-slot="6617253971"
+    data-auto-format="rspv"
+    data-full-width="">
+    <div overflow=""></div>
+  </amp-ad>
 );
 
 export const remappedJokeFunction = (joke: string) => {

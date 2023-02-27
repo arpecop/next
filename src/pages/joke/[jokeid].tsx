@@ -2,7 +2,7 @@
 // import { useRouter } from 'next/router';
 
 import type { GetServerSideProps } from "next";
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
+
 import { FormatJoke } from "@/components/JokeText";
 import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
@@ -17,6 +17,7 @@ import { chunk, shuffle } from "lodash";
 import { Doc } from "../../data/structure";
 
 import db from "@/data/client";
+
 
 const SingleJoke = (props: {
   joke: Doc;
@@ -47,10 +48,14 @@ const SingleJoke = (props: {
 
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ResponsiveAdUnit
-            publisherId="ca-pub-5476404733919333"
-            slotId="6617253971"
-            type="after-home-hero" />
+          <amp-ad width="100vw" height="320"
+            type="adsense"
+            data-ad-client="ca-pub-5476404733919333"
+            data-ad-slot="6617253971"
+            data-auto-format="rspv"
+            data-full-width="">
+            <div overflow=""></div>
+          </amp-ad>
         </article>
         {props.items[0].map((item): JSX.Element => {
           return (
@@ -63,18 +68,26 @@ const SingleJoke = (props: {
           );
         })}
       </div>
-      <ResponsiveAdUnit
-        publisherId="ca-pub-5476404733919333"
-        slotId="6617253971"
-        type="after-home-hero" />
+      <amp-ad width="100vw" height="320"
+        type="adsense"
+        data-ad-client="ca-pub-5476404733919333"
+        data-ad-slot="6617253971"
+        data-auto-format="rspv"
+        data-full-width="">
+        <div overflow=""></div>
+      </amp-ad>
       <Nav cats={props.cats[1]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <div className="jokewrap">
-            <ResponsiveAdUnit
-              publisherId="ca-pub-5476404733919333"
-              slotId="6617253971"
-              type="after-home-hero" />
+            <amp-ad width="100vw" height="320"
+              type="adsense"
+              data-ad-client="ca-pub-5476404733919333"
+              data-ad-slot="6617253971"
+              data-auto-format="rspv"
+              data-full-width="">
+              <div overflow=""></div>
+            </amp-ad>
           </div>
         </article>
         {props.items[1].map((item): JSX.Element => {
@@ -91,14 +104,14 @@ const SingleJoke = (props: {
       <Nav cats={props.cats[2]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block", textAlign: "center" }}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
+          <amp-ad width="100vw" height="320"
+            type="adsense"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="1374619867"
-          />
+            data-ad-slot="6617253971"
+            data-auto-format="rspv"
+            data-full-width="">
+            <div overflow=""></div>
+          </amp-ad>
         </article>
         {props.items[2].map((item): JSX.Element => {
           return (
