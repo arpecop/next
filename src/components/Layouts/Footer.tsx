@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
-const Analytics = ({className}: {className: string}) => (
+const Analytics = ({ className }: { className: string }) => (
   <div className={className}>
     <svg
       xmlns="http://w3.org/2000/svg"
@@ -40,12 +40,12 @@ const Analytics = ({className}: {className: string}) => (
       }}
     />
     <div className="flex justify-center items-center text-xs text-gray-600   z-10   absolute w-full bottom-2 drop-shadow-md dark:text-white">
-      Copyright 2023 kloUn™ | All Rights Reserved ®
+      2023 kloUn | All Rights Reserved ®
     </div>
   </div>
 );
 //analytics
-function Footer({hideFooter}: {hideFooter?: boolean}) {
+function Footer({ hideFooter }: { hideFooter?: boolean }) {
   return !hideFooter ? (
     <footer className="relative">
       <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6  pb-6 bg gap-3 container mx-auto px-4">
