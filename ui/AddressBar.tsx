@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const AddressBar = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+ 
 
   return (
     <div className="flex w-full items-center space-x-2 rounded-xl border border-zinc-800 bg-black px-4 py-3 text-zinc-600">
@@ -51,23 +51,7 @@ const AddressBar = () => {
               })}
           </>
         ) : null}
-        {searchParams.toString().length !== 0 ? (
-          <div className="px-2 text-zinc-500">
-            <span>?</span>
-            {Array.from(searchParams.entries()).map(([key, value], index) => {
-              return (
-                <React.Fragment key={key}>
-                  {index !== 0 ? <span>&</span> : null}
-                  <span className="px-2">
-                    <span className="text-zinc-100">{key}</span>
-                    <span>=</span>
-                    <span className="text-zinc-100">{value}</span>
-                  </span>
-                </React.Fragment>
-              );
-            })}
-          </div>
-        ) : null}
+        
       </div>
     </div>
   );

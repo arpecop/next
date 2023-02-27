@@ -61,13 +61,7 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
                   },
                 )}
               >
-                <span className="tabular-nums">
-                  {item.type === 'client' ? (
-                    item.size / 1000
-                  ) : (
-                    <CountUp start={item.size / 1000} end={0} />
-                  )}
-                </span>{' '}
+                
                 KB
               </div>
             </div>
@@ -114,13 +108,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
           <div className="space-y-6">
             <div className="space-y-3 rounded-lg bg-zinc-900 p-4">
               <div className="flex items-center justify-between space-x-3">
-                <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tabular-nums tracking-wider text-blue-50">
-                  <CountUp
-                    start={(clientTotal + serverTotal) / 1000}
-                    end={clientTotal / 1000}
-                  />{' '}
-                  KB
-                </div>
+               
                 <div className="text-sm text-zinc-300">Bundle Size</div>
               </div>
 

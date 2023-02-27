@@ -9,11 +9,11 @@ export default function StyledComponentsRegistry({
 }: {
   children: React.ReactNode;
 }) {
-  const [StyledComponentsRegistry, styledComponentsFlushEffect] =
+  const [StyledComponentsRegistry] =
     useStyledComponentsRegistry();
 
   useServerInsertedHTML(() => {
-    return <>{styledComponentsFlushEffect()}</>;
+    return <></>;
   });
 
   return <StyledComponentsRegistry>{children}</StyledComponentsRegistry>;

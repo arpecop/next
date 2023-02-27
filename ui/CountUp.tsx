@@ -1,25 +1,11 @@
 'use client';
 
-import { useCountUp } from 'use-count-up';
+ 
 
-const CountUp = ({
-  start,
-  end,
-  duration = 1,
-}: {
-  start: number;
-  end: number;
-  duration?: number;
-}) => {
-  const { value } = useCountUp({
-    isCounting: true,
-    end,
-    start,
-    duration,
-    decimalPlaces: 1,
-  });
+const CountUp = ( ) => {
+ 
 
-  return <span>{value}</span>;
+  return <span> dsds</span>;
 };
 
 export default CountUp;

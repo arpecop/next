@@ -1,6 +1,6 @@
 import { use } from 'react';
 async function delay(ms: number): Promise<string> {
-  let price = '$80.00';
+  const price = '$80.00';
   await new Promise((res) =>
     setTimeout(() => {
       res(price);
@@ -10,7 +10,7 @@ async function delay(ms: number): Promise<string> {
 }
 
 export default function ProductHeader() {
-  let price = use(delay(1000));
+  const price = use(delay(1000));
   return (
     <section>
       <div className="space-y-4 rounded-md bg-zinc-900 p-4">

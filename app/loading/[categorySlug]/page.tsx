@@ -1,4 +1,4 @@
-// @ts-ignore
+ 
 import { use } from 'react';
 import {
   fetchCategoryBySlug,

@@ -12,7 +12,7 @@ async function delay(ms: number): Promise<string> {
 }
 
 export default function Description() {
-  let msg = use(delay(500));
+  const msg = use(delay(500));
   return (
     <section>
       <div>{msg}</div>
