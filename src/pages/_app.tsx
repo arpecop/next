@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       attribute="class"
       defaultTheme={"light"}
     >
-      <GoogleAdSense publisherId="pub-5476404733919333" />
+      <GoogleAdSense publisherId="ca-pub-5476404733919333" />
       <Component {...pageProps} />
     </ThemeProvider>
   );
