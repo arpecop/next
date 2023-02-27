@@ -1,5 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
- 
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const url = req.query.url as string;
   const res2 = await fetch(url);

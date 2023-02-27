@@ -20,9 +20,7 @@
   ],
   "jest.autoRun": {
     "watch": true,
-    "onStartup": [
-      "all-tests"
-    ]
+    "onStartup": ["all-tests"]
   },
   "jest.showCoverageOnLoad": true,
   "jest.showTerminalOnLaunch": false,

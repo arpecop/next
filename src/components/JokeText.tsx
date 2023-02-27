@@ -1,13 +1,12 @@
-/* eslint-disable no-cond-assign */
+import GoogleAdsense from "next-google-ads";
 
 import {formattedjoke} from "@/utils/formatter";
 
 const Ad = () => (
-  <ins
-    className="adsbygoogle"
-    style={{display: "inline-block", width: 300, height: 130}}
-    data-ad-client="ca-pub-5476404733919333"
-    data-ad-slot="6617253971"
+  <GoogleAdsense
+    client="ca-pub-5476404733919333"
+    slot="6617253971"
+    responsive="true"
   />
 );
 

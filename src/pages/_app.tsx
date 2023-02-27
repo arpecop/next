@@ -2,6 +2,7 @@ import {ThemeProvider} from "next-themes";
 import type {AppProps} from "next/app";
 import "../styles/other.css";
 import "../styles/global.css";
+import {GoogleAdSense} from "nextjs-google-adsense";
 
 function MyApp({Component, pageProps}: AppProps) {
   return (
@@ -10,6 +11,7 @@ function MyApp({Component, pageProps}: AppProps) {
       attribute="class"
       defaultTheme={"light"}
     >
+      <GoogleAdSense publisherId="pub-XXXXXXXXXXXXXXXX" />
       <Component {...pageProps} />
     </ThemeProvider>
   );
