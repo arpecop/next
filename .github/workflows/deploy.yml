@@ -17,9 +17,6 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm run build
-          mv package.json /tmp/
-          rm -rf *.*
-          mv /tmp/package.json ./
           rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib
           ls -la
       - name: 🚀 Deploy
