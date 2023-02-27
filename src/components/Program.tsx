@@ -60,7 +60,7 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
   }, [checkboxRef]);
   async function fetchMyAPI(older?: number) {
     const res2 = await fetch(
-      `https://api.codetabs.com/v1/proxy?quest=https://pr0gramm.com/api/items/get?flags=1&promoted=1${
+      `/api/proxy?url=https://pr0gramm.com/api/items/get?flags=1&promoted=1${
         older ? `&older=${older}` : ""
       }`
     );
