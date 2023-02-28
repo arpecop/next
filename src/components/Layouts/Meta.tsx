@@ -5,6 +5,7 @@ import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
 import Script from "next/script";
+import Head from "next/head";
 
 type IMetaProps = {
   title: string;
@@ -81,8 +82,9 @@ const Meta = (props: IMetaProps) => {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
         crossOrigin="anonymous"
       />
-
-      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+      <Head>
+        <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+      </Head>
 
     </>
   );

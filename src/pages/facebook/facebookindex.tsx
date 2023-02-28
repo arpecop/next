@@ -103,12 +103,12 @@ const Facebook = ({
         {curresult && (
           <ResultWrapper>
             <div className="relative flex bg">
-              <picture className="w-full">
-                <img
-                  className="w-full h-full"
-                  src="/images/placeholderfb.png"
-                />
-              </picture>
+
+              <Image
+                className="w-full h-full"
+                src="/images/placeholderfb.png"
+              />
+
               <div className="flex absolute top-0 w-full">
                 <picture className="w-full">
                   <img
