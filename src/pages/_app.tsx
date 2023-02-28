@@ -2,6 +2,7 @@ import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 import "../styles/other.css";
 import "../styles/global.css";
+import Script from "next/script";
 
 
 function MyApp({ Component, pageProps }: AppProps) {
