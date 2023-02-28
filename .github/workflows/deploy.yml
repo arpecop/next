@@ -18,6 +18,8 @@ jobs:
           npm install
           npm run lint:fix
           npm run build
+          npm run export
+          if [ -d out ]; then rm -rf public && mv out public; fi
           rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src
       - name: 🚀 Deploy
         run: |

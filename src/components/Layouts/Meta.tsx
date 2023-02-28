@@ -5,7 +5,6 @@ import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
 import Script from "next/script";
-import Head from "next/head";
 
 type IMetaProps = {
   title: string;
@@ -76,15 +75,15 @@ const Meta = (props: IMetaProps) => {
           cardType: "summary_large_image",
         }}
       />
-      <Head>
-        <Script id="Adsense-id" async
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          crossOrigin="anonymous"
-        />
 
-        <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-      </Head>
+      <Script id="Adsense-id" async
+        strategy="afterInteractive"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        crossOrigin="anonymous"
+      />
+
+      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
     </>
   );
 };
