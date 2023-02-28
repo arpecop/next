@@ -104,7 +104,7 @@ const Facebook = ({
           <ResultWrapper>
             <div className="relative flex bg">
 
-              <Image
+              <img
                 className="w-full h-full"
                 src="/images/placeholderfb.png"
               />
