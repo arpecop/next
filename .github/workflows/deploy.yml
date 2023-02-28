@@ -19,7 +19,7 @@ jobs:
           npm run lint:fix
           npm run build
           npm run export
-          rm -rf ./.next/cache ./app ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src
+          rm -rf ./.next/cache ./app ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src *.js *.ts
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
