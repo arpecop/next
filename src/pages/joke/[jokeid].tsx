@@ -51,7 +51,7 @@ const SingleJoke = (props: {
           <amp-ad width="100vw" height="320"
             type="adsense"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6617253971"
+            data-ad-slot="4861550683"
             data-auto-format="rspv"
             data-full-width="">
             <div overflow=""></div>
@@ -71,7 +71,7 @@ const SingleJoke = (props: {
       <amp-ad width="100vw" height="320"
         type="adsense"
         data-ad-client="ca-pub-5476404733919333"
-        data-ad-slot="6617253971"
+        data-ad-slot="4861550683"
         data-auto-format="rspv"
         data-full-width="">
         <div overflow=""></div>
@@ -83,7 +83,7 @@ const SingleJoke = (props: {
             <amp-ad width="100vw" height="320"
               type="adsense"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6617253971"
+              data-ad-slot="4861550683"
               data-auto-format="rspv"
               data-full-width="">
               <div overflow=""></div>
@@ -107,7 +107,7 @@ const SingleJoke = (props: {
           <amp-ad width="100vw" height="320"
             type="adsense"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6617253971"
+            data-ad-slot="4861550683"
             data-auto-format="rspv"
             data-full-width="">
             <div overflow=""></div>
