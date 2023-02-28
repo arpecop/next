@@ -47,3 +47,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: build
           force: true
+#          if [ -d ./out ]; then rm -rf ./public && mv ./out ./public; fi
