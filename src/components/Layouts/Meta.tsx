@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
+import Script from "next/script";
 
 type IMetaProps = {
   title: string;
@@ -75,6 +76,12 @@ const Meta = (props: IMetaProps) => {
         }}
       />
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <Script id="Adsense-id" async
+        onError={(e) => { console.error("Script failed to load", e); }}
+        strategy="afterInteractive"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
+        crossOrigin="anonymous"
+      />
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
     </>
   );
