@@ -18,14 +18,14 @@ jobs:
           npm install
           npm run lint:fix
           npm run build
-          npm run export
+          rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Rudix"
           git checkout --orphan build
-          git rm -r --cached . -f
-          git add -A .next package.json out -f
+          git add --all
+          git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -33,4 +33,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: build
           force: true
-# if [ -d out ]; then rm -rf public && mv out public; fi
