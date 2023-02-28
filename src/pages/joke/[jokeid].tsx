@@ -181,5 +181,5 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   };
 };
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 export default SingleJoke;

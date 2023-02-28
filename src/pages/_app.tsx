@@ -18,9 +18,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       attribute="class"
       defaultTheme={"light"}
     >
-
-
-
       <Component {...pageProps} />
     </ThemeProvider>
   </>

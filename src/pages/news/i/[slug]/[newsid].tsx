@@ -127,4 +127,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
 };
 
 export default NewsItem;
-export const runtime = "edge";
+export const runtime = "experimental-edge";

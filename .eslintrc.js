@@ -29,7 +29,7 @@ module.exports = {
   overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: "2019",
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint", "unused-imports"],
