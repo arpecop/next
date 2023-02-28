@@ -18,7 +18,8 @@ jobs:
           npm install
           npm run lint:fix
           npm run build
-          rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src
+          npm run export
+          rm -rf ./.next/cache ./app ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -27,6 +28,7 @@ jobs:
           git add --all
           git add -A .next -f
           git commit  --allow-empty -n -m  "Add build directory"
+          if [ -d out ]; then rm -rf public && mv out public; fi
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
