@@ -5,7 +5,13 @@ import "../styles/global.css";
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
+  return (<>
+    <Script id="Adsense-id" async
+      onError={(e) => { console.error("Script failed to load", e); }}
+      strategy="afterInteractive"
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
+      crossOrigin="anonymous"
+    />
     <ThemeProvider
       enableSystem={false}
       attribute="class"
@@ -16,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <Component {...pageProps} />
     </ThemeProvider>
+  </>
   );
 }
 export default MyApp;
