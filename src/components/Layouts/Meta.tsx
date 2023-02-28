@@ -75,7 +75,7 @@ const Meta = (props: IMetaProps) => {
           cardType: "summary_large_image",
         }}
       />
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
       <Script id="Adsense-id" async
         strategy="afterInteractive"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
@@ -88,6 +88,3 @@ const Meta = (props: IMetaProps) => {
 
 export default Meta;
 
-function useEffect(arg0: () => void, arg1: never[]) {
-  throw new Error("Function not implemented.");
-}
