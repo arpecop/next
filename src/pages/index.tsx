@@ -1,11 +1,11 @@
 import Link from "next/link";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
-import {Program} from "@/components/Program";
-import {Cat, slugify} from "@/utils/formatter";
+import { Program } from "@/components/Program";
+import { Cat, slugify } from "@/utils/formatter";
 import db from "@/data/client";
 
 const MoreButton = ({
@@ -16,7 +16,7 @@ const MoreButton = ({
   type: string;
 }): JSX.Element => (
   <Link
-    href={{pathname: "/", query: {type}}}
+    href={{ pathname: "/", query: { type } }}
     passHref={true}
     className="btn dark:btn-ghost border-2 border"
   >
@@ -24,10 +24,10 @@ const MoreButton = ({
   </Link>
 );
 
-const Index = ({cats}: {cats: Cat[]}) => {
+const Index = ({ cats }: { cats: Cat[] }) => {
   const router = useRouter();
   const {
-    query: {type},
+    query: { type },
   } = router;
 
   return (
@@ -69,13 +69,13 @@ export async function getStaticProps() {
     group: true,
   });
   const cats = catsx.rows
-    .filter((x: {value: number}) => x.value > 156)
-    .map((x: {key: string; value: number}) => ({
+    .filter((x: { value: number }) => x.value > 156)
+    .map((x: { key: string; value: number }) => ({
       cat: x.key.replace("JOK", ""),
       slug: slugify(x.key.replace("JOK", "")),
       count: x.value,
     }))
-    .sort((a: {count: number}, b: {count: number}) => b.count - a.count);
+    .sort((a: { count: number }, b: { count: number }) => b.count - a.count);
   return {
     props: {
       cats,
