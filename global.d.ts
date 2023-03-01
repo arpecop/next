@@ -3,6 +3,6 @@ declare namespace JSX {
 		'amp-ad': any;
 		'div': any;
 		"script": any;
-		"ins": any
+		"ins": any;
 	}
 }

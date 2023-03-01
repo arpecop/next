@@ -65,7 +65,7 @@ const Index = ({
       <div className=" flex justify-center items-center">
         <ins
           class="adsbygoogle"
-          style={{ dislay: 'block', width:250 }}
+          style={{ dislay: 'block', minWidth: 250 }}
           data-ad-format="fluid"
           data-ad-layout-key="-hh-7+2h-1m-4u"
           data-ad-client="ca-pub-5476404733919333"
