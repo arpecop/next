@@ -38,7 +38,7 @@ const Index = ({
         <article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
           <ins
             class="adsbygoogle"
-            style={{ dislay: 'block' }}
+            style={{ dislay: 'block', width:250 }}
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"

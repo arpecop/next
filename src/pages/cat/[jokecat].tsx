@@ -84,7 +84,7 @@ const CatPage = ({
           <div className="rounded-md jokewrap p-0">
             <ins
               class="adsbygoogle"
-              style={{ dislay: 'block' }}
+              style={{ dislay: 'block', width:250 }}
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
@@ -104,7 +104,7 @@ const CatPage = ({
           <div className="rounded-md jokewrap p-0">
             <ins
               class="adsbygoogle"
-              style={{ dislay: 'block' }}
+              style={{ dislay: 'block', width:250 }}
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
