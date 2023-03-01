@@ -4,8 +4,6 @@
     "build": {
       "outputs": [".next/**"]
     },
-    "lint": {
-      "outputs": []
-    }
+    "lint": {}
   }
 }

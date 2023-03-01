@@ -29,10 +29,9 @@ jobs:
         run: |
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
-          npm run lint:fix
-          npm run build
-          npm run export
-          rm -rf ./.next/cache ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json
+          npm install turbo -g
+          turbo lint:fix build export
+          rm -rf ./.next/cache ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
