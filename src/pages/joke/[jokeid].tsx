@@ -48,7 +48,7 @@ const SingleJoke = (props: {
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <ins
-            className="adsbygoogle"
+            className="adsbygoogle w-full"
             style={{ dislay: 'block', minWidth: 250 }}
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
@@ -68,7 +68,7 @@ const SingleJoke = (props: {
         })}
       </div>
       <ins
-        className="adsbygoogle"
+        className="adsbygoogle w-full"
         style={{ dislay: 'block', minWidth: 250 }}
         data-ad-format="fluid"
         data-ad-layout-key="-hh-7+2h-1m-4u"
@@ -107,7 +107,7 @@ const SingleJoke = (props: {
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <ins
-            className="adsbygoogle"
+            className="adsbygoogle w-full"
             style={{ dislay: 'block', minWidth: 250 }}
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"

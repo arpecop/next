@@ -80,7 +80,7 @@ const Meta = (props: IMetaProps) => {
       <Head>
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle w-full.js?client=ca-pub-5476404733919333"
           crossorigin="anonymous"
         />
         <script

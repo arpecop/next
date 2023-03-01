@@ -35,7 +35,7 @@
     @apply m-0 p-0  bg;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
   }
-  .adsbygoogle {
+  .adsbygoogle w-full {
     @apply w-full
   }
   .btn {

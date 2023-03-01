@@ -50,7 +50,7 @@ function Footer({hideFooter}: {hideFooter?: boolean}) {
     <footer className="relative">
       <script
         dangerouslySetInnerHTML={{
-          __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+          __html: `(adsbygoogle w-full = window.adsbygoogle w-full || []).push({});`,
         }}
       />
       <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6  pb-6 bg gap-3 container mx-auto px-4">
@@ -110,7 +110,7 @@ function Footer({hideFooter}: {hideFooter?: boolean}) {
     <div className="relative   py-14">
       <script
         dangerouslySetInnerHTML={{
-          __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+          __html: `(adsbygoogle w-full = window.adsbygoogle w-full || []).push({});`,
         }}
       />
       <Analytics className="w-full absolute z-10 bottom-0" />

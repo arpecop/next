@@ -29,7 +29,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
         <div className="flex flex-wrap">
           <div className="w-full">
             <ins
-              className="adsbygoogle"
+              className="adsbygoogle w-full"
               style={{ dislay: 'block', minWidth: 250 }}
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
@@ -42,7 +42,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
           ))}
           <div className="w-full joke">
             <ins
-              className="adsbygoogle"
+              className="adsbygoogle w-full"
               style={{ dislay: 'block', minWidth: 250 }}
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
