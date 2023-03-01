@@ -32,7 +32,7 @@ jobs:
           npm run lint:fix
           npm run build
           npm run export
-          rm -rf ./.next/cache ./app ./styles ./ui ./node_modules ./.github ./.nova ./lib ./src *.js *.ts public
+          rm -rf ./.next/cache ./app ./styles ./ui ./.github ./.nova ./lib ./src *.js *.ts public
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
