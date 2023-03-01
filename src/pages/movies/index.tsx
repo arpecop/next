@@ -36,14 +36,12 @@ const Index = ({
     >
       <div className="mb-10 flex flex-wrap justify-center">
         <article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
-          <amp-ad width="100vw" height="320"
-            type="adsense"
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="4861550683"
-            data-auto-format="rspv"
-            data-full-width="">
-            <div overflow=""></div>
-          </amp-ad>
+            data-ad-slot="6719003089"></ins>
         </article>
         {movies.map(({ slug, title, description, id }) => (
           <article

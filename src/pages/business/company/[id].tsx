@@ -58,14 +58,12 @@ const Index = ({
         </table>
         <div className=" flex justify-center items-center">
 
-          <amp-ad width="100vw" height="320"
-            type="adsense"
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="4861550683"
-            data-auto-format="rspv"
-            data-full-width="">
-            <div overflow=""></div>
-          </amp-ad>
+            data-ad-slot="6719003089"></ins>
         </div>
       </div>
     </Main>
