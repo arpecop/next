@@ -1,7 +1,7 @@
 import { formattedjoke } from "@/utils/formatter";
 const Ad = () => (
   <ins
-    class="adsbygoogle"
+    className="adsbygoogle"
     style={{ dislay: 'block', minWidth: 250 }}
     data-ad-format="fluid"
     data-ad-layout-key="-hh-7+2h-1m-4u"

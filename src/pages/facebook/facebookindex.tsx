@@ -145,7 +145,7 @@ const Facebook = ({
           </div>
         )}
         <ins
-          class="adsbygoogle"
+          className="adsbygoogle"
           style={{ dislay: 'block', width: 250 }}
           data-ad-format="fluid"
           data-ad-layout-key="-hh-7+2h-1m-4u"

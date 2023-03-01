@@ -37,7 +37,7 @@ const Index = ({
       <div className="mb-10 flex flex-wrap justify-center">
         <article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
           <ins
-            class="adsbygoogle"
+            className="adsbygoogle"
             style={{ dislay: 'block', minWidth: 250 }}
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
