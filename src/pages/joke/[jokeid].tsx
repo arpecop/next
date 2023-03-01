@@ -1,20 +1,20 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 
-import type {GetServerSideProps} from "next";
+import type { GetServerSideProps } from "next";
 
-import {FormatJoke} from "@/components/JokeText";
+import { FormatJoke } from "@/components/JokeText";
 import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import type {Cat} from "@/utils/formatter";
-import {catsdata} from "@/utils/formatter";
+import type { Cat } from "@/utils/formatter";
+import { catsdata } from "@/utils/formatter";
 
 import FacebookShare from "@/components/FacebookShare";
-import {chunk, shuffle} from "lodash";
-import {Doc} from "../../data/structure";
+import { chunk, shuffle } from "lodash";
+import { Doc } from "../../data/structure";
 
 import db from "@/data/client";
 
@@ -49,7 +49,7 @@ const SingleJoke = (props: {
         <article className="joke">
           <ins
             class="adsbygoogle"
-            style="display:block"
+            style={{ dislay: 'block' }}
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
@@ -69,7 +69,7 @@ const SingleJoke = (props: {
       </div>
       <ins
         class="adsbygoogle"
-        style="display:block"
+        style={{ dislay: 'block' }}
         data-ad-format="fluid"
         data-ad-layout-key="-hh-7+2h-1m-4u"
         data-ad-client="ca-pub-5476404733919333"
@@ -108,7 +108,7 @@ const SingleJoke = (props: {
         <article className="joke">
           <ins
             class="adsbygoogle"
-            style="display:block"
+            style={{ dislay: 'block' }}
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
@@ -130,8 +130,8 @@ const SingleJoke = (props: {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {jokeid} = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { jokeid } = query;
   const cats = chunk(shuffle(catsdata), 7);
   // const datatoken = await doQuery(
   //   gql`
@@ -177,7 +177,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
 
   return {
     props: {
-      joke: {...joke, joke: joke.title},
+      joke: { ...joke, joke: joke.title },
       items: items,
       cats,
     },

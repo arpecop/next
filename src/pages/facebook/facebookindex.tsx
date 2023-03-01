@@ -1,4 +1,4 @@
-import type {GetServerSideProps} from "next";
+import type { GetServerSideProps } from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
@@ -10,9 +10,9 @@ import {
   useFacebookRandom,
 } from "@/components/hooks/facebookhook";
 
-import LoadingResult, {ResultWrapper} from "@/components/LoadingResult";
+import LoadingResult, { ResultWrapper } from "@/components/LoadingResult";
 
-import {useState} from "react";
+import { useState } from "react";
 
 import FBLogin from "@/components/FacebookLogin";
 
@@ -55,7 +55,7 @@ const Facebook = ({
   const [urlparams, setUrlparams] = useState<{
     params: string;
     refreshid: string;
-  }>({params: "", refreshid: "default"});
+  }>({ params: "", refreshid: "default" });
 
   const [curresult, setResult] = useFacebookRandom(app);
   // 	const formDatax = (formd: any) => {
@@ -146,7 +146,7 @@ const Facebook = ({
         )}
         <ins
           class="adsbygoogle"
-          style="display:block"
+          style={{ dislay: 'block' }}
           data-ad-format="fluid"
           data-ad-layout-key="-hh-7+2h-1m-4u"
           data-ad-client="ca-pub-5476404733919333"
@@ -173,7 +173,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         title: "Персонализирай",
         type: "object",
         properties: {
-          firstname: {type: "string", title: "Напиши името си", default: ""},
+          firstname: { type: "string", title: "Напиши името си", default: "" },
         },
       },
       description:
@@ -198,7 +198,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         title: "Персонализирай",
         type: "object",
         properties: {
-          firstname: {type: "string", title: "Напиши името си", default: ""},
+          firstname: { type: "string", title: "Напиши името си", default: "" },
         },
       },
       hidden: false,
@@ -223,7 +223,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       slug: "podhojda",
       hidden: true,
     },
-    {cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true},
+    { cat: "Какво е японското ти име", slug: "iaponskoime", hidden: true },
     {
       cat: "Провери какъв си бил в предишен живот",
       slug: "predishenjivot",
@@ -231,7 +231,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   ];
 
-  const {appid, id} = context.query;
+  const { appid, id } = context.query;
   const app = apps.find((app) => app.slug === appid);
   return {
     props: {

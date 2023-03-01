@@ -11,7 +11,7 @@ export type News = {
   nid: string;
   id: string;
   description?: string;
-  parsed?: {html: string[]; description?: string};
+  parsed?: { html: string[]; description?: string };
   content: string;
 };
 
@@ -22,7 +22,7 @@ export type RootNewsProps = {
   items: number;
 };
 
-const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
+const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
   return (
     <Main meta={<Meta title={"Новини"} description="Новини" />}>
       <div className="my-10 flex w-full flex-col">
@@ -30,20 +30,20 @@ const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
           <div className="w-full">
             <ins
               class="adsbygoogle"
-              style="display:block"
+              style={{ dislay: 'block' }}
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="6719003089"
             ></ins>
           </div>
-          {newsbg.map(({id, title, image}) => (
+          {newsbg.map(({ id, title, image }) => (
             <NewsThumbnail uid={id} title={title} image={image} key={id} />
           ))}
           <div className="w-full joke">
             <ins
               class="adsbygoogle"
-              style="display:block"
+              style={{ dislay: 'block' }}
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
@@ -62,7 +62,7 @@ const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps = async (context: {query: {page?: string}}) => {
+export const getServerSideProps = async (context: { query: { page?: string } }) => {
   const pagenum = context.query.page ? Number(context.query.page) : 1;
   const agregate = await db.view("newsbg/news", {
     update: false,
