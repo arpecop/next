@@ -54,7 +54,7 @@ const SingleJoke = (props: {
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
             data-ad-slot="6719003089"
-          ></ins>
+          />
         </article>
         {props.items[0].map((item): JSX.Element => {
           return (
@@ -74,7 +74,7 @@ const SingleJoke = (props: {
         data-ad-layout-key="-hh-7+2h-1m-4u"
         data-ad-client="ca-pub-5476404733919333"
         data-ad-slot="6719003089"
-      ></ins>
+      />
       <Nav cats={props.cats[1]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
@@ -113,7 +113,7 @@ const SingleJoke = (props: {
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
             data-ad-slot="6719003089"
-          ></ins>
+          />
         </article>
         {props.items[2].map((item): JSX.Element => {
           return (

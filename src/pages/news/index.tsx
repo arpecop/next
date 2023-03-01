@@ -35,7 +35,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="6719003089"
-            ></ins>
+            />
           </div>
           {newsbg.map(({ id, title, image }) => (
             <NewsThumbnail uid={id} title={title} image={image} key={id} />
@@ -48,7 +48,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="6719003089"
-            ></ins>
+            />
           </div>
         </div>
       </div>

@@ -151,7 +151,7 @@ const Facebook = ({
           data-ad-layout-key="-hh-7+2h-1m-4u"
           data-ad-client="ca-pub-5476404733919333"
           data-ad-slot="6719003089"
-        ></ins>
+        />
         <Nav cats={cats} prefix="fb" />
         <div className="my-10 flex w-full flex-col">
           <div className="flex flex-wrap" />

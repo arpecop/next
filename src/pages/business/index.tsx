@@ -41,7 +41,7 @@ const Index = ({
           data-ad-layout-key="-hh-7+2h-1m-4u"
           data-ad-client="ca-pub-5476404733919333"
           data-ad-slot="6719003089"
-        ></ins>
+        />
       </div>
       <Nav cats={cats} prefix="business" limit={50} />
       <div className="my-5 flex w-full flex-wrap">
@@ -76,7 +76,7 @@ const Index = ({
           data-ad-layout-key="-hh-7+2h-1m-4u"
           data-ad-client="ca-pub-5476404733919333"
           data-ad-slot="6719003089"
-        ></ins>
+        />
       </div>
       <p className="text-center text-xs font-thin">
         Източник на информацията: Официални регистри на Националната агенция по

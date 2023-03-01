@@ -52,7 +52,7 @@ const NewsItem = ({
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="6719003089"
-            ></ins>
+            />
           </div>
           <article className="leading-relaxed">
             {parsed?.html.map((p: string) => (
