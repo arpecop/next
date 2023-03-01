@@ -15,14 +15,12 @@ type IMetaProps = {
   noIndex?: string;
   removeProfanity?: boolean;
 };
-interface Window {
-  adsbygoogle: { [key: string]: unknown }[]
-}
+
 const Meta = (props: IMetaProps) => {
   const canonicalURL = AppConfig.prefix + useRouter().asPath;
-  let title = props.title.replace(/\s+/g, " ").replace(/\n/g, " ").slice(0, 60);
+  let title = (props.title || "").replace(/\s+/g, " ").replace(/\n/g, " ").slice(0, 60);
 
-  let description = props.description
+  let description = (props.description || "")
     .replace(/\s+/g, " ")
     .replace(/\n/g, " ")
     .slice(0, 150);
