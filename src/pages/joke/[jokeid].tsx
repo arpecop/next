@@ -1,23 +1,22 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 
-import type { GetServerSideProps } from "next";
+import type {GetServerSideProps} from "next";
 
-import { FormatJoke } from "@/components/JokeText";
+import {FormatJoke} from "@/components/JokeText";
 import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 
-import type { Cat } from "@/utils/formatter";
-import { catsdata } from "@/utils/formatter";
+import type {Cat} from "@/utils/formatter";
+import {catsdata} from "@/utils/formatter";
 
 import FacebookShare from "@/components/FacebookShare";
-import { chunk, shuffle } from "lodash";
-import { Doc } from "../../data/structure";
+import {chunk, shuffle} from "lodash";
+import {Doc} from "../../data/structure";
 
 import db from "@/data/client";
-
 
 const SingleJoke = (props: {
   joke: Doc;
@@ -48,12 +47,14 @@ const SingleJoke = (props: {
 
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ins class="adsbygoogle"
+          <ins
+            class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6719003089"></ins>
+            data-ad-slot="6719003089"
+          ></ins>
         </article>
         {props.items[0].map((item): JSX.Element => {
           return (
@@ -66,22 +67,27 @@ const SingleJoke = (props: {
           );
         })}
       </div>
-      <ins class="adsbygoogle"
+      <ins
+        class="adsbygoogle"
         style="display:block"
         data-ad-format="fluid"
         data-ad-layout-key="-hh-7+2h-1m-4u"
         data-ad-client="ca-pub-5476404733919333"
-        data-ad-slot="6719003089"></ins>
+        data-ad-slot="6719003089"
+      ></ins>
       <Nav cats={props.cats[1]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <div className="jokewrap">
-            <amp-ad width="100vw" height="320"
+            <amp-ad
+              width="100vw"
+              height="320"
               type="adsense"
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="4861550683"
               data-auto-format="rspv"
-              data-full-width="">
+              data-full-width=""
+            >
               <div overflow=""></div>
             </amp-ad>
           </div>
@@ -100,12 +106,14 @@ const SingleJoke = (props: {
       <Nav cats={props.cats[2]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ins class="adsbygoogle"
+          <ins
+            class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6719003089"></ins>
+            data-ad-slot="6719003089"
+          ></ins>
         </article>
         {props.items[2].map((item): JSX.Element => {
           return (
@@ -122,8 +130,8 @@ const SingleJoke = (props: {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { jokeid } = query;
+export const getServerSideProps: GetServerSideProps = async ({query}) => {
+  const {jokeid} = query;
   const cats = chunk(shuffle(catsdata), 7);
   // const datatoken = await doQuery(
   //   gql`
@@ -169,7 +177,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      joke: { ...joke, joke: joke.title },
+      joke: {...joke, joke: joke.title},
       items: items,
       cats,
     },

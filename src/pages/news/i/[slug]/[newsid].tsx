@@ -1,18 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import type { GetServerSideProps } from "next";
+import type {GetServerSideProps} from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-import type { News } from "@/pages/news/";
+import type {News} from "@/pages/news/";
 
-import { shuffle } from "lodash";
+import {shuffle} from "lodash";
 import db from "@/data/client";
 
 const NewsItem = ({
   newsbg,
-  newsbg_by_pk: { title, image, parsed },
+  newsbg_by_pk: {title, image, parsed},
 }: {
   newsbg: News[];
   newsbg_by_pk: News;
@@ -45,13 +45,14 @@ const NewsItem = ({
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
           </div>
           <div className=" flex justify-center items-center">
-
-            <ins class="adsbygoogle"
+            <ins
+              class="adsbygoogle"
               style="display:block"
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"></ins>
+              data-ad-slot="6719003089"
+            ></ins>
           </div>
           <article className="leading-relaxed">
             {parsed?.html.map((p: string) => (
@@ -79,8 +80,8 @@ const NewsItem = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-  const { newsid, slug } = query as { newsid: string; slug?: string };
+export const getServerSideProps: GetServerSideProps = async ({req, query}) => {
+  const {newsid, slug} = query as {newsid: string; slug?: string};
 
   const data = await db.get(newsid);
 
@@ -90,17 +91,18 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
   };
   const shufflprep = content.html
     ? shuffle(
-      content.html
-        .join(" ")
-        .split(".")
-        .map((p: string) => `${shuffle(p.split(" ")).join(" ")}.`)
-    )
+        content.html
+          .join(" ")
+          .split(".")
+          .map((p: string) => `${shuffle(p.split(" ")).join(" ")}.`)
+      )
     : null;
   const shuffled = shufflprep
     ?.map((p: string) => {
       const rid = Math.floor(Math.random() * 5);
-      return `${p.charAt(0).toUpperCase() + p.slice(1)} ${rid === 0 ? "-=splitter=-" : ""
-        }`;
+      return `${p.charAt(0).toUpperCase() + p.slice(1)} ${
+        rid === 0 ? "-=splitter=-" : ""
+      }`;
     })
     .join(" ")
     .split("-=splitter=-");

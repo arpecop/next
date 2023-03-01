@@ -5,8 +5,8 @@ import Pagination from "@/components/Pagination";
 
 import db from "@/data/client";
 // import { getPaging } from '@/components/NewPagination';
-import { deslugify, slugify } from "@/utils/formatter";
-import { Doc } from "../../data/structure";
+import {deslugify, slugify} from "@/utils/formatter";
+import {Doc} from "../../data/structure";
 
 const CatPage = ({
   jokes,
@@ -82,13 +82,14 @@ const CatPage = ({
       <div className="flex flex-wrap">
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
-
-            <ins class="adsbygoogle"
+            <ins
+              class="adsbygoogle"
               style="display:block"
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"></ins>
+              data-ad-slot="6719003089"
+            ></ins>
           </div>
         </div>
         {jokes.map((item) => (
@@ -101,13 +102,14 @@ const CatPage = ({
         ))}
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
-
-            <ins class="adsbygoogle"
+            <ins
+              class="adsbygoogle"
               style="display:block"
               data-ad-format="fluid"
               data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"></ins>
+              data-ad-slot="6719003089"
+            ></ins>
           </div>
         </div>
       </div>
@@ -120,7 +122,7 @@ export default CatPage;
 export const getServerSideProps = async ({
   query,
 }: {
-  query: { page: string; jokecat: string };
+  query: {page: string; jokecat: string};
 }) => {
   const pagenum = Number(query.page) || 1;
   const skip = pagenum * 30 - 30;

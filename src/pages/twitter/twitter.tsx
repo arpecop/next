@@ -6,7 +6,7 @@ import Pagination from "@/components/Pagination";
 
 import db from "@/data/client";
 
-import { shuffle } from "lodash";
+import {shuffle} from "lodash";
 import Link from "next/link";
 
 export type User = {
@@ -23,7 +23,7 @@ const Index = ({
   pagenum: number;
   items: number;
   letter: string;
-  sections: { key: string; value: number }[];
+  sections: {key: string; value: number}[];
 }): JSX.Element => {
   return (
     <Main
@@ -39,7 +39,7 @@ const Index = ({
       }
     >
       <div className="flex flex-wrap justify-center items-center gap-1 mb-3">
-        {sections.map(({ key }) => (
+        {sections.map(({key}) => (
           <Link
             passHref
             key={key}
@@ -63,13 +63,14 @@ const Index = ({
         ))}
       </div>
       <div className=" flex justify-center items-center">
-
-        <ins class="adsbygoogle"
+        <ins
+          class="adsbygoogle"
           style="display:block"
           data-ad-format="fluid"
           data-ad-layout-key="-hh-7+2h-1m-4u"
           data-ad-client="ca-pub-5476404733919333"
-          data-ad-slot="6719003089"></ins>
+          data-ad-slot="6719003089"
+        ></ins>
       </div>
       <Pagination
         noReplace
@@ -85,7 +86,7 @@ const Index = ({
 export const getServerSideProps = async ({
   query,
 }: {
-  query: { page: string; jokecat: string };
+  query: {page: string; jokecat: string};
 }) => {
   const p = query.page;
   const pagenum = p ? Number(query.page.split("_")[1]) : 1 || 1;

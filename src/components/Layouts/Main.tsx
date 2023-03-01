@@ -1,6 +1,6 @@
 import Header from "@/components/Layouts/Header";
 
-import { ReactNode } from "react";
+import {ReactNode} from "react";
 
 import Footer from "./Footer";
 
@@ -13,7 +13,6 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => {
-
   return (
     <div className="flex flex-col h-screen">
       {props.meta}

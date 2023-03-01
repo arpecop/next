@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
-const Analytics = ({ className }: { className: string }) => (
+const Analytics = ({className}: {className: string}) => (
   <div className={className}>
     <svg
       xmlns="http://w3.org/2000/svg"
@@ -45,10 +45,14 @@ const Analytics = ({ className }: { className: string }) => (
   </div>
 );
 //analytics
-function Footer({ hideFooter }: { hideFooter?: boolean }) {
+function Footer({hideFooter}: {hideFooter?: boolean}) {
   return !hideFooter ? (
     <footer className="relative">
-      <script dangerouslySetInnerHTML={{ __html: `(adsbygoogle = window.adsbygoogle || []).push({});` }} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+        }}
+      />
       <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6  pb-6 bg gap-3 container mx-auto px-4">
         <div className="z-10 text-sm">
           <h3 className="headingbottom">Services</h3>
@@ -104,7 +108,11 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
     </footer>
   ) : (
     <div className="relative   py-14">
-      <script dangerouslySetInnerHTML={{ __html: `(adsbygoogle = window.adsbygoogle || []).push({});` }} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+        }}
+      />
       <Analytics className="w-full absolute z-10 bottom-0" />
     </div>
   );

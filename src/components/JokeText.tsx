@@ -1,12 +1,13 @@
-
-import { formattedjoke } from "@/utils/formatter";
+import {formattedjoke} from "@/utils/formatter";
 const Ad = () => (
-  <ins class="adsbygoogle"
+  <ins
+    class="adsbygoogle"
     style="display:block"
     data-ad-format="fluid"
     data-ad-layout-key="-hh-7+2h-1m-4u"
     data-ad-client="ca-pub-5476404733919333"
-    data-ad-slot="6719003089"></ins>
+    data-ad-slot="6719003089"
+  ></ins>
 );
 
 export const remappedJokeFunction = (joke: string) => {
@@ -16,9 +17,9 @@ export const remappedJokeFunction = (joke: string) => {
     .map((line, i) => {
       const num =
         line.startsWith("-") ||
-          line.startsWith(" -") ||
-          line.startsWith("–") ||
-          line.startsWith("  -")
+        line.startsWith(" -") ||
+        line.startsWith("–") ||
+        line.startsWith("  -")
           ? (i1 += 1) % 2 === 0
             ? "even"
             : "odd"
@@ -30,7 +31,7 @@ export const remappedJokeFunction = (joke: string) => {
           num === "odd" || num === "even"
             ? line.replace("-", "").replace("–", "")
             : line,
-        ...(num && { oddness: num }),
+        ...(num && {oddness: num}),
       };
     });
 };
@@ -76,18 +77,20 @@ export const FormatJoke = ({
   return (
     <>
       {remapped.map(
-        ({ oddness, line, key }: { oddness?: string; line: string; key: number }) =>
+        ({oddness, line, key}: {oddness?: string; line: string; key: number}) =>
           oddness ? (
             <div
-              className={`flex flex-wrap pb-4 ${oddness === "even" ? "flex-row-reverse" : ""
-                }`}
+              className={`flex flex-wrap pb-4 ${
+                oddness === "even" ? "flex-row-reverse" : ""
+              }`}
               key={key}
             >
               <div
-                className={`relative whitespace-pre-wrap rounded-lg p-2 font-sans font-medium shadow-2xl ${oddness === "even"
-                  ? "bg-violet-900 text-right dark:bg-slate-200"
-                  : "bg-indigo-700 text-left dark:bg-slate-400"
-                  }`}
+                className={`relative whitespace-pre-wrap rounded-lg p-2 font-sans font-medium shadow-2xl ${
+                  oddness === "even"
+                    ? "bg-violet-900 text-right dark:bg-slate-200"
+                    : "bg-indigo-700 text-left dark:bg-slate-400"
+                }`}
               >
                 {oddness === "odd" ? (
                   <div className="absolute -left-4 top-3 inline-block w-4 overflow-hidden">

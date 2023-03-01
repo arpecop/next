@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import type { GetServerSideProps } from "next";
+import type {GetServerSideProps} from "next";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
@@ -57,20 +57,21 @@ const Index = ({
           </tbody>
         </table>
         <div className=" flex justify-center items-center">
-
-          <ins class="adsbygoogle"
+          <ins
+            class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
             data-ad-layout-key="-hh-7+2h-1m-4u"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6719003089"></ins>
+            data-ad-slot="6719003089"
+          ></ins>
         </div>
       </div>
     </Main>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({query}) => {
   const id = query.id as string;
   const data = await db.get(id);
   return {
