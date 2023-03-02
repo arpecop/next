@@ -1,9 +1,9 @@
-import {AppConfig} from "@/utils/AppConfig";
-import {NextSeo} from "next-seo";
+import { AppConfig } from "@/utils/AppConfig";
+import { NextSeo } from "next-seo";
 //import Head from "next/head";
-import {encode} from "html-entities";
-import {useRouter} from "next/router";
-import {profanityRemove} from "../../utils/formatter";
+import { encode } from "html-entities";
+import { useRouter } from "next/router";
+import { profanityRemove } from "../../utils/formatter";
 import Head from "next/head";
 
 type IMetaProps = {
@@ -51,23 +51,23 @@ const Meta = (props: IMetaProps) => {
           type: "article",
           images: props.image
             ? [
-                {
-                  url: props.image,
-                  width: 1200,
-                  height: 630,
-                  alt: title,
-                  type: props.imgtype || "image/png",
-                },
-              ]
+              {
+                url: props.image,
+                width: 1200,
+                height: 630,
+                alt: title,
+                type: props.imgtype || "image/png",
+              },
+            ]
             : [
-                {
-                  url: "https://kloun.lol/images/og.jpg",
-                  width: 800,
-                  height: 600,
-                  alt: "Og Image Alt",
-                  type: "image/jpeg",
-                },
-              ],
+              {
+                url: "https://kloun.lol/images/og.jpg",
+                width: 800,
+                height: 600,
+                alt: "Og Image Alt",
+                type: "image/jpeg",
+              },
+            ],
           siteName: "kloun.lol",
         }}
         twitter={{
@@ -80,7 +80,7 @@ const Meta = (props: IMetaProps) => {
       <Head>
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle w-full.js?client=ca-pub-5476404733919333"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
           crossorigin="anonymous"
         />
         <script
