@@ -30,7 +30,6 @@ jobs:
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
           npm install turbo -g
-          npm run lint:fix
           turbo build 
           turbo export
           rm -rf ./.next/cache ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js
