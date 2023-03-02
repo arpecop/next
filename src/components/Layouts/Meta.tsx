@@ -33,7 +33,6 @@ const Meta = (props: IMetaProps) => {
   );
 
   return (
-
     <NextSeo
       title={title}
       description={description}

@@ -42,17 +42,19 @@ const Analytics = ({ className }: { className: string }) => (
     <div className="flex justify-center items-center text-xs text-gray-600   z-10   absolute w-full bottom-2 drop-shadow-md dark:text-white">
       2023 kloUn | All Rights Reserved ®
     </div>
+    <Script
+      async
+      src="/ads.js"
+      strategy="afterInteractive"
+    />
   </div>
+
 );
 //analytics
 function Footer({ hideFooter }: { hideFooter?: boolean }) {
   return !hideFooter ? (
     <footer className="relative">
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `(adsbygoogle w-full = window.adsbygoogle w-full || []).push({});`,
-        }}
-      />
+
       <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6  pb-6 bg gap-3 container mx-auto px-4">
         <div className="z-10 text-sm">
           <h3 className="headingbottom">Services</h3>
@@ -108,11 +110,7 @@ function Footer({ hideFooter }: { hideFooter?: boolean }) {
     </footer>
   ) : (
     <div className="relative   py-14">
-      <script
-        dangerouslySetInnerHTML={{
-          __html: ` (adsbygoogle = window.adsbygoogle || []).push({});`,
-        }}
-      />
+
       <Analytics className="w-full absolute z-10 bottom-0" />
     </div>
   );

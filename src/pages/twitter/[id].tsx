@@ -231,7 +231,7 @@ export const getServerSideProps = async ({ query }: { query: { id: string } }) =
     )
   );
   const existget = await db.view("twitter/exist", {
-    update: false,
+    update: 'lazy',
     keys: JSON.stringify(reposts),
     nocdn: "ok",
   });
