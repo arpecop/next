@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
-const Analytics = ({className}: {className: string}) => (
+const Analytics = ({ className }: { className: string }) => (
   <div className={className}>
     <svg
       xmlns="http://w3.org/2000/svg"
@@ -45,7 +45,7 @@ const Analytics = ({className}: {className: string}) => (
   </div>
 );
 //analytics
-function Footer({hideFooter}: {hideFooter?: boolean}) {
+function Footer({ hideFooter }: { hideFooter?: boolean }) {
   return !hideFooter ? (
     <footer className="relative">
       <script
@@ -110,7 +110,7 @@ function Footer({hideFooter}: {hideFooter?: boolean}) {
     <div className="relative   py-14">
       <script
         dangerouslySetInnerHTML={{
-          __html: `(adsbygoogle w-full = window.adsbygoogle w-full || []).push({});`,
+          __html: ` (adsbygoogle = window.adsbygoogle || []).push({});`,
         }}
       />
       <Analytics className="w-full absolute z-10 bottom-0" />
