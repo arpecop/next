@@ -64,15 +64,16 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 
 export const getServerSideProps = async (context: { query: { page?: string } }) => {
   const pagenum = context.query.page ? Number(context.query.page) : 1;
-  const agregate = await db.view("newsbg/news", {
-    update: false,
+  const agregate = await db.view("newsbg/agregate", {
+    update: 'lazy',
+    reduce: true
   });
 
   const data = await db.view("newsbg/news", {
     reduce: false,
     limit: 30,
     skip: pagenum * 30 - 30,
-    update: false,
+    update: 'lazy',
   });
 
   return {
