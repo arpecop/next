@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
+  images: {
+    domains: ['static.dir.bg'],
+  },
   async rewrites() {
     return [
       {
@@ -62,13 +65,13 @@ const nextConfig = {
       },
     ];
   },
-  exportPathMap: async function (
+  exportPathMap: async function(
     defaultPathMap,
-    {dev, dir, outDir, distDir, buildId}
+    { dev, dir, outDir, distDir, buildId }
   ) {
     return {
-      "/": {page: "/"},
-      "/other/about": {page: "/other/about"},
+      "/": { page: "/" },
+      "/other/about": { page: "/other/about" },
     };
   },
 };

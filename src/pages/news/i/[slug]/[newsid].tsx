@@ -4,6 +4,8 @@ import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
+import Image from 'next/image'
+
 
 import type { News } from "@/pages/news/";
 
@@ -35,18 +37,20 @@ const NewsItem = ({
           <div className="mb-6 flex items-center justify-center">
             {image && (
               <div className="mr-4 pt-2">
-                <img
+                <Image
                   alt={title}
                   className=" rounded-lg object-cover"
                   src={image}
+                  width={500}
+                  height={500}
                 />
               </div>
             )}
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
           </div>
           <div className=" flex justify-center items-center">
-            <ins class="adsbygoogle"
-              style={{ display: 'block', textAlign: 'center' }}
+            <ins class="adsbygoogle w-full"
+              style={{ display: 'block', textAlign: 'center', minWidth: 250 }}
               data-ad-layout="in-article"
               data-ad-format="fluid"
               data-ad-client="ca-pub-5476404733919333"
@@ -63,7 +67,7 @@ const NewsItem = ({
           {newsbg?.map((item) => (
             <div className="joke" key={item.id}>
               <div className="jokewrap">
-                <img
+                <Image
                   alt={title}
                   src={JSON.parse(image[0])}
                   width={200}
