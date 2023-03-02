@@ -1,10 +1,22 @@
-import {useState} from "react";
+import { useState } from "react";
 import MenuNavBar from "../MenuNavBar";
 
 export default function Header() {
   const [menu, setMenu] = useState<boolean>(false);
   return (
     <header>
+
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
+        crossorigin="anonymous"
+      />
+      <script
+        async
+        custom-element="amp-ad"
+        src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+      />
+
       <div className="flex w-full items-center justify-center sm:justify-start md:justify-center">
         <svg
           viewBox="0 0 1440 190"
@@ -37,9 +49,8 @@ export default function Header() {
 
       <div className="z-40 top-0 fixed">
         <label
-          className={`cursor-pointer visible xs:visible sm:invisible  backdrop-blur-sm bg-black/30 dark:bg-white/30 ${
-            menu && "flex w-screen h-screen"
-          }`}
+          className={`cursor-pointer visible xs:visible sm:invisible  backdrop-blur-sm bg-black/30 dark:bg-white/30 ${menu && "flex w-screen h-screen"
+            }`}
         >
           <input
             type="checkbox"

@@ -4,7 +4,6 @@ import { NextSeo } from "next-seo";
 import { encode } from "html-entities";
 import { useRouter } from "next/router";
 import { profanityRemove } from "../../utils/formatter";
-import Head from "next/head";
 
 type IMetaProps = {
   title: string;
@@ -34,62 +33,50 @@ const Meta = (props: IMetaProps) => {
   );
 
   return (
-    <>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={canonicalURL.split(/[?#]/)[0]}
-        noindex={props.noIndex ? true : false}
-        nofollow={props.noIndex ? true : false}
-        facebook={{
-          appId: "281985576166744",
-        }}
-        openGraph={{
-          url: canonicalURL.split(/[?#]/)[0],
-          title: title,
-          description: description,
-          type: "article",
-          images: props.image
-            ? [
-              {
-                url: props.image,
-                width: 1200,
-                height: 630,
-                alt: title,
-                type: props.imgtype || "image/png",
-              },
-            ]
-            : [
-              {
-                url: "https://kloun.lol/images/og.jpg",
-                width: 800,
-                height: 600,
-                alt: "Og Image Alt",
-                type: "image/jpeg",
-              },
-            ],
-          siteName: "kloun.lol",
-        }}
-        twitter={{
-          handle: "@handle",
-          site: "@site",
-          cardType: "summary_large_image",
-        }}
-      />
 
-      <Head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
-          crossorigin="anonymous"
-        />
-        <script
-          async
-          custom-element="amp-ad"
-          src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
-        />
-      </Head>
-    </>
+    <NextSeo
+      title={title}
+      description={description}
+      canonical={canonicalURL.split(/[?#]/)[0]}
+      noindex={props.noIndex ? true : false}
+      nofollow={props.noIndex ? true : false}
+      facebook={{
+        appId: "281985576166744",
+      }}
+      openGraph={{
+        url: canonicalURL.split(/[?#]/)[0],
+        title: title,
+        description: description,
+        type: "article",
+        images: props.image
+          ? [
+            {
+              url: props.image,
+              width: 1200,
+              height: 630,
+              alt: title,
+              type: props.imgtype || "image/png",
+            },
+          ]
+          : [
+            {
+              url: "https://kloun.lol/images/og.jpg",
+              width: 800,
+              height: 600,
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+        siteName: "kloun.lol",
+      }}
+      twitter={{
+        handle: "@handle",
+        site: "@site",
+        cardType: "summary_large_image",
+      }}
+    />
+
+
   );
 };
 

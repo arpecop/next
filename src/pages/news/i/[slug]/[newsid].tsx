@@ -45,14 +45,12 @@ const NewsItem = ({
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
           </div>
           <div className=" flex justify-center items-center">
-            <ins
-              className="adsbygoogle w-full"
-              style={{ dislay: 'block', minWidth: 250 }}
+            <ins class="adsbygoogle"
+              style={{ display: 'block', textAlign: 'center' }}
+              data-ad-layout="in-article"
               data-ad-format="fluid"
-              data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"
-            />
+              data-ad-slot="1954173905"></ins>
           </div>
           <article className="leading-relaxed">
             {parsed?.html.map((p: string) => (

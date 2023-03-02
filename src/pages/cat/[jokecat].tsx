@@ -130,7 +130,7 @@ export const getServerSideProps = async ({
   const data = await db.view("joke/cat", {
     key: `JOK${deslugify(query.jokecat)}`,
     limit: 30,
-    update: "false",
+    update: "lazy",
     reduce: "false",
     cache: skip > 1000 ? "ok" : "nok",
     skip,
@@ -139,7 +139,7 @@ export const getServerSideProps = async ({
   const count = await db.view("joke/cat", {
     key: `JOK${deslugify(query.jokecat)}`,
     limit: 1,
-    update: "false",
+    update: "lazy",
     cache: "ok",
     reduce: true,
   });
