@@ -1,1 +1,3 @@
-(adsbygoogle = window.adsbygoogle || []).push({});
+window.onload = function() {
+	(adsbygoogle = window.adsbygoogle || []).push({});
+};
