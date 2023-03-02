@@ -79,17 +79,14 @@ const SingleJoke = (props: {
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <div className="jokewrap">
-            <amp-ad
-              width="100vw"
-              height="320"
-              type="adsense"
+            <ins
+              className="adsbygoogle w-full"
+              style={{ dislay: 'block', minWidth: 250 }}
+              data-ad-format="fluid"
+              data-ad-layout-key="-hh-7+2h-1m-4u"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="4861550683"
-              data-auto-format="rspv"
-              data-full-width=""
-            >
-              <div overflow=""></div>
-            </amp-ad>
+              data-ad-slot="6719003089"
+            />
           </div>
         </article>
         {props.items[1].map((item): JSX.Element => {
