@@ -48,7 +48,7 @@ const SingleJoke = (props: {
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <ins class="adsbygoogle"
-            style="display:block"
+            style={{ display: "block" }}
             data-ad-client="ca-pub-5476404733919333"
             data-ad-slot="5139686620"
             data-ad-format="auto"
@@ -75,14 +75,12 @@ const SingleJoke = (props: {
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <div className="jokewrap">
-            <ins
-              className="adsbygoogle w-full"
-              style={{ dislay: 'block', minWidth: 250 }}
-              data-ad-format="fluid"
-              data-ad-layout-key="-hh-7+2h-1m-4u"
+            <ins class="adsbygoogle"
+              style={{ display: "block" }}
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"
-            />
+              data-ad-slot="5139686620"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
           </div>
         </article>
         {props.items[1].map((item): JSX.Element => {
@@ -100,7 +98,7 @@ const SingleJoke = (props: {
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
           <ins class="adsbygoogle"
-            style="display:block"
+            style={{ display: "block" }}
             data-ad-client="ca-pub-5476404733919333"
             data-ad-slot="5139686620"
             data-ad-format="auto"
