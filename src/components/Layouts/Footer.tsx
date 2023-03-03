@@ -29,7 +29,7 @@ const Analytics = ({ className }: { className: string }) => (
       2023 kloUn | All Rights Reserved ®
     </div>
     <Script
-      src="/ads.js"
+      src="https://kloun.pages.dev/ads.js"
     />
   </div>
 
