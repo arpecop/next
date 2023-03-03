@@ -1,6 +1,6 @@
-import {TwitterFeed} from "@/data/twittertypes";
-import {ItemTweet, Tweet} from "@/pages/twitter/[id]";
-import type {NextRequest} from "next/server";
+import { TwitterFeed } from "@/data/twittertypes";
+import { ItemTweet, Tweet } from "@/pages/twitter/[id]";
+import type { NextRequest } from "next/server";
 
 export const minifyTweets = async (id: string): Promise<Tweet> => {
   const headers = {
@@ -10,7 +10,7 @@ export const minifyTweets = async (id: string): Promise<Tweet> => {
 
   const datafetch = await fetch(
     `https://syndication.twitter.com/srv/timeline-profile/screen-name/${id}`,
-    {headers}
+    { headers }
   );
   const html = await datafetch.text();
   const obj = JSON.parse(
@@ -23,11 +23,11 @@ export const minifyTweets = async (id: string): Promise<Tweet> => {
   const tweets = obj.props.pageProps.timeline.entries.map((t) => {
     const originalPoster = t.content.tweet.retweeted_status
       ? {
-          screenName: t.content.tweet.retweeted_status.user.screen_name,
-          name: t.content.tweet.retweeted_status.user.name,
-          profileImageUrl:
-            t.content.tweet.retweeted_status.user.profile_image_url_https,
-        }
+        screenName: t.content.tweet.retweeted_status.user.screen_name,
+        name: t.content.tweet.retweeted_status.user.name,
+        profileImageUrl:
+          t.content.tweet.retweeted_status.user.profile_image_url_https,
+      }
       : null;
     return {
       id: t.entry_id,
@@ -36,7 +36,7 @@ export const minifyTweets = async (id: string): Promise<Tweet> => {
         : t.content.tweet.full_text
       )
         .split("\n")
-        .map((text: string, id: number) => ({id, text})),
+        .map((text: string, id: number) => ({ id, text })),
       createdAt: new Date(t.content.tweet.created_at)
         .toISOString()
         .split("T")[0],
@@ -62,7 +62,7 @@ export const config = {
 };
 
 export default async function handler(req: NextRequest) {
-  const {searchParams} = new URL(req.url);
+  const { searchParams } = new URL(req.url);
   const id = searchParams.get("id") as string;
   const resp = await minifyTweets(id);
 

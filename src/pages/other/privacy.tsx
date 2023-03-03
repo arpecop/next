@@ -191,7 +191,7 @@ const Index = (): JSX.Element => {
 
 export async function getStaticProps() {
   return {
-    props: {lastupdate: new Date().toISOString()},
+    props: {},
   };
 }
 export default Index;

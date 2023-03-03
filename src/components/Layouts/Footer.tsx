@@ -24,26 +24,11 @@ const Analytics = ({ className }: { className: string }) => (
       />
     </svg>
 
-    <Script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-PDX6T8DTFR"
-      strategy="afterInteractive"
-    />
-    <Script
-      id="google-analytics"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-PDX6T8DTFR');`,
-      }}
-    />
+
     <div className="flex justify-center items-center text-xs text-gray-600   z-10   absolute w-full bottom-2 drop-shadow-md dark:text-white">
       2023 kloUn | All Rights Reserved ®
     </div>
     <Script
-
       src="/ads.js"
     />
   </div>

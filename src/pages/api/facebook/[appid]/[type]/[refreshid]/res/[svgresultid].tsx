@@ -1,16 +1,16 @@
-import type {NextApiRequest, NextApiResponse} from "next";
-import {optimize} from "svgo";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { optimize } from "svgo";
 
 import path from "path";
 
-import {readFileSync} from "fs";
+import { readFileSync } from "fs";
 
-import {INode, parse, stringify} from "svgson";
-import {find, flattenDeep} from "lodash";
+import { INode, parse, stringify } from "svgson";
+import { find, flattenDeep } from "lodash";
 
-import {toPairs} from "lodash";
+import { toPairs } from "lodash";
 import satori from "satori";
-import {getKasmet} from "@/components/hooks/facebookhook";
+import { getKasmet } from "@/components/hooks/facebookhook";
 
 type Replacement = {
   lookforid: string;
@@ -51,7 +51,7 @@ async function replaceTextSvg(data: string, replacements: Replacement[]) {
 
   //svg.attributes.width = "100%";
   //svg.attributes.height = "100%";
-  replacements.forEach(({lookforid, replacewith}) => {
+  replacements.forEach(({ lookforid, replacewith }) => {
     lastGrandchild.children.forEach((element) => {
       if (element.name === "text" && element.attributes.id === lookforid) {
         const wrapper = find(rects, (obj) => obj.attributes.id === lookforid);
@@ -106,7 +106,7 @@ function templateEngine(template: string, data: Params) {
   return template.replace(pattern, (_, token) => data[token] || "");
 }
 
-export function returnStyles(text: Wrapper): {[key: string]: string | number} {
+export function returnStyles(text: Wrapper): { [key: string]: string | number } {
   return {
     display: "flex",
     position: "absolute",
@@ -167,7 +167,7 @@ export default async function handler(
   const rootfolder = __dirname.split(".next")[0];
   let additional;
 
-  const {svgresultid, appid, type, refreshid} = req.query as Params;
+  const { svgresultid, appid, type, refreshid } = req.query as Params;
 
   const ff = path.resolve(rootfolder, `public/images/font/Nunito-Medium.ttf`);
   const filePath = path.resolve(rootfolder, `public/fbapps/${appid}/svg.svg`);
@@ -193,13 +193,13 @@ export default async function handler(
   }).map((pair) => ({
     lookforid: pair[0],
     replacewith: pair[1],
-  })) as {lookforid: string; replacewith: string}[];
+  })) as { lookforid: string; replacewith: string }[];
 
   const rendered = await replaceTextSvg(svgstring, data);
   if (type === "svg") {
     res.setHeader("Content-Type", "image/svg+xml");
     const svgx = await satori(
-      <div style={{display: "flex"}}>
+      <div style={{ display: "flex" }}>
         {rendered.texts.map((text) => (
           <div key={text.id} style={returnStyles(text)}>
             {text.replacewith}
