@@ -7,5 +7,12 @@ module.exports = {
         NODE_ENV: "production",
       },
     },
+    {
+      name: "buildscaled",
+      script: "yarn start --port 4001",
+      env: {
+        NODE_ENV: "production",
+      },
+    },
   ],
 };
