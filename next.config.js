@@ -5,6 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
+  assetPrefix: 'https://kloun.pages.dev',
   images: {
     domains: ['static.dir.bg'],
   },
