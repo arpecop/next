@@ -82,14 +82,12 @@ const CatPage = ({
       <div className="flex flex-wrap">
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
-            <ins
-              className="adsbygoogle w-full"
-              style={{ dislay: 'block', minWidth: 250 }}
-              data-ad-format="fluid"
-              data-ad-layout-key="-hh-7+2h-1m-4u"
+            <ins class="adsbygoogle"
+              style="display:block"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"
-            />
+              data-ad-slot="5139686620"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
           </div>
         </div>
         {jokes.map((item) => (
@@ -102,14 +100,12 @@ const CatPage = ({
         ))}
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
-            <ins
-              className="adsbygoogle w-full"
-              style={{ dislay: 'block', minWidth: 250 }}
-              data-ad-format="fluid"
-              data-ad-layout-key="-hh-7+2h-1m-4u"
+            <ins class="adsbygoogle"
+              style="display:block"
               data-ad-client="ca-pub-5476404733919333"
-              data-ad-slot="6719003089"
-            />
+              data-ad-slot="5139686620"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
           </div>
         </div>
       </div>

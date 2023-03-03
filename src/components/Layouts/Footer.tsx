@@ -43,9 +43,8 @@ const Analytics = ({ className }: { className: string }) => (
       2023 kloUn | All Rights Reserved ®
     </div>
     <Script
-      async
+
       src="/ads.js"
-      strategy="afterInteractive"
     />
   </div>
 

@@ -47,14 +47,12 @@ const SingleJoke = (props: {
 
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ins
-            className="adsbygoogle w-full"
-            style={{ dislay: 'block', minWidth: 250 }}
-            data-ad-format="fluid"
-            data-ad-layout-key="-hh-7+2h-1m-4u"
+          <ins class="adsbygoogle"
+            style="display:block"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6719003089"
-          />
+            data-ad-slot="5139686620"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
         </article>
         {props.items[0].map((item): JSX.Element => {
           return (
@@ -67,14 +65,12 @@ const SingleJoke = (props: {
           );
         })}
       </div>
-      <ins
-        className="adsbygoogle w-full"
-        style={{ dislay: 'block', minWidth: 250 }}
-        data-ad-format="fluid"
-        data-ad-layout-key="-hh-7+2h-1m-4u"
+      <ins class="adsbygoogle"
+        style="display:block"
         data-ad-client="ca-pub-5476404733919333"
-        data-ad-slot="6719003089"
-      />
+        data-ad-slot="5139686620"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
       <Nav cats={props.cats[1]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
@@ -103,14 +99,12 @@ const SingleJoke = (props: {
       <Nav cats={props.cats[2]} prefix="cat" />
       <div className="-m-2 flex flex-wrap">
         <article className="joke">
-          <ins
-            className="adsbygoogle w-full"
-            style={{ dislay: 'block', minWidth: 250 }}
-            data-ad-format="fluid"
-            data-ad-layout-key="-hh-7+2h-1m-4u"
+          <ins class="adsbygoogle"
+            style="display:block"
             data-ad-client="ca-pub-5476404733919333"
-            data-ad-slot="6719003089"
-          />
+            data-ad-slot="5139686620"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
         </article>
         {props.items[2].map((item): JSX.Element => {
           return (
