@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 import MenuNavBar from "../MenuNavBar";
 
@@ -5,7 +6,9 @@ export default function Header() {
   const [menu, setMenu] = useState<boolean>(false);
   return (
     <header>
-
+      <Head>
+        <base href="https://kloun.pages.dev" />
+      </Head>
       <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
