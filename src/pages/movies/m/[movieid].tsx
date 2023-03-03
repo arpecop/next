@@ -1,12 +1,12 @@
-import type {GetServerSideProps} from "next";
+import type { GetServerSideProps } from "next";
 
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 
-import type {Movie} from "@/pages/movies/";
-import {doQuery, gql} from "@/pages/api/graphql";
+import type { Movie } from "@/pages/movies/";
+import { doQuery, gql } from "@/pages/api/graphql";
 
-const Item = ({movie}: {movie: Movie}): JSX.Element => {
+const Item = ({ movie }: { movie: Movie }): JSX.Element => {
   return (
     <Main
       hideFooter
@@ -57,8 +57,8 @@ export const USERS = gql`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {movieid} = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { movieid } = query;
 
   const data = await doQuery(
     gql`
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
   );
 
   return {
-    props: {movie: data},
+    props: { movie: data },
   };
 };
 export default Item;

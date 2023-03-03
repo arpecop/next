@@ -26,14 +26,14 @@ export default function Header() {
         </svg>
         <picture className="w-24 sm:w-24 md:w-fit relative z-10">
           <img
-            src="/images/logodark.png"
+            src="https://kloun.pages.dev/images/logodark.png"
             alt=""
             className="dark:sepia"
             width={140}
             height={181}
           />
           <img
-            src="/images/logodark.png"
+            src="https://kloun.pages.dev/images/logodark.png"
             width={140}
             height={181}
             alt=""

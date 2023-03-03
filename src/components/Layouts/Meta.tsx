@@ -59,7 +59,7 @@ const Meta = (props: IMetaProps) => {
           ]
           : [
             {
-              url: "https://kloun.lol/images/og.jpg",
+              url: "https://kloun.pages.dev/images/og.jpg",
               width: 800,
               height: 600,
               alt: "Og Image Alt",

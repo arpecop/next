@@ -103,7 +103,7 @@ const Facebook = ({
         {curresult && (
           <ResultWrapper>
             <div className="relative flex bg">
-              <img className="w-full h-full" src="/images/placeholderfb.png" />
+              <img className="w-full h-full" src="https://kloun.pages.dev/images/placeholderfb.png" />
 
               <div className="flex absolute top-0 w-full">
                 <picture className="w-full">
