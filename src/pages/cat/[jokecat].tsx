@@ -83,7 +83,7 @@ const CatPage = ({
         <div className="joke">
           <div className="rounded-md jokewrap p-0">
             <ins class="adsbygoogle"
-              style={{ display: "block" }}
+              style={{ display: "block", minWidth: 250 }}
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="5139686620"
               data-ad-format="auto"
@@ -102,7 +102,7 @@ const CatPage = ({
           <div className="rounded-md jokewrap p-0">
             <ins class="adsbygoogle"
 
-              style={{ display: "block" }}
+              style={{ display: "block", minWidth: 250 }}
               data-ad-client="ca-pub-5476404733919333"
               data-ad-slot="5139686620"
               data-ad-format="auto"
