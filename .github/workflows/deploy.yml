@@ -19,7 +19,6 @@ jobs:
           npm run build
           rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib
           ls -la
-          mv .next out
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
