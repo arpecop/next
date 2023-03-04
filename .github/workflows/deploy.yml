@@ -19,7 +19,7 @@ jobs:
           npm run build
           rm -rf ./.next/cache ./app ./public ./styles ./ui ./node_modules ./.github ./.nova ./lib
           mkdir -p ./out/_next
-          cp ./.next ./out/_next
+          rsync -av ./.next ./out/_next
           ls -la
       - name: 🚀 Deploy
         run: |
