@@ -31,7 +31,7 @@ jobs:
           npm install
           npm run build
           npm run export
-          rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js
+          rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
