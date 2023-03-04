@@ -29,9 +29,8 @@ jobs:
         run: |
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           npm install
-          npm install turbo -g
-          turbo build 
-          turbo export
+          npm run build
+          npm run export
           rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js
       - name: 🚀 Deploy
         run: |
