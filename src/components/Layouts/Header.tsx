@@ -1,6 +1,5 @@
 import { useState } from "react";
 import MenuNavBar from "../MenuNavBar";
-import Image from 'next/image'
 import Script from "next/script";
 
 export default function Header() {
@@ -27,14 +26,14 @@ export default function Header() {
           <path d="M0 128h48c48 0 144 0 240-16s192-48 288-42.7c96 5.7 192 47.7 288 48 96-.3 192-42.3 288-42.6 96 .3 192 42.3 240 64l48 21.3V0H0z" />
         </svg>
         <picture className="w-24 sm:w-24 md:w-fit relative z-10">
-          <Image
+          <img
             src="https://kloun.pages.dev/images/logodark.png"
             alt=""
             className="dark:sepia"
             width={140}
             height={181}
           />
-          <Image
+          <img
             src="https://kloun.pages.dev/images/logodark.png"
             width={140}
             height={181}
