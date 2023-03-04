@@ -5,9 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-  assetPrefix: 'https://kloun.pages.dev',
+  assetPrefix: process.env.LOGNAME === 'arpecop' ? 'http://localhost:3000' : 'https://kloun.pages.dev',
   images: {
-    domains: ['static.dir.bg'],
+    domains: ['static.dir.bg', 'kloun.pages.dev'],
   },
   async rewrites() {
     return [

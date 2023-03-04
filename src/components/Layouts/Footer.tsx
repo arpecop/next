@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 const Analytics = ({ className }: { className: string }) => (
@@ -28,6 +29,9 @@ const Analytics = ({ className }: { className: string }) => (
     <div className="flex justify-center items-center text-xs text-gray-600   z-10   absolute w-full bottom-2 drop-shadow-md dark:text-white">
       2023 kloUn | All Rights Reserved ®
     </div>
+    <Head>
+      <link rel="preload" href="https://kloun.pages.dev/ads.js" as="script" />
+    </Head>
     <Script
       src="https://kloun.pages.dev/ads.js"
     />

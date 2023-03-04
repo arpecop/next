@@ -1,9 +1,9 @@
-import {doQuery, gql} from "@/pages/api/graphql";
+import { doQuery, gql } from "@/pages/api/graphql";
 // import { profanityFilter } from "@/utils/formatter";
 
-import {ImageResponse} from "@vercel/og";
-import {NextRequest} from "next/server";
-import {remappedJokeFunction} from "../../../components/JokeText";
+import { ImageResponse } from "@vercel/og";
+import { NextRequest } from "next/server";
+import { remappedJokeFunction } from "../../../components/JokeText";
 export const config = {
   runtime: "edge",
 };
@@ -14,9 +14,7 @@ const font = fetch(
 
 export default async function handler(req: NextRequest) {
   const fontData = await font;
-  const {searchParams} = new URL(req.url);
-
-  // ?title=<title>
+  const { searchParams } = new URL(req.url);
   const hasTitle = searchParams.has("idx");
   const hasW = searchParams.has("w");
   const hasH = searchParams.has("h");
@@ -124,16 +122,16 @@ export default async function handler(req: NextRequest) {
                       style={
                         x.oddness === "odd"
                           ? {
-                              display: "flex",
-                              justifyContent: "flex-start",
-                              alignItems: "flex-start",
-                            }
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            alignItems: "flex-start",
+                          }
                           : {
-                              display: "flex",
-                              justifyContent: "flex-end",
-                              alignItems: "flex-end",
-                              width: "100%",
-                            }
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "flex-end",
+                            width: "100%",
+                          }
                       }
                     >
                       <div
