@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     domains: ['static.dir.bg', 'kloun.pages.dev'],
   },
+  experimental: {
+    images: {
+      unoptimized: true,
+    },
+  },
   async rewrites() {
     return [
       {
