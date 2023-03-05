@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MenuNavBar from "../MenuNavBar";
 import Script from "next/script";
+import Link from "next/link";
 
 export default function Header() {
   const [menu, setMenu] = useState<boolean>(false);
@@ -26,20 +27,22 @@ export default function Header() {
           <path d="M0 128h48c48 0 144 0 240-16s192-48 288-42.7c96 5.7 192 47.7 288 48 96-.3 192-42.3 288-42.6 96 .3 192 42.3 240 64l48 21.3V0H0z" />
         </svg>
         <picture className="w-24 sm:w-24 md:w-fit relative z-10">
-          <img
-            src="https://kloun.pages.dev/images/logodark.png"
-            alt=""
-            className="dark:sepia"
-            width={140}
-            height={181}
-          />
-          <img
-            src="https://kloun.pages.dev/images/logodark.png"
-            width={140}
-            height={181}
-            alt=""
-            className="absolute dark:grayscale absolute blur-lg duration-500 dark:blur-none top-0"
-          />
+          <Link href="https://kloun.lol/">
+            <img
+              src="https://kloun.pages.dev/images/logodark.png"
+              alt=""
+              className="dark:sepia"
+              width={140}
+              height={181}
+            />
+            <img
+              src="https://kloun.pages.dev/images/logodark.png"
+              width={140}
+              height={181}
+              alt=""
+              className="absolute dark:grayscale absolute blur-lg duration-500 dark:blur-none top-0"
+            />
+          </Link>
         </picture>
         <MenuNavBar
           className="hidden sm:flex justify-end w-full items-center space-x-4 pr-2 -mt-12 z-10"
