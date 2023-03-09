@@ -73,7 +73,7 @@ const Index = ({
         />
       </div>
       <Pagination
-        noReplace
+
         items={items}
         currentPage={pagenum}
         pageSize={150}
