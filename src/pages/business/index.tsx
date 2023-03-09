@@ -61,7 +61,6 @@ const Index = ({
       </div>
       {pagenum && (
         <Pagination
-          noReplace
           items={items || 1}
           currentPage={pagenum}
           pageSize={100}
