@@ -17,6 +17,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: "/ads.txt",
+        destination: "/api/ads",
+      },
+      {
         source: "/news/:page",
         destination: "/news/?page=:page",
       },

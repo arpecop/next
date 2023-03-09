@@ -7,7 +7,7 @@ function makeArray({
   currentPage,
 }: {
   pagesToShow: number;
-  items: number | {key: string}[];
+  items: number | { key: string }[];
   pageSize: number;
   currentPage: number;
 }) {
@@ -17,7 +17,7 @@ function makeArray({
   let startIndex = currentPage - middle;
   let endIndex = currentPage + middle;
   const pagesCount = Math.ceil(isArr ? items.length : items / pageSize);
-  const pages = Array.from({length: pagesCount}, (_, i) => i + 1);
+  const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
 
   if (startIndex < 1) {
     startIndex = 1;
@@ -44,13 +44,13 @@ const Pagination = ({
   pageSize,
   currentPage,
   prefix,
-  noReplace,
+
 }: {
   items: number;
   pageSize: number;
   currentPage: number;
   prefix: string;
-  noReplace?: boolean;
+
 }) => {
   const pagesToRender = makeArray({
     pagesToShow: 9,
@@ -74,9 +74,8 @@ const Pagination = ({
             href={
               page === currentPage
                 ? "#"
-                : `${prefix}${
-                    page === 1 ? (prefix.includes("_") ? 1 : "") : page
-                  }/`
+                : `${prefix}${page === 1 ? (prefix.includes("_") ? 1 : "") : page
+                }/`
             }
             key={page}
             className={
