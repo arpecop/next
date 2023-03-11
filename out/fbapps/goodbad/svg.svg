@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="630px" viewBox="0 0 1200 630" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>svg</title>
+    <g id="svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="inforesult">
+            <rect id="area" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="1199" height="629"></rect>
+            <rect id="bad" stroke="#979797" fill="#D8D8D8" opacity="0" x="995.5" y="307.5" width="119" height="56"></rect>
+            <rect id="good" stroke="#979797" fill="#D8D8D8" opacity="0" x="135.5" y="307.5" width="119" height="56"></rect>
+            <text id="bad" stroke="#979797" font-family="Nunito-Regular, Nunito" font-size="73" font-weight="normal" line-spacing="73" letter-spacing="0.0458075" fill="#FFFFFF">
+                <tspan x="995" y="373">100</tspan>
+            </text>
+            <text id="good" font-family="Nunito-Regular, Nunito" font-size="73" font-weight="normal" line-spacing="73" letter-spacing="0.0458075" fill="#FFFFFF">
+                <tspan x="128" y="370">100</tspan>
+            </text>
+            <rect id="firstname" stroke="#979797" fill="#D8D8D8" opacity="0" x="47.5" y="39.5" width="1106" height="56"></rect>
+            <text id="firstname" font-family="Nunito-Regular, Nunito" font-size="73" font-weight="normal" line-spacing="73" letter-spacing="0.0458075" fill="#FFFFFF">
+                <tspan x="508.740376" y="88.1528931">rudi</tspan>
+            </text>
+            <rect id="date" fill="#D8D8D8" x="26" y="582.153846" width="163" height="27.6923077"></rect>
+            <text id="date" font-family="Nunito-Regular, Nunito" font-size="27" font-weight="normal" letter-spacing="0.0169425" fill="#FFFFFF">
+                <tspan x="80.6073574" y="605">date</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

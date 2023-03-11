@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="630px" viewBox="0 0 1200 630" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>svg</title>
+    <g id="svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="back" transform="translate(37.000000, -0.000000)">
+            <g id="Group" transform="translate(558.500000, 312.500000) scale(-1, 1) rotate(-180.000000) translate(-558.500000, -312.500000) translate(0.000000, 0.000000)"></g>
+        </g>
+        <g id="inforesult">
+            <rect id="area" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="1199" height="629"></rect>
+            <rect id="info" stroke="#979797" fill="#D8D8D8" opacity="0" x="374.5" y="96.5" width="451" height="440"></rect>
+            <text id="info" font-family="Nunito-Regular, Nunito" font-size="48" font-weight="normal" letter-spacing="0.03012" fill="#591D1D">
+                <tspan x="416.431273" y="146">Type som ething </tspan>
+                <tspan x="497.705654" y="212">das dsad</tspan>
+                <tspan x="397.156589" y="278">sd asd asd asddas </tspan>
+                <tspan x="402.517273" y="344">dasd da s das das </tspan>
+                <tspan x="428.927115" y="410">dasdasd asd as</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
