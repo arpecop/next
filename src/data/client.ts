@@ -1,7 +1,7 @@
 //const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
 //const url = "http://d1ooh4ppc5c6x6.cloudfront.net/";
-const url = "http://arpecop.click:5984/";
-const urlnocdn = "http://arpecop.click:5984/";
+const url = "https://db.kloun.lol/";
+const urlnocdn = "https://db.kloun.lol/";
 
 type Variables = { [key: string]: string | number | boolean };
 const serialize = (obj: Variables) => {
