@@ -14,15 +14,17 @@ const MoreButton = ({
 }: {
   text: string;
   type: string;
-}): JSX.Element => (
-  <Link
-    href={{ pathname: "/", query: { type } }}
-    passHref={true}
-    className="btn dark:btn-ghost border-2 border"
-  >
-    {text}
-  </Link>
-);
+}): JSX.Element => {
+  return (
+    <Link
+      href={{ pathname: "/", query: { type } }}
+      passHref={true}
+      className="btn dark:btn-ghost border-2 border"
+    >
+      {text}
+    </Link>
+  );
+};
 
 const Index = ({ cats }: { cats: Cat[] }) => {
   const router = useRouter();
